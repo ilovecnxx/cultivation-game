@@ -344,13 +344,6 @@ func main() {
 		v1.GET("/:id/attributes", p.Player.GetAttributes)
 
 
-		equipment := v1.Group("/:id/equipment")
-		{
-			equipment.GET("", p.Equipment.ListEquipment)
-			equipment.POST("/equip", p.Equipment.Equip)
-			equipment.POST("/unequip", p.Equipment.Unequip)
-			equipment.POST("/strengthen", p.Equipment.Strengthen)
-		}
 
 		dongfu := v1.Group("/:id/dongfu")
 		{
