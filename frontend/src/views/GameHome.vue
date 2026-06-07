@@ -111,11 +111,10 @@
         </div>
         <div class="side-card side-equip">
           <div class="equip-slots">
-            <div class="eq-slot">🗡️<span>武器</span></div><div class="eq-slot">👑<span>发冠</span></div>
-            <div class="eq-slot">👘<span>法袍</span></div><div class="eq-slot">🛡️<span>护腕</span></div>
-            <div class="eq-slot">🎗️<span>腰带</span></div><div class="eq-slot">👢<span>云靴</span></div>
-            <div class="eq-slot">📿<span>项链</span></div><div class="eq-slot">💍<span>戒指</span></div>
-            <div class="eq-slot">🔮<span>法宝</span></div><div class="eq-slot">🐉<span>坐骑</span></div>
+            <div v-for="s in equipSlots" :key="s.key" class="eq-slot" :style="{borderColor:getEquip(s.key)?'#d4a843':'rgba(212,168,67,.25)'}" @click="craftEquip(s)" :title="getEquip(s.key)?getEquip(s.key).name:'点击打造'">
+              <span>{{ getEquip(s.key)?.icon||s.icon }}</span>
+              <span style="font-size:10px">{{ getEquip(s.key)?.name||s.name }}</span>
+            </div>
           </div>
         </div>
       </aside>
@@ -1042,6 +1041,11 @@ async function acceptFriend(fid:number){const pid=getPID();if(!pid)return;await 
 async function removeFriend(fid:number){const pid=getPID();if(!pid)return;await apiPost('/api/v1/player/'+pid+'/friends/remove',{friend_id:fid});loadFriends();loadPending()}
 async function openChat(f:any){activePeer.value=f.id;activePeerName.value=f.nickname;const pid=getPID();if(!pid)return;try{const r=await fetch('/api/v1/player/'+pid+'/messages?peer_id='+f.id,{headers:{Authorization:'Bearer '+getToken()}});const d=await r.json();privateMessages.value=(d.data||[]).reverse()}catch{}}
 async function sendPrivate(){const pid=getPID();const v=privateInput.value.trim();if(!v||!activePeer.value||!pid)return;const d=await apiPost('/api/v1/player/'+pid+'/messages/send',{to_id:activePeer.value,text:v});if(d&&d.code===0){privateMessages.value.push({from_id:parseInt(pid),to_id:activePeer.value,text:v,created_at:new Date().toISOString()});privateInput.value=''}}
+const equipSlots=[{key:'weapon',icon:'🗡️',name:'武器'},{key:'crown',icon:'👑',name:'发冠'},{key:'robe',icon:'👘',name:'法袍'},{key:'bracer',icon:'🛡️',name:'护腕'},{key:'belt',icon:'🎗️',name:'腰带'},{key:'boots',icon:'👢',name:'云靴'},{key:'necklace',icon:'📿',name:'项链'},{key:'ring',icon:'💍',name:'戒指'},{key:'artifact',icon:'🔮',name:'法宝'},{key:'mount',icon:'🐉',name:'坐骑'}]
+const playerEquips=ref<any[]>([]);const equipCraftSlot=ref('')
+function getEquip(slot:string){return playerEquips.value.find((e:any)=>e.slot===slot)}
+async function loadEquips(){const pid=getPID();if(!pid)return;try{const r=await fetch('/api/v1/player/'+pid+'/equipment',{headers:{Authorization:'Bearer '+getToken()}});const d=await r.json();playerEquips.value=d.data||[]}catch{}}
+async function craftEquip(s:any){equipCraftSlot.value=s.key;const pid=getPID();if(!pid)return;await apiPost('/api/v1/player/'+pid+'/equipment/craft',{slot:s.key,tier:player.realmId});loadEquips();addLog('item','⚒️ 打造 '+s.name);equipCraftSlot.value=''}
 let ws:WebSocket|null=null
 function connectWS(){
   const t=getToken();if(!t)return

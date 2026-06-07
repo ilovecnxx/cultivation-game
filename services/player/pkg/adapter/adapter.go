@@ -36,6 +36,7 @@ type Handlers struct {
 	Friend       *handler.FriendHandler
 	Pve          *handler.PveHandler
 	Backpack     *handler.BackpackHandler
+		Equip        *handler.EquipHandler
 }
 
 // Bootstrap initializes the player service layer and returns handlers.
@@ -103,5 +104,6 @@ func Bootstrap(db *sql.DB, rdb *redis.Client, dataDir string) *Handlers {
 		Friend:       handler.NewFriendHandler(db, playerSvc, log),
 		Pve:          handler.NewPveHandler(playerSvc, log),
 		Backpack:     handler.NewBackpackHandler(db, playerSvc, log),
+		Equip:        handler.NewEquipHandler(db),
 	}
 }
