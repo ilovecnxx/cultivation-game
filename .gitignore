@@ -1,0 +1,17 @@
+node_modules/
+build/
+dist/
+*.log
+.env
+# go.sum 必须提交，它是Go依赖的锁定文件
+frontend/dist/
+frontend/node_modules/
+docs/1panel*
+
+# Claude Code
+.claude/skills/*.skill
+.claude/skills/*.zip
+
+# Claude session state (auto-generated)
+primer.md
+.claude/worktrees/

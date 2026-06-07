@@ -1,0 +1,147 @@
+{
+  "instances": {
+    "qing_yun_lin": {
+      "id": "qing_yun_lin",
+      "name": "青云林",
+      "level": 5,
+      "description": "青云山脉外围的密林, 常有低阶妖兽出没, 适合新手历练",
+      "monster_groups": [
+        ["wolf_forest"],
+        ["wolf_forest", "wolf_forest"],
+        ["wolf_forest", "fire_snake"]
+      ],
+      "rewards": {
+        "gold_min": 20,
+        "gold_max": 50,
+        "exp_base": 250,
+        "items": [
+          {
+            "item_id": "spirit_grass",
+            "item_name": "灵草",
+            "rate": 0.5,
+            "quantity": 2,
+            "rarity": "common"
+          },
+          {
+            "item_id": "wood_essence",
+            "item_name": "木灵精华",
+            "rate": 0.2,
+            "quantity": 1,
+            "rarity": "uncommon"
+          }
+        ]
+      }
+    },
+    "lie_yan_gu": {
+      "id": "lie_yan_gu",
+      "name": "烈焰谷",
+      "level": 10,
+      "description": "火山喷发形成的灼热山谷, 栖息着火属性妖兽",
+      "monster_groups": [
+        ["fire_snake", "fire_snake"],
+        ["fire_snake", "earth_turtle"],
+        ["earth_turtle", "fire_snake", "water_spirit"]
+      ],
+      "rewards": {
+        "gold_min": 50,
+        "gold_max": 120,
+        "exp_base": 500,
+        "items": [
+          {
+            "item_id": "fire_core",
+            "item_name": "火灵核",
+            "rate": 0.3,
+            "quantity": 1,
+            "rarity": "uncommon"
+          },
+          {
+            "item_id": "flame_crystal",
+            "item_name": "火焰晶石",
+            "rate": 0.15,
+            "quantity": 1,
+            "rarity": "rare"
+          }
+        ]
+      }
+    },
+    "wan_ren_ku": {
+      "id": "wan_ren_ku",
+      "name": "万刃窟",
+      "level": 15,
+      "description": "遍布金刃陷阱的远古洞窟, 深处有金刃傀儡守护秘宝",
+      "monster_groups": [
+        ["metal_blade"],
+        ["metal_blade", "earth_turtle"],
+        ["metal_blade", "metal_blade"],
+        ["metal_blade", "water_spirit", "metal_blade"]
+      ],
+      "rewards": {
+        "gold_min": 100,
+        "gold_max": 250,
+        "exp_base": 1000,
+        "items": [
+          {
+            "item_id": "metal_essence",
+            "item_name": "金灵精华",
+            "rate": 0.3,
+            "quantity": 1,
+            "rarity": "uncommon"
+          },
+          {
+            "item_id": "blade_shard",
+            "item_name": "剑刃碎片",
+            "rate": 0.2,
+            "quantity": 1,
+            "rarity": "rare"
+          },
+          {
+            "item_id": "golden_core",
+            "item_name": "金元丹",
+            "rate": 0.05,
+            "quantity": 1,
+            "rarity": "epic"
+          }
+        ]
+      }
+    },
+    "long_tan": {
+      "id": "long_tan",
+      "name": "龙潭",
+      "level": 25,
+      "description": "传说中有炎龙盘踞的深潭, 击败炎龙可获得龙族秘宝",
+      "monster_groups": [
+        ["water_spirit", "water_spirit"],
+        ["fire_snake", "fire_snake", "fire_snake"],
+        ["dragon_fire"]
+      ],
+      "rewards": {
+        "gold_min": 500,
+        "gold_max": 1500,
+        "exp_base": 5000,
+        "items": [
+          {
+            "item_id": "dragon_scale",
+            "item_name": "龙鳞碎片",
+            "rate": 0.5,
+            "quantity": 1,
+            "rarity": "rare"
+          },
+          {
+            "item_id": "dragon_heart",
+            "item_name": "龙心",
+            "rate": 0.1,
+            "quantity": 1,
+            "rarity": "legendary"
+          },
+          {
+            "item_id": "flame_crystal",
+            "item_name": "火焰晶石",
+            "rate": 0.4,
+            "quantity": 2,
+            "rarity": "rare"
+          }
+        ]
+      }
+    }
+  }
+}

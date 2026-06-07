@@ -1,0 +1,106 @@
+// ============================================================
+// 移动端响应式样式
+// 作用于宽度 < 768px 的设备
+// ============================================================
+
+@use 'variables.scss' as *;
+@use 'mixins.scss' as *;
+
+// 移动端全局布局
+.mobile-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: $ink-black;
+
+  // 内容头部
+  &__header {
+    padding: $spacing-sm $spacing-md;
+    border-bottom: 1px solid rgba($ancient-gold, 0.1);
+    @include glass-effect;
+    flex-shrink: 0;
+    // 适配 iOS 安全区
+    padding-top: env(safe-area-inset-top, 0);
+  }
+
+  // 滚动内容区（留出底部 Tab 栏空间）
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-md;
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0));
+    @include custom-scrollbar;
+  }
+
+  // 底部导航由 NavBar 组件渲染
+}
+
+// 移动端卡片
+.mobile-card {
+  @include ancient-border;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  margin-bottom: $spacing-sm;
+
+  &__title {
+    font-size: $font-size-base;
+    color: $ancient-gold;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+// 移动端列表项
+.mobile-list-item {
+  display: flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-md;
+  border-bottom: 1px solid rgba($pure-white, 0.05);
+  min-height: 44px; // 移动端最小触摸区域
+
+  &:active {
+    background: rgba($ancient-gold, 0.1);
+  }
+}
+
+// 全屏弹窗（移动端）
+.mobile-modal {
+  position: fixed;
+  inset: 0;
+  background: $ink-black;
+  z-index: $z-modal;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-sm $spacing-md;
+    border-bottom: 1px solid rgba($ancient-gold, 0.1);
+    padding-top: env(safe-area-inset-top, 0);
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-md;
+  }
+
+  &__close {
+    font-size: 20px;
+    color: $pure-white;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+}
+
+// 移动端网格（2列）
+.mobile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-sm;
+}

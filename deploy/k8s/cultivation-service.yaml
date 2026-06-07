@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cultivation
+  namespace: cultivation-game
+  labels:
+    app: cultivation
+spec:
+  type: ClusterIP
+  selector:
+    app: cultivation
+  ports:
+    - name: grpc
+      port: 50062
+      targetPort: 50062

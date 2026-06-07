@@ -1,0 +1,3317 @@
+{
+  "monsters": {
+    "wild_rabbit": {
+      "id": "wild_rabbit",
+      "name": "野兔",
+      "type": "monster",
+      "element": "none",
+      "level": 1,
+      "base_attack": 5,
+      "base_defense": 2,
+      "base_speed": 15,
+      "base_hp": 30,
+      "base_max_hp": 30,
+      "exp_reward": 10,
+      "money_reward": 2,
+      "region": "新手村",
+      "level_required": 1,
+      "description": "新手村外最常见的野兽，胆小无害，适合新手练手",
+      "drops": [
+        { "item_id": "rabbit_fur", "rate": 0.60, "min": 1, "max": 2 }
+      ],
+      "skills": [],
+      "passives": []
+    },
+    "mountain_chicken": {
+      "id": "mountain_chicken",
+      "name": "山鸡",
+      "type": "monster",
+      "element": "none",
+      "level": 2,
+      "base_attack": 8,
+      "base_defense": 3,
+      "base_speed": 12,
+      "base_hp": 40,
+      "base_max_hp": 40,
+      "exp_reward": 15,
+      "money_reward": 3,
+      "region": "新手村",
+      "level_required": 1,
+      "description": "羽毛鲜艳的山鸡，肉质鲜美，攻击性不强",
+      "drops": [
+        { "item_id": "feather", "rate": 0.55, "min": 1, "max": 3 }
+      ],
+      "skills": [],
+      "passives": []
+    },
+    "wild_wolf": {
+      "id": "wild_wolf",
+      "name": "野狼",
+      "type": "monster",
+      "element": "none",
+      "level": 3,
+      "base_attack": 15,
+      "base_defense": 5,
+      "base_speed": 20,
+      "base_hp": 80,
+      "base_max_hp": 80,
+      "exp_reward": 30,
+      "money_reward": 5,
+      "region": "新手村",
+      "level_required": 2,
+      "description": "群居的凶猛野狼，懂得协作狩猎",
+      "drops": [
+        { "item_id": "wolf_fang", "rate": 0.40, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "claw_strike",
+          "name": "爪击",
+          "type": "active",
+          "element": "none",
+          "target_type": "single_enemy",
+          "power": 1.2,
+          "cost": 3,
+          "cooldown": 1,
+          "description": "用利爪攻击敌人"
+        }
+      ],
+      "passives": []
+    },
+    "bandit": {
+      "id": "bandit",
+      "name": "山贼",
+      "type": "monster",
+      "element": "none",
+      "level": 4,
+      "base_attack": 20,
+      "base_defense": 8,
+      "base_speed": 18,
+      "base_hp": 100,
+      "base_max_hp": 100,
+      "exp_reward": 50,
+      "money_reward": 10,
+      "region": "新手村",
+      "level_required": 3,
+      "description": "落草为寇的流浪武者，虽无修为但刀法娴熟",
+      "drops": [
+        { "item_id": "copper_coin", "rate": 0.80, "min": 5, "max": 15 }
+      ],
+      "skills": [
+        {
+          "id": "brutal_slash",
+          "name": "猛砍",
+          "type": "active",
+          "element": "none",
+          "target_type": "single_enemy",
+          "power": 1.3,
+          "cost": 4,
+          "cooldown": 1,
+          "description": "用砍刀猛力攻击"
+        }
+      ],
+      "passives": []
+    },
+    "bamboo_snake": {
+      "id": "bamboo_snake",
+      "name": "竹叶青蛇",
+      "type": "monster",
+      "element": "wood",
+      "level": 3,
+      "base_attack": 12,
+      "base_defense": 3,
+      "base_speed": 22,
+      "base_hp": 50,
+      "base_max_hp": 50,
+      "exp_reward": 20,
+      "money_reward": 3,
+      "region": "新手村",
+      "level_required": 2,
+      "description": "带有剧毒的青色小蛇，被咬中会中毒",
+      "drops": [
+        { "item_id": "snake_gall", "rate": 0.30, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "venom_bite",
+          "name": "毒牙撕咬",
+          "type": "active",
+          "element": "wood",
+          "target_type": "single_enemy",
+          "power": 1.0,
+          "cost": 3,
+          "cooldown": 1,
+          "description": "用毒牙攻击，有概率使其中毒",
+          "buffs": [
+            {
+              "type": "damage",
+              "name": "中毒",
+              "value": 5,
+              "duration": 3,
+              "chance": 0.40,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": []
+    },
+    "wild_boar": {
+      "id": "wild_boar",
+      "name": "野猪",
+      "type": "monster",
+      "element": "none",
+      "level": 5,
+      "base_attack": 18,
+      "base_defense": 10,
+      "base_speed": 14,
+      "base_hp": 120,
+      "base_max_hp": 120,
+      "exp_reward": 35,
+      "money_reward": 5,
+      "region": "新手村",
+      "level_required": 3,
+      "description": "皮糙肉厚的野猪，撞击力惊人",
+      "drops": [
+        { "item_id": "beast_hide", "rate": 0.45, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "charge",
+          "name": "冲锋撞击",
+          "type": "active",
+          "element": "none",
+          "target_type": "single_enemy",
+          "power": 1.5,
+          "cost": 5,
+          "cooldown": 2,
+          "description": "蓄力冲锋，造成较高伤害"
+        }
+      ],
+      "passives": [
+        {
+          "id": "thick_skin",
+          "name": "厚皮",
+          "type": "passive",
+          "element": "none",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "厚实皮肤提供额外防御",
+          "passive_stats": {
+            "defense_bonus": 0.15
+          }
+        }
+      ]
+    },
+    "bandit_leader": {
+      "id": "bandit_leader",
+      "name": "山贼头目",
+      "type": "boss",
+      "element": "none",
+      "level": 7,
+      "base_attack": 35,
+      "base_defense": 12,
+      "base_speed": 22,
+      "base_hp": 250,
+      "base_max_hp": 250,
+      "exp_reward": 100,
+      "money_reward": 50,
+      "region": "新手村",
+      "level_required": 5,
+      "description": "山贼的首领，练气三层修为，横行乡里多年",
+      "drops": [
+        { "item_id": "copper_coin", "rate": 1.00, "min": 20, "max": 40 },
+        { "item_id": "spirit_grass", "rate": 0.50, "min": 1, "max": 3 },
+        { "item_id": "bronze_sword", "rate": 0.15, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "heavy_slash",
+          "name": "重斩",
+          "type": "active",
+          "element": "none",
+          "target_type": "single_enemy",
+          "power": 1.6,
+          "cost": 6,
+          "cooldown": 1,
+          "description": "凝聚真气于刀上，发出强力一击"
+        },
+        {
+          "id": "war_cry",
+          "name": "战吼",
+          "type": "active",
+          "element": "none",
+          "target_type": "self",
+          "power": 0,
+          "cost": 8,
+          "cooldown": 3,
+          "description": "发出战吼提升自身攻击力",
+          "buffs": [
+            {
+              "type": "attack",
+              "name": "狂暴",
+              "value": 15,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": []
+    },
+    "stone_golem": {
+      "id": "stone_golem",
+      "name": "石傀儡",
+      "type": "monster",
+      "element": "earth",
+      "level": 10,
+      "base_attack": 40,
+      "base_defense": 30,
+      "base_speed": 8,
+      "base_hp": 300,
+      "base_max_hp": 300,
+      "exp_reward": 100,
+      "money_reward": 15,
+      "region": "青云山脉",
+      "level_required": 7,
+      "description": "由灵力驱动的岩石傀儡，防御极高但行动缓慢",
+      "drops": [
+        { "item_id": "stone_core", "rate": 0.35, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "rock_punch",
+          "name": "岩石重拳",
+          "type": "active",
+          "element": "earth",
+          "target_type": "single_enemy",
+          "power": 1.4,
+          "cost": 6,
+          "cooldown": 1,
+          "description": "用岩石巨拳猛击敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "stone_armor",
+          "name": "石甲",
+          "type": "passive",
+          "element": "earth",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "岩石护甲提供额外防御",
+          "passive_stats": {
+            "defense_bonus": 0.25
+          }
+        }
+      ]
+    },
+    "wolf_king": {
+      "id": "wolf_king",
+      "name": "妖兽狼王",
+      "type": "monster",
+      "element": "wood",
+      "level": 12,
+      "base_attack": 60,
+      "base_defense": 25,
+      "base_speed": 35,
+      "base_hp": 500,
+      "base_max_hp": 500,
+      "exp_reward": 200,
+      "money_reward": 25,
+      "region": "青云山脉",
+      "level_required": 8,
+      "description": "狼群之王，已开启灵智，统御青云山脉外围狼群",
+      "drops": [
+        { "item_id": "wolf_fang", "rate": 0.60, "min": 2, "max": 4 },
+        { "item_id": "wood_essence", "rate": 0.25, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "rend",
+          "name": "撕裂",
+          "type": "active",
+          "element": "wood",
+          "target_type": "single_enemy",
+          "power": 1.5,
+          "cost": 8,
+          "cooldown": 1,
+          "description": "用利爪撕裂敌人，造成重创"
+        },
+        {
+          "id": "howl",
+          "name": "狼嚎",
+          "type": "active",
+          "element": "wood",
+          "target_type": "self",
+          "power": 0,
+          "cost": 10,
+          "cooldown": 3,
+          "description": "发出狼嚎召唤狼群攻击",
+          "buffs": [
+            {
+              "type": "attack",
+              "name": "嗜血",
+              "value": 12,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "pack_leader",
+          "name": "狼王威压",
+          "type": "passive",
+          "element": "none",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "狼王血统提升暴击",
+          "passive_stats": {
+            "crit_rate": 0.08
+          }
+        }
+      ]
+    },
+    "poison_flower": {
+      "id": "poison_flower",
+      "name": "毒花精",
+      "type": "monster",
+      "element": "wood",
+      "level": 11,
+      "base_attack": 80,
+      "base_defense": 10,
+      "base_speed": 20,
+      "base_hp": 200,
+      "base_max_hp": 200,
+      "exp_reward": 150,
+      "money_reward": 18,
+      "region": "青云山脉",
+      "level_required": 7,
+      "description": "吸食瘴气成精的毒花，花粉含有剧毒",
+      "drops": [
+        { "item_id": "poison_petal", "rate": 0.40, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "pollen_spray",
+          "name": "毒粉喷射",
+          "type": "active",
+          "element": "wood",
+          "target_type": "all_enemy",
+          "power": 0.8,
+          "cost": 10,
+          "cooldown": 2,
+          "description": "喷射毒粉攻击所有敌人，造成中毒",
+          "buffs": [
+            {
+              "type": "damage",
+              "name": "剧毒",
+              "value": 12,
+              "duration": 3,
+              "chance": 0.60,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "vine_whip",
+          "name": "藤鞭",
+          "type": "active",
+          "element": "wood",
+          "target_type": "single_enemy",
+          "power": 1.2,
+          "cost": 7,
+          "cooldown": 1,
+          "description": "用藤蔓抽打敌人"
+        }
+      ],
+      "passives": []
+    },
+    "ironback_bear": {
+      "id": "ironback_bear",
+      "name": "铁背熊",
+      "type": "monster",
+      "element": "earth",
+      "level": 13,
+      "base_attack": 50,
+      "base_defense": 40,
+      "base_speed": 12,
+      "base_hp": 600,
+      "base_max_hp": 600,
+      "exp_reward": 180,
+      "money_reward": 22,
+      "region": "青云山脉",
+      "level_required": 9,
+      "description": "背部坚硬如铁的巨熊，力大无穷",
+      "drops": [
+        { "item_id": "beast_hide", "rate": 0.55, "min": 2, "max": 3 },
+        { "item_id": "bear_paw", "rate": 0.20, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "bear_hug",
+          "name": "熊抱",
+          "type": "active",
+          "element": "earth",
+          "target_type": "single_enemy",
+          "power": 1.8,
+          "cost": 10,
+          "cooldown": 2,
+          "description": "抱住敌人用力挤压，造成巨大伤害"
+        },
+        {
+          "id": "stomp",
+          "name": "践踏",
+          "type": "active",
+          "element": "earth",
+          "target_type": "all_enemy",
+          "power": 0.9,
+          "cost": 12,
+          "cooldown": 3,
+          "description": "用力践踏地面，震击所有敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "thick_fur",
+          "name": "厚鬃",
+          "type": "passive",
+          "element": "none",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "厚实皮毛增加防御",
+          "passive_stats": {
+            "defense_bonus": 0.20
+          }
+        }
+      ]
+    },
+    "wind_fox": {
+      "id": "wind_fox",
+      "name": "风灵狐",
+      "type": "monster",
+      "element": "wind",
+      "level": 12,
+      "base_attack": 70,
+      "base_defense": 15,
+      "base_speed": 45,
+      "base_hp": 250,
+      "base_max_hp": 250,
+      "exp_reward": 160,
+      "money_reward": 20,
+      "region": "青云山脉",
+      "level_required": 8,
+      "description": "身具风灵根的灵狐，速度极快，擅用风系法术",
+      "drops": [
+        { "item_id": "fox_tail", "rate": 0.30, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "wind_blade",
+          "name": "风刃",
+          "type": "active",
+          "element": "wind",
+          "target_type": "single_enemy",
+          "power": 1.3,
+          "cost": 8,
+          "cooldown": 1,
+          "description": "挥出风刃远程攻击"
+        },
+        {
+          "id": "agile_dodge",
+          "name": "灵狐闪",
+          "type": "active",
+          "element": "wind",
+          "target_type": "self",
+          "power": 0.5,
+          "cost": 6,
+          "cooldown": 2,
+          "description": "提升自身闪避",
+          "buffs": [
+            {
+              "type": "dodge",
+              "name": "灵狐闪避",
+              "value": 20,
+              "duration": 2,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "swift",
+          "name": "迅捷",
+          "type": "passive",
+          "element": "wind",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "风灵之力提升速度",
+          "passive_stats": {
+            "speed_bonus": 0.15
+          }
+        }
+      ]
+    },
+    "thunder_mink": {
+      "id": "thunder_mink",
+      "name": "紫电貂",
+      "type": "monster",
+      "element": "metal",
+      "level": 14,
+      "base_attack": 90,
+      "base_defense": 12,
+      "base_speed": 50,
+      "base_hp": 300,
+      "base_max_hp": 300,
+      "exp_reward": 220,
+      "money_reward": 25,
+      "region": "青云山脉",
+      "level_required": 9,
+      "description": "身带紫电的稀有灵貂，能释放雷电攻击",
+      "drops": [
+        { "item_id": "lightning_fur", "rate": 0.20, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "thunder_bolt",
+          "name": "雷击术",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 1.6,
+          "cost": 10,
+          "cooldown": 1,
+          "description": "释放紫电攻击敌人",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "麻痹",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.25,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "static_field",
+          "name": "静电场",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "周身静电场，受近战攻击时反伤",
+          "passive_stats": {
+            "thorns_damage": 0.1
+          }
+        }
+      ]
+    },
+    "qingyun_jiaolong": {
+      "id": "qingyun_jiaolong",
+      "name": "青云蛟龙",
+      "type": "boss",
+      "element": "water",
+      "level": 18,
+      "base_attack": 100,
+      "base_defense": 50,
+      "base_speed": 30,
+      "base_hp": 1500,
+      "base_max_hp": 1500,
+      "exp_reward": 500,
+      "money_reward": 100,
+      "region": "青云山脉",
+      "level_required": 12,
+      "description": "潜于青云山脉深潭中的蛟龙，筑基期巅峰妖兽，有化龙之兆",
+      "drops": [
+        { "item_id": "dragon_scale", "rate": 0.60, "min": 1, "max": 2 },
+        { "item_id": "water_essence", "rate": 0.40, "min": 1, "max": 2 },
+        { "item_id": "jiaolong_inner_dan", "rate": 0.10, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "water_blast",
+          "name": "水龙弹",
+          "type": "active",
+          "element": "water",
+          "target_type": "single_enemy",
+          "power": 1.6,
+          "cost": 12,
+          "cooldown": 1,
+          "description": "凝聚水龙攻击敌人"
+        },
+        {
+          "id": "flood_wave",
+          "name": "洪涛",
+          "type": "active",
+          "element": "water",
+          "target_type": "all_enemy",
+          "power": 1.2,
+          "cost": 18,
+          "cooldown": 3,
+          "description": "召唤洪涛冲击全体敌人"
+        },
+        {
+          "id": "tail_sweep",
+          "name": "蛟尾横扫",
+          "type": "active",
+          "element": "none",
+          "target_type": "all_enemy",
+          "power": 1.0,
+          "cost": 14,
+          "cooldown": 2,
+          "description": "用巨尾扫击全体敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "jiao_long_scale",
+          "name": "蛟鳞",
+          "type": "passive",
+          "element": "water",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "蛟龙鳞片提升大量防御",
+          "passive_stats": {
+            "defense_bonus": 0.30,
+            "hp_bonus": 0.20
+          }
+        }
+      ]
+    },
+    "tree_ent": {
+      "id": "tree_ent",
+      "name": "树妖",
+      "type": "monster",
+      "element": "wood",
+      "level": 18,
+      "base_attack": 60,
+      "base_defense": 50,
+      "base_speed": 8,
+      "base_hp": 800,
+      "base_max_hp": 800,
+      "exp_reward": 300,
+      "money_reward": 30,
+      "region": "幽暗密林",
+      "level_required": 12,
+      "description": "千年古树成精，根系深植大地，拥有强大的恢复力",
+      "drops": [
+        { "item_id": "spirit_grass", "rate": 0.50, "min": 2, "max": 4 },
+        { "item_id": "wood_essence", "rate": 0.30, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "root_bind",
+          "name": "根系缠绕",
+          "type": "active",
+          "element": "wood",
+          "target_type": "single_enemy",
+          "power": 0.8,
+          "cost": 8,
+          "cooldown": 2,
+          "description": "用树根缠绕敌人，使其无法行动",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "缠绕",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.50,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "nature_renew",
+          "name": "自然恢复",
+          "type": "active",
+          "element": "wood",
+          "target_type": "self",
+          "power": -0.6,
+          "cost": 10,
+          "cooldown": 3,
+          "description": "吸取大地之力恢复自身生命"
+        }
+      ],
+      "passives": [
+        {
+          "id": "tough_bark",
+          "name": "坚韧树皮",
+          "type": "passive",
+          "element": "wood",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "树皮坚韧提升防御",
+          "passive_stats": {
+            "defense_bonus": 0.20
+          }
+        }
+      ]
+    },
+    "soul_eater_butterfly": {
+      "id": "soul_eater_butterfly",
+      "name": "噬魂蝶",
+      "type": "monster",
+      "element": "dark",
+      "level": 20,
+      "base_attack": 100,
+      "base_defense": 20,
+      "base_speed": 40,
+      "base_hp": 400,
+      "base_max_hp": 400,
+      "exp_reward": 350,
+      "money_reward": 35,
+      "region": "幽暗密林",
+      "level_required": 13,
+      "description": "吸食灵魂的诡异蝴蝶，翅膀散发的磷粉有致幻效果",
+      "drops": [
+        { "item_id": "phantom_dust", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "soul_drain",
+          "name": "噬魂",
+          "type": "active",
+          "element": "dark",
+          "target_type": "single_enemy",
+          "power": 1.3,
+          "cost": 10,
+          "cooldown": 1,
+          "description": "吸取敌人生命力",
+          "life_steal": 0.3
+        },
+        {
+          "id": "scatter_dust",
+          "name": "迷幻磷粉",
+          "type": "active",
+          "element": "dark",
+          "target_type": "all_enemy",
+          "power": 0.6,
+          "cost": 12,
+          "cooldown": 3,
+          "description": "散播迷幻磷粉，降低敌人命中",
+          "buffs": [
+            {
+              "type": "attack",
+              "name": "迷幻",
+              "value": -15,
+              "duration": 2,
+              "chance": 0.50,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": []
+    },
+    "shadow_tiger": {
+      "id": "shadow_tiger",
+      "name": "幽冥虎",
+      "type": "monster",
+      "element": "dark",
+      "level": 22,
+      "base_attack": 90,
+      "base_defense": 45,
+      "base_speed": 35,
+      "base_hp": 1000,
+      "base_max_hp": 1000,
+      "exp_reward": 400,
+      "money_reward": 40,
+      "region": "幽暗密林",
+      "level_required": 14,
+      "description": "生于幽冥之地的猛虎，能隐匿于阴影之中发动突袭",
+      "drops": [
+        { "item_id": "tiger_bone", "rate": 0.35, "min": 1, "max": 2 },
+        { "item_id": "shadow_essence", "rate": 0.20, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "shadow_ambush",
+          "name": "暗影突袭",
+          "type": "active",
+          "element": "dark",
+          "target_type": "single_enemy",
+          "power": 2.0,
+          "cost": 12,
+          "cooldown": 2,
+          "description": "从阴影中发动突袭，造成大量伤害"
+        },
+        {
+          "id": "terrifying_roar",
+          "name": "虎啸",
+          "type": "active",
+          "element": "none",
+          "target_type": "all_enemy",
+          "power": 0.5,
+          "cost": 10,
+          "cooldown": 3,
+          "description": "发出虎啸震慑敌人",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "震慑",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.20,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "shadow_stealth",
+          "name": "暗影潜行",
+          "type": "passive",
+          "element": "dark",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "暗影中提升闪避",
+          "passive_stats": {
+            "dodge_bonus": 0.10
+          }
+        }
+      ]
+    },
+    "venom_spider_queen": {
+      "id": "venom_spider_queen",
+      "name": "毒蛛王",
+      "type": "monster",
+      "element": "wood",
+      "level": 21,
+      "base_attack": 110,
+      "base_defense": 30,
+      "base_speed": 25,
+      "base_hp": 700,
+      "base_max_hp": 700,
+      "exp_reward": 380,
+      "money_reward": 35,
+      "region": "幽暗密林",
+      "level_required": 13,
+      "description": "幽暗密林深处的巨型毒蛛，能吐丝结网困住猎物",
+      "drops": [
+        { "item_id": "spider_silk", "rate": 0.40, "min": 1, "max": 2 },
+        { "item_id": "poison_gland", "rate": 0.25, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "web_trap",
+          "name": "蛛网陷阱",
+          "type": "active",
+          "element": "wood",
+          "target_type": "all_enemy",
+          "power": 0.5,
+          "cost": 12,
+          "cooldown": 3,
+          "description": "吐出蛛网困住所有敌人",
+          "buffs": [
+            {
+              "type": "speed",
+              "name": "束缚",
+              "value": -30,
+              "duration": 2,
+              "chance": 0.70,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "venom_bite",
+          "name": "剧毒撕咬",
+          "type": "active",
+          "element": "wood",
+          "target_type": "single_enemy",
+          "power": 1.4,
+          "cost": 10,
+          "cooldown": 1,
+          "description": "用毒牙撕咬，注入剧毒",
+          "buffs": [
+            {
+              "type": "damage",
+              "name": "剧毒",
+              "value": 18,
+              "duration": 3,
+              "chance": 0.70,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": []
+    },
+    "black_scale_python": {
+      "id": "black_scale_python",
+      "name": "黑鳞蟒",
+      "type": "monster",
+      "element": "water",
+      "level": 23,
+      "base_attack": 85,
+      "base_defense": 55,
+      "base_speed": 20,
+      "base_hp": 1200,
+      "base_max_hp": 1200,
+      "exp_reward": 450,
+      "money_reward": 45,
+      "region": "幽暗密林",
+      "level_required": 15,
+      "description": "浑身黑鳞的巨蟒，鳞甲坚硬，绞杀力惊人",
+      "drops": [
+        { "item_id": "snake_gall", "rate": 0.40, "min": 1, "max": 1 },
+        { "item_id": "black_scale", "rate": 0.30, "min": 1, "max": 3 }
+      ],
+      "skills": [
+        {
+          "id": "constrict",
+          "name": "绞杀",
+          "type": "active",
+          "element": "water",
+          "target_type": "single_enemy",
+          "power": 2.0,
+          "cost": 12,
+          "cooldown": 2,
+          "description": "缠绕敌人用力绞杀",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "缠绕",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.60,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "hard_scale",
+          "name": "坚硬黑鳞",
+          "type": "passive",
+          "element": "water",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "黑鳞提升防御",
+          "passive_stats": {
+            "defense_bonus": 0.20
+          }
+        }
+      ]
+    },
+    "golden_rocs": {
+      "id": "golden_rocs",
+      "name": "金翅大鹏",
+      "type": "boss",
+      "element": "metal",
+      "level": 28,
+      "base_attack": 180,
+      "base_defense": 60,
+      "base_speed": 60,
+      "base_hp": 3000,
+      "base_max_hp": 3000,
+      "exp_reward": 1200,
+      "money_reward": 200,
+      "region": "幽暗密林",
+      "level_required": 18,
+      "description": "据传有上古神禽金翅大鹏血脉的凶禽，翼展遮天，爪裂金石",
+      "drops": [
+        { "item_id": "golden_feather", "rate": 0.50, "min": 1, "max": 2 },
+        { "item_id": "metal_essence", "rate": 0.40, "min": 1, "max": 2 },
+        { "item_id": "roc_eye", "rate": 0.08, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "diving_strike",
+          "name": "俯冲突袭",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 2.2,
+          "cost": 15,
+          "cooldown": 2,
+          "description": "从高空俯冲攻击，造成巨大伤害"
+        },
+        {
+          "id": "wind_blade_storm",
+          "name": "翼刃风暴",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 1.3,
+          "cost": 20,
+          "cooldown": 3,
+          "description": "双翼挥出无数金刃攻击全体敌人"
+        },
+        {
+          "id": "piercing_cry",
+          "name": "穿云啸",
+          "type": "active",
+          "element": "none",
+          "target_type": "all_enemy",
+          "power": 0.6,
+          "cost": 12,
+          "cooldown": 3,
+          "description": "发出穿云裂石的尖啸",
+          "buffs": [
+            {
+              "type": "defense",
+              "name": "破防",
+              "value": -20,
+              "duration": 2,
+              "chance": 0.40,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "keen_eye",
+          "name": "锐目",
+          "type": "passive",
+          "element": "none",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "锐利目光提升暴击",
+          "passive_stats": {
+            "crit_rate": 0.12
+          }
+        }
+      ]
+    },
+    "lava_demon": {
+      "id": "lava_demon",
+      "name": "熔岩魔",
+      "type": "monster",
+      "element": "fire",
+      "level": 28,
+      "base_attack": 130,
+      "base_defense": 60,
+      "base_speed": 15,
+      "base_hp": 1500,
+      "base_max_hp": 1500,
+      "exp_reward": 600,
+      "money_reward": 50,
+      "region": "烈焰火山",
+      "level_required": 18,
+      "description": "诞生于火山岩浆中的元素生物，周身流淌着灼热熔岩",
+      "drops": [
+        { "item_id": "flame_crystal", "rate": 0.30, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "lava_spit",
+          "name": "熔岩吐息",
+          "type": "active",
+          "element": "fire",
+          "target_type": "single_enemy",
+          "power": 1.5,
+          "cost": 10,
+          "cooldown": 1,
+          "description": "喷出熔岩攻击敌人",
+          "buffs": [
+            {
+              "type": "damage",
+              "name": "灼烧",
+              "value": 15,
+              "duration": 3,
+              "chance": 0.50,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "lava_pool",
+          "name": "熔岩池",
+          "type": "active",
+          "element": "fire",
+          "target_type": "all_enemy",
+          "power": 1.0,
+          "cost": 15,
+          "cooldown": 3,
+          "description": "在地面制造熔岩池灼烧全体敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "molten_body",
+          "name": "熔岩之体",
+          "type": "passive",
+          "element": "fire",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "熔岩身躯使近战攻击者受灼烧",
+          "passive_stats": {
+            "thorns_damage": 0.15
+          }
+        }
+      ]
+    },
+    "fire_phoenix_chick": {
+      "id": "fire_phoenix_chick",
+      "name": "火凤雏鸟",
+      "type": "monster",
+      "element": "fire",
+      "level": 30,
+      "base_attack": 150,
+      "base_defense": 40,
+      "base_speed": 45,
+      "base_hp": 1200,
+      "base_max_hp": 1200,
+      "exp_reward": 700,
+      "money_reward": 60,
+      "region": "烈焰火山",
+      "level_required": 19,
+      "description": "幼年火凤，虽未成年但已掌握强大火系法术",
+      "drops": [
+        { "item_id": "feather", "rate": 0.60, "min": 2, "max": 4 },
+        { "item_id": "fire_core", "rate": 0.25, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "flame_burst",
+          "name": "烈焰爆",
+          "type": "active",
+          "element": "fire",
+          "target_type": "all_enemy",
+          "power": 1.2,
+          "cost": 14,
+          "cooldown": 2,
+          "description": "引爆烈焰灼烧全体敌人",
+          "buffs": [
+            {
+              "type": "damage",
+              "name": "烈焰灼烧",
+              "value": 20,
+              "duration": 2,
+              "chance": 0.60,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "phoenix_rebirth",
+          "name": "浴火重生",
+          "type": "active",
+          "element": "fire",
+          "target_type": "self",
+          "power": -0.5,
+          "cost": 20,
+          "cooldown": 5,
+          "description": "浴火恢复大量生命"
+        }
+      ],
+      "passives": [
+        {
+          "id": "flame_aura",
+          "name": "烈焰光环",
+          "type": "passive",
+          "element": "fire",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "烈焰光环提升火系伤害",
+          "passive_stats": {
+            "fire_damage_bonus": 0.15
+          }
+        }
+      ]
+    },
+    "flame_crystal_beast": {
+      "id": "flame_crystal_beast",
+      "name": "炎晶兽",
+      "type": "monster",
+      "element": "fire",
+      "level": 29,
+      "base_attack": 110,
+      "base_defense": 80,
+      "base_speed": 18,
+      "base_hp": 2000,
+      "base_max_hp": 2000,
+      "exp_reward": 650,
+      "money_reward": 55,
+      "region": "烈焰火山",
+      "level_required": 18,
+      "description": "浑身覆盖火焰晶石的妖兽，防御极高",
+      "drops": [
+        { "item_id": "flame_crystal", "rate": 0.45, "min": 1, "max": 2 },
+        { "item_id": "fire_core", "rate": 0.20, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "crystal_slash",
+          "name": "晶刃斩",
+          "type": "active",
+          "element": "fire",
+          "target_type": "single_enemy",
+          "power": 1.6,
+          "cost": 10,
+          "cooldown": 1,
+          "description": "挥出火焰晶刃攻击"
+        }
+      ],
+      "passives": [
+        {
+          "id": "crystal_armor",
+          "name": "晶石甲",
+          "type": "passive",
+          "element": "fire",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "晶石护甲大幅提升防御",
+          "passive_stats": {
+            "defense_bonus": 0.30
+          }
+        }
+      ]
+    },
+    "crimson_flame_jiao": {
+      "id": "crimson_flame_jiao",
+      "name": "赤焰蛟",
+      "type": "monster",
+      "element": "fire",
+      "level": 32,
+      "base_attack": 140,
+      "base_defense": 70,
+      "base_speed": 25,
+      "base_hp": 2500,
+      "base_max_hp": 2500,
+      "exp_reward": 800,
+      "money_reward": 70,
+      "region": "烈焰火山",
+      "level_required": 20,
+      "description": "盘踞在火山口的赤焰蛟，已修炼千年，浑身火毒",
+      "drops": [
+        { "item_id": "red_flame_scale", "rate": 0.35, "min": 1, "max": 2 },
+        { "item_id": "fire_core", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "fire_breath",
+          "name": "龙焰吐息",
+          "type": "active",
+          "element": "fire",
+          "target_type": "all_enemy",
+          "power": 1.4,
+          "cost": 15,
+          "cooldown": 2,
+          "description": "喷出龙焰灼烧全体敌人",
+          "buffs": [
+            {
+              "type": "damage",
+              "name": "龙焰灼烧",
+              "value": 25,
+              "duration": 3,
+              "chance": 0.60,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "flame_tail",
+          "name": "火焰尾鞭",
+          "type": "active",
+          "element": "fire",
+          "target_type": "single_enemy",
+          "power": 1.8,
+          "cost": 12,
+          "cooldown": 1,
+          "description": "用燃烧的尾巴抽打敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "fire_resistance",
+          "name": "火抗之体",
+          "type": "passive",
+          "element": "fire",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "火属性减伤",
+          "passive_stats": {
+            "fire_resistance": 0.30
+          }
+        }
+      ]
+    },
+    "lava_giant": {
+      "id": "lava_giant",
+      "name": "熔岩巨人",
+      "type": "boss",
+      "element": "fire",
+      "level": 35,
+      "base_attack": 250,
+      "base_defense": 150,
+      "base_speed": 10,
+      "base_hp": 5000,
+      "base_max_hp": 5000,
+      "exp_reward": 2500,
+      "money_reward": 300,
+      "region": "烈焰火山",
+      "level_required": 22,
+      "description": "烈焰火山深处的巨型熔岩元素，火山之怒的化身",
+      "drops": [
+        { "item_id": "flame_crystal", "rate": 0.70, "min": 2, "max": 4 },
+        { "item_id": "fire_core", "rate": 0.50, "min": 1, "max": 2 },
+        { "item_id": "volcano_heart", "rate": 0.05, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "eruption",
+          "name": "火山爆发",
+          "type": "active",
+          "element": "fire",
+          "target_type": "all_enemy",
+          "power": 1.8,
+          "cost": 25,
+          "cooldown": 3,
+          "description": "引动火山爆发，对全体敌人造成巨量火系伤害"
+        },
+        {
+          "id": "magma_fist",
+          "name": "熔岩巨拳",
+          "type": "active",
+          "element": "fire",
+          "target_type": "single_enemy",
+          "power": 2.2,
+          "cost": 18,
+          "cooldown": 1,
+          "description": "凝聚熔岩于巨拳，猛击敌人"
+        },
+        {
+          "id": "lava_armor",
+          "name": "熔岩铠甲",
+          "type": "active",
+          "element": "fire",
+          "target_type": "self",
+          "power": 0,
+          "cost": 20,
+          "cooldown": 4,
+          "description": "熔岩铠甲极大地提升防御",
+          "buffs": [
+            {
+              "type": "defense",
+              "name": "熔岩铠甲",
+              "value": 50,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "molten_core",
+          "name": "熔岩核心",
+          "type": "passive",
+          "element": "fire",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "熔岩核心提升生命恢复",
+          "passive_stats": {
+            "hp_regen": 5,
+            "defense_bonus": 0.20
+          }
+        }
+      ]
+    },
+    "undead_swordsman": {
+      "id": "undead_swordsman",
+      "name": "死灵剑士",
+      "type": "monster",
+      "element": "dark",
+      "level": 35,
+      "base_attack": 180,
+      "base_defense": 80,
+      "base_speed": 25,
+      "base_hp": 3000,
+      "base_max_hp": 3000,
+      "exp_reward": 1200,
+      "money_reward": 80,
+      "region": "葬仙渊",
+      "level_required": 22,
+      "description": "陨落于葬仙渊的上古剑修残骸，被死气驱使的不朽战魂",
+      "drops": [
+        { "item_id": "soul_shard", "rate": 0.25, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "soul_slash",
+          "name": "魂斩",
+          "type": "active",
+          "element": "dark",
+          "target_type": "single_enemy",
+          "power": 1.8,
+          "cost": 12,
+          "cooldown": 1,
+          "description": "附著死气的斩击",
+          "ignore_defense": true
+        },
+        {
+          "id": "sword_wave",
+          "name": "剑气波",
+          "type": "active",
+          "element": "dark",
+          "target_type": "all_enemy",
+          "power": 1.1,
+          "cost": 16,
+          "cooldown": 2,
+          "description": "挥出剑气攻击全体敌人"
+        }
+      ],
+      "passives": []
+    },
+    "vengeful_spirit_mage": {
+      "id": "vengeful_spirit_mage",
+      "name": "怨灵法师",
+      "type": "monster",
+      "element": "dark",
+      "level": 37,
+      "base_attack": 220,
+      "base_defense": 50,
+      "base_speed": 30,
+      "base_hp": 2000,
+      "base_max_hp": 2000,
+      "exp_reward": 1300,
+      "money_reward": 85,
+      "region": "葬仙渊",
+      "level_required": 23,
+      "description": "生前为强大修士，执念太深化为怨灵，精通诅咒法术",
+      "drops": [
+        { "item_id": "soul_shard", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "curse",
+          "name": "诅咒",
+          "type": "active",
+          "element": "dark",
+          "target_type": "single_enemy",
+          "power": 0.8,
+          "cost": 14,
+          "cooldown": 2,
+          "description": "诅咒敌人降低其全属性",
+          "buffs": [
+            {
+              "type": "attack",
+              "name": "诅咒",
+              "value": -20,
+              "duration": 3,
+              "chance": 0.80,
+              "is_debuff": true,
+              "effect": "on_turn"
+            },
+            {
+              "type": "defense",
+              "name": "诅咒",
+              "value": -20,
+              "duration": 3,
+              "chance": 0.80,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "soul_blast",
+          "name": "灵魂冲击",
+          "type": "active",
+          "element": "dark",
+          "target_type": "all_enemy",
+          "power": 1.3,
+          "cost": 18,
+          "cooldown": 2,
+          "description": "释放灵魂冲击攻击全体敌人"
+        },
+        {
+          "id": "life_drain",
+          "name": "生命汲取",
+          "type": "active",
+          "element": "dark",
+          "target_type": "single_enemy",
+          "power": 1.2,
+          "cost": 12,
+          "cooldown": 1,
+          "description": "汲取敌人生命力恢复自身",
+          "life_steal": 0.4
+        }
+      ],
+      "passives": [
+        {
+          "id": "ethereal",
+          "name": "虚无之体",
+          "type": "passive",
+          "element": "dark",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "免疫物理伤害的概率",
+          "passive_stats": {
+            "physical_immunity_chance": 0.10
+          }
+        }
+      ]
+    },
+    "bone_dragon": {
+      "id": "bone_dragon",
+      "name": "骨龙",
+      "type": "monster",
+      "element": "dark",
+      "level": 40,
+      "base_attack": 160,
+      "base_defense": 100,
+      "base_speed": 20,
+      "base_hp": 4000,
+      "base_max_hp": 4000,
+      "exp_reward": 1500,
+      "money_reward": 100,
+      "region": "葬仙渊",
+      "level_required": 24,
+      "description": "真龙陨落后骸骨被死气唤醒，化为不朽骨龙",
+      "drops": [
+        { "item_id": "dragon_bone", "rate": 0.30, "min": 1, "max": 2 },
+        { "item_id": "soul_shard", "rate": 0.40, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "bone_breath",
+          "name": "死气吐息",
+          "type": "active",
+          "element": "dark",
+          "target_type": "all_enemy",
+          "power": 1.3,
+          "cost": 15,
+          "cooldown": 2,
+          "description": "喷出死气腐蚀所有敌人",
+          "buffs": [
+            {
+              "type": "damage",
+              "name": "死气侵蚀",
+              "value": 20,
+              "duration": 3,
+              "chance": 0.60,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "bone_spikes",
+          "name": "骨刺突袭",
+          "type": "active",
+          "element": "dark",
+          "target_type": "single_enemy",
+          "power": 1.7,
+          "cost": 12,
+          "cooldown": 1,
+          "description": "从地面刺出骨矛攻击敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "undead_body",
+          "name": "不死之骨",
+          "type": "passive",
+          "element": "dark",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "骨骼坚硬提升防御和生命",
+          "passive_stats": {
+            "defense_bonus": 0.25,
+            "hp_bonus": 0.20
+          }
+        }
+      ]
+    },
+    "soul_devourer": {
+      "id": "soul_devourer",
+      "name": "噬魂魔",
+      "type": "monster",
+      "element": "dark",
+      "level": 38,
+      "base_attack": 200,
+      "base_defense": 60,
+      "base_speed": 35,
+      "base_hp": 3500,
+      "base_max_hp": 3500,
+      "exp_reward": 1400,
+      "money_reward": 90,
+      "region": "葬仙渊",
+      "level_required": 23,
+      "description": "以吞噬灵魂为生的恶魔，是葬仙渊最恐怖的猎手",
+      "drops": [
+        { "item_id": "soul_crystal", "rate": 0.15, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "soul_suck",
+          "name": "吸魂术",
+          "type": "active",
+          "element": "dark",
+          "target_type": "single_enemy",
+          "power": 1.5,
+          "cost": 14,
+          "cooldown": 1,
+          "description": "吸取敌人灵魂，造成大量伤害并恢复自身",
+          "life_steal": 0.35
+        },
+        {
+          "id": "soul_scream",
+          "name": "灵魂尖啸",
+          "type": "active",
+          "element": "dark",
+          "target_type": "all_enemy",
+          "power": 0.9,
+          "cost": 16,
+          "cooldown": 3,
+          "description": "发出灵魂尖啸攻击全体敌人精神",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "混乱",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.25,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": []
+    },
+    "void_beast": {
+      "id": "void_beast",
+      "name": "虚空兽",
+      "type": "monster",
+      "element": "void",
+      "level": 45,
+      "base_attack": 250,
+      "base_defense": 100,
+      "base_speed": 30,
+      "base_hp": 5000,
+      "base_max_hp": 5000,
+      "exp_reward": 2000,
+      "money_reward": 150,
+      "region": "虚空秘境",
+      "level_required": 28,
+      "description": "在虚空裂隙中游荡的异界生物，身躯半透明无法捉摸",
+      "drops": [
+        { "item_id": "void_fragment", "rate": 0.25, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "void_blast",
+          "name": "虚空冲击",
+          "type": "active",
+          "element": "void",
+          "target_type": "single_enemy",
+          "power": 1.6,
+          "cost": 14,
+          "cooldown": 1,
+          "description": "释放虚空能量冲击敌人"
+        },
+        {
+          "id": "teleport",
+          "name": "虚空穿梭",
+          "type": "active",
+          "element": "void",
+          "target_type": "self",
+          "power": 0,
+          "cost": 10,
+          "cooldown": 3,
+          "description": "遁入虚空恢复生命",
+          "buffs": [
+            {
+              "type": "dodge",
+              "name": "虚空隐匿",
+              "value": 50,
+              "duration": 2,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "void_body",
+          "name": "虚空之体",
+          "type": "passive",
+          "element": "void",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "肉身与虚空同化，提升闪避",
+          "passive_stats": {
+            "dodge_bonus": 0.12
+          }
+        }
+      ]
+    },
+    "star_guardian": {
+      "id": "star_guardian",
+      "name": "星辰守卫",
+      "type": "monster",
+      "element": "metal",
+      "level": 48,
+      "base_attack": 220,
+      "base_defense": 150,
+      "base_speed": 20,
+      "base_hp": 6000,
+      "base_max_hp": 6000,
+      "exp_reward": 2200,
+      "money_reward": 160,
+      "region": "虚空秘境",
+      "level_required": 29,
+      "description": "上古大能留下的星辰机关守卫，坚不可摧",
+      "drops": [
+        { "item_id": "star_sand", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "star_beam",
+          "name": "星辰射线",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 2.0,
+          "cost": 16,
+          "cooldown": 2,
+          "description": "凝聚星辰之力射出毁灭光线"
+        },
+        {
+          "id": "star_burst",
+          "name": "星辰爆发",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 1.2,
+          "cost": 22,
+          "cooldown": 3,
+          "description": "星辰能量爆发攻击全体敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "star_shield",
+          "name": "星辰护盾",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "星辰之力护体",
+          "passive_stats": {
+            "defense_bonus": 0.30
+          }
+        }
+      ]
+    },
+    "chaos_spirit": {
+      "id": "chaos_spirit",
+      "name": "混沌妖灵",
+      "type": "monster",
+      "element": "void",
+      "level": 47,
+      "base_attack": 280,
+      "base_defense": 80,
+      "base_speed": 38,
+      "base_hp": 4500,
+      "base_max_hp": 4500,
+      "exp_reward": 2500,
+      "money_reward": 170,
+      "region": "虚空秘境",
+      "level_required": 28,
+      "description": "混沌本源中诞生的妖灵，法术攻击极强",
+      "drops": [
+        { "item_id": "chaos_essence", "rate": 0.20, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "chaos_bolt",
+          "name": "混沌之箭",
+          "type": "active",
+          "element": "void",
+          "target_type": "single_enemy",
+          "power": 1.7,
+          "cost": 14,
+          "cooldown": 1,
+          "description": "射出混沌能量箭矢"
+        },
+        {
+          "id": "chaos_storm",
+          "name": "混沌风暴",
+          "type": "active",
+          "element": "void",
+          "target_type": "all_enemy",
+          "power": 1.4,
+          "cost": 20,
+          "cooldown": 3,
+          "description": "召唤混沌风暴席卷全场"
+        }
+      ],
+      "passives": [
+        {
+          "id": "chaos_affinity",
+          "name": "混沌亲和",
+          "type": "passive",
+          "element": "void",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "混沌亲和提升法术伤害",
+          "passive_stats": {
+            "magic_damage_bonus": 0.15
+          }
+        }
+      ]
+    },
+    "space_ripper": {
+      "id": "space_ripper",
+      "name": "空间裂兽",
+      "type": "monster",
+      "element": "void",
+      "level": 50,
+      "base_attack": 260,
+      "base_defense": 120,
+      "base_speed": 40,
+      "base_hp": 5500,
+      "base_max_hp": 5500,
+      "exp_reward": 2400,
+      "money_reward": 165,
+      "region": "虚空秘境",
+      "level_required": 30,
+      "description": "能撕裂空间进行瞬移的凶猛妖兽，行踪诡秘",
+      "drops": [
+        { "item_id": "void_fragment", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "space_slash",
+          "name": "次元斩",
+          "type": "active",
+          "element": "void",
+          "target_type": "single_enemy",
+          "power": 2.2,
+          "cost": 16,
+          "cooldown": 2,
+          "description": "撕裂空间攻击敌人，无视部分防御",
+          "ignore_defense": true
+        }
+      ],
+      "passives": [
+        {
+          "id": "spatial_awareness",
+          "name": "空间感知",
+          "type": "passive",
+          "element": "void",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "空间感知提升速度和闪避",
+          "passive_stats": {
+            "speed_bonus": 0.12,
+            "dodge_bonus": 0.08
+          }
+        }
+      ]
+    },
+    "void_lord": {
+      "id": "void_lord",
+      "name": "虚空之主",
+      "type": "boss",
+      "element": "void",
+      "level": 55,
+      "base_attack": 400,
+      "base_defense": 200,
+      "base_speed": 35,
+      "base_hp": 10000,
+      "base_max_hp": 10000,
+      "exp_reward": 5000,
+      "money_reward": 500,
+      "region": "虚空秘境",
+      "level_required": 32,
+      "description": "虚空秘境的主宰，拥有操控空间法则的恐怖力量",
+      "drops": [
+        { "item_id": "void_fragment", "rate": 0.70, "min": 2, "max": 4 },
+        { "item_id": "chaos_essence", "rate": 0.40, "min": 1, "max": 2 },
+        { "item_id": "void_core", "rate": 0.05, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "void_collapse",
+          "name": "虚空崩塌",
+          "type": "active",
+          "element": "void",
+          "target_type": "all_enemy",
+          "power": 1.8,
+          "cost": 25,
+          "cooldown": 3,
+          "description": "引动虚空崩塌，对所有敌人造成毁灭性打击"
+        },
+        {
+          "id": "gravity_well",
+          "name": "引力漩涡",
+          "type": "active",
+          "element": "void",
+          "target_type": "all_enemy",
+          "power": 0.6,
+          "cost": 18,
+          "cooldown": 3,
+          "description": "制造引力场，降低全体敌人速度和防御",
+          "buffs": [
+            {
+              "type": "speed",
+              "name": "引力束缚",
+              "value": -30,
+              "duration": 3,
+              "chance": 0.80,
+              "is_debuff": true,
+              "effect": "on_turn"
+            },
+            {
+              "type": "defense",
+              "name": "引力压迫",
+              "value": -25,
+              "duration": 3,
+              "chance": 0.80,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "void_teleport",
+          "name": "虚空转移",
+          "type": "active",
+          "element": "void",
+          "target_type": "self",
+          "power": -0.4,
+          "cost": 20,
+          "cooldown": 4,
+          "description": "遁入虚空恢复生命并移除负面状态"
+        }
+      ],
+      "passives": [
+        {
+          "id": "void_dominance",
+          "name": "虚空主宰",
+          "type": "passive",
+          "element": "void",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "虚空之力全面提升",
+          "passive_stats": {
+            "attack_bonus": 0.15,
+            "defense_bonus": 0.15,
+            "hp_bonus": 0.20
+          }
+        }
+      ]
+    },
+    "tribulation_guardian": {
+      "id": "tribulation_guardian",
+      "name": "天劫守卫",
+      "type": "monster",
+      "element": "metal",
+      "level": 55,
+      "base_attack": 350,
+      "base_defense": 180,
+      "base_speed": 25,
+      "base_hp": 8000,
+      "base_max_hp": 8000,
+      "exp_reward": 3500,
+      "money_reward": 200,
+      "region": "天劫区域",
+      "level_required": 33,
+      "description": "守护天劫通道的雷电元素守卫，拥有天劫之力",
+      "drops": [
+        { "item_id": "thunder_core", "rate": 0.20, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "thunder_blast",
+          "name": "天雷轰",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 1.8,
+          "cost": 16,
+          "cooldown": 1,
+          "description": "引动天雷轰击敌人"
+        },
+        {
+          "id": "lightning_storm",
+          "name": "雷电风暴",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 1.2,
+          "cost": 22,
+          "cooldown": 3,
+          "description": "召唤雷电风暴攻击全体",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "麻痹",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.30,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "thunder_armor",
+          "name": "雷电铠甲",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "雷电护体，提升防御并有概率反伤",
+          "passive_stats": {
+            "defense_bonus": 0.20,
+            "thorns_damage": 0.12
+          }
+        }
+      ]
+    },
+    "thunder_spirit": {
+      "id": "thunder_spirit",
+      "name": "雷灵",
+      "type": "monster",
+      "element": "metal",
+      "level": 58,
+      "base_attack": 400,
+      "base_defense": 100,
+      "base_speed": 50,
+      "base_hp": 6000,
+      "base_max_hp": 6000,
+      "exp_reward": 4000,
+      "money_reward": 250,
+      "region": "天劫区域",
+      "level_required": 34,
+      "description": "天劫雷霆中诞生的灵体，纯粹的雷电化身",
+      "drops": [
+        { "item_id": "thunder_core", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "chain_lightning",
+          "name": "连锁闪电",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 1.3,
+          "cost": 18,
+          "cooldown": 2,
+          "description": "释放连锁闪电攻击全体敌人"
+        },
+        {
+          "id": "lightning_speed",
+          "name": "电光石火",
+          "type": "active",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 12,
+          "cooldown": 3,
+          "description": "以身化电，大幅提升速度",
+          "buffs": [
+            {
+              "type": "speed",
+              "name": "电光加速",
+              "value": 40,
+              "duration": 2,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "static_charge",
+          "name": "静电充能",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "静电充能提升暴击",
+          "passive_stats": {
+            "crit_rate": 0.15
+          }
+        }
+      ]
+    },
+    "ancient_behemoth": {
+      "id": "ancient_behemoth",
+      "name": "远古巨兽",
+      "type": "monster",
+      "element": "earth",
+      "level": 60,
+      "base_attack": 300,
+      "base_defense": 200,
+      "base_speed": 12,
+      "base_hp": 12000,
+      "base_max_hp": 12000,
+      "exp_reward": 4500,
+      "money_reward": 300,
+      "region": "天劫区域",
+      "level_required": 35,
+      "description": "沉睡万年的远古巨兽，体魄无双，拥有毁天灭地之力",
+      "drops": [
+        { "item_id": "ancient_bone", "rate": 0.25, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "earthquake",
+          "name": "地裂山崩",
+          "type": "active",
+          "element": "earth",
+          "target_type": "all_enemy",
+          "power": 1.5,
+          "cost": 20,
+          "cooldown": 3,
+          "description": "引发地震攻击全体敌人"
+        },
+        {
+          "id": "devastating_blow",
+          "name": "碎岳一击",
+          "type": "active",
+          "element": "earth",
+          "target_type": "single_enemy",
+          "power": 2.5,
+          "cost": 18,
+          "cooldown": 2,
+          "description": "凝聚全身力量的一击，可碎山岳"
+        }
+      ],
+      "passives": [
+        {
+          "id": "colossal_body",
+          "name": "泰坦之躯",
+          "type": "passive",
+          "element": "earth",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "庞大躯体提升大量生命和防御",
+          "passive_stats": {
+            "hp_bonus": 0.50,
+            "defense_bonus": 0.25
+          }
+        }
+      ]
+    },
+    "heavenly_dragon_phantom": {
+      "id": "heavenly_dragon_phantom",
+      "name": "真龙幻影",
+      "type": "boss",
+      "element": "water",
+      "level": 65,
+      "base_attack": 600,
+      "base_defense": 300,
+      "base_speed": 40,
+      "base_hp": 20000,
+      "base_max_hp": 20000,
+      "exp_reward": 10000,
+      "money_reward": 800,
+      "region": "天劫区域",
+      "level_required": 38,
+      "description": "真龙留在人间的一道幻影分身，但其力量已足以毁天灭地",
+      "drops": [
+        { "item_id": "dragon_scale", "rate": 0.80, "min": 2, "max": 4 },
+        { "item_id": "dragon_bone", "rate": 0.50, "min": 1, "max": 2 },
+        { "item_id": "true_dragon_blood", "rate": 0.05, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "dragon_breath",
+          "name": "真龙吐息",
+          "type": "active",
+          "element": "water",
+          "target_type": "all_enemy",
+          "power": 2.0,
+          "cost": 25,
+          "cooldown": 2,
+          "description": "喷出真龙之息，毁灭一切"
+        },
+        {
+          "id": "heavenly_pressure",
+          "name": "龙威天压",
+          "type": "active",
+          "element": "none",
+          "target_type": "all_enemy",
+          "power": 0.5,
+          "cost": 20,
+          "cooldown": 3,
+          "description": "释放真龙威压，震慑所有敌人",
+          "buffs": [
+            {
+              "type": "attack",
+              "name": "龙威压迫",
+              "value": -30,
+              "duration": 3,
+              "chance": 0.80,
+              "is_debuff": true,
+              "effect": "on_turn"
+            },
+            {
+              "type": "stun",
+              "name": "震慑",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.25,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "dragon_swipe",
+          "name": "龙爪裂空",
+          "type": "active",
+          "element": "none",
+          "target_type": "single_enemy",
+          "power": 2.5,
+          "cost": 20,
+          "cooldown": 1,
+          "description": "以龙爪撕裂空间攻击敌人"
+        },
+        {
+          "id": "divine_shield",
+          "name": " divine护盾",
+          "type": "active",
+          "element": "water",
+          "target_type": "self",
+          "power": 0,
+          "cost": 30,
+          "cooldown": 5,
+          "description": "真龙之力护体，免疫一切伤害",
+          "buffs": [
+            {
+              "type": "invincible",
+              "name": "真龙护盾",
+              "value": 0,
+              "duration": 1,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "divine_dragon_blood",
+          "name": "真龙血脉",
+          "type": "passive",
+          "element": "water",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "真龙血脉全面提升属性",
+          "passive_stats": {
+            "attack_bonus": 0.20,
+            "defense_bonus": 0.25,
+            "hp_bonus": 0.30
+          }
+        }
+      ]
+    },
+    "tribulation_apostle": {
+      "id": "tribulation_apostle",
+      "name": "天劫使徒",
+      "type": "boss",
+      "element": "metal",
+      "level": 70,
+      "base_attack": 800,
+      "base_defense": 400,
+      "base_speed": 45,
+      "base_hp": 30000,
+      "base_max_hp": 30000,
+      "exp_reward": 20000,
+      "money_reward": 1000,
+      "region": "天劫区域",
+      "level_required": 40,
+      "description": "天道意志的化身，镇守天劫通道的最终守卫，击败它方可渡劫飞升",
+      "drops": [
+        { "item_id": "thunder_core", "rate": 0.80, "min": 1, "max": 3 },
+        { "item_id": "heavenly_token", "rate": 0.50, "min": 1, "max": 1 },
+        { "item_id": "tribulation_stone", "rate": 0.03, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "heavenly_thunder",
+          "name": "九天神雷",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 2.2,
+          "cost": 30,
+          "cooldown": 2,
+          "description": "召唤九天神雷轰击所有敌人"
+        },
+        {
+          "id": "judgment",
+          "name": "天罚",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 3.0,
+          "cost": 25,
+          "cooldown": 2,
+          "description": "降下天罚，对单体造成毁灭性打击"
+        },
+        {
+          "id": "divine_barrier",
+          "name": "天道屏障",
+          "type": "active",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 25,
+          "cooldown": 4,
+          "description": "天道之力形成屏障，大幅提升防御",
+          "buffs": [
+            {
+              "type": "defense",
+              "name": "天道屏障",
+              "value": 80,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            },
+            {
+              "type": "shield",
+              "name": "天道护盾",
+              "value": 100,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "thunder_storm",
+          "name": "天劫风暴",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 1.5,
+          "cost": 35,
+          "cooldown": 4,
+          "description": "召唤无尽天劫雷霆形成毁灭风暴"
+        }
+      ],
+      "passives": [
+        {
+          "id": "heavenly_will",
+          "name": "天道意志",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "天道意志加持，全属性大幅提升",
+          "passive_stats": {
+            "attack_bonus": 0.25,
+            "defense_bonus": 0.25,
+            "hp_bonus": 0.30,
+            "crit_rate": 0.10
+          }
+        }
+      ]
+    },
+    "nine_heavens_guardian": {
+      "id": "nine_heavens_guardian",
+      "name": "九天雷池守卫",
+      "type": "monster",
+      "element": "metal",
+      "level": 73,
+      "base_attack": 600,
+      "base_defense": 250,
+      "base_speed": 28,
+      "base_hp": 12000,
+      "base_max_hp": 12000,
+      "exp_reward": 5000,
+      "money_reward": 300,
+      "region": "九天雷池",
+      "level_required": 42,
+      "description": "镇守九天雷池的雷电守卫，身披天雷铠甲，寻常修士难以近身",
+      "drops": [
+        { "item_id": "thunder_core", "rate": 0.30, "min": 1, "max": 2 },
+        { "item_id": "nine_sky_iron", "rate": 0.25, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "heavenly_thunder_slash",
+          "name": "天雷斩",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 1.8,
+          "cost": 16,
+          "cooldown": 1,
+          "description": "凝聚天雷之力挥出雷斩，威力惊人"
+        },
+        {
+          "id": "thunder_barrier",
+          "name": "雷光屏障",
+          "type": "active",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 20,
+          "cooldown": 3,
+          "description": "召唤雷光屏障提升自身防御",
+          "buffs": [
+            {
+              "type": "defense",
+              "name": "雷光屏障",
+              "value": 40,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "thunder_armor_dacheng",
+          "name": "天雷铠甲",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "周身缠绕天雷，提升防御并反伤",
+          "passive_stats": {
+            "defense_bonus": 0.20,
+            "thorns_damage": 0.12
+          }
+        }
+      ]
+    },
+    "lightning_beast": {
+      "id": "lightning_beast",
+      "name": "雷兽",
+      "type": "monster",
+      "element": "metal",
+      "level": 75,
+      "base_attack": 750,
+      "base_defense": 180,
+      "base_speed": 42,
+      "base_hp": 14000,
+      "base_max_hp": 14000,
+      "exp_reward": 5500,
+      "money_reward": 350,
+      "region": "九天雷池",
+      "level_required": 44,
+      "description": "九天雷池中诞生的雷元素凶兽，浑身雷光闪烁，速度极快",
+      "drops": [
+        { "item_id": "thunder_core", "rate": 0.40, "min": 1, "max": 2 },
+        { "item_id": "beast_blood", "rate": 0.30, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "lightning_dash",
+          "name": "雷光冲刺",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 2.0,
+          "cost": 18,
+          "cooldown": 1,
+          "description": "化作雷光冲向敌人，造成重创"
+        },
+        {
+          "id": "thunder_roar",
+          "name": "雷霆怒吼",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 1.2,
+          "cost": 22,
+          "cooldown": 3,
+          "description": "发出雷霆般的怒吼震击全体敌人",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "雷音震慑",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.25,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "lightning_body",
+          "name": "雷电之体",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "雷电之体大幅提升速度和暴击",
+          "passive_stats": {
+            "speed_bonus": 0.20,
+            "crit_rate": 0.12
+          }
+        }
+      ]
+    },
+    "celestial_enforcer": {
+      "id": "celestial_enforcer",
+      "name": "仙域执法者",
+      "type": "monster",
+      "element": "void",
+      "level": 77,
+      "base_attack": 800,
+      "base_defense": 320,
+      "base_speed": 32,
+      "base_hp": 18000,
+      "base_max_hp": 18000,
+      "exp_reward": 6000,
+      "money_reward": 380,
+      "region": "九天雷池",
+      "level_required": 45,
+      "description": "来自仙域的执法者，身怀仙灵之力，惩戒一切擅闯九天雷池之人",
+      "drops": [
+        { "item_id": "celestial_essence", "rate": 0.25, "min": 1, "max": 1 },
+        { "item_id": "nine_sky_iron", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "celestial_seal",
+          "name": "仙灵封印",
+          "type": "active",
+          "element": "void",
+          "target_type": "single_enemy",
+          "power": 1.6,
+          "cost": 18,
+          "cooldown": 2,
+          "description": "以仙灵之力封印敌人，降低其防御",
+          "buffs": [
+            {
+              "type": "defense",
+              "name": "仙灵封印",
+              "value": -30,
+              "duration": 3,
+              "chance": 0.70,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "celestial_blast",
+          "name": "仙元爆破",
+          "type": "active",
+          "element": "void",
+          "target_type": "all_enemy",
+          "power": 1.3,
+          "cost": 24,
+          "cooldown": 3,
+          "description": "引爆仙元之力冲击全体敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "celestial_body",
+          "name": "仙灵之体",
+          "type": "passive",
+          "element": "void",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "仙灵之体提升全属性",
+          "passive_stats": {
+            "attack_bonus": 0.10,
+            "defense_bonus": 0.15,
+            "hp_bonus": 0.15
+          }
+        }
+      ]
+    },
+    "nine_sky_ice_phoenix": {
+      "id": "nine_sky_ice_phoenix",
+      "name": "九霄玄冰鸾",
+      "type": "monster",
+      "element": "water",
+      "level": 79,
+      "base_attack": 900,
+      "base_defense": 200,
+      "base_speed": 58,
+      "base_hp": 15000,
+      "base_max_hp": 15000,
+      "exp_reward": 6500,
+      "money_reward": 400,
+      "region": "九天雷池",
+      "level_required": 46,
+      "description": "翱翔九霄的玄冰灵鸾，双翅挥动间冰封万里",
+      "drops": [
+        { "item_id": "feather", "rate": 0.60, "min": 2, "max": 4 },
+        { "item_id": "ice_crystal", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "freeze_blast",
+          "name": "玄冰吐息",
+          "type": "active",
+          "element": "water",
+          "target_type": "all_enemy",
+          "power": 1.4,
+          "cost": 20,
+          "cooldown": 2,
+          "description": "喷出极寒玄冰吐息冰冻全体敌人",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "冰冻",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.35,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "ice_wind_blade",
+          "name": "冰风刃",
+          "type": "active",
+          "element": "water",
+          "target_type": "single_enemy",
+          "power": 1.8,
+          "cost": 16,
+          "cooldown": 1,
+          "description": "凝聚冰风之力形成锋利冰刃攻击敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "frost_aura",
+          "name": "霜寒光环",
+          "type": "passive",
+          "element": "water",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "霜寒光环提升冰系伤害",
+          "passive_stats": {
+            "water_damage_bonus": 0.15
+          }
+        }
+      ]
+    },
+    "thunder_emperor_phantom": {
+      "id": "thunder_emperor_phantom",
+      "name": "九天雷帝残魂",
+      "type": "boss",
+      "element": "metal",
+      "level": 80,
+      "base_attack": 1800,
+      "base_defense": 650,
+      "base_speed": 48,
+      "base_hp": 60000,
+      "base_max_hp": 60000,
+      "exp_reward": 25000,
+      "money_reward": 1500,
+      "region": "九天雷池",
+      "level_required": 48,
+      "description": "上古九天雷帝陨落后残留的一缕雷魂，虽仅余残魂但仍拥有毁天灭地之威能",
+      "drops": [
+        { "item_id": "thunder_core", "rate": 0.70, "min": 2, "max": 4 },
+        { "item_id": "celestial_essence", "rate": 0.40, "min": 1, "max": 2 },
+        { "item_id": "thunder_emperor_seal", "rate": 0.05, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "heavenly_thunder_fury",
+          "name": "九天神雷怒",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 2.0,
+          "cost": 28,
+          "cooldown": 2,
+          "description": "引动九天神雷轰击全体敌人"
+        },
+        {
+          "id": "thunder_emperors_wrath",
+          "name": "雷帝之怒",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 2.8,
+          "cost": 24,
+          "cooldown": 1,
+          "description": "凝聚雷帝余威的一击，对单体造成毁灭性伤害",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "雷帝威压",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.50,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "lightning_armor",
+          "name": "万雷护体",
+          "type": "active",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 30,
+          "cooldown": 4,
+          "description": "召唤万雷护体，极大提升防御并反伤",
+          "buffs": [
+            {
+              "type": "defense",
+              "name": "万雷护体",
+              "value": 80,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "thunder_emperors_will",
+          "name": "雷帝意志",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "雷帝意志全面提升属性",
+          "passive_stats": {
+            "attack_bonus": 0.20,
+            "defense_bonus": 0.20,
+            "hp_bonus": 0.25
+          }
+        }
+      ]
+    },
+    "tribulation_acolyte": {
+      "id": "tribulation_acolyte",
+      "name": "渡劫使徒",
+      "type": "monster",
+      "element": "metal",
+      "level": 82,
+      "base_attack": 1100,
+      "base_defense": 420,
+      "base_speed": 38,
+      "base_hp": 28000,
+      "base_max_hp": 28000,
+      "exp_reward": 8000,
+      "money_reward": 500,
+      "region": "渡劫台",
+      "level_required": 48,
+      "description": "天劫意志的使徒，手持雷霆长矛镇守渡劫台外围",
+      "drops": [
+        { "item_id": "tribulation_crystal", "rate": 0.25, "min": 1, "max": 1 },
+        { "item_id": "thunder_core", "rate": 0.35, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "thunder_spear",
+          "name": "雷霆之矛",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 2.0,
+          "cost": 18,
+          "cooldown": 1,
+          "description": "掷出雷霆之矛贯穿敌人"
+        },
+        {
+          "id": "tribulation_lightning",
+          "name": "劫雷降临",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 1.4,
+          "cost": 24,
+          "cooldown": 3,
+          "description": "召唤劫雷轰击全体敌人",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "劫雷麻痹",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.30,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "tribulation_armor",
+          "name": "劫雷铠甲",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "劫雷铠甲提供防御和反伤",
+          "passive_stats": {
+            "defense_bonus": 0.20,
+            "thorns_damage": 0.15
+          }
+        }
+      ]
+    },
+    "tribulation_thunder_dragon": {
+      "id": "tribulation_thunder_dragon",
+      "name": "万劫雷龙",
+      "type": "monster",
+      "element": "metal",
+      "level": 84,
+      "base_attack": 1300,
+      "base_defense": 520,
+      "base_speed": 32,
+      "base_hp": 45000,
+      "base_max_hp": 45000,
+      "exp_reward": 9000,
+      "money_reward": 550,
+      "region": "渡劫台",
+      "level_required": 49,
+      "description": "历经万劫不灭的雷龙，身缠万道劫雷，是渡劫者最恐怖的阻碍",
+      "drops": [
+        { "item_id": "dragon_scale", "rate": 0.50, "min": 1, "max": 2 },
+        { "item_id": "tribulation_crystal", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "tribulation_breath",
+          "name": "万劫吐息",
+          "type": "active",
+          "element": "metal",
+          "target_type": "all_enemy",
+          "power": 1.6,
+          "cost": 25,
+          "cooldown": 2,
+          "description": "喷出万劫雷霆吐息灼烧全体敌人",
+          "buffs": [
+            {
+              "type": "damage",
+              "name": "劫雷灼烧",
+              "value": 40,
+              "duration": 3,
+              "chance": 0.50,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "dragon_thunder_claw",
+          "name": "雷龙裂天爪",
+          "type": "active",
+          "element": "metal",
+          "target_type": "single_enemy",
+          "power": 2.4,
+          "cost": 20,
+          "cooldown": 1,
+          "description": "以缠绕劫雷的龙爪撕裂敌人"
+        }
+      ],
+      "passives": [
+        {
+          "id": "tribulation_dragon_scales",
+          "name": "万劫龙鳞",
+          "type": "passive",
+          "element": "metal",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "万劫龙鳞提升大量防御和生命",
+          "passive_stats": {
+            "defense_bonus": 0.25,
+            "hp_bonus": 0.30
+          }
+        }
+      ]
+    },
+    "inner_demon": {
+      "id": "inner_demon",
+      "name": "心魔",
+      "type": "monster",
+      "element": "dark",
+      "level": 86,
+      "base_attack": 1600,
+      "base_defense": 280,
+      "base_speed": 62,
+      "base_hp": 22000,
+      "base_max_hp": 22000,
+      "exp_reward": 9500,
+      "money_reward": 580,
+      "region": "渡劫台",
+      "level_required": 50,
+      "description": "修士内心最深处的恐惧所化，能窥探并攻击对手心灵弱点",
+      "drops": [
+        { "item_id": "soul_shard", "rate": 0.40, "min": 2, "max": 4 },
+        { "item_id": "dark_essence", "rate": 0.20, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "soul_torment",
+          "name": "灵魂折磨",
+          "type": "active",
+          "element": "dark",
+          "target_type": "single_enemy",
+          "power": 1.4,
+          "cost": 20,
+          "cooldown": 1,
+          "description": "直接攻击敌人灵魂，造成精神创伤",
+          "buffs": [
+            {
+              "type": "attack",
+              "name": "精神衰弱",
+              "value": -25,
+              "duration": 3,
+              "chance": 0.60,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "dark_possession",
+          "name": "心魔附体",
+          "type": "active",
+          "element": "dark",
+          "target_type": "self",
+          "power": 0,
+          "cost": 25,
+          "cooldown": 4,
+          "description": "心魔彻底附体，大幅提升攻击",
+          "buffs": [
+            {
+              "type": "attack",
+              "name": "心魔附体",
+              "value": 60,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "nightmare_vision",
+          "name": "噩梦幻象",
+          "type": "active",
+          "element": "dark",
+          "target_type": "all_enemy",
+          "power": 0.8,
+          "cost": 22,
+          "cooldown": 3,
+          "description": "制造噩梦幻象攻击全体敌人精神",
+          "buffs": [
+            {
+              "type": "stun",
+              "name": "噩梦",
+              "value": 0,
+              "duration": 1,
+              "chance": 0.30,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "elusive_phantom",
+          "name": "虚幻之体",
+          "type": "passive",
+          "element": "dark",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "虚幻之体提升闪避",
+          "passive_stats": {
+            "dodge_bonus": 0.15
+          }
+        }
+      ]
+    },
+    "law_walker": {
+      "id": "law_walker",
+      "name": "法则行者",
+      "type": "monster",
+      "element": "void",
+      "level": 88,
+      "base_attack": 1700,
+      "base_defense": 480,
+      "base_speed": 42,
+      "base_hp": 38000,
+      "base_max_hp": 38000,
+      "exp_reward": 10000,
+      "money_reward": 600,
+      "region": "渡劫台",
+      "level_required": 51,
+      "description": "行走于天地法则之上的神秘存在，一言一行皆引动法则之力",
+      "drops": [
+        { "item_id": "heavenly_fragment", "rate": 0.20, "min": 1, "max": 1 },
+        { "item_id": "celestial_essence", "rate": 0.30, "min": 1, "max": 2 }
+      ],
+      "skills": [
+        {
+          "id": "law_chain",
+          "name": "法则锁链",
+          "type": "active",
+          "element": "void",
+          "target_type": "all_enemy",
+          "power": 0.6,
+          "cost": 22,
+          "cooldown": 3,
+          "description": "以法则锁链束缚所有敌人",
+          "buffs": [
+            {
+              "type": "speed",
+              "name": "法则束缚",
+              "value": -40,
+              "duration": 2,
+              "chance": 0.80,
+              "is_debuff": true,
+              "effect": "on_turn"
+            }
+          ]
+        },
+        {
+          "id": "law_judgment",
+          "name": "法则审判",
+          "type": "active",
+          "element": "void",
+          "target_type": "single_enemy",
+          "power": 2.2,
+          "cost": 20,
+          "cooldown": 1,
+          "description": "以天地法则审判敌人，造成巨额伤害"
+        }
+      ],
+      "passives": [
+        {
+          "id": "law_protection",
+          "name": "法则庇护",
+          "type": "passive",
+          "element": "void",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "法则庇护提升全属性",
+          "passive_stats": {
+            "defense_bonus": 0.20,
+            "hp_bonus": 0.20
+          }
+        }
+      ]
+    },
+    "heavenly_judge": {
+      "id": "heavenly_judge",
+      "name": "天道审判者",
+      "type": "boss",
+      "element": "void",
+      "level": 90,
+      "base_attack": 3500,
+      "base_defense": 1300,
+      "base_speed": 55,
+      "base_hp": 120000,
+      "base_max_hp": 120000,
+      "exp_reward": 50000,
+      "money_reward": 3000,
+      "region": "渡劫台",
+      "level_required": 53,
+      "description": "天道意志具象化的终极审判者，掌控万物生灭法则，渡劫之路的最终试炼",
+      "drops": [
+        { "item_id": "heavenly_fragment", "rate": 0.60, "min": 1, "max": 3 },
+        { "item_id": "tribulation_crystal", "rate": 0.50, "min": 1, "max": 3 },
+        { "item_id": "heavenly_judgment_token", "rate": 0.03, "min": 1, "max": 1 }
+      ],
+      "skills": [
+        {
+          "id": "heavenly_annihilation",
+          "name": "天道湮灭",
+          "type": "active",
+          "element": "void",
+          "target_type": "all_enemy",
+          "power": 2.2,
+          "cost": 35,
+          "cooldown": 2,
+          "description": "引动天道湮灭之力，对所有敌人造成毁灭性打击"
+        },
+        {
+          "id": "judgment_strike",
+          "name": "审判之击",
+          "type": "active",
+          "element": "void",
+          "target_type": "single_enemy",
+          "power": 3.5,
+          "cost": 30,
+          "cooldown": 2,
+          "description": "降下最终审判，对单体造成超巨额伤害"
+        },
+        {
+          "id": "heavenly_barrier",
+          "name": "天道壁垒",
+          "type": "active",
+          "element": "void",
+          "target_type": "self",
+          "power": 0,
+          "cost": 35,
+          "cooldown": 5,
+          "description": "天道之力凝聚壁垒，极大提升防御和免疫控制",
+          "buffs": [
+            {
+              "type": "defense",
+              "name": "天道壁垒",
+              "value": 100,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            },
+            {
+              "type": "immunity",
+              "name": "天道庇护",
+              "value": 0,
+              "duration": 3,
+              "chance": 1.0,
+              "is_debuff": false,
+              "effect": "on_turn"
+            }
+          ]
+        }
+      ],
+      "passives": [
+        {
+          "id": "heavenly_authority",
+          "name": "天道权柄",
+          "type": "passive",
+          "element": "void",
+          "target_type": "self",
+          "power": 0,
+          "cost": 0,
+          "cooldown": 0,
+          "description": "天道权柄全面大幅提升",
+          "passive_stats": {
+            "attack_bonus": 0.25,
+            "defense_bonus": 0.25,
+            "hp_bonus": 0.35,
+            "crit_rate": 0.15
+          }
+        }
+      ]
+    }
+  }
+}

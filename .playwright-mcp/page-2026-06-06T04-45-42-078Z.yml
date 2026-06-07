@@ -1,0 +1,27 @@
+- generic [ref=e6]:
+  - generic [ref=e7]:
+    - img "九州修仙录"
+    - paragraph [ref=e8]: 手机号登录
+  - tablist "登录方式" [ref=e9]:
+    - tab "登 录" [selected] [ref=e10] [cursor=pointer]:
+      - generic [ref=e11]: 登 录
+    - tab "注 册" [ref=e12] [cursor=pointer]:
+      - generic [ref=e13]: 注 册
+    - tab "账号绑定" [ref=e14] [cursor=pointer]:
+      - generic [ref=e15]: 账号绑定
+    - tab "找回口令" [ref=e16] [cursor=pointer]:
+      - generic [ref=e17]: 找回口令
+  - generic [ref=e18]:
+    - generic [ref=e24]:
+      - img "mobile" [ref=e26]:
+        - img [ref=e27]
+      - textbox "大陆手机号" [ref=e29]
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - img "message" [ref=e39]:
+          - img [ref=e40]
+        - textbox "短信验证码" [ref=e42]
+      - button "发送验证码" [disabled] [ref=e44]:
+        - generic: 发送验证码
+    - button "踏入仙途" [ref=e50] [cursor=pointer]:
+      - generic [ref=e51]: 踏入仙途

@@ -1,0 +1,103 @@
+syntax = "proto3";
+package game;
+option go_package = "cultivation-game/proto/combat";
+
+message CombatStartReq {
+  uint32 instance_id = 1;
+  uint32 monster_id = 2;
+  uint64 target_player_id = 3;  // PVP时使用
+}
+
+message CombatStartResp {
+  uint64 combat_id = 1;
+  string combat_type = 2;
+  CombatState player_state = 3;
+  CombatState enemy_state = 4;
+  int32 total_rounds_estimate = 5;
+  string description = 6;
+}
+
+message CombatState {
+  uint64 entity_id = 1;
+  string name = 2;
+  int32 hp = 3;
+  int32 max_hp = 4;
+  int32 mp = 5;
+  int32 max_mp = 6;
+  int32 shield = 7;
+  int32 speed = 8;
+  repeated BuffInfo buffs = 9;
+}
+
+message BuffInfo {
+  uint32 buff_id = 1;
+  string name = 2;
+  int32 remaining_rounds = 3;
+  string effect_description = 4;
+}
+
+message CombatActionReq {
+  uint64 combat_id = 1;
+  uint32 skill_id = 2;
+  string action_type = 3;  // skill/defend/use_item/flee
+  uint32 item_id = 4;
+}
+
+message CombatActionResp {
+  repeated CombatRound rounds = 1;
+  CombatState updated_player = 2;
+  CombatState updated_enemy = 3;
+  bool combat_ended = 4;
+  bool victory = 5;
+  CombatReward reward = 6;
+  string narrative = 7;
+}
+
+message CombatRound {
+  uint32 round_num = 1;
+  string attacker_name = 2;
+  string skill_name = 3;
+  string description = 4;
+  int64 damage = 5;
+  bool is_critical = 6;
+  bool is_miss = 7;
+  bool is_blocked = 8;
+  int32 hp_change = 9;
+  ElementEffect element_effect = 10;
+}
+
+message ElementEffect {
+  string element_type = 1;
+  float multiplier = 2;
+  string description = 3;
+}
+
+message CombatReward {
+  uint64 exp = 1;
+  int64 money = 2;
+  repeated ItemDrop items = 3;
+  uint32 reputation = 4;
+}
+
+message ItemDrop {
+  uint32 item_id = 1;
+  string item_name = 2;
+  uint32 quantity = 3;
+  uint32 quality = 4;
+  bool is_rare = 5;
+}
+
+message PvpMatchReq {
+  uint64 player_id = 1;
+  string match_type = 2;
+}
+
+message PvpMatchResp {
+  bool matched = 1;
+  uint64 combat_id = 2;
+  uint64 opponent_id = 3;
+  string opponent_name = 4;
+  int32 opponent_realm_id = 5;
+  int32 opponent_level = 6;
+  int32 estimated_wait = 7;
+}

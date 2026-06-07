@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "name": "初入修仙",
+    "description": "达到炼气1层",
+    "category": "cultivation",
+    "target": 2,
+    "reward": { "title": "", "exp": 100, "money": 50, "attr_bonus": 0 }
+  },
+  {
+    "id": 2,
+    "name": "小有所成",
+    "description": "达到筑基期",
+    "category": "cultivation",
+    "target": 3,
+    "reward": { "title": "筑基真人", "exp": 500, "money": 200, "attr_bonus": 0.01 }
+  },
+  {
+    "id": 3,
+    "name": "金丹大道",
+    "description": "达到金丹期",
+    "category": "cultivation",
+    "target": 4,
+    "reward": { "title": "金丹上人", "exp": 2000, "money": 1000, "attr_bonus": 0.02 }
+  },
+  {
+    "id": 4,
+    "name": "元婴出世",
+    "description": "达到元婴期",
+    "category": "cultivation",
+    "target": 5,
+    "reward": { "title": "元婴真君", "exp": 10000, "money": 5000, "attr_bonus": 0.03 }
+  },
+  {
+    "id": 5,
+    "name": "第一次突破",
+    "description": "首次突破成功",
+    "category": "cultivation",
+    "target": 1,
+    "reward": { "title": "", "exp": 200, "money": 100, "attr_bonus": 0 }
+  },
+  {
+    "id": 6,
+    "name": "百战不殆",
+    "description": "击败100只怪物",
+    "category": "combat",
+    "target": 100,
+    "reward": { "title": "", "exp": 500, "money": 300, "attr_bonus": 0 }
+  },
+  {
+    "id": 7,
+    "name": "斩妖除魔",
+    "description": "击败500只怪物",
+    "category": "combat",
+    "target": 500,
+    "reward": { "title": "斩妖使", "exp": 2000, "money": 1000, "attr_bonus": 0.01 }
+  },
+  {
+    "id": 8,
+    "name": "万夫莫敌",
+    "description": "击败1000只怪物",
+    "category": "combat",
+    "target": 1000,
+    "reward": { "title": "伏魔尊者", "exp": 5000, "money": 3000, "attr_bonus": 0.02 }
+  },
+  {
+    "id": 9,
+    "name": "炼丹学徒",
+    "description": "炼制10次丹药",
+    "category": "explore",
+    "target": 10,
+    "reward": { "title": "", "exp": 200, "money": 100, "attr_bonus": 0 }
+  },
+  {
+    "id": 10,
+    "name": "丹道大师",
+    "description": "炼制100次丹药",
+    "category": "explore",
+    "target": 100,
+    "reward": { "title": "丹王", "exp": 3000, "money": 2000, "attr_bonus": 0.015 }
+  },
+  {
+    "id": 11,
+    "name": "炼器学徒",
+    "description": "炼制10次法器",
+    "category": "explore",
+    "target": 10,
+    "reward": { "title": "", "exp": 200, "money": 100, "attr_bonus": 0 }
+  },
+  {
+    "id": 12,
+    "name": "器道宗师",
+    "description": "炼制100次法器",
+    "category": "explore",
+    "target": 100,
+    "reward": { "title": "器圣", "exp": 3000, "money": 2000, "attr_bonus": 0.015 }
+  },
+  {
+    "id": 13,
+    "name": "富甲一方",
+    "description": "拥有10000灵石",
+    "category": "wealth",
+    "target": 10000,
+    "reward": { "title": "财神", "exp": 1000, "money": 0, "attr_bonus": 0 }
+  },
+  {
+    "id": 14,
+    "name": "富可敌国",
+    "description": "拥有100000灵石",
+    "category": "wealth",
+    "target": 100000,
+    "reward": { "title": "财神爷", "exp": 5000, "money": 0, "attr_bonus": 0.01 }
+  },
+  {
+    "id": 15,
+    "name": "探索者",
+    "description": "探索10个区域",
+    "category": "explore",
+    "target": 10,
+    "reward": { "title": "", "exp": 300, "money": 150, "attr_bonus": 0 }
+  },
+  {
+    "id": 16,
+    "name": "冒险家",
+    "description": "探索50个区域",
+    "category": "explore",
+    "target": 50,
+    "reward": { "title": "探险家", "exp": 2000, "money": 1000, "attr_bonus": 0.01 }
+  },
+  {
+    "id": 17,
+    "name": "奇遇连连",
+    "description": "触发20次奇遇",
+    "category": "explore",
+    "target": 20,
+    "reward": { "title": "", "exp": 500, "money": 300, "attr_bonus": 0 }
+  },
+  {
+    "id": 18,
+    "name": "天选之子",
+    "description": "触发50次奇遇",
+    "category": "explore",
+    "target": 50,
+    "reward": { "title": "天选者", "exp": 3000, "money": 2000, "attr_bonus": 0.02 }
+  },
+  {
+    "id": 19,
+    "name": "社交达人",
+    "description": "发送100条消息",
+    "category": "social",
+    "target": 100,
+    "reward": { "title": "", "exp": 200, "money": 100, "attr_bonus": 0 }
+  },
+  {
+    "id": 20,
+    "name": "宗门栋梁",
+    "description": "宗门贡献达1000",
+    "category": "social",
+    "target": 1000,
+    "reward": { "title": "宗门砥柱", "exp": 2000, "money": 1000, "attr_bonus": 0.01 }
+  },
+  {
+    "id": 21,
+    "name": "阵道初窥",
+    "description": "首次布阵",
+    "category": "explore",
+    "target": 1,
+    "reward": { "title": "", "exp": 100, "money": 50, "attr_bonus": 0 }
+  },
+  {
+    "id": 22,
+    "name": "阵道大师",
+    "description": "布置50次阵法",
+    "category": "explore",
+    "target": 50,
+    "reward": { "title": "阵圣", "exp": 3000, "money": 1500, "attr_bonus": 0.015 }
+  },
+  {
+    "id": 23,
+    "name": "PVP新星",
+    "description": "竞技场胜利10场",
+    "category": "combat",
+    "target": 10,
+    "reward": { "title": "", "exp": 500, "money": 300, "attr_bonus": 0 }
+  },
+  {
+    "id": 24,
+    "name": "不灭传说",
+    "description": "竞技场胜利100场",
+    "category": "combat",
+    "target": 100,
+    "reward": { "title": "不败战神", "exp": 5000, "money": 5000, "attr_bonus": 0.03 }
+  },
+  {
+    "id": 25,
+    "name": "采集能手",
+    "description": "采集100次资源",
+    "category": "explore",
+    "target": 100,
+    "reward": { "title": "", "exp": 300, "money": 150, "attr_bonus": 0 }
+  },
+  {
+    "id": 26,
+    "name": "宠物驯养师",
+    "description": "获得5只宠物",
+    "category": "explore",
+    "target": 5,
+    "reward": { "title": "御灵师", "exp": 1000, "money": 500, "attr_bonus": 0.01 }
+  }
+]

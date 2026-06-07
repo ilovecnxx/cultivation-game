@@ -1,0 +1,48 @@
+// ============================================================
+// 修仙游戏 - 统一响应式断点
+// 标准化断点变量和 Mixins
+// 使用方法：
+//   @use '@/styles/breakpoints' as *;
+//   @include mobile { ... }
+//   @include tablet { ... }
+//   @include desktop { ... }
+//   @include not-desktop { ... }
+// ============================================================
+
+// ---- 断点变量 ----
+/** 手机端最大宽度 */
+$bp-mobile: 480px;
+/** 平板端最大宽度 */
+$bp-tablet: 768px;
+/** 桌面端最小宽度 */
+$bp-desktop: 1024px;
+
+// ---- Mixins ----
+
+/// 手机端（宽度 <= 480px）
+@mixin mobile {
+  @media (max-width: $bp-mobile) {
+    @content;
+  }
+}
+
+/// 平板端（481px ~ 1023px）
+@mixin tablet {
+  @media (min-width: ($bp-mobile + 1px)) and (max-width: ($bp-desktop - 1px)) {
+    @content;
+  }
+}
+
+/// 桌面端（宽度 >= 1024px）
+@mixin desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+/// 非桌面端（宽度 <= 1023px，包含手机和平板）
+@mixin not-desktop {
+  @media (max-width: ($bp-desktop - 1px)) {
+    @content;
+  }
+}

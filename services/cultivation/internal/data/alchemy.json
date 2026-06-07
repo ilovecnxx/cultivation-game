@@ -1,0 +1,1379 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "聚气丹",
+      "realm_required": 1,
+      "level_required": 1,
+      "ingredients": [
+        {
+          "item_id": 101,
+          "name": "聚气草",
+          "count": 3
+        }
+      ],
+      "effects": {
+        "exp_bonus": 500,
+        "cultivation_speed": 1.2,
+        "duration": 3600
+      },
+      "craft_time": 30
+    },
+    {
+      "id": 2,
+      "name": "引气丹",
+      "realm_required": 1,
+      "level_required": 1,
+      "ingredients": [
+        {
+          "item_id": 101,
+          "name": "聚气草",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "exp_bonus": 100
+      },
+      "craft_time": 10
+    },
+    {
+      "id": 3,
+      "name": "金创丹",
+      "realm_required": 1,
+      "level_required": 2,
+      "ingredients": [
+        {
+          "item_id": 101,
+          "name": "聚气草",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "heal_hp": 200
+      },
+      "craft_time": 20
+    },
+    {
+      "id": 4,
+      "name": "培元丹",
+      "realm_required": 1,
+      "level_required": 3,
+      "ingredients": [
+        {
+          "item_id": 101,
+          "name": "聚气草",
+          "count": 5
+        },
+        {
+          "item_id": 102,
+          "name": "灵芝",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "exp_bonus": 2000,
+        "hp_bonus": 50,
+        "mp_bonus": 50
+      },
+      "craft_time": 60
+    },
+    {
+      "id": 5,
+      "name": "清心丹",
+      "realm_required": 1,
+      "level_required": 4,
+      "ingredients": [
+        {
+          "item_id": 101,
+          "name": "聚气草",
+          "count": 3
+        },
+        {
+          "item_id": 105,
+          "name": "凝神花",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "meditation_efficiency": 1.3,
+        "duration": 3600
+      },
+      "craft_time": 45
+    },
+    {
+      "id": 6,
+      "name": "炼体丹",
+      "realm_required": 1,
+      "level_required": 5,
+      "ingredients": [
+        {
+          "item_id": 102,
+          "name": "灵芝",
+          "count": 3
+        },
+        {
+          "item_id": 103,
+          "name": "百年人参",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "hp_bonus": 100,
+        "defense_bonus": 20
+      },
+      "craft_time": 60
+    },
+    {
+      "id": 7,
+      "name": "筑基丹",
+      "realm_required": 1,
+      "level_required": 7,
+      "ingredients": [
+        {
+          "item_id": 102,
+          "name": "灵芝",
+          "count": 5
+        },
+        {
+          "item_id": 103,
+          "name": "百年人参",
+          "count": 3
+        },
+        {
+          "item_id": 104,
+          "name": "灵泉之水",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "effect_type": "unlock_major",
+        "value": true
+      },
+      "craft_time": 120,
+      "type": "breakthrough",
+      "qualities": [
+        {
+          "tier": 1,
+          "name": "下品",
+          "breakthrough_bonus": 0.1
+        },
+        {
+          "tier": 2,
+          "name": "中品",
+          "breakthrough_bonus": 0.15
+        },
+        {
+          "tier": 3,
+          "name": "上品",
+          "breakthrough_bonus": 0.2
+        },
+        {
+          "tier": 4,
+          "name": "极品",
+          "breakthrough_bonus": 0.3
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "凝神丹",
+      "realm_required": 2,
+      "level_required": 1,
+      "ingredients": [
+        {
+          "item_id": 103,
+          "name": "百年人参",
+          "count": 3
+        },
+        {
+          "item_id": 105,
+          "name": "凝神花",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "effect_type": "time_bonus",
+        "value": 30
+      },
+      "craft_time": 90
+    },
+    {
+      "id": 9,
+      "name": "回元丹",
+      "realm_required": 2,
+      "level_required": 2,
+      "ingredients": [
+        {
+          "item_id": 102,
+          "name": "灵芝",
+          "count": 3
+        },
+        {
+          "item_id": 104,
+          "name": "灵泉之水",
+          "count": 3
+        }
+      ],
+      "effects": {
+        "mp_bonus": 100,
+        "cultivation_speed": 1.3,
+        "duration": 3600
+      },
+      "craft_time": 60
+    },
+    {
+      "id": 10,
+      "name": "护脉丹",
+      "realm_required": 2,
+      "level_required": 3,
+      "ingredients": [
+        {
+          "item_id": 103,
+          "name": "百年人参",
+          "count": 2
+        },
+        {
+          "item_id": 106,
+          "name": "龙血草",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "effect_type": "fail_protect",
+        "value": 0.15
+      },
+      "craft_time": 90
+    },
+    {
+      "id": 11,
+      "name": "续骨丹",
+      "realm_required": 2,
+      "level_required": 4,
+      "ingredients": [
+        {
+          "item_id": 103,
+          "name": "百年人参",
+          "count": 4
+        },
+        {
+          "item_id": 106,
+          "name": "龙血草",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "heal_hp": 500,
+        "hp_bonus": 300
+      },
+      "craft_time": 90
+    },
+    {
+      "id": 12,
+      "name": "聚灵丹",
+      "realm_required": 2,
+      "level_required": 5,
+      "ingredients": [
+        {
+          "item_id": 105,
+          "name": "凝神花",
+          "count": 3
+        },
+        {
+          "item_id": 104,
+          "name": "灵泉之水",
+          "count": 5
+        }
+      ],
+      "effects": {
+        "effect_type": "area_bonus",
+        "value": 0.2
+      },
+      "craft_time": 120
+    },
+    {
+      "id": 13,
+      "name": "蕴神丹",
+      "realm_required": 2,
+      "level_required": 6,
+      "ingredients": [
+        {
+          "item_id": 106,
+          "name": "龙血草",
+          "count": 2
+        },
+        {
+          "item_id": 107,
+          "name": "玄冰果",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "exp_bonus": 8000,
+        "breakthrough_bonus": 0.1
+      },
+      "craft_time": 120
+    },
+    {
+      "id": 14,
+      "name": "金丹破境丹",
+      "realm_required": 3,
+      "level_required": 1,
+      "ingredients": [
+        {
+          "item_id": 106,
+          "name": "龙血草",
+          "count": 3
+        },
+        {
+          "item_id": 107,
+          "name": "玄冰果",
+          "count": 2
+        },
+        {
+          "item_id": 108,
+          "name": "赤焰芝",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.25
+      },
+      "craft_time": 180
+    },
+    {
+      "id": 15,
+      "name": "太清丹",
+      "realm_required": 3,
+      "level_required": 2,
+      "ingredients": [
+        {
+          "item_id": 108,
+          "name": "赤焰芝",
+          "count": 3
+        },
+        {
+          "item_id": 105,
+          "name": "凝神花",
+          "count": 5
+        }
+      ],
+      "effects": {
+        "exp_bonus": 30000,
+        "cultivation_speed": 2.0,
+        "duration": 14400
+      },
+      "craft_time": 180
+    },
+    {
+      "id": 16,
+      "name": "清虚丹",
+      "realm_required": 3,
+      "level_required": 3,
+      "ingredients": [
+        {
+          "item_id": 108,
+          "name": "赤焰芝",
+          "count": 2
+        },
+        {
+          "item_id": 107,
+          "name": "玄冰果",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "exp_bonus": 20000,
+        "meditation_efficiency": 2.0,
+        "duration": 10800
+      },
+      "craft_time": 150
+    },
+    {
+      "id": 17,
+      "name": "玉灵丹",
+      "realm_required": 3,
+      "level_required": 4,
+      "ingredients": [
+        {
+          "item_id": 107,
+          "name": "玄冰果",
+          "count": 3
+        },
+        {
+          "item_id": 109,
+          "name": "星辰砂",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "hp_bonus": 500,
+        "mp_bonus": 500,
+        "defense_bonus": 100
+      },
+      "craft_time": 180
+    },
+    {
+      "id": 18,
+      "name": "九转丹",
+      "realm_required": 3,
+      "level_required": 6,
+      "ingredients": [
+        {
+          "item_id": 109,
+          "name": "星辰砂",
+          "count": 2
+        },
+        {
+          "item_id": 110,
+          "name": "万年灵芝",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "exp_bonus": 50000,
+        "breakthrough_bonus": 0.2
+      },
+      "craft_time": 240
+    },
+    {
+      "id": 19,
+      "name": "元婴破境丹",
+      "realm_required": 4,
+      "level_required": 1,
+      "ingredients": [
+        {
+          "item_id": 109,
+          "name": "星辰砂",
+          "count": 3
+        },
+        {
+          "item_id": 110,
+          "name": "万年灵芝",
+          "count": 3
+        },
+        {
+          "item_id": 111,
+          "name": "菩提子",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.3
+      },
+      "craft_time": 300
+    },
+    {
+      "id": 20,
+      "name": "凝婴丹",
+      "realm_required": 4,
+      "level_required": 2,
+      "ingredients": [
+        {
+          "item_id": 109,
+          "name": "星辰砂",
+          "count": 2
+        },
+        {
+          "item_id": 111,
+          "name": "菩提子",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "exp_bonus": 60000,
+        "hp_bonus": 1000
+      },
+      "craft_time": 240
+    },
+    {
+      "id": 21,
+      "name": "天元丹",
+      "realm_required": 4,
+      "level_required": 3,
+      "ingredients": [
+        {
+          "item_id": 110,
+          "name": "万年灵芝",
+          "count": 5
+        },
+        {
+          "item_id": 111,
+          "name": "菩提子",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "exp_bonus": 100000,
+        "cultivation_speed": 2.5,
+        "duration": 28800
+      },
+      "craft_time": 300
+    },
+    {
+      "id": 22,
+      "name": "太虚丹",
+      "realm_required": 4,
+      "level_required": 5,
+      "ingredients": [
+        {
+          "item_id": 111,
+          "name": "菩提子",
+          "count": 3
+        },
+        {
+          "item_id": 112,
+          "name": "天心花",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "exp_bonus": 80000,
+        "meditation_efficiency": 3.0,
+        "duration": 14400
+      },
+      "craft_time": 300
+    },
+    {
+      "id": 23,
+      "name": "化神破境丹",
+      "realm_required": 5,
+      "level_required": 1,
+      "ingredients": [
+        {
+          "item_id": 112,
+          "name": "天心花",
+          "count": 3
+        },
+        {
+          "item_id": 113,
+          "name": "九转青莲",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.35
+      },
+      "craft_time": 360
+    },
+    {
+      "id": 24,
+      "name": "混元丹",
+      "realm_required": 5,
+      "level_required": 3,
+      "ingredients": [
+        {
+          "item_id": 113,
+          "name": "九转青莲",
+          "count": 3
+        },
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "exp_bonus": 200000,
+        "cultivation_speed": 3.0,
+        "duration": 43200
+      },
+      "craft_time": 360
+    },
+    {
+      "id": 25,
+      "name": "九曲丹",
+      "realm_required": 5,
+      "level_required": 5,
+      "ingredients": [
+        {
+          "item_id": 112,
+          "name": "天心花",
+          "count": 5
+        },
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "exp_bonus": 300000,
+        "hp_bonus": 500,
+        "mp_bonus": 500,
+        "defense_bonus": 500,
+        "attack_bonus": 500
+      },
+      "craft_time": 420
+    },
+    {
+      "id": 26,
+      "name": "炼虚破境丹",
+      "realm_required": 6,
+      "level_required": 1,
+      "ingredients": [
+        {
+          "item_id": 113,
+          "name": "九转青莲",
+          "count": 5
+        },
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 3
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.4
+      },
+      "craft_time": 480
+    },
+    {
+      "id": 27,
+      "name": "大还丹",
+      "realm_required": 6,
+      "level_required": 3,
+      "ingredients": [
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 5
+        },
+        {
+          "item_id": 112,
+          "name": "天心花",
+          "count": 5
+        }
+      ],
+      "effects": {
+        "exp_bonus": 500000,
+        "cultivation_speed": 4.0,
+        "duration": 86400
+      },
+      "craft_time": 600
+    },
+    {
+      "id": 28,
+      "name": "合体破境丹",
+      "realm_required": 7,
+      "level_required": 1,
+      "ingredients": [
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 5
+        },
+        {
+          "item_id": 113,
+          "name": "九转青莲",
+          "count": 5
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.45
+      },
+      "craft_time": 600
+    },
+    {
+      "id": 29,
+      "name": "造化丹",
+      "realm_required": 7,
+      "level_required": 2,
+      "ingredients": [
+        {
+          "item_id": 112,
+          "name": "天心花",
+          "count": 8
+        },
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 5
+        }
+      ],
+      "effects": {
+        "exp_bonus": 1000000,
+        "hp_bonus": 1000,
+        "mp_bonus": 1000,
+        "defense_bonus": 1000,
+        "attack_bonus": 1000
+      },
+      "craft_time": 720
+    },
+    {
+      "id": 30,
+      "name": "大乘破境丹",
+      "realm_required": 8,
+      "level_required": 1,
+      "ingredients": [
+        {
+          "item_id": 112,
+          "name": "天心花",
+          "count": 10
+        },
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 8
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.5
+      },
+      "craft_time": 900
+    },
+    {
+      "id": 31,
+      "name": "飞升丹",
+      "realm_required": 8,
+      "level_required": 3,
+      "ingredients": [
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 10
+        },
+        {
+          "item_id": 113,
+          "name": "九转青莲",
+          "count": 10
+        }
+      ],
+      "effects": {
+        "exp_bonus": 5000000,
+        "hp_bonus": 5000,
+        "mp_bonus": 5000,
+        "defense_bonus": 5000,
+        "attack_bonus": 5000
+      },
+      "craft_time": 1200
+    },
+    {
+      "id": 32,
+      "name": "炼气丹",
+      "type": "breakthrough",
+      "realm_required": 1,
+      "level_required": 3,
+      "ingredients": [
+        {
+          "item_id": 101,
+          "name": "聚气草",
+          "count": 3
+        }
+      ],
+      "qualities": [
+        {
+          "tier": 1,
+          "name": "下品",
+          "breakthrough_bonus": 0.1
+        },
+        {
+          "tier": 2,
+          "name": "中品",
+          "breakthrough_bonus": 0.15
+        },
+        {
+          "tier": 3,
+          "name": "上品",
+          "breakthrough_bonus": 0.2
+        },
+        {
+          "tier": 4,
+          "name": "极品",
+          "breakthrough_bonus": 0.3
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.2
+      },
+      "craft_time": 30
+    },
+    {
+      "id": 33,
+      "name": "金丹",
+      "type": "breakthrough",
+      "realm_required": 2,
+      "level_required": 8,
+      "ingredients": [
+        {
+          "item_id": 106,
+          "name": "龙血草",
+          "count": 3
+        },
+        {
+          "item_id": 107,
+          "name": "玄冰果",
+          "count": 2
+        },
+        {
+          "item_id": 108,
+          "name": "赤焰芝",
+          "count": 1
+        }
+      ],
+      "qualities": [
+        {
+          "tier": 1,
+          "name": "下品",
+          "breakthrough_bonus": 0.1
+        },
+        {
+          "tier": 2,
+          "name": "中品",
+          "breakthrough_bonus": 0.15
+        },
+        {
+          "tier": 3,
+          "name": "上品",
+          "breakthrough_bonus": 0.2
+        },
+        {
+          "tier": 4,
+          "name": "极品",
+          "breakthrough_bonus": 0.3
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.2
+      },
+      "craft_time": 180
+    },
+    {
+      "id": 34,
+      "name": "元婴丹",
+      "type": "breakthrough",
+      "realm_required": 3,
+      "level_required": 8,
+      "ingredients": [
+        {
+          "item_id": 109,
+          "name": "星辰砂",
+          "count": 3
+        },
+        {
+          "item_id": 110,
+          "name": "万年灵芝",
+          "count": 3
+        },
+        {
+          "item_id": 111,
+          "name": "菩提子",
+          "count": 1
+        }
+      ],
+      "qualities": [
+        {
+          "tier": 1,
+          "name": "下品",
+          "breakthrough_bonus": 0.1
+        },
+        {
+          "tier": 2,
+          "name": "中品",
+          "breakthrough_bonus": 0.15
+        },
+        {
+          "tier": 3,
+          "name": "上品",
+          "breakthrough_bonus": 0.2
+        },
+        {
+          "tier": 4,
+          "name": "极品",
+          "breakthrough_bonus": 0.3
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.2
+      },
+      "craft_time": 300
+    },
+    {
+      "id": 35,
+      "name": "化神丹",
+      "type": "breakthrough",
+      "realm_required": 4,
+      "level_required": 8,
+      "ingredients": [
+        {
+          "item_id": 111,
+          "name": "菩提子",
+          "count": 3
+        },
+        {
+          "item_id": 112,
+          "name": "天心花",
+          "count": 2
+        }
+      ],
+      "qualities": [
+        {
+          "tier": 1,
+          "name": "下品",
+          "breakthrough_bonus": 0.1
+        },
+        {
+          "tier": 2,
+          "name": "中品",
+          "breakthrough_bonus": 0.15
+        },
+        {
+          "tier": 3,
+          "name": "上品",
+          "breakthrough_bonus": 0.2
+        },
+        {
+          "tier": 4,
+          "name": "极品",
+          "breakthrough_bonus": 0.3
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.2
+      },
+      "craft_time": 360
+    },
+    {
+      "id": 36,
+      "name": "炼虚丹",
+      "type": "breakthrough",
+      "realm_required": 5,
+      "level_required": 8,
+      "ingredients": [
+        {
+          "item_id": 112,
+          "name": "天心花",
+          "count": 5
+        },
+        {
+          "item_id": 113,
+          "name": "九转青莲",
+          "count": 3
+        }
+      ],
+      "qualities": [
+        {
+          "tier": 1,
+          "name": "下品",
+          "breakthrough_bonus": 0.1
+        },
+        {
+          "tier": 2,
+          "name": "中品",
+          "breakthrough_bonus": 0.15
+        },
+        {
+          "tier": 3,
+          "name": "上品",
+          "breakthrough_bonus": 0.2
+        },
+        {
+          "tier": 4,
+          "name": "极品",
+          "breakthrough_bonus": 0.3
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.2
+      },
+      "craft_time": 480
+    },
+    {
+      "id": 37,
+      "name": "合体丹",
+      "type": "breakthrough",
+      "realm_required": 6,
+      "level_required": 8,
+      "ingredients": [
+        {
+          "item_id": 113,
+          "name": "九转青莲",
+          "count": 5
+        },
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 3
+        },
+        {
+          "item_id": 115,
+          "name": "天魂花",
+          "count": 1
+        }
+      ],
+      "qualities": [
+        {
+          "tier": 1,
+          "name": "下品",
+          "breakthrough_bonus": 0.1
+        },
+        {
+          "tier": 2,
+          "name": "中品",
+          "breakthrough_bonus": 0.15
+        },
+        {
+          "tier": 3,
+          "name": "上品",
+          "breakthrough_bonus": 0.2
+        },
+        {
+          "tier": 4,
+          "name": "极品",
+          "breakthrough_bonus": 0.3
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.2
+      },
+      "craft_time": 600
+    },
+    {
+      "id": 38,
+      "name": "大乘丹",
+      "type": "breakthrough",
+      "realm_required": 7,
+      "level_required": 8,
+      "ingredients": [
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 8
+        },
+        {
+          "item_id": 116,
+          "name": "混沌果",
+          "count": 3
+        }
+      ],
+      "qualities": [
+        {
+          "tier": 1,
+          "name": "下品",
+          "breakthrough_bonus": 0.1
+        },
+        {
+          "tier": 2,
+          "name": "中品",
+          "breakthrough_bonus": 0.15
+        },
+        {
+          "tier": 3,
+          "name": "上品",
+          "breakthrough_bonus": 0.2
+        },
+        {
+          "tier": 4,
+          "name": "极品",
+          "breakthrough_bonus": 0.3
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.2
+      },
+      "craft_time": 900
+    },
+    {
+      "id": 39,
+      "name": "渡劫丹",
+      "type": "breakthrough",
+      "realm_required": 8,
+      "level_required": 8,
+      "ingredients": [
+        {
+          "item_id": 115,
+          "name": "天魂花",
+          "count": 5
+        },
+        {
+          "item_id": 116,
+          "name": "混沌果",
+          "count": 3
+        },
+        {
+          "item_id": 117,
+          "name": "鸿蒙之气",
+          "count": 1
+        }
+      ],
+      "qualities": [
+        {
+          "tier": 1,
+          "name": "下品",
+          "breakthrough_bonus": 0.1
+        },
+        {
+          "tier": 2,
+          "name": "中品",
+          "breakthrough_bonus": 0.15
+        },
+        {
+          "tier": 3,
+          "name": "上品",
+          "breakthrough_bonus": 0.2
+        },
+        {
+          "tier": 4,
+          "name": "极品",
+          "breakthrough_bonus": 0.3
+        }
+      ],
+      "effects": {
+        "breakthrough_bonus": 0.2
+      },
+      "craft_time": 1200
+    },
+    {
+      "id": 40,
+      "name": "顿悟丹",
+      "realm_required": 1,
+      "level_required": 5,
+      "ingredients": [
+        {
+          "item_id": 105,
+          "name": "凝神花",
+          "count": 3
+        },
+        {
+          "item_id": 103,
+          "name": "百年人参",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "effect_type": "direct_exp",
+        "value": 100
+      },
+      "craft_time": 60,
+      "daily_limit": 1
+    },
+    {
+      "id": 41,
+      "name": "回体丹",
+      "type": "energy",
+      "realm_required": 1,
+      "level_required": 2,
+      "ingredients": [
+        {
+          "item_id": 101,
+          "name": "聚气草",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "energy_restore": 30,
+        "tier": 1
+      },
+      "craft_time": 20,
+      "description": "基础体力丹药，服用后恢复30点体力"
+    },
+    {
+      "id": 42,
+      "name": "续命丹",
+      "type": "energy",
+      "realm_required": 2,
+      "level_required": 4,
+      "ingredients": [
+        {
+          "item_id": 102,
+          "name": "灵芝",
+          "count": 3
+        },
+        {
+          "item_id": 103,
+          "name": "百年人参",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "energy_restore": 60,
+        "tier": 2
+      },
+      "craft_time": 40,
+      "description": "中等体力丹药，服用后恢复60点体力"
+    },
+    {
+      "id": 43,
+      "name": "大还丹",
+      "type": "energy",
+      "realm_required": 4,
+      "level_required": 3,
+      "ingredients": [
+        {
+          "item_id": 106,
+          "name": "龙血草",
+          "count": 3
+        },
+        {
+          "item_id": 107,
+          "name": "玄冰果",
+          "count": 2
+        },
+        {
+          "item_id": 108,
+          "name": "赤焰芝",
+          "count": 1
+        }
+      ],
+      "effects": {
+        "energy_restore": 120,
+        "tier": 3
+      },
+      "craft_time": 90,
+      "description": "高级体力丹药，服用后恢复120点体力"
+    },
+    {
+      "id": 44,
+      "name": "太乙回元丹",
+      "type": "energy",
+      "realm_required": 6,
+      "level_required": 5,
+      "ingredients": [
+        {
+          "item_id": 111,
+          "name": "菩提子",
+          "count": 3
+        },
+        {
+          "item_id": 112,
+          "name": "天心花",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "energy_restore": 250,
+        "tier": 4
+      },
+      "craft_time": 180,
+      "description": "极品体力丹药，服用后恢复250点体力"
+    },
+    {
+      "id": 45,
+      "name": "九转续命丹",
+      "type": "energy",
+      "realm_required": 8,
+      "level_required": 6,
+      "ingredients": [
+        {
+          "item_id": 113,
+          "name": "九转青莲",
+          "count": 3
+        },
+        {
+          "item_id": 114,
+          "name": "凤凰羽",
+          "count": 2
+        }
+      ],
+      "effects": {
+        "energy_restore": 500,
+        "tier": 5
+      },
+      "craft_time": 360,
+      "description": "传说级体力丹药，服用后恢复500点体力"
+    }
+  ],
+  "ingredients": [
+    {
+      "id": 101,
+      "name": "聚气草",
+      "rarity": 1,
+      "description": "最常见的灵草，蕴含微弱灵气"
+    },
+    {
+      "id": 102,
+      "name": "灵芝",
+      "rarity": 2,
+      "description": "百年灵芝，固本培元"
+    },
+    {
+      "id": 103,
+      "name": "百年人参",
+      "rarity": 3,
+      "description": "吸纳百年天地灵气，珍贵药材"
+    },
+    {
+      "id": 104,
+      "name": "灵泉之水",
+      "rarity": 2,
+      "description": "灵脉中涌出的泉水，蕴含纯净灵力"
+    },
+    {
+      "id": 105,
+      "name": "凝神花",
+      "rarity": 3,
+      "description": "生长在灵气浓郁之地的奇花，有凝神之效"
+    },
+    {
+      "id": 106,
+      "name": "龙血草",
+      "rarity": 4,
+      "description": "沾染真龙之血的异草，蕴含磅礴血气"
+    },
+    {
+      "id": 107,
+      "name": "玄冰果",
+      "rarity": 4,
+      "description": "生长于极寒之地的冰属性灵果"
+    },
+    {
+      "id": 108,
+      "name": "赤焰芝",
+      "rarity": 4,
+      "description": "火属性灵芝，生于地火岩浆之畔"
+    },
+    {
+      "id": 109,
+      "name": "星辰砂",
+      "rarity": 5,
+      "description": "蕴含星辰之力的神秘砂砾"
+    },
+    {
+      "id": 110,
+      "name": "万年灵芝",
+      "rarity": 5,
+      "description": "生长万年的灵芝皇，药力磅礴"
+    },
+    {
+      "id": 111,
+      "name": "菩提子",
+      "rarity": 5,
+      "description": "悟道树所结圣果，有助参悟天道"
+    },
+    {
+      "id": 112,
+      "name": "天心花",
+      "rarity": 6,
+      "description": "天道之痕凝结的花朵，蕴含天地法则"
+    },
+    {
+      "id": 113,
+      "name": "九转青莲",
+      "rarity": 6,
+      "description": "九转方能成型的无上灵药"
+    },
+    {
+      "id": 114,
+      "name": "凤凰羽",
+      "rarity": 7,
+      "description": "凤凰涅槃时落下的神羽，蕴含不死之力"
+    },
+    {
+      "id": 115,
+      "name": "天魂花",
+      "rarity": 7,
+      "description": "天道之魂凝聚的奇花，蕴含本源法则"
+    },
+    {
+      "id": 116,
+      "name": "混沌果",
+      "rarity": 7,
+      "description": "混沌中诞生的先天灵果，蕴含开天辟地之力"
+    },
+    {
+      "id": 117,
+      "name": "鸿蒙之气",
+      "rarity": 8,
+      "description": "天地未开时的原始之气，无上至宝"
+    }
+  ]
+}

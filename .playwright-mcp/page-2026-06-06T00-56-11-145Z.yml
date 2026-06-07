@@ -1,0 +1,220 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - navigation [ref=e5]:
+      - generic [ref=e6]:
+        - link "🏠 首页" [ref=e7] [cursor=pointer]:
+          - /url: "#/game"
+          - generic [ref=e8]: 🏠
+          - generic [ref=e9]: 首页
+        - link "🧩 修炼" [ref=e10] [cursor=pointer]:
+          - /url: "#/game/cultivation"
+          - generic [ref=e11]: 🧩
+          - generic [ref=e12]: 修炼
+        - link "💪 炼体" [ref=e13] [cursor=pointer]:
+          - /url: "#/game/body"
+          - generic [ref=e14]: 💪
+          - generic [ref=e15]: 炼体
+        - link "✨ 法宝" [ref=e16] [cursor=pointer]:
+          - /url: "#/game/artifact"
+          - generic [ref=e17]: ✨
+          - generic [ref=e18]: 法宝
+        - link "🐾 灵兽" [ref=e19] [cursor=pointer]:
+          - /url: "#/game/pet"
+          - generic [ref=e20]: 🐾
+          - generic [ref=e21]: 灵兽
+        - link "🏍 坐骑" [ref=e22] [cursor=pointer]:
+          - /url: "#/game/mount"
+          - generic [ref=e23]: 🏍
+          - generic [ref=e24]: 坐骑
+        - link "☑ 阵法" [ref=e25] [cursor=pointer]:
+          - /url: "#/game/formation"
+          - generic [ref=e26]: ☑
+          - generic [ref=e27]: 阵法
+        - link "⚔ 战斗" [ref=e28] [cursor=pointer]:
+          - /url: "#/game/combat"
+          - generic [ref=e29]: ⚔
+          - generic [ref=e30]: 战斗
+        - link "🏰 心魔塔" [ref=e31] [cursor=pointer]:
+          - /url: "#/game/tower"
+          - generic [ref=e32]: 🏰
+          - generic [ref=e33]: 心魔塔
+        - link "🐉 BOSS" [ref=e34] [cursor=pointer]:
+          - /url: "#/game/boss"
+          - generic [ref=e35]: 🐉
+          - generic [ref=e36]: BOSS
+        - link "🏝 秘境" [ref=e37] [cursor=pointer]:
+          - /url: "#/game/dungeon"
+          - generic [ref=e38]: 🏝
+          - generic [ref=e39]: 秘境
+        - link "📅 签到" [ref=e40] [cursor=pointer]:
+          - /url: "#/game/checkin"
+          - generic [ref=e41]: 📅
+          - generic [ref=e42]: 签到
+        - link "🎯 每日" [ref=e43] [cursor=pointer]:
+          - /url: "#/game/daily-tasks"
+          - generic [ref=e44]: 🎯
+          - generic [ref=e45]: 每日
+        - link "🛍 商城" [ref=e46] [cursor=pointer]:
+          - /url: "#/game/shop"
+          - generic [ref=e47]: 🛍
+          - generic [ref=e48]: 商城
+        - link "🎒 背包" [ref=e49] [cursor=pointer]:
+          - /url: "#/game/inventory"
+          - generic [ref=e50]: 🎒
+          - generic [ref=e51]: 背包
+        - link "🕵 黑市" [ref=e52] [cursor=pointer]:
+          - /url: "#/game/blackmarket"
+          - generic [ref=e53]: 🕵
+          - generic [ref=e54]: 黑市
+        - link "🏆 成就" [ref=e55] [cursor=pointer]:
+          - /url: "#/game/achievement"
+          - generic [ref=e56]: 🏆
+          - generic [ref=e57]: 成就
+        - link "🌍 世界" [ref=e58] [cursor=pointer]:
+          - /url: "#/game/world"
+          - generic [ref=e59]: 🌍
+          - generic [ref=e60]: 世界
+        - link "🧭 藏宝图" [ref=e61] [cursor=pointer]:
+          - /url: "#/game/treasure"
+          - generic [ref=e62]: 🧭
+          - generic [ref=e63]: 藏宝图
+        - link "♻ 轮回" [ref=e64] [cursor=pointer]:
+          - /url: "#/game/rebirth"
+          - generic [ref=e65]: ♻
+          - generic [ref=e66]: 轮回
+        - link "📚 百科" [ref=e67] [cursor=pointer]:
+          - /url: "#/game/help"
+          - generic [ref=e68]: 📚
+          - generic [ref=e69]: 百科
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]: 体力
+        - generic [ref=e73]: 0 / 100
+      - 'generic "包含功法加成: +0%" [ref=e76]': "修炼: +10/min"
+      - generic [ref=e77]:
+        - generic [ref=e78]: 已满
+        - generic [ref=e79]:
+          - button "丹药" [ref=e80] [cursor=pointer]
+          - button "打坐" [ref=e81] [cursor=pointer]
+    - main [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e86]: 加载中...
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e90]: 修
+            - generic [ref=e91]:
+              - generic [ref=e92]: 修仙者
+              - generic [ref=e93]: Lv.1 凡人
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: 💰
+              - generic [ref=e97]: "0"
+            - generic [ref=e98]:
+              - generic [ref=e99]: 💎
+              - generic [ref=e100]: "0"
+            - button "⚙️" [ref=e101] [cursor=pointer]
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - generic [ref=e105]: ⚔️
+              - generic [ref=e106]:
+                - generic [ref=e107]: 战力
+                - generic [ref=e108]: "103"
+            - generic [ref=e109]:
+              - generic [ref=e110]: ❤️
+              - generic [ref=e111]:
+                - generic [ref=e112]: 生命
+                - generic [ref=e113]: 100/100
+            - generic [ref=e114]:
+              - generic [ref=e115]: 💙
+              - generic [ref=e116]:
+                - generic [ref=e117]: 灵力
+                - generic [ref=e118]: 50/50
+          - generic [ref=e119]:
+            - generic [ref=e120]:
+              - generic [ref=e121]: 攻击
+              - generic [ref=e122]: "10"
+            - generic [ref=e123]:
+              - generic [ref=e124]: 防御
+              - generic [ref=e125]: "5"
+            - generic [ref=e126]:
+              - generic [ref=e127]: 速度
+              - generic [ref=e128]: "10"
+            - generic [ref=e129]:
+              - generic [ref=e130]: 暴击
+              - generic [ref=e131]: 0%
+        - generic [ref=e132]:
+          - heading "快速入口" [level=3] [ref=e133]
+          - generic [ref=e134]:
+            - link "🧘 修炼" [ref=e135] [cursor=pointer]:
+              - /url: "#/game/cultivation"
+              - generic [ref=e136]: 🧘
+              - generic [ref=e137]: 修炼
+            - link "📖 功法" [ref=e138] [cursor=pointer]:
+              - /url: "#/game/cultivation"
+              - generic [ref=e139]: 📖
+              - generic [ref=e140]: 功法
+            - link "⚔️ 战斗" [ref=e141] [cursor=pointer]:
+              - /url: "#/game/combat"
+              - generic [ref=e142]: ⚔️
+              - generic [ref=e143]: 战斗
+            - link "🏆 竞技" [ref=e144] [cursor=pointer]:
+              - /url: "#/game/combat"
+              - generic [ref=e145]: 🏆
+              - generic [ref=e146]: 竞技
+            - link "🎒 背包" [ref=e147] [cursor=pointer]:
+              - /url: "#/game/inventory"
+              - generic [ref=e148]: 🎒
+              - generic [ref=e149]: 背包
+            - link "🛡️ 装备" [ref=e150] [cursor=pointer]:
+              - /url: "#/game/inventory"
+              - generic [ref=e151]: 🛡️
+              - generic [ref=e152]: 装备
+            - link "🗺️ 探索" [ref=e153] [cursor=pointer]:
+              - /url: "#/game/world"
+              - generic [ref=e154]: 🗺️
+              - generic [ref=e155]: 探索
+            - link "🏛️ 宗门" [ref=e156] [cursor=pointer]:
+              - /url: "#/game/social"
+              - generic [ref=e157]: 🏛️
+              - generic [ref=e158]: 宗门
+            - link "📊 排行" [ref=e159] [cursor=pointer]:
+              - /url: "#/game/ranking"
+              - generic [ref=e160]: 📊
+              - generic [ref=e161]: 排行
+            - link "🏪 交易" [ref=e162] [cursor=pointer]:
+              - /url: "#/game/trade"
+              - generic [ref=e163]: 🏪
+              - generic [ref=e164]: 交易
+            - link "👥 好友" [ref=e165] [cursor=pointer]:
+              - /url: "#/game/social"
+              - generic [ref=e166]: 👥
+              - generic [ref=e167]: 好友
+            - link "💬 聊天" [ref=e168] [cursor=pointer]:
+              - /url: "#/game/social"
+              - generic [ref=e169]: 💬
+              - generic [ref=e170]: 聊天
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - generic [ref=e173]: 🎁
+            - generic [ref=e174]: 每日签到领灵石
+          - generic [ref=e175]:
+            - generic [ref=e176]: ⚡
+            - generic [ref=e177]: 双倍修炼进行中 (剩余2h)
+        - navigation [ref=e178]:
+          - button "🏠 主页" [ref=e179] [cursor=pointer]:
+            - generic [ref=e180]: 🏠
+            - generic [ref=e181]: 主页
+          - button "🧘 修炼" [ref=e182] [cursor=pointer]:
+            - generic [ref=e183]: 🧘
+            - generic [ref=e184]: 修炼
+          - button "⚔️ 战斗" [ref=e185] [cursor=pointer]:
+            - generic [ref=e186]: ⚔️
+            - generic [ref=e187]: 战斗
+          - button "🎒 背包" [ref=e188] [cursor=pointer]:
+            - generic [ref=e189]: 🎒
+            - generic [ref=e190]: 背包
+          - button "💬 聊天" [ref=e191] [cursor=pointer]:
+            - generic [ref=e192]: 💬
+            - generic [ref=e193]: 聊天
+  - button "🎨" [ref=e195] [cursor=pointer]

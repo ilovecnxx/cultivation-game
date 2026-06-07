@@ -1,0 +1,128 @@
+- generic [ref=e3]:
+  - banner [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: ☯
+      - generic [ref=e9]: 修仙世界
+      - navigation [ref=e10]:
+        - generic [ref=e11] [cursor=pointer]: 宗门
+        - generic [ref=e12] [cursor=pointer]: 地图
+        - generic [ref=e13] [cursor=pointer]: 洞府
+        - generic [ref=e14] [cursor=pointer]: 坊市
+        - generic [ref=e15] [cursor=pointer]: 拍卖行
+        - generic [ref=e16] [cursor=pointer]: 修炼
+        - generic [ref=e17] [cursor=pointer]: 背包
+        - generic [ref=e18] [cursor=pointer]: 灵兽
+        - generic [ref=e19] [cursor=pointer]: 法宝
+        - generic [ref=e20] [cursor=pointer]: 排行
+        - generic [ref=e21] [cursor=pointer]: 传音
+        - generic [ref=e22] [cursor=pointer]: 设置
+      - generic [ref=e23]:
+        - generic [ref=e24]: 1,283 在线修士
+        - generic [ref=e26]: 1.3万 注册修士
+      - button "🌙" [ref=e27] [cursor=pointer]
+  - generic [ref=e30]:
+    - generic [ref=e31]: 📢
+    - generic [ref=e32]: 【宗门大战】每周六20:00开启 · 【灵脉争夺】修炼速度+20% · 【世界Boss】夔牛即将刷新 · 新道友不断涌入修仙世界
+  - main [ref=e35]:
+    - complementary [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: 修
+          - generic [ref=e40]:
+            - generic [ref=e41]: 修仙者
+            - generic [ref=e42]:
+              - generic [ref=e43]: 凡人
+              - generic [ref=e44]: Lv.1
+              - generic [ref=e45]: 无灵根
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - generic [ref=e48]: ❤️
+            - generic [ref=e51]: 100/100
+          - generic [ref=e52]:
+            - generic [ref=e53]: 💙
+            - generic [ref=e56]: 50/50
+        - generic [ref=e57]:
+          - generic [ref=e58]:
+            - text: ⚔️
+            - generic [ref=e59]: "0"
+            - generic [ref=e60]: 战力
+          - generic [ref=e61]:
+            - text: 🗡️
+            - generic [ref=e62]: "10"
+            - generic [ref=e63]: 攻击
+          - generic [ref=e64]:
+            - text: 🛡️
+            - generic [ref=e65]: "5"
+            - generic [ref=e66]: 防御
+          - generic [ref=e67]:
+            - text: 💨
+            - generic [ref=e68]: "100"
+            - generic [ref=e69]: 速度
+          - generic [ref=e70]:
+            - text: 💥
+            - generic [ref=e71]: 5%
+            - generic [ref=e72]: 暴击
+          - generic [ref=e73]:
+            - text: 💰
+            - generic [ref=e74]: "0"
+            - generic [ref=e75]: 灵石
+      - generic [ref=e76]:
+        - generic [ref=e79]:
+          - generic [ref=e81]: 修为
+          - generic [ref=e83]:
+            - generic [ref=e84]: 0/5000
+            - generic [ref=e85]: +12/分
+        - generic [ref=e86]:
+          - button "出关" [active] [ref=e150] [cursor=pointer]
+          - button "突破" [ref=e88] [cursor=pointer]
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - text: 🗡️
+          - generic [ref=e92]: 武器
+        - generic [ref=e93]:
+          - text: 👑
+          - generic [ref=e94]: 发冠
+        - generic [ref=e95]:
+          - text: 👘
+          - generic [ref=e96]: 法袍
+        - generic [ref=e97]:
+          - text: 🛡️
+          - generic [ref=e98]: 护腕
+        - generic [ref=e99]:
+          - text: 🎗️
+          - generic [ref=e100]: 腰带
+        - generic [ref=e101]:
+          - text: 👢
+          - generic [ref=e102]: 云靴
+        - generic [ref=e103]:
+          - text: 📿
+          - generic [ref=e104]: 项链
+        - generic [ref=e105]:
+          - text: 💍
+          - generic [ref=e106]: 戒指
+        - generic [ref=e107]:
+          - text: 🔮
+          - generic [ref=e108]: 法宝
+        - generic [ref=e109]:
+          - text: 🐉
+          - generic [ref=e110]: 坐骑
+    - generic [ref=e111]:
+      - generic [ref=e112]:
+        - heading "修仙世界" [level=1] [ref=e114]
+        - paragraph [ref=e115]: 修仙悟道 长生逍遥
+      - generic [ref=e116]:
+        - generic [ref=e118] [cursor=pointer]:
+          - generic [ref=e120]: ✓
+          - generic [ref=e121]: 练气
+        - generic [ref=e122] [cursor=pointer]:
+          - generic [ref=e124]: ✓
+          - generic [ref=e125]: 筑基
+        - generic [ref=e129] [cursor=pointer]: 金丹
+        - generic [ref=e132] [cursor=pointer]: 元婴
+        - generic [ref=e135] [cursor=pointer]: 化神
+        - generic [ref=e138] [cursor=pointer]: 炼虚
+        - generic [ref=e141] [cursor=pointer]: 合体
+        - generic [ref=e144] [cursor=pointer]: 大乘
+        - generic [ref=e147] [cursor=pointer]: 渡劫
+      - paragraph [ref=e148]: 修仙之路，步步登天
+  - contentinfo [ref=e149]: © 2026 修仙世界 · 以文为本 以心入道

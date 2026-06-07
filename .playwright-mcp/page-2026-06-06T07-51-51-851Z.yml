@@ -1,0 +1,121 @@
+- generic [ref=e3]:
+  - banner [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: ☯
+      - generic [ref=e9]: 修仙世界
+      - navigation [ref=e10]:
+        - generic [ref=e11] [cursor=pointer]: 宗门
+        - generic [ref=e12] [cursor=pointer]: 地图
+        - generic [ref=e13] [cursor=pointer]: 洞府
+        - generic [ref=e14] [cursor=pointer]: 坊市
+        - generic [ref=e15] [cursor=pointer]: 拍卖行
+        - generic [ref=e16] [cursor=pointer]: 修炼
+        - generic [ref=e17] [cursor=pointer]: 背包
+        - generic [ref=e18] [cursor=pointer]: 灵兽
+        - generic [ref=e19] [cursor=pointer]: 法宝
+        - generic [ref=e20] [cursor=pointer]: 排行
+        - generic [ref=e21] [cursor=pointer]: 传音
+        - generic [ref=e22] [cursor=pointer]: 设置
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - generic [ref=e25]: 1,283 在线修士
+          - generic [ref=e27]: 1.3万 注册修士
+        - button "🌙" [ref=e28] [cursor=pointer]
+  - main [ref=e31]:
+    - complementary [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: 修
+          - generic [ref=e36]:
+            - generic [ref=e37]: 修仙者
+            - generic [ref=e38]:
+              - generic [ref=e39]: 凡人
+              - generic [ref=e40]: Lv.1
+              - generic [ref=e41]: 无灵根
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]: ❤️
+            - generic [ref=e47]: 100/100
+          - generic [ref=e48]:
+            - generic [ref=e49]: 💙
+            - generic [ref=e52]: 50/50
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - text: ⚔️
+            - generic [ref=e55]: "0"
+            - generic [ref=e56]: 战力
+          - generic [ref=e57]:
+            - text: 🗡️
+            - generic [ref=e58]: "10"
+            - generic [ref=e59]: 攻击
+          - generic [ref=e60]:
+            - text: 🛡️
+            - generic [ref=e61]: "5"
+            - generic [ref=e62]: 防御
+          - generic [ref=e63]:
+            - text: 💨
+            - generic [ref=e64]: "100"
+            - generic [ref=e65]: 速度
+          - generic [ref=e66]:
+            - text: 💥
+            - generic [ref=e67]: 5%
+            - generic [ref=e68]: 暴击
+          - generic [ref=e69]:
+            - text: 💰
+            - generic [ref=e70]: "0"
+            - generic [ref=e71]: 灵石
+      - generic [ref=e72]:
+        - heading "🧘 修炼进度" [level=4] [ref=e73]
+        - paragraph [ref=e75]: 灵力 0/5000
+        - button "开始打坐" [ref=e76] [cursor=pointer]
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - text: 🗡️
+          - generic [ref=e80]: 武器
+        - generic [ref=e81]:
+          - text: 👑
+          - generic [ref=e82]: 发冠
+        - generic [ref=e83]:
+          - text: 👘
+          - generic [ref=e84]: 法袍
+        - generic [ref=e85]:
+          - text: 🛡️
+          - generic [ref=e86]: 护腕
+        - generic [ref=e87]:
+          - text: 🎗️
+          - generic [ref=e88]: 腰带
+        - generic [ref=e89]:
+          - text: 👢
+          - generic [ref=e90]: 云靴
+        - generic [ref=e91]:
+          - text: 📿
+          - generic [ref=e92]: 项链
+        - generic [ref=e93]:
+          - text: 💍
+          - generic [ref=e94]: 戒指
+        - generic [ref=e95]:
+          - text: 🔮
+          - generic [ref=e96]: 法宝
+        - generic [ref=e97]:
+          - text: 🐉
+          - generic [ref=e98]: 坐骑
+    - generic [ref=e99]:
+      - generic [ref=e100]:
+        - heading "修仙世界" [level=1] [ref=e102]
+        - paragraph [ref=e103]: 修仙悟道 长生逍遥
+      - generic [ref=e104]:
+        - generic [ref=e106] [cursor=pointer]:
+          - generic [ref=e108]: ✓
+          - generic [ref=e109]: 练气
+        - generic [ref=e110] [cursor=pointer]:
+          - generic [ref=e112]: ✓
+          - generic [ref=e113]: 筑基
+        - generic [ref=e117] [cursor=pointer]: 金丹
+        - generic [ref=e120] [cursor=pointer]: 元婴
+        - generic [ref=e123] [cursor=pointer]: 化神
+        - generic [ref=e126] [cursor=pointer]: 炼虚
+        - generic [ref=e129] [cursor=pointer]: 合体
+        - generic [ref=e132] [cursor=pointer]: 大乘
+        - generic [ref=e135] [cursor=pointer]: 渡劫
+      - paragraph [ref=e136]: 大道无形，生育天地
+  - contentinfo [ref=e137]: © 2026 修仙世界 · 以文为本 以心入道

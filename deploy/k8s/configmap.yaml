@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cultivation-config
+  namespace: cultivation-game
+data:
+  GATEWAY_ADDR: "gateway:8080"
+  AUTH_SERVICE_ADDR: "auth:50060"
+  PLAYER_SERVICE_ADDR: "player:50061"
+  CULTIVATION_SERVICE_ADDR: "cultivation:50062"
+  COMBAT_SERVICE_ADDR: "combat:50063"
+  SOCIAL_SERVICE_ADDR: "social:50064"
+  WORLD_SERVICE_ADDR: "world:50065"
+  REDIS_ADDR: "redis:6379"
+  MYSQL_DSN: "root:${MYSQL_ROOT_PASSWORD}@tcp(mysql:3306)/cultivation?charset=utf8mb4&parseTime=True"
+  MONGO_URI: "mongodb://mongo:27017/cultivation"
+  LOG_LEVEL: "info"

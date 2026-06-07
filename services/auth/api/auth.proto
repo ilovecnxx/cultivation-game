@@ -1,0 +1,95 @@
+// Package proto 定义认证服务的 gRPC 接口和消息类型。
+syntax = "proto3";
+
+package auth;
+option go_package = "cultivation-game/services/auth/api";
+
+// AuthService 认证服务，负责用户注册、登录、令牌刷新和登出。
+service AuthService {
+  // Login 用户登录：验证用户名密码，返回 Token 对。
+  rpc Login(LoginRequest) returns (LoginResponse);
+
+  // Register 用户注册：创建账号和玩家角色。
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+
+  // TokenRefresh 刷新访问令牌：使用 Refresh Token 换取新的 Access Token。
+  rpc TokenRefresh(TokenRefreshRequest) returns (TokenRefreshResponse);
+
+  // Logout 登出：使当前会话失效。
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+
+  // ValidateToken 验证 Access Token 是否有效（内部服务调用）。
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
+}
+
+// LoginRequest 登录请求。
+message LoginRequest {
+  string username = 1;   // 用户名
+  string password = 2;   // 密码
+  string device_id = 3;  // 设备标识（可选）
+}
+
+// LoginResponse 登录响应。
+message LoginResponse {
+  uint64 user_id = 1;          // 用户 ID
+  uint64 player_id = 2;        // 玩家 ID
+  string access_token = 3;     // 访问令牌
+  string refresh_token = 4;    // 刷新令牌
+  int64 expires_at = 5;        // 访问令牌过期时间戳（秒）
+  int64 refresh_expires_at = 6; // 刷新令牌过期时间戳（秒）
+  bool is_new_player = 7;      // 是否新玩家
+}
+
+// RegisterRequest 注册请求。
+message RegisterRequest {
+  string username = 1;    // 用户名
+  string password = 2;    // 密码
+  string nickname = 3;    // 角色昵称
+  string spirit_root = 4; // 灵根选择（如 "金灵根", "木灵根"）
+}
+
+// RegisterResponse 注册响应。
+message RegisterResponse {
+  uint64 user_id = 1;          // 用户 ID
+  uint64 player_id = 2;        // 玩家 ID
+  string access_token = 3;     // 访问令牌
+  string refresh_token = 4;    // 刷新令牌
+  int64 expires_at = 5;        // 访问令牌过期时间戳
+}
+
+// TokenRefreshRequest 令牌刷新请求。
+message TokenRefreshRequest {
+  string refresh_token = 1; // 刷新令牌
+  uint64 user_id = 2;       // 用户 ID
+}
+
+// TokenRefreshResponse 令牌刷新响应。
+message TokenRefreshResponse {
+  string access_token = 1;     // 新的访问令牌
+  string refresh_token = 2;    // 新的刷新令牌（可选轮换）
+  int64 expires_at = 3;        // 新的过期时间戳
+}
+
+// LogoutRequest 登出请求。
+message LogoutRequest {
+  uint64 user_id = 1;    // 用户 ID
+  string access_token = 2; // 要失效的访问令牌
+}
+
+// LogoutResponse 登出响应。
+message LogoutResponse {
+  bool success = 1; // 是否成功
+}
+
+// ValidateTokenRequest 令牌验证请求（内部服务使用）。
+message ValidateTokenRequest {
+  string access_token = 1; // 访问令牌
+}
+
+// ValidateTokenResponse 令牌验证响应。
+message ValidateTokenResponse {
+  uint64 user_id = 1;    // 用户 ID
+  uint64 player_id = 2;  // 玩家 ID
+  string username = 3;   // 用户名
+  bool valid = 4;        // 是否有效
+}

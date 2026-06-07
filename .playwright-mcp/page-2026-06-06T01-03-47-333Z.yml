@@ -1,0 +1,36 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - navigation [ref=e5]:
+      - generic [ref=e6]:
+        - link "🏠 首页" [ref=e7] [cursor=pointer]:
+          - /url: "#/game"
+          - generic [ref=e8]: 🏠
+          - generic [ref=e9]: 首页
+        - link "🧘 修炼" [ref=e10] [cursor=pointer]:
+          - /url: "#/game/cultivation"
+          - generic [ref=e11]: 🧘
+          - generic [ref=e12]: 修炼
+        - link "⚔ 战斗" [ref=e13] [cursor=pointer]:
+          - /url: "#/game/combat"
+          - generic [ref=e14]: ⚔
+          - generic [ref=e15]: 战斗
+        - link "🎒 背包" [ref=e16] [cursor=pointer]:
+          - /url: "#/game/inventory"
+          - generic [ref=e17]: 🎒
+          - generic [ref=e18]: 背包
+        - link "💬 社交" [ref=e19] [cursor=pointer]:
+          - /url: "#/game/social"
+          - generic [ref=e20]: 💬
+          - generic [ref=e21]: 社交
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e24]: 体力
+        - generic [ref=e25]: 0 / 100
+      - 'generic "包含功法加成: +0%" [ref=e28]': "修炼: +10/min"
+      - generic [ref=e29]:
+        - generic [ref=e30]: 已满
+        - generic [ref=e31]:
+          - button "丹药" [ref=e32] [cursor=pointer]
+          - button "打坐" [ref=e33] [cursor=pointer]
+    - main [ref=e34]
+  - button "🎨" [ref=e47] [cursor=pointer]

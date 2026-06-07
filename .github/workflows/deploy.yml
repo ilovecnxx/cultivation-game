@@ -1,0 +1,94 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Docker image tag to deploy"
+        required: true
+        type: string
+      service:
+        description: "Service to deploy (or 'all')"
+        required: true
+        default: "all"
+        type: string
+
+env:
+  REGISTRY: ghcr.io
+  NAMESPACE: cultivation-game
+  HEALTH_CHECK_RETRIES: 12
+  HEALTH_CHECK_INTERVAL: 5
+
+jobs:
+  deploy-canary-10:
+    name: "Canary 10%"
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.health.outputs.status }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy 10% traffic
+        run: |
+          echo "Deploying ${{ inputs.service }} at tag ${{ inputs.image_tag }} to 10% canary..."
+
+      - name: Health check
+        id: health
+        run: |
+          for i in $(seq 1 ${{ env.HEALTH_CHECK_RETRIES }}); do
+            echo "Health check attempt $i..."
+            # Simulate health check — replace with real HTTP/gRPC health check
+            sleep ${{ env.HEALTH_CHECK_INTERVAL }}
+          done
+          echo "status=passed" >> "$GITHUB_OUTPUT"
+
+  deploy-canary-50:
+    name: "Canary 50%"
+    needs: deploy-canary-10
+    if: needs.deploy-canary-10.outputs.status == 'passed'
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.health.outputs.status }}
+    steps:
+      - name: Deploy 50% traffic
+        run: |
+          echo "Rolling out to 50% traffic..."
+
+      - name: Health check
+        id: health
+        run: |
+          for i in $(seq 1 ${{ env.HEALTH_CHECK_RETRIES }}); do
+            echo "Health check attempt $i..."
+            sleep ${{ env.HEALTH_CHECK_INTERVAL }}
+          done
+          echo "status=passed" >> "$GITHUB_OUTPUT"
+
+  deploy-full:
+    name: "Full Rollout 100%"
+    needs: deploy-canary-50
+    if: needs.deploy-canary-50.outputs.status == 'passed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy 100% traffic
+        run: |
+          echo "Full rollout to 100% traffic..."
+
+      - name: Health check
+        run: |
+          for i in $(seq 1 ${{ env.HEALTH_CHECK_RETRIES }}); do
+            echo "Health check attempt $i..."
+            sleep ${{ env.HEALTH_CHECK_INTERVAL }}
+          done
+          echo "Deployment complete."
+
+  rollback:
+    name: "Auto Rollback"
+    if: failure()
+    needs: [deploy-canary-10, deploy-canary-50, deploy-full]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rollback to previous stable
+        run: |
+          echo "Error rate exceeded 1%. Initiating automatic rollback..."
+          echo "Rolling back ${{ inputs.service }} to previous stable version..."

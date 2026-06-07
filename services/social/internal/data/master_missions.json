@@ -1,0 +1,28 @@
+{
+  "missions": [
+    {
+      "type": "cultivate",
+      "name": "共同修炼",
+      "description": "与徒弟共同修炼30分钟",
+      "required": 1,
+      "reward_mv": 50,
+      "active_duration_seconds": 1800
+    },
+    {
+      "type": "combat",
+      "name": "护法降妖",
+      "description": "师父帮助徒弟击败怪物",
+      "required": 5,
+      "reward_mv": 30,
+      "active_duration_seconds": 0
+    },
+    {
+      "type": "tribute",
+      "name": "弟子进贡",
+      "description": "徒弟向师父进贡修炼资源",
+      "required": 1,
+      "reward_mv": 20,
+      "active_duration_seconds": 0
+    }
+  ]
+}

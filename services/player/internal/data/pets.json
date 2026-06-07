@@ -1,0 +1,104 @@
+{
+  "species": [
+    {
+      "id": "red_phoenix",
+      "name": "赤焰鸟",
+      "star": 1,
+      "base_hp": 150,
+      "base_atk": 50,
+      "base_def": 20,
+      "skill_id": 1,
+      "description": "通体赤红的火属性灵鸟，幼年期便身披烈焰"
+    },
+    {
+      "id": "ice_butterfly",
+      "name": "冰晶蝶",
+      "star": 1,
+      "base_hp": 120,
+      "base_atk": 40,
+      "base_def": 30,
+      "skill_id": 2,
+      "description": "栖息于极寒之地的冰属性灵蝶，双翼凝结冰晶"
+    },
+    {
+      "id": "thunder_tiger",
+      "name": "雷纹虎",
+      "star": 2,
+      "base_hp": 250,
+      "base_atk": 80,
+      "base_def": 50,
+      "skill_id": 3,
+      "description": "身披雷电纹路的猛虎，怒吼引动天雷"
+    },
+    {
+      "id": "wind_fox",
+      "name": "风灵狐",
+      "star": 2,
+      "base_hp": 200,
+      "base_atk": 70,
+      "base_def": 40,
+      "skill_id": 4,
+      "description": "御风而行的灵狐，速度极快，难以捕捉"
+    },
+    {
+      "id": "earth_turtle",
+      "name": "土甲龟",
+      "star": 1,
+      "base_hp": 300,
+      "base_atk": 30,
+      "base_def": 80,
+      "skill_id": 5,
+      "description": "背负厚重大地的灵龟，防御力极高"
+    },
+    {
+      "id": "shadow_cat",
+      "name": "暗影猫",
+      "star": 3,
+      "base_hp": 280,
+      "base_atk": 110,
+      "base_def": 60,
+      "skill_id": 6,
+      "description": "穿梭于暗影之中的灵猫，擅长偷袭"
+    },
+    {
+      "id": "light_sparrow",
+      "name": "光明雀",
+      "star": 3,
+      "base_hp": 260,
+      "base_atk": 90,
+      "base_def": 70,
+      "skill_id": 7,
+      "description": "身具光明的灵雀，降下圣光治疗同伴"
+    },
+    {
+      "id": "scorpion_king",
+      "name": "毒蝎王",
+      "star": 2,
+      "base_hp": 220,
+      "base_atk": 95,
+      "base_def": 55,
+      "skill_id": 8,
+      "description": "千年毒蝎成精，尾针蕴含剧毒"
+    },
+    {
+      "id": "moon_wolf",
+      "name": "幻月狼",
+      "star": 4,
+      "base_hp": 400,
+      "base_atk": 140,
+      "base_def": 80,
+      "skill_id": 9,
+      "description": "吸收月华修炼的灵狼，月圆之夜实力倍增"
+    },
+    {
+      "id": "nine_heaven_phoenix",
+      "name": "九天凤凰",
+      "star": 5,
+      "base_hp": 600,
+      "base_atk": 200,
+      "base_def": 120,
+      "skill_id": 10,
+      "description": "传说级神兽，涅槃重生的九天凤凰，万兽朝拜"
+    }
+  ]
+}

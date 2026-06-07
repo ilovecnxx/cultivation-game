@@ -1,0 +1,71 @@
+syntax = "proto3";
+package game;
+option go_package = "cultivation-game/proto/social";
+
+message ChatSendReq {
+  uint32 channel = 1;     // 0世界/1宗门/2私聊/3系统
+  string content = 2;
+  uint64 target_id = 3;   // 私聊目标
+  string extra_data = 4;  // JSON: 物品链接等
+}
+
+message ChatMessage {
+  uint64 msg_id = 1;
+  uint32 channel = 2;
+  uint64 sender_id = 3;
+  string sender_name = 4;
+  uint32 sender_level = 5;
+  uint32 sender_realm = 6;
+  string content = 7;
+  int64 timestamp = 8;
+  string extra_data = 9;
+}
+
+message FriendAddReq {
+  uint64 player_id = 1;
+  uint64 target_id = 2;
+  string message = 3;
+}
+
+message FriendAddResp {
+  bool success = 1;
+  string message = 2;
+}
+
+message FriendListReq {
+  uint64 player_id = 1;
+}
+
+message FriendListResp {
+  repeated FriendInfo friends = 1;
+  repeated FriendInfo pending = 2;
+}
+
+message FriendInfo {
+  uint64 player_id = 1;
+  string nickname = 2;
+  uint32 realm_id = 3;
+  uint32 level = 4;
+  bool is_online = 5;
+  int64 last_online = 6;
+  int32 friendship = 7;
+}
+
+message SectInfo {
+  uint32 sect_id = 1;
+  string name = 2;
+  uint32 level = 3;
+  uint32 member_count = 4;
+  uint32 max_members = 5;
+  string leader_name = 6;
+  string notice = 7;
+  uint64 total_contribution = 8;
+}
+
+message SectMember {
+  uint64 player_id = 1;
+  string nickname = 2;
+  uint32 position = 3;  // 1宗主/2长老/3精英/4成员
+  uint32 contribution = 4;
+  bool is_online = 5;
+}

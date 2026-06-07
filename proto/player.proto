@@ -1,0 +1,82 @@
+syntax = "proto3";
+package game;
+option go_package = "cultivation-game/proto/player";
+
+import "common.proto";
+
+message PlayerInfoReq {
+  uint64 player_id = 1;
+}
+
+message PlayerInfoResp {
+  uint64 player_id = 1;
+  string nickname = 2;
+  uint32 realm_id = 3;
+  uint32 realm_level = 4;
+  uint64 exp = 5;
+  uint64 max_exp = 6;
+  string spirit_root = 7;
+  int32 hp = 8;
+  int32 max_hp = 9;
+  int32 mp = 10;
+  int32 max_mp = 11;
+  int64 attack = 12;
+  int64 defense = 13;
+  int32 speed = 14;
+  int64 combat_power = 15;
+  uint32 cultivation_technique_id = 16;
+  int64 money = 17;
+  int64 bind_money = 18;
+  int32 immortal_jade = 19;
+  int32 vip_level = 20;
+  int32 level = 21;
+}
+
+message InventoryReq {
+  uint64 player_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+  int32 filter_type = 4;  // -1=全部, 1-7=对应类型
+}
+
+message InventoryResp {
+  repeated ItemInfo items = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 page_size = 4;
+  int32 max_slots = 5;
+  int32 used_slots = 6;
+}
+
+message UseItemReq {
+  uint64 player_id = 1;
+  uint64 item_instance_id = 2;
+  int32 quantity = 3;
+}
+
+message UseItemResp {
+  int32 code = 1;
+  string message = 2;
+  int64 effect_value = 3;
+}
+
+message EquipItemReq {
+  uint64 player_id = 1;
+  uint64 item_instance_id = 2;
+  string slot = 3;  // weapon/armor/helmet/necklace/ring/treasure
+}
+
+message EquipItemResp {
+  bool success = 1;
+  int64 combat_power_change = 2;
+  int32 slot = 3;
+}
+
+message EquipmentListReq {
+  uint64 player_id = 1;
+}
+
+message EquipmentListResp {
+  map<string, ItemInfo> equipment = 1;  // slot -> item
+  int64 total_combat_power = 2;
+}

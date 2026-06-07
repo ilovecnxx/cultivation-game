@@ -1,0 +1,152 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - navigation [ref=e5]:
+      - generic [ref=e6]:
+        - link "☯ 凡人修仙模拟器" [ref=e7] [cursor=pointer]:
+          - /url: "#/"
+          - generic [ref=e8]: ☯
+          - text: 凡人修仙模拟器
+        - generic [ref=e9]:
+          - link "登录" [ref=e10] [cursor=pointer]:
+            - /url: "#/login"
+          - link "注册" [ref=e11] [cursor=pointer]:
+            - /url: "#/register"
+    - generic [ref=e14]:
+      - heading "凡人修仙模拟器" [level=1] [ref=e15]
+      - paragraph [ref=e16]: 一款东方玄幻文字修仙游戏
+      - generic [ref=e17]:
+        - link "🧘 开始修仙" [ref=e18] [cursor=pointer]:
+          - /url: "#/register"
+          - generic [ref=e19]: 🧘
+          - generic [ref=e20]: 开始修仙
+        - link "🔑 已有账号？登录" [ref=e21] [cursor=pointer]:
+          - /url: "#/login"
+          - generic [ref=e22]: 🔑
+          - generic [ref=e23]: 已有账号？登录
+    - generic [ref=e27]:
+      - heading "✦ 游戏特色" [level=2] [ref=e28]:
+        - generic [ref=e29]: ✦
+        - text: 游戏特色
+      - paragraph [ref=e30]: 六大系统构筑完整修仙体验
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e34]: 🧘
+          - heading "完整修仙境界" [level=3] [ref=e35]
+          - paragraph [ref=e36]: 练气至渡劫飞升九大境界，每境九重天。突破需渡天劫，成则飞升，败则道消。
+        - generic [ref=e37]:
+          - generic [ref=e39]: ⚔️
+          - heading "五行相生相克" [level=3] [ref=e40]
+          - paragraph [ref=e41]: 金木水火土五行属性克制，39种妖兽，43种法术技能。策略搭配，克敌制胜。
+        - generic [ref=e42]:
+          - generic [ref=e44]: 🌍
+          - heading "自由探索" [level=3] [ref=e45]
+          - paragraph [ref=e46]: 14个风格迥异的区域，16种随机奇遇。采集灵药、邂逅NPC、探索秘境。
+        - generic [ref=e47]:
+          - generic [ref=e49]: 🧪
+          - heading "丹器双修" [level=3] [ref=e50]
+          - paragraph [ref=e51]: 31种丹方，5档品质。聚气丹到破境丹，炼丹提升修炼速度，炼器打造神兵。
+        - generic [ref=e52]:
+          - generic [ref=e54]: 🏗️
+          - heading "仙盟宗门" [level=3] [ref=e55]
+          - paragraph [ref=e56]: 创建宗门、招募弟子、修炼技能、宗门大战。修仙路上不孤单。
+        - generic [ref=e57]:
+          - generic [ref=e59]: 💰
+          - heading "坊市拍卖" [level=3] [ref=e60]
+          - paragraph [ref=e61]: 玩家自由交易、拍卖竞价。打宝赚钱，以商养战，富甲一方。
+    - generic [ref=e63]:
+      - heading "⬆ 修仙境界" [level=2] [ref=e64]:
+        - generic [ref=e65]: ⬆
+        - text: 修仙境界
+      - paragraph [ref=e66]: 九大境界，层层突破，渡劫飞升
+      - generic [ref=e67]:
+        - generic [ref=e71] [cursor=pointer]: 练气境
+        - generic [ref=e75] [cursor=pointer]: 筑基境
+        - generic [ref=e79] [cursor=pointer]: 金丹境
+        - generic [ref=e83] [cursor=pointer]: 元婴境
+        - generic [ref=e87] [cursor=pointer]: 化神境
+        - generic [ref=e91] [cursor=pointer]: 炼虚境
+        - generic [ref=e95] [cursor=pointer]: 合体境
+        - generic [ref=e99] [cursor=pointer]: 大乘境
+        - generic [ref=e102] [cursor=pointer]: 渡劫飞升
+    - generic [ref=e104]:
+      - heading "📊 游戏数据" [level=2] [ref=e105]:
+        - generic [ref=e106]: 📊
+        - text: 游戏数据
+      - paragraph [ref=e107]: 不断扩展的修仙世界
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e110]: "0"
+          - generic [ref=e111]: 种
+          - generic [ref=e112]: 妖兽种类
+        - generic [ref=e113]:
+          - generic [ref=e114]: "0"
+          - generic [ref=e115]: 种
+          - generic [ref=e116]: 法术技能
+        - generic [ref=e117]:
+          - generic [ref=e118]: "0"
+          - generic [ref=e119]: 种
+          - generic [ref=e120]: 丹药配方
+        - generic [ref=e121]:
+          - generic [ref=e122]: "0"
+          - generic [ref=e123]: 个
+          - generic [ref=e124]: 可探索区域
+        - generic [ref=e125]:
+          - generic [ref=e126]: "0"
+          - generic [ref=e127]: 大
+          - generic [ref=e128]: 修炼境界
+        - generic [ref=e129]:
+          - generic [ref=e130]: ∞
+          - generic [ref=e131]: 无限可能
+    - generic [ref=e133]:
+      - heading "📜 更新日志" [level=2] [ref=e134]:
+        - generic [ref=e135]: 📜
+        - text: 更新日志
+      - paragraph [ref=e136]: 记录每一次成长
+      - generic [ref=e137]:
+        - generic [ref=e140]:
+          - generic [ref=e141]:
+            - generic [ref=e142]: v1.0.0
+            - generic [ref=e143]: 2026-06-05
+            - generic [ref=e144]: 最新
+          - paragraph [ref=e145]: 正式版发布
+          - list [ref=e146]:
+            - listitem [ref=e147]: 完整修炼体系：9大境界 × 9重天
+            - listitem [ref=e148]: 39种妖兽 + 43种法术技能
+            - listitem [ref=e149]: 31种丹药配方，5档品质浮动
+            - listitem [ref=e150]: 14个世界区域 + 16种奇遇事件
+            - listitem [ref=e151]: 宗门创建、修炼技能、宗门大战系统
+            - listitem [ref=e152]: 玩家自由交易市场
+            - listitem [ref=e153]: 实时排行榜（境界、战力、财富、宗门）
+            - listitem [ref=e154]: 离线修炼挂机系统
+            - listitem [ref=e155]: 全服世界事件（Boss、异宝、灵气潮汐）
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - generic [ref=e160]: v0.9.0
+            - generic [ref=e161]: 2026-05-20
+          - paragraph [ref=e162]: 内测版
+          - list [ref=e163]:
+            - listitem [ref=e164]: 基础修炼与突破系统
+            - listitem [ref=e165]: PVE战斗引擎
+            - listitem [ref=e166]: 背包与装备系统
+            - listitem [ref=e167]: WebSocket 实时聊天
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - generic [ref=e172]: v0.5.0
+            - generic [ref=e173]: 2026-04-01
+          - paragraph [ref=e174]: 技术封测
+          - list [ref=e175]:
+            - listitem [ref=e176]: 用户注册与登录
+            - listitem [ref=e177]: 基础角色创建
+            - listitem [ref=e178]: 游戏框架搭建
+    - contentinfo [ref=e179]:
+      - generic [ref=e180]:
+        - generic [ref=e181]:
+          - generic [ref=e182] [cursor=pointer]: 关于我们
+          - generic [ref=e184] [cursor=pointer]: 用户协议
+          - generic [ref=e186] [cursor=pointer]: 隐私政策
+          - link "帮助中心" [ref=e188] [cursor=pointer]:
+            - /url: "#/game/help"
+          - generic [ref=e190] [cursor=pointer]: 反馈建议
+        - paragraph [ref=e191]: © 2026 凡人修仙模拟器 · 以文为本 以心入道
+        - paragraph [ref=e192]: 本游戏纯属虚构，请合理分配时间
+  - button "🎨" [ref=e194] [cursor=pointer]

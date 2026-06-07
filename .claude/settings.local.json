@@ -1,0 +1,77 @@
+{
+  "enabledMcpjsonServers": [
+    "redis-mcp",
+    "mongodb-mcp",
+    "docker-mcp",
+    "mysql-mcp",
+    "github"
+  ],
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=\"${CLAUDE_FILE_PATH:-${CLAUDE_TOOL_INPUT_FILE_PATH}}\"; [ -n \"$file\" ] && echo \"$file\" | grep -qE '\\.go$' && (cd /root/cultivation-game/backend 2>/dev/null && gofmt -w \"$file\" 2>/dev/null && echo '[Hook] gofmt' >&2) || true",
+            "timeout": 10000
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=\"${CLAUDE_FILE_PATH:-${CLAUDE_TOOL_INPUT_FILE_PATH}}\"; [ -n \"$file\" ] && echo \"$file\" | grep -qE '\\.(vue|ts)$' && echo \"$file\" | grep -qE 'frontend/' && cd /root/cultivation-game/frontend 2>/dev/null && (npx vue-tsc --noEmit 2>&1 | head -15 >&2; echo '[Hook] vue-tsc' >&2) || true",
+            "timeout": 30000
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/root/cultivation-game/.claude/hooks/pre-commit-check.sh",
+            "timeout": 120000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/root/cultivation-game/.claude/hooks/session-start-check.sh",
+            "timeout": 15000
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat /root/cultivation-game/primer.md 2>/dev/null && echo \"\" && /root/cultivation-game/.claude/hooks/session-start-check.sh",
+            "timeout": 15000
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"[Hook] Command completed at $(date +%H:%M:%S)\" >&2",
+            "timeout": 3000
+          }
+        ]
+      }
+    ]
+  }
+}

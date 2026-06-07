@@ -1,0 +1,898 @@
+[
+  {
+    "id": "quest_01_first_step",
+    "name": "初入修仙",
+    "type": "main",
+    "description": "修仙之路漫漫，先去找药老聊聊，了解这个世界的基本情况。",
+    "requirements": [
+      {"type": "talk_to_npc", "target_id": "npc_old_zhang", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 50}
+    ],
+    "prerequisites": [],
+    "realm_required": "无",
+    "level_required": 1,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "年轻人，你终于醒了。这里是青竹村，修仙之路的第一步。去找药老吧，他会指引你。",
+    "dialogue_end": "很好，你已经迈出了修仙的第一步。这本基础功法你拿去参悟吧。"
+  },
+  {
+    "id": "quest_02_first_cultivate",
+    "name": "第一次修炼",
+    "type": "main",
+    "description": "尝试运转功法，吸收天地灵气，获得100点修为。",
+    "requirements": [
+      {"type": "cultivate_time", "target_id": "general", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 100},
+      {"type": "item", "id": "pill_juqi_dan", "quantity": 3}
+    ],
+    "prerequisites": ["quest_01_first_step"],
+    "realm_required": "无",
+    "level_required": 1,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "修炼之道，贵在坚持。先试着运转功法，感受体内的灵气流动。",
+    "dialogue_end": "不错，你已经掌握了基本修炼法门。这几颗聚气丹你拿着，修炼时服用效果更好。"
+  },
+  {
+    "id": "quest_03_gather_herbs",
+    "name": "收集灵药",
+    "type": "main",
+    "description": "药老需要一批聚气草炼制丹药，去村外采集5株聚气草。",
+    "requirements": [
+      {"type": "gather_item", "target_id": "herb_juqi_cao", "count": 5, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 150},
+      {"type": "item", "id": "pill_juqi_dan", "quantity": 2}
+    ],
+    "prerequisites": ["quest_02_first_cultivate"],
+    "realm_required": "无",
+    "level_required": 1,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "村外的山坡上长着不少聚气草，你帮我去采集一些回来吧。",
+    "dialogue_end": "这么多聚气草，足够炼制一批丹药了。这是给你的报酬。"
+  },
+  {
+    "id": "quest_04_first_battle",
+    "name": "第一次战斗",
+    "type": "main",
+    "description": "村外最近有野狼出没，击败3只野狼证明你的实力。",
+    "requirements": [
+      {"type": "kill_monster", "target_id": "monster_wild_wolf", "count": 3, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 200},
+      {"type": "money", "id": "", "quantity": 100}
+    ],
+    "prerequisites": ["quest_03_gather_herbs"],
+    "realm_required": "无",
+    "level_required": 1,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "村外出现了一些野狼，虽然不算强，但也够你练练手了。去击败几只证明自己吧。",
+    "dialogue_end": "干得漂亮！这些灵石你拿着，路上用得着。"
+  },
+  {
+    "id": "quest_05_craft_pill",
+    "name": "炼丹入门",
+    "type": "main",
+    "description": "尝试炼制一颗聚气丹，迈入炼丹之道的第一步。",
+    "requirements": [
+      {"type": "craft_pill", "target_id": "pill_juqi_dan", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 300},
+      {"type": "item", "id": "pill_peiyuan_dan", "quantity": 1}
+    ],
+    "prerequisites": ["quest_04_first_battle"],
+    "realm_required": "无",
+    "level_required": 2,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "你收集的聚气草正好可以用来炼丹。我来教你最基础的炼丹之法。",
+    "dialogue_end": "炼丹之道博大精深，你已初窥门径。这颗培元丹是我年轻时用过的，送给你了。"
+  },
+  {
+    "id": "quest_06_breakthrough",
+    "name": "突破瓶颈",
+    "type": "main",
+    "description": "当前修为已到瓶颈，全力修炼突破到练气三层。",
+    "requirements": [
+      {"type": "reach_realm", "target_id": "qi_refining_3", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 500},
+      {"type": "money", "id": "", "quantity": 200}
+    ],
+    "prerequisites": ["quest_05_craft_pill"],
+    "realm_required": "练气二层",
+    "level_required": 3,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "你体内灵气已经积累到一定程度了，是时候尝试突破了。屏息凝神，引导灵气冲击经脉。",
+    "dialogue_end": "恭喜你成功突破！练气三层的实力，已有资格下山闯荡了。"
+  },
+  {
+    "id": "quest_07_explore",
+    "name": "下山历练",
+    "type": "main",
+    "description": "离开新手村，前往青云山脉探索未知的世界。",
+    "requirements": [
+      {"type": "explore_region", "target_id": "qingyun_range_01", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 600},
+      {"type": "item", "id": "weapon_sword_iron_01", "quantity": 1}
+    ],
+    "prerequisites": ["quest_06_breakthrough"],
+    "realm_required": "练气三层",
+    "level_required": 3,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "以你现在的实力，可以去更远的地方历练了。青云山脉虽然危险，但也充满机遇。",
+    "dialogue_end": "你平安回来就好。这把剑是我年轻时用过的，如今送给你，愿它护你周全。"
+  },
+  {
+    "id": "quest_08_kill_boss",
+    "name": "除妖卫道",
+    "type": "main",
+    "description": "青云山脉深处出现了一只妖兽狼王，去击败它为民除害！",
+    "requirements": [
+      {"type": "kill_monster", "target_id": "monster_wolf_king", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 800},
+      {"type": "money", "id": "", "quantity": 500}
+    ],
+    "prerequisites": ["quest_07_explore"],
+    "realm_required": "练气中期",
+    "level_required": 5,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "那只狼王已经伤害了不少路过的修士，以你现在的实力应该能与之一战。",
+    "dialogue_end": "你竟然真的击败了狼王！这消息很快就会传遍十里八乡，你已经是个真正的修士了。"
+  },
+  {
+    "id": "quest_09_foundation_prep",
+    "name": "筑基准备",
+    "type": "main",
+    "description": "突破筑基境需要准备灵芝x3和灵泉水x2，去收集这些材料吧。",
+    "requirements": [
+      {"type": "gather_item", "target_id": "herb_lingzhi_01", "count": 3, "current": 0},
+      {"type": "gather_item", "target_id": "water_lingquan", "count": 2, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 1000},
+      {"type": "item", "id": "pill_breakthrough_01", "quantity": 1}
+    ],
+    "prerequisites": ["quest_08_kill_boss"],
+    "realm_required": "练气后期",
+    "level_required": 8,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "筑基是修仙路上第一个重要的分水岭。这些材料是筑基必需的，务必收集齐全。",
+    "dialogue_end": "材料都齐了。调整好状态，准备冲击筑基境吧！"
+  },
+  {
+    "id": "quest_10_foundation",
+    "name": "破境成丹",
+    "type": "main",
+    "description": "万事俱备，全力冲击筑基境！成功筑基，鱼跃龙门。",
+    "requirements": [
+      {"type": "reach_realm", "target_id": "foundation_establishment", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 2000},
+      {"type": "reputation", "id": "", "quantity": 100},
+      {"type": "item", "id": "skill_basic_art", "quantity": 1}
+    ],
+    "prerequisites": ["quest_09_foundation_prep"],
+    "realm_required": "练气九层",
+    "level_required": 10,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "修炼一途，逆天而行。今日你冲击筑基，若能成功，便真正踏入了修仙的门槛。",
+    "dialogue_end": "恭喜道友成功筑基！从今往后，天高任鸟飞，海阔凭鱼跃。这本功法是我珍藏多年的，今日赠予有缘人。"
+  },
+  {
+    "id": "quest_side_blacksmith",
+    "name": "铁匠的请求",
+    "type": "side",
+    "description": "王铁匠需要5块玄铁来打造兵器，帮他收集玄铁可获得他亲手打造的武器。",
+    "requirements": [
+      {"type": "gather_item", "target_id": "ore_xuan_tie", "count": 5, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 300},
+      {"type": "item", "id": "weapon_sword_iron_01", "quantity": 1}
+    ],
+    "prerequisites": [],
+    "realm_required": "练气初期",
+    "level_required": 2,
+    "npc_id": "npc_blacksmith_wang",
+    "dialogue_start": "小兄弟，我最近缺几块好玄铁，你要是能帮我找来，我帮你打造一把好兵器！",
+    "dialogue_end": "好铁！这玄铁质地纯净，你放心，我一定给你打一把趁手的兵器。"
+  },
+  {
+    "id": "quest_side_herbalist",
+    "name": "迷路的药童",
+    "type": "side",
+    "description": "药老的小徒弟去采药时走丢了，帮药老找到迷路的药童，他就在附近的山林里。",
+    "requirements": [
+      {"type": "talk_to_npc", "target_id": "npc_herbalist_boy", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 200},
+      {"type": "item", "id": "pill_peiyuan_dan", "quantity": 2}
+    ],
+    "prerequisites": ["quest_03_gather_herbs"],
+    "realm_required": "无",
+    "level_required": 2,
+    "npc_id": "npc_old_zhang",
+    "dialogue_start": "我那不成器的小徒弟又贪玩跑丢了，你能帮我去找找他吗？他应该在村子东边的林子里。",
+    "dialogue_end": "太好了！这孩子没事就好。这是我炼制的培元丹，你拿着以备不时之需。"
+  },
+  {
+    "id": "quest_side_library",
+    "name": "藏书阁考验",
+    "type": "side",
+    "description": "藏书阁的守护者提出了三个修炼方面的问题，全部答对可获得一份珍贵的功法。",
+    "requirements": [
+      {"type": "answer_question", "target_id": "library_quiz", "count": 3, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 400},
+      {"type": "skill", "id": "skill_basic_art", "quantity": 1}
+    ],
+    "prerequisites": [],
+    "realm_required": "练气中期",
+    "level_required": 5,
+    "npc_id": "npc_elder_feng",
+    "dialogue_start": "此乃藏书阁，内有历代先贤的修炼心得。你若能答对我的三个问题，我便让你翻阅其中一卷功法。",
+    "dialogue_end": "不错，看来你对修炼之道已经有自己的理解了。这本基础功法你拿去吧。"
+  },
+  {
+    "id": "quest_side_mysterious",
+    "name": "神秘来信",
+    "type": "side",
+    "description": "在客栈收到一封神秘来信，信中指引你去探索一处隐藏洞穴，据说里面有上古修士留下的法宝。",
+    "requirements": [
+      {"type": "explore_region", "target_id": "secret_cave_01", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 500},
+      {"type": "item", "id": "item_mysterious_treasure", "quantity": 1}
+    ],
+    "prerequisites": [],
+    "realm_required": "练气中期",
+    "level_required": 5,
+    "npc_id": "",
+    "dialogue_start": "一封泛黄的信笺上写着：'月圆之夜，青峰山下，洞中有宝，有缘者得之。'",
+    "dialogue_end": "洞穴深处有一件散发着微弱光芒的法宝，似乎等待已久终于等到了它的主人。"
+  },
+  {
+    "id": "quest_side_arena",
+    "name": "以武会友",
+    "type": "side",
+    "description": "在竞技场连续击败3名对手，证明你的战斗实力，赢得称号。",
+    "requirements": [
+      {"type": "arena_win", "target_id": "arena_pvp", "count": 3, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 300},
+      {"type": "reputation", "id": "", "quantity": 50}
+    ],
+    "prerequisites": [],
+    "realm_required": "练气中期",
+    "level_required": 4,
+    "npc_id": "",
+    "dialogue_start": "竞技场门口贴着一张告示：'连胜三场者可获得'斗战新秀'称号及丰厚奖励。'",
+    "dialogue_end": "三战三捷！恭喜你获得了'斗战新秀'的称号，你的名字将出现在竞技场的榜单上。"
+  },
+  {
+    "id": "quest_daily_cultivate",
+    "name": "修炼日常",
+    "type": "daily",
+    "description": "修炼30分钟，积累灵气，巩固修为。持之以恒方能大成。",
+    "requirements": [
+      {"type": "cultivate_time", "target_id": "daily_practice", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 100}
+    ],
+    "prerequisites": [],
+    "realm_required": "无",
+    "level_required": 1,
+    "npc_id": "",
+    "dialogue_start": "修炼如逆水行舟，不进则退。今日份的修炼不可懈怠。",
+    "dialogue_end": "修炼完成。日积月累，必有大成。"
+  },
+  {
+    "id": "quest_daily_kill",
+    "name": "斩妖除魔",
+    "type": "daily",
+    "description": "今日斩妖任务：击败10只怪物，维护一方安宁。",
+    "requirements": [
+      {"type": "kill_monster", "target_id": "any", "count": 10, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 200},
+      {"type": "money", "id": "", "quantity": 50}
+    ],
+    "prerequisites": [],
+    "realm_required": "无",
+    "level_required": 1,
+    "npc_id": "",
+    "dialogue_start": "斩妖除魔，替天行道。今日份的斩妖任务开始了。",
+    "dialogue_end": "好样的！今日的斩妖任务已完成。"
+  },
+  {
+    "id": "quest_daily_gather",
+    "name": "采集任务",
+    "type": "daily",
+    "description": "采集指定材料x5，为宗门储备修炼资源。",
+    "requirements": [
+      {"type": "gather_item", "target_id": "any", "count": 5, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 150},
+      {"type": "item", "id": "pill_juqi_dan", "quantity": 1}
+    ],
+    "prerequisites": [],
+    "realm_required": "无",
+    "level_required": 1,
+    "npc_id": "",
+    "dialogue_start": "天地灵材，有德者居之。今日的采集任务发布了。",
+    "dialogue_end": "收集完毕，这些灵材将用于宗门炼丹。这是你的报酬。"
+  },
+  {
+    "id": "quest_daily_help",
+    "name": "行善积德",
+    "type": "daily",
+    "description": "帮助其他玩家，积攒功德。修仙之路，德行先行。",
+    "requirements": [
+      {"type": "help_other", "target_id": "any", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 100},
+      {"type": "reputation", "id": "", "quantity": 10}
+    ],
+    "prerequisites": [],
+    "realm_required": "无",
+    "level_required": 1,
+    "npc_id": "",
+    "dialogue_start": "助人为快乐之本，今日去帮助那些需要帮助的人吧。",
+    "dialogue_end": "善哉善哉，功德加身，福缘自至。"
+  },
+  {
+    "id": "quest_daily_contribution",
+    "name": "宗门贡献",
+    "type": "daily",
+    "description": "完成宗门发布的任务，为宗门发展贡献力量。",
+    "requirements": [
+      {"type": "finish_quest", "target_id": "any", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 200},
+      {"type": "money", "id": "", "quantity": 100}
+    ],
+    "prerequisites": [],
+    "realm_required": "无",
+    "level_required": 1,
+    "npc_id": "",
+    "dialogue_start": "宗门需要每一位弟子的力量。今日的宗门任务发布了，去完成它吧。",
+    "dialogue_end": "贡献已记录，宗门感谢你的付出。"
+  },
+  {
+    "id": "quest_11_yuanying_secret",
+    "name": "元婴之秘",
+    "type": "main",
+    "chapter": 4,
+    "description": "元婴之道，在于凝结元神。前往青云镇拜访青云真人，了解元婴之秘。",
+    "requirements": [
+      {"type": "talk_to_npc", "target_id": "elder_qingyun", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 5000},
+      {"type": "money", "id": "", "quantity": 2000}
+    ],
+    "prerequisites": ["quest_10_foundation"],
+    "realm_required": "金丹后期",
+    "level_required": 20,
+    "npc_id": "elder_qingyun",
+    "dialogue_start": "你终于走到了这一步。金丹之上，元婴才是真正的开始。元婴者，修士之元神也，凝而不散，聚而成形。你可知道如何凝聚元婴？",
+    "dialogue_end": "很好。元婴之道，我已尽述于你。但要真正凝聚元婴，你还需要经历灵魂试炼的洗礼。去秘境中历练一番吧。"
+  },
+  {
+    "id": "quest_12_yuanying_trial",
+    "name": "灵魂试炼",
+    "type": "main",
+    "chapter": 4,
+    "description": "灵魂试炼是通往元婴的必经之路。深入秘境，完成三次秘境试炼，证明你的灵魂足够强大。",
+    "requirements": [
+      {"type": "dungeon_run", "target_id": "any", "count": 3, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 8000},
+      {"type": "item", "id": "pill_peiyuan_dan", "quantity": 5}
+    ],
+    "prerequisites": ["quest_11_yuanying_secret"],
+    "realm_required": "金丹后期",
+    "level_required": 22,
+    "npc_id": "elder_qingyun",
+    "dialogue_start": "灵魂试炼是通往元婴的必经之路。在秘境深处，你的灵魂将受到考验。完成三次秘境试炼，证明你的灵魂足够强大。",
+    "dialogue_end": "你通过了试炼！我能感觉到你的灵魂之力比之前强大了许多。现在是时候准备凝聚元婴的材料了。"
+  },
+  {
+    "id": "quest_13_yuanying_gather",
+    "name": "元婴凝聚",
+    "type": "main",
+    "chapter": 4,
+    "description": "凝聚元婴需要天材地宝的辅助。收集仙灵草x5和万年寒玉x3，为凝聚元婴做准备。",
+    "requirements": [
+      {"type": "gather_item", "target_id": "herb_xianling_cao", "count": 5, "current": 0},
+      {"type": "gather_item", "target_id": "ore_wansui_han_jade", "count": 3, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 10000},
+      {"type": "money", "id": "", "quantity": 3000}
+    ],
+    "prerequisites": ["quest_12_yuanying_trial"],
+    "realm_required": "元婴初期",
+    "level_required": 25,
+    "npc_id": "elder_qingyun",
+    "dialogue_start": "凝聚元婴需要天材地宝的辅助。仙灵草和万年寒玉都是稀有之物，去寻来给我，我助你炼化融合。",
+    "dialogue_end": "材料齐全了。这些宝物蕴含的灵气足够你凝聚元婴所需。调整好状态，准备突破吧！"
+  },
+  {
+    "id": "quest_14_yuanying_breakthrough",
+    "name": "破境元婴",
+    "type": "main",
+    "chapter": 4,
+    "description": "机缘已到，凝聚元神，冲击元婴境界！成功突破至元婴境，元神不灭，遨游天地。",
+    "requirements": [
+      {"type": "reach_realm", "target_id": "nascent_soul", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 15000},
+      {"type": "money", "id": "", "quantity": 5000},
+      {"type": "item", "id": "pill_yuanying_dan", "quantity": 3}
+    ],
+    "prerequisites": ["quest_13_yuanying_gather"],
+    "realm_required": "元婴初期",
+    "level_required": 30,
+    "npc_id": "elder_qingyun",
+    "dialogue_start": "机缘已到，准备冲击元婴境界！凝结元神，化虚为实。这一步跨出，便是另一番天地。",
+    "dialogue_end": "恭喜道友凝结元婴成功！从今以后，你的元神不灭，便可遨游天地之间。这些元婴丹你拿着，巩固修为之用。"
+  },
+  {
+    "id": "quest_15_huashen_sense",
+    "name": "神灵感应",
+    "type": "main",
+    "chapter": 5,
+    "description": "化神者，化元神为神灵，感应天地法则。斩杀20只元婴期的妖兽，磨砺你的神灵感应。",
+    "requirements": [
+      {"type": "kill_monster", "target_id": "monster_yuanying_any", "count": 20, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 20000},
+      {"type": "money", "id": "", "quantity": 5000}
+    ],
+    "prerequisites": ["quest_14_yuanying_breakthrough"],
+    "realm_required": "元婴后期",
+    "level_required": 35,
+    "npc_id": "immortal_sword",
+    "dialogue_start": "元婴之后，便是化神。化神者，化元神为神灵，感应天地法则。你需要先通过与元婴相当的妖兽搏杀，磨砺你的神灵感应。",
+    "dialogue_end": "不错，你已初具化神之资。这些妖兽的鲜血中蕴含的灵气，想必已让你对天地法则有了更深的感悟。"
+  },
+  {
+    "id": "quest_16_huashen_expand",
+    "name": "神识扩张",
+    "type": "main",
+    "chapter": 5,
+    "description": "化神的关键在于神识的扩张。长时间入定修炼，让神识向外延伸，累积修炼2小时。",
+    "requirements": [
+      {"type": "cultivate_time", "target_id": "general", "count": 4, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 25000},
+      {"type": "item", "id": "pill_peiyuan_dan", "quantity": 10}
+    ],
+    "prerequisites": ["quest_15_huashen_sense"],
+    "realm_required": "元婴后期",
+    "level_required": 38,
+    "npc_id": "immortal_sword",
+    "dialogue_start": "化神的关键在于神识的扩张。你需要长时间入定，让神识向外延伸，感知更广阔的天地。静心修炼两个时辰，不可中断。",
+    "dialogue_end": "你的神识已经有了明显的扩张。我能感觉到你周身散发出的灵压比之前强了数倍。继续努力。"
+  },
+  {
+    "id": "quest_17_huashen_explore",
+    "name": "神游太虚",
+    "type": "main",
+    "chapter": 5,
+    "description": "神识已成，当神游太虚。探索三处不同的神秘之地，感受不同地域的天地法则。",
+    "requirements": [
+      {"type": "explore_region", "target_id": "qingyun_range_02", "count": 1, "current": 0},
+      {"type": "explore_region", "target_id": "misty_peak_01", "count": 1, "current": 0},
+      {"type": "explore_region", "target_id": "ancient_ruins_01", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 30000},
+      {"type": "money", "id": "", "quantity": 8000},
+      {"type": "item", "id": "skill_advanced_art", "quantity": 1}
+    ],
+    "prerequisites": ["quest_16_huashen_expand"],
+    "realm_required": "化神初期",
+    "level_required": 42,
+    "npc_id": "immortal_sword",
+    "dialogue_start": "神识已成，当神游太虚。世间有诸多神秘之地，藏着天地法则的碎片。去探索青云山脉之巅、迷雾峰和上古遗迹，感受不同地域的法则波动。",
+    "dialogue_end": "你走过了三处秘境，感受到了天地法则的不同面向。这些感悟将成为你化神的基石。准备突破吧。"
+  },
+  {
+    "id": "quest_18_huashen_breakthrough",
+    "name": "化神突破",
+    "type": "main",
+    "chapter": 5,
+    "description": "诸缘已备，冲击化神境！将你的元神升华为神灵，成功突破至化神。",
+    "requirements": [
+      {"type": "reach_realm", "target_id": "divine_transformation", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 40000},
+      {"type": "item", "id": "pill_huashen_dan", "quantity": 3},
+      {"type": "reputation", "id": "", "quantity": 500}
+    ],
+    "prerequisites": ["quest_17_huashen_explore"],
+    "realm_required": "化神初期",
+    "level_required": 45,
+    "npc_id": "immortal_sword",
+    "dialogue_start": "诸缘已备，只欠东风。冲击化神境，将你的元神升华为神灵。这一步凶险万分，但也充满了无限可能。",
+    "dialogue_end": "化神成功！你的神识已能覆盖千里，意念所至，即为吾身。这是化神丹，助你稳固境界。"
+  },
+  {
+    "id": "quest_19_lianxu_void_sense",
+    "name": "虚空感应",
+    "type": "main",
+    "chapter": 6,
+    "description": "炼虚者，洞察万物之虚实。斩杀30只虚空兽，感受虚空的波动与力量。",
+    "requirements": [
+      {"type": "kill_monster", "target_id": "monster_void_any", "count": 30, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 50000},
+      {"type": "money", "id": "", "quantity": 10000}
+    ],
+    "prerequisites": ["quest_18_huashen_breakthrough"],
+    "realm_required": "化神后期",
+    "level_required": 50,
+    "npc_id": "mystery_merchant",
+    "dialogue_start": "化神之上，是为炼虚。炼虚者，洞察万物之虚实也。虚空中藏匿着诸多虚空兽，去斩杀它们，感受虚空的波动。",
+    "dialogue_end": "你已经斩杀了足够的虚空兽，体内的灵力开始与虚空产生共鸣。不错，炼虚之路你已经迈出了第一步。"
+  },
+  {
+    "id": "quest_20_lianxu_arena",
+    "name": "虚实交织",
+    "type": "main",
+    "chapter": 6,
+    "description": "在竞技场中体会虚实变幻之道。赢得5场竞技场战斗，在实战中领悟虚实转换。",
+    "requirements": [
+      {"type": "arena_win", "target_id": "arena_pvp", "count": 5, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 60000},
+      {"type": "item", "id": "pill_peiyuan_dan", "quantity": 15}
+    ],
+    "prerequisites": ["quest_19_lianxu_void_sense"],
+    "realm_required": "化神后期",
+    "level_required": 55,
+    "npc_id": "mystery_merchant",
+    "dialogue_start": "炼虚之道，要在虚实之间转换自如。去竞技场与其他高手过招，在实战中体会虚实的变幻。赢得五场战斗，证明你对虚实之道的理解。",
+    "dialogue_end": "五战全胜！你在战斗中已经能够自如地运用虚实转换的技巧。那件炼虚期的至宝，或许你已经有资格去获取了。"
+  },
+  {
+    "id": "quest_21_lianxu_boss",
+    "name": "破除虚妄",
+    "type": "main",
+    "chapter": 6,
+    "description": "炼虚至宝被一只强大的虚空兽守护着。击败这只炼虚期的世界boss，破除虚妄，夺回至宝。",
+    "requirements": [
+      {"type": "kill_monster", "target_id": "monster_realm6_boss", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 80000},
+      {"type": "money", "id": "", "quantity": 15000},
+      {"type": "item", "id": "weapon_special_01", "quantity": 1}
+    ],
+    "prerequisites": ["quest_20_lianxu_arena"],
+    "realm_required": "炼虚初期",
+    "level_required": 58,
+    "npc_id": "mystery_merchant",
+    "dialogue_start": "炼虚境的至宝被一只强大的虚空兽守护着，那只虚空兽已经达到了炼虚期的实力。击败它，破除虚妄，取回至宝。",
+    "dialogue_end": "你竟然真的击败了那只虚空兽！这枚虚空晶石蕴含的力量足以让你炼虚圆满。继续修炼吧，距离合体境界不远了。"
+  },
+  {
+    "id": "quest_22_lianxu_perfect",
+    "name": "炼虚圆满",
+    "type": "main",
+    "chapter": 6,
+    "description": "修炼至炼虚十层，让虚实的感悟融入你的每一分灵力之中，达到炼虚圆满。",
+    "requirements": [
+      {"type": "reach_level", "target_id": "lianxu", "count": 10, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 100000},
+      {"type": "money", "id": "", "quantity": 20000},
+      {"type": "item", "id": "pill_breakthrough_02", "quantity": 3}
+    ],
+    "prerequisites": ["quest_21_lianxu_boss"],
+    "realm_required": "炼虚中期",
+    "level_required": 60,
+    "npc_id": "mystery_merchant",
+    "dialogue_start": "炼虚之境，共有十层。你已登堂入室，但距离圆满还有一段路。修炼到炼虚十层，让虚实的感悟融入你的每一分灵力之中。",
+    "dialogue_end": "炼虚圆满！你的灵力已经能够在虚实之间自如转换。这是破境丹，为冲击合体境做好准备吧。"
+  },
+  {
+    "id": "quest_23_heti_equip",
+    "name": "分身合一",
+    "type": "main",
+    "chapter": 7,
+    "description": "合体之境在于融会贯通。将3件装备精炼至+10，使其与你的神魂合一。",
+    "requirements": [
+      {"type": "equip_refine", "target_id": "equip_refine_level_10", "count": 3, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 120000},
+      {"type": "item", "id": "refine_stone", "quantity": 10}
+    ],
+    "prerequisites": ["quest_22_lianxu_perfect"],
+    "realm_required": "炼虚后期",
+    "level_required": 65,
+    "npc_id": "guild_master",
+    "dialogue_start": "合体之境，在于融会贯通。一身法宝，若不能与本命相合，终是外物。将三件装备精炼至十重，使其与你的神魂合一。",
+    "dialogue_end": "三件装备皆已精炼圆满。我能感受到你与它们之间建立了神魂联系。这正是合体的第一步。"
+  },
+  {
+    "id": "quest_24_heti_skills",
+    "name": "万法归一",
+    "type": "main",
+    "chapter": 7,
+    "description": "天下功法殊途同归。学习10种不同的技能，体会各种功法背后的共通之道。",
+    "requirements": [
+      {"type": "learn_skill", "target_id": "any", "count": 10, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 150000},
+      {"type": "money", "id": "", "quantity": 25000},
+      {"type": "item", "id": "skill_ultimate_art", "quantity": 1}
+    ],
+    "prerequisites": ["quest_23_heti_equip"],
+    "realm_required": "合体初期",
+    "level_required": 70,
+    "npc_id": "guild_master",
+    "dialogue_start": "天下功法，殊途同归。学习十种不同的技能，体会各种功法背后的共通之道。万法归一，方为合体真谛。",
+    "dialogue_end": "十种技能，你已经掌握了它们的精髓。这些技能看似不同，但都指向了同一条大道。这本合体秘典你拿去参悟。"
+  },
+  {
+    "id": "quest_25_heti_sect",
+    "name": "天人合一",
+    "type": "main",
+    "chapter": 7,
+    "description": "加入或创建一个宗门，并参与一场宗门战，在合战中体会天人合一的境界。",
+    "requirements": [
+      {"type": "join_sect", "target_id": "any", "count": 1, "current": 0},
+      {"type": "sect_war", "target_id": "any", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 180000},
+      {"type": "reputation", "id": "", "quantity": 1000},
+      {"type": "item", "id": "pill_heti_dan", "quantity": 3}
+    ],
+    "prerequisites": ["quest_24_heti_skills"],
+    "realm_required": "合体中期",
+    "level_required": 75,
+    "npc_id": "guild_master",
+    "dialogue_start": "合体最后的考验，是与人合作。加入或创建一个宗门，参与一场宗门战。在合战中体会天人合一的境界。",
+    "dialogue_end": "宗门之战让你体会到了众志成城的力量。个人的力量终究有限，与天地合，与众人的意志合，才是真正的合体之道。"
+  },
+  {
+    "id": "quest_26_heti_breakthrough",
+    "name": "合体大成",
+    "type": "main",
+    "chapter": 7,
+    "description": "将所学所悟融为一体，冲击合体境界！成功突破至合体境。",
+    "requirements": [
+      {"type": "reach_realm", "target_id": "body_integration", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 200000},
+      {"type": "money", "id": "", "quantity": 30000},
+      {"type": "item", "id": "pill_heti_dan", "quantity": 5}
+    ],
+    "prerequisites": ["quest_25_heti_sect"],
+    "realm_required": "合体中期",
+    "level_required": 80,
+    "npc_id": "guild_master",
+    "dialogue_start": "你已领悟合体真谛，是时候进行最后的突破了。将你所学、所悟、所有的一切融为一体，冲击合体境界！",
+    "dialogue_end": "恭喜道友合体大成！你的肉身与神魂已完美融合，举手投足间皆有天地之力相伴。"
+  },
+  {
+    "id": "quest_27_dacheng_gate",
+    "name": "大道之门",
+    "type": "main",
+    "chapter": 8,
+    "description": "大乘者，普渡众生，兼济天下。修炼至大乘五层，稳固道基。",
+    "requirements": [
+      {"type": "reach_level", "target_id": "dacheng", "count": 5, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 250000},
+      {"type": "money", "id": "", "quantity": 40000}
+    ],
+    "prerequisites": ["quest_26_heti_breakthrough"],
+    "realm_required": "大乘初期",
+    "level_required": 85,
+    "npc_id": "taoist_hermit",
+    "dialogue_start": "合体之上，是为大乘。大乘者，普渡众生，兼济天下。你的修为已经足够，但心境还需磨练。先修炼到大乘五层，稳固道基。",
+    "dialogue_end": "大乘五层，你的修为已臻化境。但大乘之路，不仅仅是修为的提升，更是心境的蜕变。"
+  },
+  {
+    "id": "quest_28_dacheng_heart",
+    "name": "斩断因果",
+    "type": "main",
+    "chapter": 8,
+    "description": "修行路上积累了多少心魔？斩断一切因果，清除所有心魔，以纯净无暇的心灵面对大道。",
+    "requirements": [
+      {"type": "clear_heart_demon", "target_id": "all", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 300000},
+      {"type": "item", "id": "pill_sacred_01", "quantity": 5}
+    ],
+    "prerequisites": ["quest_27_dacheng_gate"],
+    "realm_required": "大乘中期",
+    "level_required": 88,
+    "npc_id": "taoist_hermit",
+    "dialogue_start": "修行路上，你积累了多少因果？有多少心魔潜藏在你的意识深处？斩断一切因果，清除所有心魔，以纯净无暇的心灵面对天劫。",
+    "dialogue_end": "你的心灵已经清澈如镜，再无一丝心魔。因果已断，大道可期。"
+  },
+  {
+    "id": "quest_29_dacheng_battle",
+    "name": "万灵朝拜",
+    "type": "main",
+    "chapter": 8,
+    "description": "大乘圆满，当有万灵朝拜之威。在竞技场连胜10名对手，让天下修士见证你的实力。",
+    "requirements": [
+      {"type": "arena_win", "target_id": "arena_pvp", "count": 10, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 350000},
+      {"type": "money", "id": "", "quantity": 50000},
+      {"type": "reputation", "id": "", "quantity": 2000}
+    ],
+    "prerequisites": ["quest_28_dacheng_heart"],
+    "realm_required": "大乘后期",
+    "level_required": 92,
+    "npc_id": "taoist_hermit",
+    "dialogue_start": "大乘圆满，当有万灵朝拜之威。去竞技场，连败十名对手，让天下修士见证你的实力。这不仅是武力的展示，更是道心的印证。",
+    "dialogue_end": "十战十胜！你的威名将传遍天下。天下修士皆已见证，你的大乘之道已无人能质疑。"
+  },
+  {
+    "id": "quest_30_dacheng_perfect",
+    "name": "大乘圆满",
+    "type": "main",
+    "chapter": 8,
+    "description": "修为已至大乘九层，全力修炼至大乘十层，以最完美的状态迎接天劫。",
+    "requirements": [
+      {"type": "reach_level", "target_id": "dacheng", "count": 10, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 400000},
+      {"type": "money", "id": "", "quantity": 80000},
+      {"type": "item", "id": "pill_dujie_dan", "quantity": 1}
+    ],
+    "prerequisites": ["quest_29_dacheng_battle"],
+    "realm_required": "大乘后期",
+    "level_required": 95,
+    "npc_id": "taoist_hermit",
+    "dialogue_start": "你的修为已到大乘九层，距离圆满只差一步。全力修炼至大乘十层，届时天劫将至，你将以最完美的状态迎接最终考验。",
+    "dialogue_end": "大乘圆满！你的修为已经达到此界的极致。天劫很快就会降临。这枚渡劫丹你收好，它将是你度过天劫的关键。"
+  },
+  {
+    "id": "quest_31_dujie_omen",
+    "name": "天劫预兆",
+    "type": "main",
+    "chapter": 9,
+    "description": "九天之上天劫将至，这是你飞升前的最终考验。做好万全准备，迎接天劫降临。",
+    "requirements": [
+      {"type": "finish_quest", "target_id": "quest_30_dacheng_perfect", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 50000},
+      {"type": "money", "id": "", "quantity": 5000}
+    ],
+    "prerequisites": ["quest_14_yuanying_breakthrough", "quest_18_huashen_breakthrough", "quest_22_lianxu_perfect", "quest_26_heti_breakthrough", "quest_30_dacheng_perfect"],
+    "realm_required": "大乘后期",
+    "level_required": 95,
+    "npc_id": "sect_leader",
+    "dialogue_start": "天劫将至，万物皆有感应。你感应到了吗？那股来自九天之上的威压，正在不断逼近。你准备好迎接这最终的考验了吗？",
+    "dialogue_end": "天劫共有九重，一重比一重凶险。你需要做好万全准备。先去炼制一枚完美的渡劫丹吧，它能助你在天劫中保住性命。"
+  },
+  {
+    "id": "quest_32_dujie_pill",
+    "name": "九转金丹",
+    "type": "main",
+    "chapter": 9,
+    "description": "炼制一枚完美品质的渡劫丹。九转成丹，逆天而行，为渡劫做好最后准备。",
+    "requirements": [
+      {"type": "craft_pill", "target_id": "pill_dujie_dan", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 100000},
+      {"type": "money", "id": "", "quantity": 10000}
+    ],
+    "prerequisites": ["quest_31_dujie_omen"],
+    "realm_required": "渡劫初期",
+    "level_required": 96,
+    "npc_id": "sect_leader",
+    "dialogue_start": "渡劫丹乃是逆天之药，需九转方可成丹。每一转都在与天道抗争，稍有差池便前功尽弃。但若能炼出完美品质的渡劫丹，你的渡劫成功率将大大提升。",
+    "dialogue_end": "完美品质的渡劫丹！你做到了！这枚丹药中蕴含的力量，足以让你在天劫中脱胎换骨。但现在还不是松懈的时候。"
+  },
+  {
+    "id": "quest_33_dujie_demon",
+    "name": "心魔尽灭",
+    "type": "main",
+    "chapter": 9,
+    "description": "天劫不仅是天雷之劫，更是心魔之劫。在心魔塔中杀到50层以上，将你的心魔彻底消灭。",
+    "requirements": [
+      {"type": "defeat_tower", "target_id": "heart_demon_tower", "count": 50, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 150000},
+      {"type": "item", "id": "pill_sacred_01", "quantity": 10}
+    ],
+    "prerequisites": ["quest_32_dujie_pill"],
+    "realm_required": "渡劫中期",
+    "level_required": 97,
+    "npc_id": "sect_leader",
+    "dialogue_start": "天劫不仅是天雷之劫，更是心魔之劫。心魔塔中关押着无数修士的心魔，你的心魔也在其中。杀到五十层以上，将你的心魔彻底消灭！",
+    "dialogue_end": "你从心魔塔中走了出来，眼神中的迷茫已经完全消失。你的道心坚如磐石，任何心魔都无法动摇了。"
+  },
+  {
+    "id": "quest_34_dujie_celestial",
+    "name": "天地为证",
+    "type": "main",
+    "chapter": 9,
+    "description": "在天榜竞技中赢得一场天榜级别的较量，天地为证，为你的飞升之路正名。",
+    "requirements": [
+      {"type": "arena_win", "target_id": "celestial_arena", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 200000},
+      {"type": "money", "id": "", "quantity": 50000},
+      {"type": "reputation", "id": "", "quantity": 5000}
+    ],
+    "prerequisites": ["quest_33_dujie_demon"],
+    "realm_required": "渡劫后期",
+    "level_required": 98,
+    "npc_id": "sect_leader",
+    "dialogue_start": "渡劫之前，你需要一场酣畅淋漓的战斗来点燃你的斗志。去参加天榜竞技，在天下修士的面前，以一场天榜级别的胜利为自己正名！",
+    "dialogue_end": "你赢了天榜之战！天地为证，万灵为鉴。你已经证明了自己有资格面对天劫。去吧，迎接属于你的最终考验。"
+  },
+  {
+    "id": "quest_35_dujie_ascend",
+    "name": "飞升仙界",
+    "type": "main",
+    "chapter": 9,
+    "description": "九九八十一道天雷，九重心魔劫，这是飞升前最后的考验。成功渡过天劫，飞升仙界！",
+    "requirements": [
+      {"type": "complete_tribulation", "target_id": "ascension", "count": 1, "current": 0}
+    ],
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 500000},
+      {"type": "money", "id": "", "quantity": 100000},
+      {"type": "item", "id": "relic_immortal", "quantity": 1}
+    ],
+    "prerequisites": ["quest_34_dujie_celestial"],
+    "realm_required": "渡劫后期",
+    "level_required": 100,
+    "npc_id": "sect_leader",
+    "dialogue_start": "天劫已经降临。九九八十一道天雷，九重心魔劫，这是你飞升前最后的考验。度过了，你便是一方仙人；度不过，便化为劫灰。全力以赴，莫留遗憾！",
+    "dialogue_end": "天劫散尽，仙门大开。你终于完成了从凡夫到仙人的蜕变。飞升仙界，你的修仙之路才刚刚开始。恭喜你，道友——不，现在应该称你为仙友了。"
+  }
+]

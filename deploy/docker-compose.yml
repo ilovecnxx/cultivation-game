@@ -1,0 +1,124 @@
+version: "3.8"
+
+x-logging: &default-logging
+  options:
+    max-size: "10m"
+    max-file: "3"
+  driver: json-file
+
+x-restart: &restart-policy
+  restart: unless-stopped
+
+x-service-common: &service-common
+  <<: *restart-policy
+  logging: *default-logging
+  networks:
+    - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+
+services:
+  # ============================================
+  # Game Server (unified)
+  # ============================================
+  server:
+    <<: *service-common
+    image: cultivation-game/server:${IMAGE_TAG:-latest}
+    build:
+      context: ..
+      dockerfile: services/server/Dockerfile
+    ports:
+      - "${SERVER_PORT:-8080}:8080"
+    environment:
+      - GAME_ENV=${GAME_ENV:-development}
+      - SERVER_PORT=8080
+      - MYSQL_DSN=${SERVER_MYSQL_DSN:-root:${MYSQL_ROOT_PASSWORD}@tcp(mysql:3306)/${MYSQL_DATABASE:-cultivation_game}?charset=utf8mb4&parseTime=True&loc=Local}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+
+  # ============================================
+  # MySQL
+  # ============================================
+  mysql:
+    <<: *service-common
+    image: mysql:8.0
+    ports:
+      - "127.0.0.1:${MYSQL_PORT:-3306}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-cultivation_game}
+      MYSQL_USER: ${MYSQL_USER:-game}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d:ro
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p${MYSQL_ROOT_PASSWORD}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+
+  # ============================================
+  # Nginx (serves frontend + proxies to server)
+  # ============================================
+  nginx:
+    <<: *service-common
+    image: nginx:1.25-alpine
+    ports:
+      - "${NGINX_HTTP_PORT:-80}:80"
+      - "${NGINX_HTTPS_PORT:-443}:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ../frontend/dist:/usr/share/nginx/html:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - ./nginx/letsencrypt:/var/www/letsencrypt:ro
+    depends_on:
+      - server
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 256M
+        reservations:
+          cpus: "0.1"
+          memory: 128M

@@ -1,0 +1,78 @@
+syntax = "proto3";
+package game;
+option go_package = "cultivation-game/proto/cultivation";
+
+message CultivateReq {
+  uint32 technique_id = 1;
+  uint32 duration_minutes = 2;
+  bool use_elixir = 3;
+  uint32 elixir_id = 4;
+}
+
+message CultivateResp {
+  uint64 exp_gained = 1;
+  uint32 exp_per_hour = 2;
+  uint64 total_exp = 3;
+  uint32 current_realm_id = 4;
+  uint32 current_realm_level = 5;
+  uint64 next_realm_exp = 6;
+  bool triggered_breakthrough = 7;
+}
+
+message BreakthroughReq {
+  uint32 technique_id = 1;
+  repeated uint32 assist_elixirs = 2;
+  uint32 assist_treasure_id = 3;
+  uint32 protection_talisman_id = 4;
+}
+
+message BreakthroughResp {
+  bool success = 1;
+  float success_rate = 2;
+  float final_rate = 3;
+  uint32 new_realm_id = 4;
+  uint32 new_realm_level = 5;
+  int64 combat_power_increase = 6;
+  bool triggered_tribulation = 7;
+  TribulationInfo tribulation = 8;
+  string description = 9;
+}
+
+message TribulationInfo {
+  uint32 tribulation_type = 1;
+  int32 difficulty = 2;
+  repeated TribulationRound rounds = 3;
+}
+
+message TribulationRound {
+  uint32 round_num = 1;
+  string trial_description = 2;
+  int32 required_attribute = 3;
+  int32 player_value = 4;
+  int32 threshold = 5;
+  bool passed = 6;
+  string outcome = 7;
+}
+
+message TechniqueListReq {
+  uint64 player_id = 1;
+}
+
+message TechniqueListResp {
+  repeated TechniqueInfo techniques = 1;
+  uint32 max_main = 2;
+  uint32 max_auxiliary = 3;
+}
+
+message TechniqueInfo {
+  uint32 technique_id = 1;
+  string name = 2;
+  uint32 element = 3;
+  uint32 level = 4;
+  uint64 exp = 5;
+  uint32 quality = 6;
+  float cultivate_speed_bonus = 7;
+  float breakthrough_bonus = 8;
+  bool is_equipped = 9;
+  bool is_main = 10;
+}

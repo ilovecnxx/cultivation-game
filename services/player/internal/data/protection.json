@@ -1,0 +1,9 @@
+{
+  "newbie_protection_hours": 72,
+  "pvp_protection_hours": 168,
+  "protection_realm_max": 2,
+  "breakthrough_grace_count": 3,
+  "breakthrough_grace_penalty_reduction": 0.8,
+  "free_resurrection_count": 5,
+  "level_gap_max": 3
+}

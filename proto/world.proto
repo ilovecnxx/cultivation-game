@@ -1,0 +1,98 @@
+syntax = "proto3";
+package game;
+option go_package = "cultivation-game/proto/world";
+
+message ExploreReq {
+  uint64 player_id = 1;
+  uint32 region_id = 2;
+  string direction = 3;
+}
+
+message ExploreResp {
+  uint32 region_id = 1;
+  string region_name = 2;
+  string description = 3;
+  repeated string available_directions = 4;
+  repeated NpcInfo npcs = 5;
+  repeated ResourceInfo resources = 6;
+  bool has_encounter = 7;
+  EncounterInfo encounter = 8;
+}
+
+message NpcInfo {
+  uint32 npc_id = 1;
+  string name = 2;
+  string title = 3;
+  string description = 4;
+  repeated string available_actions = 5;
+  string avatar = 6;
+}
+
+message ResourceInfo {
+  uint32 resource_id = 1;
+  string name = 2;
+  uint32 quantity = 3;
+  uint32 gather_time = 4;
+  bool can_gather = 5;
+}
+
+message EncounterInfo {
+  uint32 encounter_id = 1;
+  string title = 2;
+  string description = 3;
+  repeated EncounterChoice choices = 4;
+  uint32 encounter_type = 5;
+}
+
+message EncounterChoice {
+  uint32 choice_id = 1;
+  string label = 2;
+  string description = 3;
+  uint32 requirement_type = 4;
+  int32 requirement_value = 5;
+  string requirement_text = 6;
+}
+
+message EncounterActReq {
+  uint64 player_id = 1;
+  uint32 encounter_id = 2;
+  uint32 choice_id = 3;
+}
+
+message EncounterActResp {
+  bool success = 1;
+  string outcome_description = 2;
+  int64 exp_reward = 3;
+  int64 money_reward = 4;
+  uint32 item_reward_id = 5;
+  uint32 item_reward_quantity = 6;
+  int32 reputation_change = 7;
+  string narrative = 8;
+}
+
+message GatherReq {
+  uint64 player_id = 1;
+  uint32 resource_id = 2;
+  uint32 region_id = 3;
+}
+
+message GatherResp {
+  bool success = 1;
+  uint32 item_id = 2;
+  uint32 quantity = 3;
+  uint32 remaining = 4;
+  uint32 next_refresh_seconds = 5;
+}
+
+message MoveReq {
+  uint64 player_id = 1;
+  uint32 target_region_id = 2;
+}
+
+message MoveResp {
+  bool success = 1;
+  string region_name = 2;
+  string description = 3;
+  int32 travel_time_seconds = 4;
+  EncounterInfo encounter_on_way = 5;
+}

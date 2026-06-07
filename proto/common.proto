@@ -1,0 +1,144 @@
+syntax = "proto3";
+package game;
+option go_package = "cultivation-game/proto/common";
+
+// ============================================================================
+// 通用基础类型
+// ============================================================================
+
+// 统一消息信封 - WebSocket 通信的顶层消息格式
+message GameMessage {
+  uint32 msg_id = 1;      // 消息类型ID (1-999系统, 1000+业务)
+  uint64 seq = 2;         // 序列号(用于请求-响应配对)
+  int64 timestamp = 3;    // 客户端时间戳(ms)
+  bytes payload = 4;      // 业务数据(protobuf编码)
+  uint32 status = 5;      // 状态码(0=成功, >0=错误码)
+  string error_msg = 6;   // 错误信息
+  string version = 7;     // 协议版本号
+}
+
+// 状态码枚举
+enum StatusCode {
+  SUCCESS = 0;
+  BAD_REQUEST = 1001;
+  UNAUTHORIZED = 1002;
+  FORBIDDEN = 1003;
+  NOT_FOUND = 1004;
+  RATE_LIMITED = 1005;
+  INTERNAL_ERROR = 2001;
+  SERVICE_UNAVAILABLE = 2002;
+}
+
+// 消息ID枚举
+enum MsgId {
+  MSG_UNKNOWN = 0;
+  // 系统消息
+  MSG_HEARTBEAT = 1;
+  MSG_HEARTBEAT_ACK = 2;
+  MSG_RECONNECT = 3;
+  // 认证
+  MSG_AUTH_LOGIN = 100;
+  MSG_AUTH_LOGIN_RES = 101;
+  MSG_AUTH_REGISTER = 102;
+  MSG_AUTH_REGISTER_RES = 103;
+  MSG_AUTH_TOKEN_REFRESH = 104;
+  // 玩家
+  MSG_PLAYER_INFO = 200;
+  MSG_PLAYER_INFO_RES = 201;
+  MSG_PLAYER_UPDATE = 202;
+  // 修炼
+  MSG_CULTIVATE = 300;
+  MSG_CULTIVATE_RES = 301;
+  MSG_BREAKTHROUGH = 302;
+  MSG_BREAKTHROUGH_RES = 303;
+  // 战斗
+  MSG_COMBAT_START = 400;
+  MSG_COMBAT_ACTION = 401;
+  MSG_COMBAT_RESULT = 402;
+  // 社交
+  MSG_CHAT_SEND = 500;
+  MSG_CHAT_RECV = 501;
+  MSG_FRIEND_ADD = 502;
+  // 世界
+  MSG_WORLD_EXPLORE = 600;
+  MSG_WORLD_MOVE = 601;
+  MSG_WORLD_ENCOUNTER = 602;
+}
+
+// 境界枚举
+enum RealmType {
+  REALM_NONE = 0;
+  REALM_QI_REFINING = 1;   // 练气
+  REALM_FOUNDATION = 2;    // 筑基
+  REALM_GOLDEN_CORE = 3;   // 金丹
+  REALM_NASCENT_SOUL = 4;  // 元婴
+  REALM_SPIRITUAL = 5;     // 化神
+  REALM_VOID = 6;          // 炼虚
+  REALM_HARMONY = 7;       // 合体
+  REALM_ASCENSION = 8;     // 大乘
+  REALM_TRIBULATION = 9;   // 渡劫
+}
+
+// 五行属性
+enum Element {
+  ELEMENT_NONE = 0;
+  ELEMENT_METAL = 1;  // 金
+  ELEMENT_WOOD = 2;   // 木
+  ELEMENT_WATER = 3;  // 水
+  ELEMENT_FIRE = 4;   // 火
+  ELEMENT_EARTH = 5;  // 土
+}
+
+// 物品类型
+enum ItemType {
+  ITEM_NONE = 0;
+  ITEM_CONSUMABLE = 1;   // 消耗品(丹药)
+  ITEM_WEAPON = 2;       // 武器
+  ITEM_ARMOR = 3;        // 防具
+  ITEM_ACCESSORY = 4;    // 饰品
+  ITEM_TREASURE = 5;     // 法宝
+  ITEM_MATERIAL = 6;     // 材料
+  ITEM_TASK = 7;         // 任务物品
+}
+
+// 聊天频道
+enum ChatChannel {
+  CHAT_WORLD = 0;    // 世界频道
+  CHAT_SECT = 1;     // 宗门频道
+  CHAT_PRIVATE = 2;  // 私聊
+  CHAT_SYSTEM = 3;   // 系统公告
+}
+
+// ============================================================================
+// 通用数据结构
+// ============================================================================
+
+// 向量/坐标 (用于世界地图)
+message Vector2 {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+// 物品基础信息
+message ItemInfo {
+  uint32 item_id = 1;
+  string name = 2;
+  ItemType type = 3;
+  uint32 quantity = 4;
+  uint32 quality = 5;  // 品质(1普通/2优秀/3稀有/4史诗/5传说)
+  uint32 level = 6;    // 等级需求
+  bytes extra = 7;     // 附加属性(JSON/protobuf)
+}
+
+// 玩家基础信息(排行榜/列表用)
+message PlayerBrief {
+  uint64 player_id = 1;
+  string nickname = 2;
+  uint32 realm_id = 3;
+  uint32 realm_level = 4;
+  uint32 level = 5;
+  uint64 combat_power = 6;
+  string sect_name = 7;
+  string spirit_root = 8;
+  uint32 avatar_id = 9;
+}

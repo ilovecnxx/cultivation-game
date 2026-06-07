@@ -1,0 +1,22 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8084
+  },
+  "game": {
+    "element_advantage_multiplier": 1.3,
+    "element_disadvantage_multiplier": 0.7,
+    "crit_damage_multiplier": 2.0,
+    "matchmaking_range": 3,
+    "matchmaking_timeout": 60,
+    "max_cooldown_reduction": 1,
+    "arena_match_score_range": 100,
+    "arena_match_expand_seconds": 30,
+    "season_duration_days": 30
+  },
+  "data_path": {
+    "monsters": "internal/data/monsters.json",
+    "skills": "internal/data/skills.json",
+    "instances": "internal/data/instances.json"
+  }
+}

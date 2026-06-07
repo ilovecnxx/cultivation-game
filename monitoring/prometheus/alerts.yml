@@ -1,0 +1,96 @@
+groups:
+  - name: game_alerts
+    interval: 15s
+    rules:
+
+      # ============================================================
+      # P1: Critical - immediate response required
+      # ============================================================
+
+      - alert: OnlinePlayerDrop
+        expr: |
+          (
+            rate(gateway_online_players_total[5m])
+            /
+            rate(gateway_online_players_total[30m] offset 5m)
+          ) < 0.7
+        for: 1m
+        labels:
+          severity: P1
+          team: sre
+        annotations:
+          summary: "Online player count dropped >30%"
+          description: "Online players dropped by more than 30% (current 5m avg vs 30m avg 5m ago). Possible server issue or network partition."
+
+      - alert: ServiceDown
+        expr: up == 0
+        for: 30s
+        labels:
+          severity: P1
+          team: sre
+        annotations:
+          summary: "Service {{ $labels.instance }} is down"
+          description: "{{ $labels.instance }} (job: {{ $labels.job }}) has been unreachable for more than 30 seconds."
+
+      # ============================================================
+      # P2: Warning - needs attention soon
+      # ============================================================
+
+      - alert: HighMessageLatency
+        expr: histogram_quantile(0.99, rate(game_message_duration_seconds_bucket[5m])) > 0.5
+        for: 5m
+        labels:
+          severity: P2
+          team: sre
+        annotations:
+          summary: "P99 message latency >500ms"
+          description: "P99 message latency is {{ $value | humanizeDuration }} (threshold: 500ms) for more than 5 minutes."
+
+      - alert: HighErrorRate
+        expr: |
+          (
+            sum(rate(game_requests_total{status="error"}[5m]))
+            /
+            sum(rate(game_requests_total[5m]))
+          ) * 100 > 1
+        for: 5m
+        labels:
+          severity: P2
+          team: sre
+        annotations:
+          summary: "Error rate >1%"
+          description: "Error rate is {{ $value | humanize }}% (threshold: 1%) for more than 5 minutes."
+
+      - alert: RedisMemoryHigh
+        expr: (redis_memory_used_bytes / redis_memory_max_bytes) * 100 > 80
+        for: 2m
+        labels:
+          severity: P2
+          team: sre
+        annotations:
+          summary: "Redis memory usage >80%"
+          description: "Redis memory usage is {{ $value | humanize }}% (threshold: 80%). Consider scaling or eviction policy tuning."
+
+      # ============================================================
+      # P3: Informational - non-urgent
+      # ============================================================
+
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: P3
+          team: sre
+        annotations:
+          summary: "CPU usage >80% on {{ $labels.instance }}"
+          description: "CPU usage is {{ $value | humanize }}% (threshold: 80%) on {{ $labels.instance }}."
+
+      - alert: HighDiskUsage
+        expr: (1 - (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"})) * 100 > 80
+        for: 5m
+        labels:
+          severity: P3
+          team: sre
+        annotations:
+          summary: "Disk usage >80% on {{ $labels.instance }}"
+          description: "Disk usage is {{ $value | humanize }}% (threshold: 80%) on {{ $labels.instance }} (mount: /)."

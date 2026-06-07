@@ -1,0 +1,291 @@
+version: '3.8'
+
+services:
+  # ==================== Redis Cluster 节点 ====================
+  redis-master-0:
+    image: redis:7.2-alpine
+    container_name: redis-master-0
+    ports:
+      - "6371:6379"
+      - "16371:16379"
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis-data-0:/data
+    command: >
+      redis-server /usr/local/etc/redis/redis.conf
+      --cluster-enabled yes
+      --cluster-config-file nodes-0.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --appendfsync everysec
+    networks:
+      - redis-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  redis-master-1:
+    image: redis:7.2-alpine
+    container_name: redis-master-1
+    ports:
+      - "6372:6379"
+      - "16372:16379"
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis-data-1:/data
+    command: >
+      redis-server /usr/local/etc/redis/redis.conf
+      --cluster-enabled yes
+      --cluster-config-file nodes-1.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --appendfsync everysec
+    networks:
+      - redis-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  redis-master-2:
+    image: redis:7.2-alpine
+    container_name: redis-master-2
+    ports:
+      - "6373:6379"
+      - "16373:16379"
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis-data-2:/data
+    command: >
+      redis-server /usr/local/etc/redis/redis.conf
+      --cluster-enabled yes
+      --cluster-config-file nodes-2.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --appendfsync everysec
+    networks:
+      - redis-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  redis-replica-0:
+    image: redis:7.2-alpine
+    container_name: redis-replica-0
+    ports:
+      - "6381:6379"
+      - "16381:16379"
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis-data-3:/data
+    command: >
+      redis-server /usr/local/etc/redis/redis.conf
+      --cluster-enabled yes
+      --cluster-config-file nodes-3.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --appendfsync everysec
+    depends_on:
+      - redis-master-0
+      - redis-master-1
+      - redis-master-2
+    networks:
+      - redis-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  redis-replica-1:
+    image: redis:7.2-alpine
+    container_name: redis-replica-1
+    ports:
+      - "6382:6379"
+      - "16382:16379"
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis-data-4:/data
+    command: >
+      redis-server /usr/local/etc/redis/redis.conf
+      --cluster-enabled yes
+      --cluster-config-file nodes-4.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --appendfsync everysec
+    depends_on:
+      - redis-master-0
+      - redis-master-1
+      - redis-master-2
+    networks:
+      - redis-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  redis-replica-2:
+    image: redis:7.2-alpine
+    container_name: redis-replica-2
+    ports:
+      - "6383:6379"
+      - "16383:16379"
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis-data-5:/data
+    command: >
+      redis-server /usr/local/etc/redis/redis.conf
+      --cluster-enabled yes
+      --cluster-config-file nodes-5.conf
+      --cluster-node-timeout 5000
+      --appendonly yes
+      --appendfsync everysec
+    depends_on:
+      - redis-master-0
+      - redis-master-1
+      - redis-master-2
+    networks:
+      - redis-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # ==================== 集群初始化器 ====================
+  redis-cluster-init:
+    image: redis:7.2-alpine
+    container_name: redis-cluster-init
+    depends_on:
+      redis-master-0:
+        condition: service_healthy
+      redis-master-1:
+        condition: service_healthy
+      redis-master-2:
+        condition: service_healthy
+      redis-replica-0:
+        condition: service_healthy
+      redis-replica-1:
+        condition: service_healthy
+      redis-replica-2:
+        condition: service_healthy
+    networks:
+      - redis-net
+    entrypoint: >
+      sh -c "
+      echo 'Waiting for all nodes to be ready...' &&
+      sleep 5 &&
+      echo 'Creating Redis Cluster...' &&
+      redis-cli --cluster create
+        redis-master-0:6379 redis-master-1:6379 redis-master-2:6379
+        redis-replica-0:6379 redis-replica-1:6379 redis-replica-2:6379
+        --cluster-replicas 1
+        --cluster-yes &&
+      echo 'Redis Cluster created successfully.'
+      "
+
+  # ==================== Redis Sentinel (哨兵高可用) ====================
+  redis-sentinel-0:
+    image: redis:7.2-alpine
+    container_name: redis-sentinel-0
+    ports:
+      - "26371:26379"
+    command: >
+      redis-sentinel /usr/local/etc/redis/sentinel.conf
+    volumes:
+      - ./config/sentinel.conf:/usr/local/etc/redis/sentinel.conf
+    depends_on:
+      - redis-master-0
+      - redis-master-1
+      - redis-master-2
+    networks:
+      - redis-net
+
+  redis-sentinel-1:
+    image: redis:7.2-alpine
+    container_name: redis-sentinel-1
+    ports:
+      - "26372:26379"
+    command: >
+      redis-sentinel /usr/local/etc/redis/sentinel.conf
+    volumes:
+      - ./config/sentinel.conf:/usr/local/etc/redis/sentinel.conf
+    depends_on:
+      - redis-master-0
+      - redis-master-1
+      - redis-master-2
+    networks:
+      - redis-net
+
+  redis-sentinel-2:
+    image: redis:7.2-alpine
+    container_name: redis-sentinel-2
+    ports:
+      - "26373:26379"
+    command: >
+      redis-sentinel /usr/local/etc/redis/sentinel.conf
+    volumes:
+      - ./config/sentinel.conf:/usr/local/etc/redis/sentinel.conf
+    depends_on:
+      - redis-master-0
+      - redis-master-1
+      - redis-master-2
+    networks:
+      - redis-net
+
+  # ==================== Redis Commander (管理 UI, 可选) ====================
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: redis-commander
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_HOSTS=local:redis-master-0:6379,local:redis-master-1:6379,local:redis-master-2:6379
+      - REDIS_SENTINEL=true
+    depends_on:
+      - redis-master-0
+      - redis-master-1
+      - redis-master-2
+    networks:
+      - redis-net
+    profiles:
+      - management  # 默认不启动, 使用 --profile management 启动
+
+  # ==================== Prometheus Redis Exporter (监控) ====================
+  redis-exporter:
+    image: oliver006/redis_exporter:latest
+    container_name: redis-exporter
+    ports:
+      - "9121:9121"
+    environment:
+      - REDIS_ADDR=redis://redis-master-0:6379
+    depends_on:
+      - redis-master-0
+    networks:
+      - redis-net
+    profiles:
+      - monitoring
+
+networks:
+  redis-net:
+    driver: bridge
+
+volumes:
+  redis-data-0:
+    driver: local
+  redis-data-1:
+    driver: local
+  redis-data-2:
+    driver: local
+  redis-data-3:
+    driver: local
+  redis-data-4:
+    driver: local
+  redis-data-5:
+    driver: local

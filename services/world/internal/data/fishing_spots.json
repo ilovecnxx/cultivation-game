@@ -1,0 +1,327 @@
+{
+  "spots": [
+    {
+      "id": "spot_fish_newbie_01",
+      "region_id": "newbie_village_01",
+      "name": "青竹溪",
+      "description": "村外竹林间的小溪，水质清澈见底。适合新手修士练习垂钓。",
+      "min_realm": 1,
+      "max_realm": 20,
+      "fish_ids": [1, 2, 3, 4]
+    },
+    {
+      "id": "spot_fish_crescent_01",
+      "region_id": "crescent_lake_01",
+      "name": "新月湖心",
+      "description": "新月湖最深处的湖心区域，月圆之夜灵鱼跃出水面。",
+      "min_realm": 5,
+      "max_realm": 35,
+      "fish_ids": [2, 3, 5, 6, 7]
+    },
+    {
+      "id": "spot_fish_range_01",
+      "region_id": "qingyun_range_01",
+      "name": "青云瀑潭",
+      "description": "瀑布冲击形成的深潭，水灵气充沛，常有灵鱼栖息。",
+      "min_realm": 8,
+      "max_realm": 40,
+      "fish_ids": [3, 5, 7, 8, 10]
+    },
+    {
+      "id": "spot_fish_star_city_01",
+      "region_id": "star_city_01",
+      "name": "星辉湖",
+      "description": "星辉城中的灵湖，由城中阵法凝聚灵气而成，湖中养有各类灵鱼。",
+      "min_realm": 10,
+      "max_realm": 50,
+      "fish_ids": [4, 6, 8, 9, 11]
+    },
+    {
+      "id": "spot_fish_violet_01",
+      "region_id": "violet_marsh_01",
+      "name": "紫沼灵潭",
+      "description": "紫色沼泽深处的灵潭，潭水泛着紫光，传说有仙鱼出没。",
+      "min_realm": 20,
+      "max_realm": 60,
+      "fish_ids": [7, 9, 11, 12, 13, 15]
+    },
+    {
+      "id": "spot_fish_sky_peak_01",
+      "region_id": "sky_peak_01",
+      "name": "天池圣水",
+      "description": "万仞高峰之巅的天池，池水寒冷彻骨却蕴含磅礴灵力。",
+      "min_realm": 35,
+      "max_realm": 70,
+      "fish_ids": [11, 13, 14, 16, 17]
+    },
+    {
+      "id": "spot_fish_ancient_01",
+      "region_id": "ancient_ruins_01",
+      "name": "古墟灵泉",
+      "description": "上古遗迹中的灵泉，泉中游弋着古老血脉的灵鱼。",
+      "min_realm": 45,
+      "max_realm": 85,
+      "fish_ids": [14, 16, 18, 19, 20]
+    },
+    {
+      "id": "spot_fish_xianjie_01",
+      "region_id": "xianjie_gate_01",
+      "name": "仙门灵池",
+      "description": "连接仙凡两界的灵池，传说有真龙遗种在此出没。",
+      "min_realm": 60,
+      "max_realm": 100,
+      "fish_ids": [17, 19, 20, 21, 22]
+    },
+    {
+      "id": "spot_fish_abyss_01",
+      "region_id": "abyss_depths_01",
+      "name": "深渊幽潭",
+      "description": "地底深渊中的幽暗水潭，潭中有上古异种潜伏。",
+      "min_realm": 70,
+      "max_realm": 100,
+      "fish_ids": [18, 20, 21, 23, 24]
+    }
+  ],
+  "fish_types": [
+    {
+      "id": 1,
+      "name": "灵鲫",
+      "rarity": 1,
+      "min_realm": 1,
+      "base_weight": 0.5,
+      "exp_reward": 5,
+      "spirit_stone_value": 5,
+      "description": "最常见的水生灵鱼，灵气稀薄但肉质鲜嫩。"
+    },
+    {
+      "id": 2,
+      "name": "玉鲤",
+      "rarity": 1,
+      "min_realm": 1,
+      "base_weight": 1.2,
+      "exp_reward": 8,
+      "spirit_stone_value": 10,
+      "description": "通体玉白的鲤鱼，鳞片微光，是低阶修士的滋补佳品。"
+    },
+    {
+      "id": 3,
+      "name": "碧波鳙",
+      "rarity": 1,
+      "min_realm": 3,
+      "base_weight": 2.0,
+      "exp_reward": 10,
+      "spirit_stone_value": 15,
+      "description": "生活在碧波中的大头鱼，性情温和容易上钩。"
+    },
+    {
+      "id": 4,
+      "name": "金鳞鲫",
+      "rarity": 2,
+      "min_realm": 5,
+      "base_weight": 0.8,
+      "exp_reward": 15,
+      "spirit_stone_value": 25,
+      "description": "鳞片泛着淡金色光芒的鲫鱼，运气好的新手也能钓到。"
+    },
+    {
+      "id": 5,
+      "name": "银光鲢",
+      "rarity": 2,
+      "min_realm": 8,
+      "base_weight": 1.5,
+      "exp_reward": 20,
+      "spirit_stone_value": 35,
+      "description": "银色鳞片在水中反射月光，游动时留下银光轨迹。"
+    },
+    {
+      "id": 6,
+      "name": "赤焰鲤",
+      "rarity": 2,
+      "min_realm": 10,
+      "base_weight": 1.8,
+      "exp_reward": 25,
+      "spirit_stone_value": 45,
+      "description": "通体赤红的鲤鱼，体内蕴含微弱火灵力。"
+    },
+    {
+      "id": 7,
+      "name": "翠灵鲈",
+      "rarity": 2,
+      "min_realm": 12,
+      "base_weight": 2.2,
+      "exp_reward": 30,
+      "spirit_stone_value": 55,
+      "description": "通体翠绿的鲈鱼，以水灵草为食，肉含精纯木灵气。"
+    },
+    {
+      "id": 8,
+      "name": "霜月鳜",
+      "rarity": 3,
+      "min_realm": 18,
+      "base_weight": 1.6,
+      "exp_reward": 40,
+      "spirit_stone_value": 80,
+      "description": "只在月夜出现的鳜鱼，体表有霜月纹路。"
+    },
+    {
+      "id": 9,
+      "name": "雷纹鲶",
+      "rarity": 3,
+      "min_realm": 22,
+      "base_weight": 3.0,
+      "exp_reward": 50,
+      "spirit_stone_value": 100,
+      "description": "体内蕴含雷电之力的鲶鱼，触之会有麻痹感。"
+    },
+    {
+      "id": 10,
+      "name": "紫晶虾",
+      "rarity": 3,
+      "min_realm": 25,
+      "base_weight": 0.3,
+      "exp_reward": 45,
+      "spirit_stone_value": 90,
+      "description": "通体如紫水晶般的灵虾，极为珍贵，是炼丹佳材。"
+    },
+    {
+      "id": 11,
+      "name": "冰玉鲛",
+      "rarity": 3,
+      "min_realm": 28,
+      "base_weight": 2.5,
+      "exp_reward": 55,
+      "spirit_stone_value": 120,
+      "description": "生活在寒水中的鲛鱼，鳞片如寒冰，触之冰冷彻骨。"
+    },
+    {
+      "id": 12,
+      "name": "玄龟",
+      "rarity": 3,
+      "min_realm": 30,
+      "base_weight": 5.0,
+      "exp_reward": 60,
+      "spirit_stone_value": 150,
+      "description": "介于灵兽与灵鱼之间的玄龟，甲壳有天然纹路可卜吉凶。"
+    },
+    {
+      "id": 13,
+      "name": "七彩锦鲤",
+      "rarity": 4,
+      "min_realm": 35,
+      "base_weight": 1.0,
+      "exp_reward": 80,
+      "spirit_stone_value": 250,
+      "description": "身披七彩鳞片的仙品锦鲤，见者有好运。极为罕见。"
+    },
+    {
+      "id": 14,
+      "name": "浴火凤尾鱼",
+      "rarity": 4,
+      "min_realm": 40,
+      "base_weight": 1.5,
+      "exp_reward": 100,
+      "spirit_stone_value": 350,
+      "description": "尾鳍如凤凰尾羽般绚丽的仙鱼，传说有浴火重生之能。"
+    },
+    {
+      "id": 15,
+      "name": "星辰鲟",
+      "rarity": 4,
+      "min_realm": 45,
+      "base_weight": 4.0,
+      "exp_reward": 110,
+      "spirit_stone_value": 400,
+      "description": "体表有星点光芒的鲟鱼，传说吸收星辰之力而生。"
+    },
+    {
+      "id": 16,
+      "name": "太虚鳐",
+      "rarity": 4,
+      "min_realm": 50,
+      "base_weight": 3.5,
+      "exp_reward": 120,
+      "spirit_stone_value": 450,
+      "description": "能够在虚实之间穿梭的鳐鱼，如同太虚梦境中的存在。"
+    },
+    {
+      "id": 17,
+      "name": "九天玄鱼",
+      "rarity": 4,
+      "min_realm": 55,
+      "base_weight": 2.0,
+      "exp_reward": 130,
+      "spirit_stone_value": 500,
+      "description": "传闻中九天之上的玄鱼，周身环绕氤氲仙气。"
+    },
+    {
+      "id": 18,
+      "name": "幽冥骨鱼",
+      "rarity": 5,
+      "min_realm": 60,
+      "base_weight": 2.8,
+      "exp_reward": 200,
+      "spirit_stone_value": 800,
+      "description": "游走在幽冥边界的骨鱼，通体透明可见骨架，蕴含死亡之力。"
+    },
+    {
+      "id": 19,
+      "name": "吞天蟒鳝",
+      "rarity": 5,
+      "min_realm": 65,
+      "base_weight": 8.0,
+      "exp_reward": 250,
+      "spirit_stone_value": 1000,
+      "description": "具有稀薄真龙血脉的巨型鳝鱼，可吞食小型灵兽。"
+    },
+    {
+      "id": 20,
+      "name": "混沌灵鳅",
+      "rarity": 5,
+      "min_realm": 70,
+      "base_weight": 1.2,
+      "exp_reward": 280,
+      "spirit_stone_value": 1200,
+      "description": "混沌初开时便存在的远古灵鳅，体呈混沌之色，无人能辨其形。"
+    },
+    {
+      "id": 21,
+      "name": "五爪金龙鲤",
+      "rarity": 5,
+      "min_realm": 75,
+      "base_weight": 6.0,
+      "exp_reward": 350,
+      "spirit_stone_value": 2000,
+      "description": "身具五爪金龙血脉的神鲤，传言跃过龙门可化真龙。"
+    },
+    {
+      "id": 22,
+      "name": "鲲鹏幼体",
+      "rarity": 5,
+      "min_realm": 80,
+      "base_weight": 10.0,
+      "exp_reward": 400,
+      "spirit_stone_value": 3000,
+      "description": "北冥之鲲的幼体，虽未成年但已具备吞纳天地之象。"
+    },
+    {
+      "id": 23,
+      "name": "九幽冥鳐",
+      "rarity": 5,
+      "min_realm": 85,
+      "base_weight": 5.5,
+      "exp_reward": 500,
+      "spirit_stone_value": 5000,
+      "description": "来自九幽黄泉的冥鳐，周身散发着令人窒息的气息。"
+    },
+    {
+      "id": 24,
+      "name": "真龙遗种",
+      "rarity": 5,
+      "min_realm": 90,
+      "base_weight": 15.0,
+      "exp_reward": 1000,
+      "spirit_stone_value": 10000,
+      "description": "蕴含真龙血脉的上古遗种，千年难得一见。钓到它将震动修仙界！"
+    }
+  ]
+}

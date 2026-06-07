@@ -1,0 +1,585 @@
+{
+  "dungeons": [
+    {
+      "id": 1,
+      "name": "青龙秘径",
+      "description": "青龙秘境初开，灵气充沛。组队穿越青龙秘径，击败守护妖兽。",
+      "realm_required": 1,
+      "min_players": 3,
+      "max_players": 3,
+      "time_limit_minutes": 10,
+      "waves": [
+        {
+          "wave": 1,
+          "name": "秘径入口",
+          "monsters": [
+            { "id": 1001, "name": "青鳞蛇", "hp": 500, "atk": 30, "def": 10, "speed": 20, "level": 5, "element": "wood" },
+            { "id": 1002, "name": "青鳞蛇", "hp": 500, "atk": 30, "def": 10, "speed": 20, "level": 5, "element": "wood" }
+          ]
+        },
+        {
+          "wave": 2,
+          "name": "竹林迷阵",
+          "monsters": [
+            { "id": 1003, "name": "竹叶青", "hp": 800, "atk": 40, "def": 15, "speed": 25, "level": 6, "element": "wood" },
+            { "id": 1004, "name": "风灵蝶", "hp": 400, "atk": 50, "def": 5, "speed": 35, "level": 5, "element": "wind" }
+          ]
+        },
+        {
+          "wave": 3,
+          "name": "青龙殿前",
+          "monsters": [
+            { "id": 1005, "name": "青龙守卫", "hp": 1200, "atk": 55, "def": 25, "speed": 20, "level": 7, "element": "wood" },
+            { "id": 1006, "name": "青龙守卫", "hp": 1200, "atk": 55, "def": 25, "speed": 20, "level": 7, "element": "wood" },
+            { "id": 1007, "name": "灵雾妖", "hp": 600, "atk": 60, "def": 10, "speed": 30, "level": 6, "element": "water" }
+          ]
+        }
+      ],
+      "boss": {
+        "id": 1100,
+        "name": "青龙兽",
+        "hp": 5000,
+        "atk": 80,
+        "def": 30,
+        "speed": 25,
+        "level": 10,
+        "element": "wood",
+        "skills": [
+          { "name": "青龙吐息", "damage_mult": 1.5, "description": "喷吐龙息, 对所有目标造成伤害" },
+          { "name": "木灵缠绕", "damage_mult": 1.2, "description": "召唤藤蔓缠绕敌人, 降低速度" }
+        ]
+      },
+      "rewards": {
+        "base_exp": 500,
+        "base_spirit_stones": 200,
+        "items": [
+          { "id": 101, "name": "灵石", "count": 50 }
+        ],
+        "special_bonus": {
+          "no_death_bonus_exp": 200,
+          "time_bonus_exp": 150
+        },
+        "contribution_rewards": {
+          "damage_weight": 0.5,
+          "healing_weight": 0.3,
+          "support_weight": 0.2
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "白虎战阵",
+      "description": "上古白虎的战阵遗迹，机关重重。需要团队密切配合才能通过。",
+      "realm_required": 2,
+      "min_players": 3,
+      "max_players": 3,
+      "time_limit_minutes": 12,
+      "waves": [
+        {
+          "wave": 1,
+          "name": "战阵外围",
+          "monsters": [
+            { "id": 2001, "name": "金甲兵", "hp": 1500, "atk": 60, "def": 40, "speed": 15, "level": 12, "element": "metal" },
+            { "id": 2002, "name": "金甲兵", "hp": 1500, "atk": 60, "def": 40, "speed": 15, "level": 12, "element": "metal" }
+          ]
+        },
+        {
+          "wave": 2,
+          "name": "箭阵走廊",
+          "monsters": [
+            { "id": 2003, "name": "弓弩手", "hp": 1000, "atk": 90, "def": 20, "speed": 30, "level": 13, "element": "metal" },
+            { "id": 2004, "name": "弓弩手", "hp": 1000, "atk": 90, "def": 20, "speed": 30, "level": 13, "element": "metal" },
+            { "id": 2005, "name": "盾卫士", "hp": 2500, "atk": 40, "def": 60, "speed": 10, "level": 12, "element": "metal" }
+          ]
+        },
+        {
+          "wave": 3,
+          "name": "演武场",
+          "monsters": [
+            { "id": 2006, "name": "战将", "hp": 3000, "atk": 80, "def": 45, "speed": 20, "level": 14, "element": "metal" },
+            { "id": 2007, "name": "术士", "hp": 1500, "atk": 100, "def": 15, "speed": 25, "level": 13, "element": "fire" }
+          ]
+        },
+        {
+          "wave": 4,
+          "name": "白虎殿",
+          "monsters": [
+            { "id": 2006, "name": "战将", "hp": 3000, "atk": 80, "def": 45, "speed": 20, "level": 14, "element": "metal" },
+            { "id": 2008, "name": "精锐弓手", "hp": 1800, "atk": 110, "def": 25, "speed": 32, "level": 14, "element": "metal" },
+            { "id": 2009, "name": "治疗祭司", "hp": 1200, "atk": 30, "def": 20, "speed": 18, "level": 13, "element": "water" }
+          ]
+        }
+      ],
+      "boss": {
+        "id": 2100,
+        "name": "白虎将",
+        "hp": 12000,
+        "atk": 130,
+        "def": 55,
+        "speed": 30,
+        "level": 16,
+        "element": "metal",
+        "skills": [
+          { "name": "虎啸山林", "damage_mult": 1.6, "description": "发出震天虎啸, 对前排造成大量伤害" },
+          { "name": "金刃风暴", "damage_mult": 1.3, "description": "召唤金刃风暴, 攻击全体目标" },
+          { "name": "战意激昂", "damage_mult": 0, "description": "提升自身攻击力50%, 持续2回合" }
+        ]
+      },
+      "rewards": {
+        "base_exp": 1200,
+        "base_spirit_stones": 500,
+        "items": [
+          { "id": 101, "name": "灵石", "count": 100 },
+          { "id": 201, "name": "灵草", "count": 2 }
+        ],
+        "special_bonus": {
+          "no_death_bonus_exp": 400,
+          "time_bonus_exp": 300
+        },
+        "contribution_rewards": {
+          "damage_weight": 0.5,
+          "healing_weight": 0.3,
+          "support_weight": 0.2
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "朱雀焚天",
+      "description": "朱雀之火焚烧天地，烈焰秘境中隐藏着上古神兽的试炼。",
+      "realm_required": 3,
+      "min_players": 3,
+      "max_players": 3,
+      "time_limit_minutes": 15,
+      "waves": [
+        {
+          "wave": 1,
+          "name": "烈焰山口",
+          "monsters": [
+            { "id": 3001, "name": "火灵", "hp": 3000, "atk": 100, "def": 30, "speed": 25, "level": 22, "element": "fire" },
+            { "id": 3002, "name": "火灵", "hp": 3000, "atk": 100, "def": 30, "speed": 25, "level": 22, "element": "fire" }
+          ]
+        },
+        {
+          "wave": 2,
+          "name": "熔岩河",
+          "monsters": [
+            { "id": 3003, "name": "熔岩傀儡", "hp": 5000, "atk": 90, "def": 60, "speed": 15, "level": 23, "element": "fire" },
+            { "id": 3004, "name": "炎魔", "hp": 3500, "atk": 130, "def": 35, "speed": 28, "level": 23, "element": "fire" }
+          ]
+        },
+        {
+          "wave": 3,
+          "name": "焚天阵",
+          "monsters": [
+            { "id": 3005, "name": "火焰术士", "hp": 2500, "atk": 150, "def": 20, "speed": 35, "level": 24, "element": "fire" },
+            { "id": 3006, "name": "火焰术士", "hp": 2500, "atk": 150, "def": 20, "speed": 35, "level": 24, "element": "fire" },
+            { "id": 3007, "name": "熔核巨兽", "hp": 7000, "atk": 110, "def": 70, "speed": 12, "level": 24, "element": "fire" }
+          ]
+        },
+        {
+          "wave": 4,
+          "name": "朱雀祭坛",
+          "monsters": [
+            { "id": 3008, "name": "祭坛守卫", "hp": 4500, "atk": 120, "def": 50, "speed": 22, "level": 25, "element": "fire" },
+            { "id": 3009, "name": "祭坛守卫", "hp": 4500, "atk": 120, "def": 50, "speed": 22, "level": 25, "element": "fire" },
+            { "id": 3010, "name": "凤凰之影", "hp": 3000, "atk": 160, "def": 25, "speed": 40, "level": 25, "element": "fire" }
+          ]
+        }
+      ],
+      "boss": {
+        "id": 3100,
+        "name": "朱雀",
+        "hp": 25000,
+        "atk": 200,
+        "def": 70,
+        "speed": 35,
+        "level": 28,
+        "element": "fire",
+        "skills": [
+          { "name": "凤凰涅槃", "damage_mult": 2.0, "description": "以涅槃之火焚烧全体, 伤害极高" },
+          { "name": "烈焰之羽", "damage_mult": 1.4, "description": "释放火焰羽箭, 攻击后排目标" },
+          { "name": "灼热之瞳", "damage_mult": 1.1, "description": "灼烧目标, 降低防御力30%持续3回合" }
+        ]
+      },
+      "rewards": {
+        "base_exp": 3000,
+        "base_spirit_stones": 1200,
+        "items": [
+          { "id": 101, "name": "灵石", "count": 250 },
+          { "id": 301, "name": "火晶石", "count": 1 }
+        ],
+        "special_bonus": {
+          "no_death_bonus_exp": 800,
+          "time_bonus_exp": 600
+        },
+        "contribution_rewards": {
+          "damage_weight": 0.5,
+          "healing_weight": 0.3,
+          "support_weight": 0.2
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "玄武深渊",
+      "description": "深海之渊, 玄武沉睡之地。深渊中危机四伏, 需要4人小队协作探索。",
+      "realm_required": 4,
+      "min_players": 4,
+      "max_players": 4,
+      "time_limit_minutes": 18,
+      "waves": [
+        {
+          "wave": 1,
+          "name": "深海入口",
+          "monsters": [
+            { "id": 4001, "name": "利齿鱼", "hp": 5000, "atk": 150, "def": 50, "speed": 30, "level": 35, "element": "water" },
+            { "id": 4002, "name": "利齿鱼", "hp": 5000, "atk": 150, "def": 50, "speed": 30, "level": 35, "element": "water" },
+            { "id": 4003, "name": "利齿鱼", "hp": 5000, "atk": 150, "def": 50, "speed": 30, "level": 35, "element": "water" }
+          ]
+        },
+        {
+          "wave": 2,
+          "name": "暗流区",
+          "monsters": [
+            { "id": 4004, "name": "暗流蛇妖", "hp": 8000, "atk": 180, "def": 60, "speed": 35, "level": 36, "element": "water" },
+            { "id": 4005, "name": "暗流蛇妖", "hp": 8000, "atk": 180, "def": 60, "speed": 35, "level": 36, "element": "water" },
+            { "id": 4006, "name": "漩涡灵", "hp": 4000, "atk": 200, "def": 30, "speed": 45, "level": 35, "element": "water" }
+          ]
+        },
+        {
+          "wave": 3,
+          "name": "珊瑚迷阵",
+          "monsters": [
+            { "id": 4007, "name": "巨钳蟹", "hp": 12000, "atk": 140, "def": 100, "speed": 15, "level": 37, "element": "water" },
+            { "id": 4008, "name": "剧毒水母", "hp": 6000, "atk": 220, "def": 40, "speed": 30, "level": 37, "element": "water" },
+            { "id": 4009, "name": "剧毒水母", "hp": 6000, "atk": 220, "def": 40, "speed": 30, "level": 37, "element": "water" }
+          ]
+        },
+        {
+          "wave": 4,
+          "name": "深渊裂缝",
+          "monsters": [
+            { "id": 4010, "name": "深渊守卫", "hp": 10000, "atk": 190, "def": 80, "speed": 25, "level": 38, "element": "water" },
+            { "id": 4011, "name": "深渊守卫", "hp": 10000, "atk": 190, "def": 80, "speed": 25, "level": 38, "element": "water" },
+            { "id": 4012, "name": "深渊法师", "hp": 6000, "atk": 250, "def": 35, "speed": 35, "level": 38, "element": "water" }
+          ]
+        },
+        {
+          "wave": 5,
+          "name": "玄武之眠",
+          "monsters": [
+            { "id": 4013, "name": "玄冰守卫", "hp": 15000, "atk": 170, "def": 120, "speed": 15, "level": 39, "element": "water" },
+            { "id": 4014, "name": "远古水灵", "hp": 8000, "atk": 230, "def": 50, "speed": 30, "level": 39, "element": "water" },
+            { "id": 4015, "name": "远古水灵", "hp": 8000, "atk": 230, "def": 50, "speed": 30, "level": 39, "element": "water" }
+          ]
+        }
+      ],
+      "boss": {
+        "id": 4100,
+        "name": "玄武",
+        "hp": 50000,
+        "atk": 280,
+        "def": 150,
+        "speed": 20,
+        "level": 42,
+        "element": "water",
+        "skills": [
+          { "name": "玄冰护盾", "damage_mult": 0, "description": "生成护盾吸收50%伤害, 持续2回合" },
+          { "name": "深海重压", "damage_mult": 1.8, "description": "以深海之水重压敌人, 对全体造成伤害" },
+          { "name": "龟甲反击", "damage_mult": 1.5, "description": "反击姿态, 受到攻击时反击造成150%伤害" },
+          { "name": "冰封万里", "damage_mult": 2.2, "description": "冰封全场, 对全体造成巨额伤害并冰冻1回合" }
+        ]
+      },
+      "rewards": {
+        "base_exp": 8000,
+        "base_spirit_stones": 3000,
+        "items": [
+          { "id": 101, "name": "灵石", "count": 500 },
+          { "id": 401, "name": "玄冰玉", "count": 1 }
+        ],
+        "special_bonus": {
+          "no_death_bonus_exp": 2000,
+          "time_bonus_exp": 1500
+        },
+        "contribution_rewards": {
+          "damage_weight": 0.5,
+          "healing_weight": 0.3,
+          "support_weight": 0.2
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "麒麟圣殿",
+      "description": "上古麒麟的圣殿, 五行之力汇聚之地。需要4人小队精通元素配合。",
+      "realm_required": 5,
+      "min_players": 4,
+      "max_players": 4,
+      "time_limit_minutes": 20,
+      "waves": [
+        {
+          "wave": 1,
+          "name": "五行回廊",
+          "monsters": [
+            { "id": 5001, "name": "金灵守卫", "hp": 12000, "atk": 250, "def": 100, "speed": 25, "level": 48, "element": "metal" },
+            { "id": 5002, "name": "木灵守卫", "hp": 15000, "atk": 220, "def": 80, "speed": 20, "level": 48, "element": "wood" },
+            { "id": 5003, "name": "水灵守卫", "hp": 10000, "atk": 280, "def": 60, "speed": 35, "level": 48, "element": "water" }
+          ]
+        },
+        {
+          "wave": 2,
+          "name": "五行试炼阵",
+          "monsters": [
+            { "id": 5004, "name": "火灵战将", "hp": 14000, "atk": 300, "def": 70, "speed": 30, "level": 49, "element": "fire" },
+            { "id": 5005, "name": "土灵战将", "hp": 20000, "atk": 200, "def": 150, "speed": 12, "level": 49, "element": "earth" },
+            { "id": 5006, "name": "火灵战将", "hp": 14000, "atk": 300, "def": 70, "speed": 30, "level": 49, "element": "fire" },
+            { "id": 5007, "name": "风灵使者", "hp": 8000, "atk": 350, "def": 40, "speed": 50, "level": 48, "element": "wind" }
+          ]
+        },
+        {
+          "wave": 3,
+          "name": "圣殿前厅",
+          "monsters": [
+            { "id": 5008, "name": "圣殿骑士", "hp": 18000, "atk": 280, "def": 120, "speed": 25, "level": 50, "element": "light" },
+            { "id": 5009, "name": "圣殿祭司", "hp": 10000, "atk": 320, "def": 50, "speed": 30, "level": 50, "element": "light" },
+            { "id": 5010, "name": "圣殿骑士", "hp": 18000, "atk": 280, "def": 120, "speed": 25, "level": 50, "element": "light" },
+            { "id": 5011, "name": "圣殿祭司", "hp": 10000, "atk": 320, "def": 50, "speed": 30, "level": 50, "element": "light" }
+          ]
+        },
+        {
+          "wave": 4,
+          "name": "圣殿之巅",
+          "monsters": [
+            { "id": 5012, "name": "五行聚合体", "hp": 25000, "atk": 350, "def": 100, "speed": 20, "level": 51, "element": "light" },
+            { "id": 5013, "name": "元素精灵", "hp": 12000, "atk": 380, "def": 50, "speed": 40, "level": 51, "element": "light" },
+            { "id": 5014, "name": "元素精灵", "hp": 12000, "atk": 380, "def": 50, "speed": 40, "level": 51, "element": "light" }
+          ]
+        }
+      ],
+      "boss": {
+        "id": 5100,
+        "name": "麒麟",
+        "hp": 80000,
+        "atk": 400,
+        "def": 120,
+        "speed": 35,
+        "level": 55,
+        "element": "light",
+        "skills": [
+          { "name": "五行轮转", "damage_mult": 2.0, "description": "切换五行属性攻击, 对全体造成大量伤害" },
+          { "name": "圣光审判", "damage_mult": 2.5, "description": "圣光审判, 对单体造成巨额伤害" },
+          { "name": "元素亲和", "damage_mult": 0, "description": "提升全属性抗性30%, 持续3回合" },
+          { "name": "麒麟怒", "damage_mult": 3.0, "description": "暴怒状态, 对前排造成毁灭性打击" }
+        ]
+      },
+      "rewards": {
+        "base_exp": 18000,
+        "base_spirit_stones": 6000,
+        "items": [
+          { "id": 101, "name": "灵石", "count": 1000 },
+          { "id": 501, "name": "麒麟鳞片", "count": 1 }
+        ],
+        "special_bonus": {
+          "no_death_bonus_exp": 4000,
+          "time_bonus_exp": 3000
+        },
+        "contribution_rewards": {
+          "damage_weight": 0.5,
+          "healing_weight": 0.3,
+          "support_weight": 0.2
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "九天玄境",
+      "description": "九天之上, 玄境仙宫。最强者的试炼场, 需要5人满编队伍挑战。",
+      "realm_required": 6,
+      "min_players": 5,
+      "max_players": 5,
+      "time_limit_minutes": 25,
+      "waves": [
+        {
+          "wave": 1,
+          "name": "南天门",
+          "monsters": [
+            { "id": 6001, "name": "天兵", "hp": 20000, "atk": 350, "def": 150, "speed": 25, "level": 60, "element": "light" },
+            { "id": 6002, "name": "天兵", "hp": 20000, "atk": 350, "def": 150, "speed": 25, "level": 60, "element": "light" },
+            { "id": 6003, "name": "天兵", "hp": 20000, "atk": 350, "def": 150, "speed": 25, "level": 60, "element": "light" }
+          ]
+        },
+        {
+          "wave": 2,
+          "name": "瑶池仙境",
+          "monsters": [
+            { "id": 6004, "name": "瑶池仙子", "hp": 15000, "atk": 450, "def": 80, "speed": 40, "level": 61, "element": "water" },
+            { "id": 6005, "name": "瑶池仙子", "hp": 15000, "atk": 450, "def": 80, "speed": 40, "level": 61, "element": "water" },
+            { "id": 6006, "name": "仙鹤", "hp": 12000, "atk": 400, "def": 60, "speed": 55, "level": 60, "element": "wind" }
+          ]
+        },
+        {
+          "wave": 3,
+          "name": "斩仙台",
+          "monsters": [
+            { "id": 6007, "name": "斩仙护卫", "hp": 30000, "atk": 380, "def": 200, "speed": 20, "level": 62, "element": "metal" },
+            { "id": 6008, "name": "斩仙护卫", "hp": 30000, "atk": 380, "def": 200, "speed": 20, "level": 62, "element": "metal" },
+            { "id": 6009, "name": "天罚使者", "hp": 18000, "atk": 500, "def": 90, "speed": 35, "level": 62, "element": "light" },
+            { "id": 6010, "name": "天罚使者", "hp": 18000, "atk": 500, "def": 90, "speed": 35, "level": 62, "element": "light" }
+          ]
+        },
+        {
+          "wave": 4,
+          "name": "凌霄殿外",
+          "monsters": [
+            { "id": 6011, "name": "凌霄守卫", "hp": 35000, "atk": 420, "def": 220, "speed": 22, "level": 63, "element": "light" },
+            { "id": 6012, "name": "星辰术士", "hp": 20000, "atk": 550, "def": 100, "speed": 38, "level": 63, "element": "light" },
+            { "id": 6011, "name": "凌霄守卫", "hp": 35000, "atk": 420, "def": 220, "speed": 22, "level": 63, "element": "light" },
+            { "id": 6013, "name": "仙灵", "hp": 15000, "atk": 480, "def": 70, "speed": 45, "level": 62, "element": "light" }
+          ]
+        },
+        {
+          "wave": 5,
+          "name": "九天玄阵",
+          "monsters": [
+            { "id": 6014, "name": "玄境守护者", "hp": 40000, "atk": 450, "def": 250, "speed": 18, "level": 64, "element": "light" },
+            { "id": 6015, "name": "玄境守护者", "hp": 40000, "atk": 450, "def": 250, "speed": 18, "level": 64, "element": "light" },
+            { "id": 6016, "name": "混沌之灵", "hp": 25000, "atk": 600, "def": 120, "speed": 40, "level": 64, "element": "dark" },
+            { "id": 6017, "name": "混沌之灵", "hp": 25000, "atk": 600, "def": 120, "speed": 40, "level": 64, "element": "dark" }
+          ]
+        }
+      ],
+      "boss": {
+        "id": 6100,
+        "name": "九天玄尊",
+        "hp": 150000,
+        "atk": 600,
+        "def": 200,
+        "speed": 40,
+        "level": 68,
+        "element": "light",
+        "skills": [
+          { "name": "天罚", "damage_mult": 2.5, "description": "召唤天雷, 对随机3个目标造成大量伤害" },
+          { "name": "乾坤逆转", "damage_mult": 2.0, "description": "逆转乾坤, 对全体造成伤害并混乱1回合" },
+          { "name": "玄天护体", "damage_mult": 0, "description": "护体真气, 免疫所有伤害1回合" },
+          { "name": "九天剑阵", "damage_mult": 3.5, "description": "九天剑阵, 对全体造成毁灭性伤害" },
+          { "name": "仙气疗愈", "damage_mult": 0, "description": "恢复自身15%最大生命值" }
+        ]
+      },
+      "rewards": {
+        "base_exp": 40000,
+        "base_spirit_stones": 15000,
+        "items": [
+          { "id": 101, "name": "灵石", "count": 2500 },
+          { "id": 601, "name": "九天玄玉", "count": 1 }
+        ],
+        "special_bonus": {
+          "no_death_bonus_exp": 10000,
+          "time_bonus_exp": 8000
+        },
+        "contribution_rewards": {
+          "damage_weight": 0.5,
+          "healing_weight": 0.3,
+          "support_weight": 0.2
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "鸿蒙秘境",
+      "description": "天地初开, 鸿蒙始现。至高境界的终极试炼, 仅最强者方可挑战。",
+      "realm_required": 7,
+      "min_players": 5,
+      "max_players": 5,
+      "time_limit_minutes": 30,
+      "waves": [
+        {
+          "wave": 1,
+          "name": "混沌初开",
+          "monsters": [
+            { "id": 7001, "name": "混沌兽", "hp": 40000, "atk": 500, "def": 250, "speed": 30, "level": 75, "element": "dark" },
+            { "id": 7002, "name": "混沌兽", "hp": 40000, "atk": 500, "def": 250, "speed": 30, "level": 75, "element": "dark" },
+            { "id": 7003, "name": "混沌兽", "hp": 40000, "atk": 500, "def": 250, "speed": 30, "level": 75, "element": "dark" }
+          ]
+        },
+        {
+          "wave": 2,
+          "name": "阴阳二气",
+          "monsters": [
+            { "id": 7004, "name": "阳灵", "hp": 35000, "atk": 650, "def": 150, "speed": 40, "level": 76, "element": "fire" },
+            { "id": 7005, "name": "阴灵", "hp": 35000, "atk": 450, "def": 300, "speed": 25, "level": 76, "element": "water" },
+            { "id": 7006, "name": "阳灵", "hp": 35000, "atk": 650, "def": 150, "speed": 40, "level": 76, "element": "fire" },
+            { "id": 7007, "name": "阴灵", "hp": 35000, "atk": 450, "def": 300, "speed": 25, "level": 76, "element": "water" }
+          ]
+        },
+        {
+          "wave": 3,
+          "name": "五行化生",
+          "monsters": [
+            { "id": 7008, "name": "五行天尊", "hp": 60000, "atk": 550, "def": 350, "speed": 20, "level": 77, "element": "light" },
+            { "id": 7009, "name": "五行天尊", "hp": 60000, "atk": 550, "def": 350, "speed": 20, "level": 77, "element": "light" },
+            { "id": 7010, "name": "元素使徒", "hp": 30000, "atk": 700, "def": 120, "speed": 45, "level": 77, "element": "light" },
+            { "id": 7011, "name": "元素使徒", "hp": 30000, "atk": 700, "def": 120, "speed": 45, "level": 77, "element": "light" },
+            { "id": 7012, "name": "元素使徒", "hp": 30000, "atk": 700, "def": 120, "speed": 45, "level": 77, "element": "light" }
+          ]
+        },
+        {
+          "wave": 4,
+          "name": "因果轮回",
+          "monsters": [
+            { "id": 7013, "name": "因果律者", "hp": 50000, "atk": 600, "def": 200, "speed": 35, "level": 78, "element": "dark" },
+            { "id": 7014, "name": "因果律者", "hp": 50000, "atk": 600, "def": 200, "speed": 35, "level": 78, "element": "dark" },
+            { "id": 7015, "name": "命运编织者", "hp": 25000, "atk": 800, "def": 100, "speed": 55, "level": 78, "element": "dark" },
+            { "id": 7016, "name": "命运编织者", "hp": 25000, "atk": 800, "def": 100, "speed": 55, "level": 78, "element": "dark" }
+          ]
+        },
+        {
+          "wave": 5,
+          "name": "鸿蒙之始",
+          "monsters": [
+            { "id": 7017, "name": "鸿蒙守护者", "hp": 80000, "atk": 650, "def": 400, "speed": 15, "level": 79, "element": "light" },
+            { "id": 7018, "name": "虚空行者", "hp": 40000, "atk": 750, "def": 200, "speed": 40, "level": 79, "element": "dark" },
+            { "id": 7019, "name": "鸿蒙守护者", "hp": 80000, "atk": 650, "def": 400, "speed": 15, "level": 79, "element": "light" },
+            { "id": 7020, "name": "虚空行者", "hp": 40000, "atk": 750, "def": 200, "speed": 40, "level": 79, "element": "dark" },
+            { "id": 7021, "name": "造物主之影", "hp": 30000, "atk": 900, "def": 80, "speed": 60, "level": 80, "element": "dark" }
+          ]
+        }
+      ],
+      "boss": {
+        "id": 7100,
+        "name": "鸿蒙道祖",
+        "hp": 300000,
+        "atk": 1000,
+        "def": 350,
+        "speed": 50,
+        "level": 85,
+        "element": "light",
+        "skills": [
+          { "name": "鸿蒙之始", "damage_mult": 3.0, "description": "鸿蒙初始之力, 对全体造成巨量伤害" },
+          { "name": "天道轮回", "damage_mult": 2.5, "description": "天道轮回, 降低全体50%生命并治疗自身" },
+          { "name": "万法归宗", "damage_mult": 4.0, "description": "万法归宗, 对前排造成毁灭性打击" },
+          { "name": "无极护盾", "damage_mult": 0, "description": "无极护体, 吸收80%伤害持续2回合" },
+          { "name": "混沌风暴", "damage_mult": 3.5, "description": "混沌风暴, 对全体造成伤害并沉默1回合" },
+          { "name": "道祖真身", "damage_mult": 5.0, "description": "现出道祖真身, HP低于30%时触发, 对全体造成毁灭伤害" }
+        ]
+      },
+      "rewards": {
+        "base_exp": 100000,
+        "base_spirit_stones": 50000,
+        "items": [
+          { "id": 101, "name": "灵石", "count": 5000 },
+          { "id": 701, "name": "鸿蒙道晶", "count": 1 }
+        ],
+        "special_bonus": {
+          "no_death_bonus_exp": 25000,
+          "time_bonus_exp": 20000
+        },
+        "contribution_rewards": {
+          "damage_weight": 0.5,
+          "healing_weight": 0.3,
+          "support_weight": 0.2
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: social
+  namespace: cultivation-game
+  labels:
+    app: social
+spec:
+  type: ClusterIP
+  selector:
+    app: social
+  ports:
+    - name: grpc
+      port: 50064
+      targetPort: 50064

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cultivation
+  namespace: cultivation-game
+  labels:
+    app: cultivation
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: cultivation
+  template:
+    metadata:
+      labels:
+        app: cultivation
+    spec:
+      containers:
+        - name: cultivation
+          image: cultivation-game/cultivation:latest
+          ports:
+            - containerPort: 50062
+              name: grpc
+          envFrom:
+            - configMapRef:
+                name: cultivation-config
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            tcpSocket:
+              port: 50062
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            tcpSocket:
+              port: 50062
+            initialDelaySeconds: 5
+            periodSeconds: 10

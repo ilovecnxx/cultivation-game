@@ -1,0 +1,826 @@
+{
+  "dungeons": [
+    {
+      "id": 1,
+      "name": "青竹秘境",
+      "realm_req": 1,
+      "daily_limit": 3,
+      "entry_fee": 100,
+      "floors": [
+        {
+          "level": 1,
+          "monsters": [
+            {
+              "id": 101,
+              "name": "竹叶青蛇",
+              "hp": 500,
+              "atk": 30,
+              "def": 10,
+              "skills": [1],
+              "drop_rate": 0.3
+            },
+            {
+              "id": 102,
+              "name": "灵竹蜂",
+              "hp": 400,
+              "atk": 35,
+              "def": 8,
+              "skills": [1],
+              "drop_rate": 0.25
+            }
+          ],
+          "boss": {
+            "id": 110,
+            "name": "青竹蟒",
+            "hp": 2000,
+            "atk": 60,
+            "def": 25,
+            "skills": [1, 2],
+            "drop_rate": 0.8
+          },
+          "rewards": {
+            "exp": 500,
+            "money": 200,
+            "items": [101, 201]
+          }
+        },
+        {
+          "level": 2,
+          "monsters": [
+            {
+              "id": 103,
+              "name": "翠竹狼",
+              "hp": 800,
+              "atk": 45,
+              "def": 18,
+              "skills": [1],
+              "drop_rate": 0.35
+            },
+            {
+              "id": 104,
+              "name": "竹灵鹿",
+              "hp": 700,
+              "atk": 40,
+              "def": 20,
+              "skills": [2],
+              "drop_rate": 0.3
+            }
+          ],
+          "boss": {
+            "id": 111,
+            "name": "青竹狼王",
+            "hp": 3000,
+            "atk": 80,
+            "def": 35,
+            "skills": [1, 2, 3],
+            "drop_rate": 0.85
+          },
+          "rewards": {
+            "exp": 800,
+            "money": 350,
+            "items": [102, 202]
+          }
+        },
+        {
+          "level": 3,
+          "monsters": [
+            {
+              "id": 105,
+              "name": "竹妖护卫",
+              "hp": 1200,
+              "atk": 55,
+              "def": 25,
+              "skills": [2, 3],
+              "drop_rate": 0.4
+            },
+            {
+              "id": 106,
+              "name": "青竹精",
+              "hp": 1000,
+              "atk": 60,
+              "def": 22,
+              "skills": [3],
+              "drop_rate": 0.35
+            }
+          ],
+          "boss": {
+            "id": 120,
+            "name": "青竹道主",
+            "hp": 5000,
+            "atk": 120,
+            "def": 50,
+            "skills": [1, 3, 5],
+            "drop_rate": 0.95
+          },
+          "rewards": {
+            "exp": 1500,
+            "money": 600,
+            "items": [103, 203, 301]
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "玄黄洞",
+      "realm_req": 2,
+      "daily_limit": 3,
+      "entry_fee": 500,
+      "floors": [
+        {
+          "level": 1,
+          "monsters": [
+            {
+              "id": 201,
+              "name": "玄黄土傀",
+              "hp": 2000,
+              "atk": 80,
+              "def": 40,
+              "skills": [1],
+              "drop_rate": 0.3
+            },
+            {
+              "id": 202,
+              "name": "地穴蝙蝠",
+              "hp": 1500,
+              "atk": 90,
+              "def": 30,
+              "skills": [2],
+              "drop_rate": 0.25
+            }
+          ],
+          "boss": {
+            "id": 210,
+            "name": "玄黄石人",
+            "hp": 6000,
+            "atk": 150,
+            "def": 80,
+            "skills": [1, 3],
+            "drop_rate": 0.8
+          },
+          "rewards": {
+            "exp": 2000,
+            "money": 800,
+            "items": [104, 204]
+          }
+        },
+        {
+          "level": 2,
+          "monsters": [
+            {
+              "id": 203,
+              "name": "玄黄蛇妖",
+              "hp": 2800,
+              "atk": 100,
+              "def": 45,
+              "skills": [2, 3],
+              "drop_rate": 0.35
+            },
+            {
+              "id": 204,
+              "name": "洞穴蛛魔",
+              "hp": 2500,
+              "atk": 110,
+              "def": 40,
+              "skills": [1, 4],
+              "drop_rate": 0.3
+            }
+          ],
+          "boss": {
+            "id": 211,
+            "name": "玄黄蛛后",
+            "hp": 8000,
+            "atk": 200,
+            "def": 90,
+            "skills": [2, 3, 4],
+            "drop_rate": 0.85
+          },
+          "rewards": {
+            "exp": 3500,
+            "money": 1200,
+            "items": [105, 205, 302]
+          }
+        },
+        {
+          "level": 3,
+          "monsters": [
+            {
+              "id": 205,
+              "name": "玄黄铁卫",
+              "hp": 3500,
+              "atk": 130,
+              "def": 60,
+              "skills": [1, 3],
+              "drop_rate": 0.4
+            },
+            {
+              "id": 206,
+              "name": "地煞鬼卒",
+              "hp": 3000,
+              "atk": 140,
+              "def": 50,
+              "skills": [4, 5],
+              "drop_rate": 0.35
+            }
+          ],
+          "boss": {
+            "id": 212,
+            "name": "玄黄鬼将",
+            "hp": 12000,
+            "atk": 280,
+            "def": 120,
+            "skills": [3, 4, 5],
+            "drop_rate": 0.9
+          },
+          "rewards": {
+            "exp": 5000,
+            "money": 1800,
+            "items": [106, 206, 303]
+          }
+        },
+        {
+          "level": 4,
+          "monsters": [
+            {
+              "id": 207,
+              "name": "玄黄魔侍",
+              "hp": 4000,
+              "atk": 160,
+              "def": 70,
+              "skills": [3, 5],
+              "drop_rate": 0.4
+            },
+            {
+              "id": 208,
+              "name": "地穴修罗",
+              "hp": 3800,
+              "atk": 170,
+              "def": 65,
+              "skills": [4, 5, 6],
+              "drop_rate": 0.35
+            }
+          ],
+          "boss": {
+            "id": 220,
+            "name": "玄黄洞主",
+            "hp": 20000,
+            "atk": 400,
+            "def": 180,
+            "skills": [3, 5, 6, 7],
+            "drop_rate": 0.95
+          },
+          "rewards": {
+            "exp": 8000,
+            "money": 3000,
+            "items": [107, 207, 304, 401]
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "九幽冥渊",
+      "realm_req": 3,
+      "daily_limit": 3,
+      "entry_fee": 2000,
+      "floors": [
+        {
+          "level": 1,
+          "monsters": [
+            {
+              "id": 301,
+              "name": "冥渊怨灵",
+              "hp": 5000,
+              "atk": 200,
+              "def": 80,
+              "skills": [4, 5],
+              "drop_rate": 0.3
+            },
+            {
+              "id": 302,
+              "name": "幽冥鬼火",
+              "hp": 4000,
+              "atk": 220,
+              "def": 60,
+              "skills": [6],
+              "drop_rate": 0.25
+            }
+          ],
+          "boss": {
+            "id": 310,
+            "name": "冥渊狱卒",
+            "hp": 15000,
+            "atk": 450,
+            "def": 200,
+            "skills": [5, 6, 7],
+            "drop_rate": 0.8
+          },
+          "rewards": {
+            "exp": 8000,
+            "money": 3000,
+            "items": [108, 208]
+          }
+        },
+        {
+          "level": 2,
+          "monsters": [
+            {
+              "id": 303,
+              "name": "九幽鬼差",
+              "hp": 6500,
+              "atk": 260,
+              "def": 100,
+              "skills": [5, 6],
+              "drop_rate": 0.35
+            },
+            {
+              "id": 304,
+              "name": "冥河蛇妖",
+              "hp": 6000,
+              "atk": 280,
+              "def": 90,
+              "skills": [4, 7],
+              "drop_rate": 0.3
+            }
+          ],
+          "boss": {
+            "id": 311,
+            "name": "九幽判官",
+            "hp": 22000,
+            "atk": 600,
+            "def": 260,
+            "skills": [5, 6, 7, 8],
+            "drop_rate": 0.85
+          },
+          "rewards": {
+            "exp": 12000,
+            "money": 5000,
+            "items": [109, 209, 305]
+          }
+        },
+        {
+          "level": 3,
+          "monsters": [
+            {
+              "id": 305,
+              "name": "冥渊魔将",
+              "hp": 8000,
+              "atk": 320,
+              "def": 130,
+              "skills": [6, 7],
+              "drop_rate": 0.4
+            },
+            {
+              "id": 306,
+              "name": "幽冥尸王",
+              "hp": 7500,
+              "atk": 340,
+              "def": 120,
+              "skills": [5, 8],
+              "drop_rate": 0.35
+            }
+          ],
+          "boss": {
+            "id": 312,
+            "name": "九幽冥帅",
+            "hp": 30000,
+            "atk": 800,
+            "def": 350,
+            "skills": [6, 7, 8, 9],
+            "drop_rate": 0.9
+          },
+          "rewards": {
+            "exp": 18000,
+            "money": 7000,
+            "items": [110, 210, 306, 402]
+          }
+        },
+        {
+          "level": 4,
+          "monsters": [
+            {
+              "id": 307,
+              "name": "冥渊守卫",
+              "hp": 10000,
+              "atk": 380,
+              "def": 150,
+              "skills": [7, 8],
+              "drop_rate": 0.4
+            },
+            {
+              "id": 308,
+              "name": "九幽魔煞",
+              "hp": 9000,
+              "atk": 400,
+              "def": 140,
+              "skills": [6, 8, 9],
+              "drop_rate": 0.35
+            }
+          ],
+          "boss": {
+            "id": 320,
+            "name": "九幽冥帝",
+            "hp": 50000,
+            "atk": 1200,
+            "def": 500,
+            "skills": [7, 8, 9, 10],
+            "drop_rate": 0.95
+          },
+          "rewards": {
+            "exp": 25000,
+            "money": 12000,
+            "items": [111, 211, 307, 403, 501]
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "天火秘境",
+      "realm_req": 4,
+      "daily_limit": 3,
+      "entry_fee": 5000,
+      "floors": [
+        {
+          "level": 1,
+          "monsters": [
+            {
+              "id": 401,
+              "name": "天火炎兽",
+              "hp": 10000,
+              "atk": 450,
+              "def": 180,
+              "skills": [6, 7],
+              "drop_rate": 0.3
+            },
+            {
+              "id": 402,
+              "name": "熔岩精怪",
+              "hp": 9000,
+              "atk": 480,
+              "def": 160,
+              "skills": [7],
+              "drop_rate": 0.25
+            }
+          ],
+          "boss": {
+            "id": 410,
+            "name": "天火炎将",
+            "hp": 35000,
+            "atk": 1000,
+            "def": 400,
+            "skills": [7, 8, 9],
+            "drop_rate": 0.8
+          },
+          "rewards": {
+            "exp": 15000,
+            "money": 6000,
+            "items": [112, 212]
+          }
+        },
+        {
+          "level": 2,
+          "monsters": [
+            {
+              "id": 403,
+              "name": "赤焰蛇",
+              "hp": 13000,
+              "atk": 520,
+              "def": 200,
+              "skills": [7, 8],
+              "drop_rate": 0.35
+            },
+            {
+              "id": 404,
+              "name": "火灵石傀",
+              "hp": 12000,
+              "atk": 550,
+              "def": 220,
+              "skills": [6, 9],
+              "drop_rate": 0.3
+            }
+          ],
+          "boss": {
+            "id": 411,
+            "name": "天火蛟龙",
+            "hp": 50000,
+            "atk": 1400,
+            "def": 550,
+            "skills": [8, 9, 10],
+            "drop_rate": 0.85
+          },
+          "rewards": {
+            "exp": 22000,
+            "money": 9000,
+            "items": [113, 213, 308]
+          }
+        },
+        {
+          "level": 3,
+          "monsters": [
+            {
+              "id": 405,
+              "name": "火凤羽卫",
+              "hp": 16000,
+              "atk": 600,
+              "def": 240,
+              "skills": [8, 9],
+              "drop_rate": 0.4
+            },
+            {
+              "id": 406,
+              "name": "烈焰魔骑",
+              "hp": 15000,
+              "atk": 650,
+              "def": 230,
+              "skills": [7, 10],
+              "drop_rate": 0.35
+            }
+          ],
+          "boss": {
+            "id": 412,
+            "name": "天火兽王",
+            "hp": 70000,
+            "atk": 1800,
+            "def": 700,
+            "skills": [8, 9, 10, 11],
+            "drop_rate": 0.9
+          },
+          "rewards": {
+            "exp": 30000,
+            "money": 13000,
+            "items": [114, 214, 309, 404]
+          }
+        },
+        {
+          "level": 4,
+          "monsters": [
+            {
+              "id": 407,
+              "name": "天火尊者",
+              "hp": 20000,
+              "atk": 720,
+              "def": 280,
+              "skills": [9, 10],
+              "drop_rate": 0.4
+            },
+            {
+              "id": 408,
+              "name": "焚天魔影",
+              "hp": 18000,
+              "atk": 750,
+              "def": 260,
+              "skills": [8, 11],
+              "drop_rate": 0.35
+            }
+          ],
+          "boss": {
+            "id": 413,
+            "name": "天火麒麟",
+            "hp": 100000,
+            "atk": 2500,
+            "def": 1000,
+            "skills": [9, 10, 11, 12],
+            "drop_rate": 0.92
+          },
+          "rewards": {
+            "exp": 40000,
+            "money": 18000,
+            "items": [115, 215, 310, 405, 502]
+          }
+        },
+        {
+          "level": 5,
+          "monsters": [
+            {
+              "id": 409,
+              "name": "天火神侍",
+              "hp": 25000,
+              "atk": 850,
+              "def": 320,
+              "skills": [10, 11],
+              "drop_rate": 0.45
+            },
+            {
+              "id": 410,
+              "name": "焚天炎魔",
+              "hp": 22000,
+              "atk": 900,
+              "def": 300,
+              "skills": [9, 12],
+              "drop_rate": 0.4
+            }
+          ],
+          "boss": {
+            "id": 420,
+            "name": "天火道尊",
+            "hp": 150000,
+            "atk": 3500,
+            "def": 1500,
+            "skills": [10, 11, 12, 13],
+            "drop_rate": 0.98
+          },
+          "rewards": {
+            "exp": 60000,
+            "money": 25000,
+            "items": [116, 216, 311, 406, 503]
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "混沌虚空",
+      "realm_req": 5,
+      "daily_limit": 3,
+      "entry_fee": 10000,
+      "floors": [
+        {
+          "level": 1,
+          "monsters": [
+            {
+              "id": 501,
+              "name": "虚空噬灵",
+              "hp": 30000,
+              "atk": 1000,
+              "def": 400,
+              "skills": [9, 10],
+              "drop_rate": 0.3
+            },
+            {
+              "id": 502,
+              "name": "混沌迷雾",
+              "hp": 25000,
+              "atk": 1100,
+              "def": 350,
+              "skills": [10],
+              "drop_rate": 0.25
+            }
+          ],
+          "boss": {
+            "id": 510,
+            "name": "虚空守卫",
+            "hp": 80000,
+            "atk": 2500,
+            "def": 1200,
+            "skills": [10, 11, 12],
+            "drop_rate": 0.8
+          },
+          "rewards": {
+            "exp": 40000,
+            "money": 15000,
+            "items": [117, 217]
+          }
+        },
+        {
+          "level": 2,
+          "monsters": [
+            {
+              "id": 503,
+              "name": "虚空魔蛛",
+              "hp": 38000,
+              "atk": 1200,
+              "def": 450,
+              "skills": [10, 11],
+              "drop_rate": 0.35
+            },
+            {
+              "id": 504,
+              "name": "混沌幻妖",
+              "hp": 35000,
+              "atk": 1300,
+              "def": 400,
+              "skills": [11, 12],
+              "drop_rate": 0.3
+            }
+          ],
+          "boss": {
+            "id": 511,
+            "name": "虚空掠食者",
+            "hp": 120000,
+            "atk": 3500,
+            "def": 1600,
+            "skills": [11, 12, 13],
+            "drop_rate": 0.85
+          },
+          "rewards": {
+            "exp": 60000,
+            "money": 22000,
+            "items": [118, 218, 312]
+          }
+        },
+        {
+          "level": 3,
+          "monsters": [
+            {
+              "id": 505,
+              "name": "虚空使徒",
+              "hp": 45000,
+              "atk": 1500,
+              "def": 500,
+              "skills": [11, 12],
+              "drop_rate": 0.4
+            },
+            {
+              "id": 506,
+              "name": "混沌古兽",
+              "hp": 42000,
+              "atk": 1600,
+              "def": 480,
+              "skills": [12, 13],
+              "drop_rate": 0.35
+            }
+          ],
+          "boss": {
+            "id": 512,
+            "name": "虚空大君",
+            "hp": 180000,
+            "atk": 5000,
+            "def": 2200,
+            "skills": [12, 13, 14],
+            "drop_rate": 0.9
+          },
+          "rewards": {
+            "exp": 80000,
+            "money": 30000,
+            "items": [119, 219, 313, 407]
+          }
+        },
+        {
+          "level": 4,
+          "monsters": [
+            {
+              "id": 507,
+              "name": "虚空领主",
+              "hp": 55000,
+              "atk": 1800,
+              "def": 600,
+              "skills": [12, 13],
+              "drop_rate": 0.4
+            },
+            {
+              "id": 508,
+              "name": "混沌魔神",
+              "hp": 50000,
+              "atk": 2000,
+              "def": 550,
+              "skills": [13, 14],
+              "drop_rate": 0.35
+            }
+          ],
+          "boss": {
+            "id": 513,
+            "name": "混沌古神",
+            "hp": 250000,
+            "atk": 7000,
+            "def": 3000,
+            "skills": [13, 14, 15],
+            "drop_rate": 0.92
+          },
+          "rewards": {
+            "exp": 100000,
+            "money": 40000,
+            "items": [120, 220, 314, 408, 504]
+          }
+        },
+        {
+          "level": 5,
+          "monsters": [
+            {
+              "id": 509,
+              "name": "虚空神卫",
+              "hp": 65000,
+              "atk": 2200,
+              "def": 700,
+              "skills": [13, 14],
+              "drop_rate": 0.45
+            },
+            {
+              "id": 510,
+              "name": "混沌之源",
+              "hp": 60000,
+              "atk": 2500,
+              "def": 650,
+              "skills": [14, 15],
+              "drop_rate": 0.4
+            }
+          ],
+          "boss": {
+            "id": 520,
+            "name": "混沌之主",
+            "hp": 400000,
+            "atk": 10000,
+            "def": 5000,
+            "skills": [14, 15, 16],
+            "drop_rate": 0.99
+          },
+          "rewards": {
+            "exp": 150000,
+            "money": 60000,
+            "items": [121, 221, 315, 409, 505]
+          }
+        }
+      ]
+    }
+  ]
+}

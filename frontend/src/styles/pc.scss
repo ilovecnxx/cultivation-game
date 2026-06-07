@@ -1,0 +1,81 @@
+// ============================================================
+// PC 端响应式样式
+// 作用于宽度 >= 1024px 的设备
+// ============================================================
+
+@use 'variables.scss' as *;
+@use 'mixins.scss' as *;
+
+// PC 端全局布局
+.pc-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: $ink-black;
+
+  // 侧边栏区域由 NavBar 组件渲染
+
+  // 主内容区域
+  &__main {
+    flex: 1;
+    margin-left: 220px; // 与侧边栏宽度一致
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // 内容头部
+  &__header {
+    padding: $spacing-md $spacing-lg;
+    border-bottom: 1px solid rgba($ancient-gold, 0.1);
+    @include glass-effect;
+    flex-shrink: 0;
+  }
+
+  // 滚动内容区
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-lg;
+    @include custom-scrollbar;
+  }
+}
+
+// 面板容器
+.pc-panel {
+  @include ancient-border;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  margin-bottom: $spacing-md;
+
+  &__title {
+    font-size: $font-size-lg;
+    color: $ancient-gold;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid rgba($ancient-gold, 0.2);
+  }
+}
+
+// 网格布局
+.pc-grid {
+  display: grid;
+  gap: $spacing-md;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+// 两栏布局
+.pc-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+}
+
+// 三栏布局
+.pc-three-column {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: $spacing-lg;
+}

@@ -1,0 +1,150 @@
+// ============================================================
+// 修仙主题系统 - CSS 变量定义
+// 4套仙侠风格主题，通过 [data-theme] 属性切换
+// ============================================================
+
+// ---- 主题1: 青云（默认）- 清雅仙侠 ----
+:root,
+[data-theme="qingyun"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-gradient: linear-gradient(180deg, #1a1a2e, #0f3460);
+  --accent: #c9a84c;
+  --text-primary: #e8e0d0;
+  --text-secondary: rgba(232, 224, 208, 0.7);
+  --text-tertiary: rgba(232, 224, 208, 0.5);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(201, 168, 76, 0.2);
+  --gradient-start: #1a1a2e;
+  --gradient-end: #0f3460;
+  --glow: rgba(201, 168, 76, 0.3);
+  --hover-bg: rgba(232, 224, 208, 0.05);
+  --accent-bg: rgba(201, 168, 76, 0.1);
+  --accent-bg-light: rgba(201, 168, 76, 0.08);
+  --accent-border: rgba(201, 168, 76, 0.15);
+  --sidebar-bg: linear-gradient(180deg, #1a1a2e, #12121f);
+  --scrollbar-thumb: rgba(201, 168, 76, 0.3);
+}
+
+// ---- 主题2: 紫霄 - 神秘高贵 ----
+[data-theme="zixiao"] {
+  --bg-primary: #1a0a2e;
+  --bg-secondary: #2d1b4e;
+  --bg-gradient: linear-gradient(180deg, #1a0a2e, #4a1a6b);
+  --accent: #b388ff;
+  --text-primary: #f3e8ff;
+  --text-secondary: rgba(243, 232, 255, 0.7);
+  --text-tertiary: rgba(243, 232, 255, 0.5);
+  --card-bg: rgba(179, 136, 255, 0.05);
+  --card-border: rgba(179, 136, 255, 0.2);
+  --gradient-start: #1a0a2e;
+  --gradient-end: #4a1a6b;
+  --glow: rgba(179, 136, 255, 0.3);
+  --hover-bg: rgba(243, 232, 255, 0.05);
+  --accent-bg: rgba(179, 136, 255, 0.1);
+  --accent-bg-light: rgba(179, 136, 255, 0.08);
+  --accent-border: rgba(179, 136, 255, 0.15);
+  --sidebar-bg: linear-gradient(180deg, #1a0a2e, #0d0517);
+  --scrollbar-thumb: rgba(179, 136, 255, 0.3);
+}
+
+// ---- 主题3: 赤焰 - 热血霸气 ----
+[data-theme="chiyan"] {
+  --bg-primary: #2e0a0a;
+  --bg-secondary: #4e1a1a;
+  --bg-gradient: linear-gradient(180deg, #2e0a0a, #6b1a1a);
+  --accent: #ff6b35;
+  --text-primary: #ffe8d0;
+  --text-secondary: rgba(255, 232, 208, 0.7);
+  --text-tertiary: rgba(255, 232, 208, 0.5);
+  --card-bg: rgba(255, 107, 53, 0.05);
+  --card-border: rgba(255, 107, 53, 0.2);
+  --gradient-start: #2e0a0a;
+  --gradient-end: #6b1a1a;
+  --glow: rgba(255, 107, 53, 0.3);
+  --hover-bg: rgba(255, 232, 208, 0.05);
+  --accent-bg: rgba(255, 107, 53, 0.1);
+  --accent-bg-light: rgba(255, 107, 53, 0.08);
+  --accent-border: rgba(255, 107, 53, 0.15);
+  --sidebar-bg: linear-gradient(180deg, #2e0a0a, #170505);
+  --scrollbar-thumb: rgba(255, 107, 53, 0.3);
+}
+
+// ---- 主题4: 玄冰 - 冷冽出尘 ----
+[data-theme="xuanbing"] {
+  --bg-primary: #0a1a2e;
+  --bg-secondary: #0a2e3e;
+  --bg-gradient: linear-gradient(180deg, #0a1a2e, #0a3e4e);
+  --accent: #80d0ff;
+  --text-primary: #e0f0ff;
+  --text-secondary: rgba(224, 240, 255, 0.7);
+  --text-tertiary: rgba(224, 240, 255, 0.5);
+  --card-bg: rgba(128, 208, 255, 0.05);
+  --card-border: rgba(128, 208, 255, 0.2);
+  --gradient-start: #0a1a2e;
+  --gradient-end: #0a3e4e;
+  --glow: rgba(128, 208, 255, 0.3);
+  --hover-bg: rgba(224, 240, 255, 0.05);
+  --accent-bg: rgba(128, 208, 255, 0.1);
+  --accent-bg-light: rgba(128, 208, 255, 0.08);
+  --accent-border: rgba(128, 208, 255, 0.15);
+  --sidebar-bg: linear-gradient(180deg, #0a1a2e, #050d17);
+  --scrollbar-thumb: rgba(128, 208, 255, 0.3);
+}
+
+// ============================================================
+// 亮色/暗色模式 — 通过 [data-mode] 属性切换
+// day: 明亮暖色调, night: 复用青云暗色系
+// ============================================================
+
+// ---- 亮色模式 (日间) ----
+[data-mode="day"] {
+  --bg-primary: #f5f0e8;
+  --bg-secondary: #ede5d6;
+  --bg-gradient: linear-gradient(180deg, #f5f0e8, #ede5d6);
+  --accent: #c43a31;
+  --text-primary: #2c2416;
+  --text-secondary: rgba(44, 36, 22, 0.7);
+  --text-tertiary: rgba(44, 36, 22, 0.5);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(196, 58, 49, 0.2);
+  --gradient-start: #f5f0e8;
+  --gradient-end: #ede5d6;
+  --glow: rgba(196, 58, 49, 0.3);
+  --hover-bg: rgba(44, 36, 22, 0.05);
+  --accent-bg: rgba(196, 58, 49, 0.1);
+  --accent-bg-light: rgba(196, 58, 49, 0.08);
+  --accent-border: rgba(196, 58, 49, 0.15);
+  --sidebar-bg: linear-gradient(180deg, #f5f0e8, #ede5d6);
+  --scrollbar-thumb: rgba(196, 58, 49, 0.3);
+}
+
+// ---- 暗色模式 (夜间) - 复用青云默认暗色 ----
+[data-mode="night"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-gradient: linear-gradient(180deg, #1a1a2e, #0f3460);
+  --accent: #c9a84c;
+  --text-primary: #e8e0d0;
+  --text-secondary: rgba(232, 224, 208, 0.7);
+  --text-tertiary: rgba(232, 224, 208, 0.5);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(201, 168, 76, 0.2);
+  --gradient-start: #1a1a2e;
+  --gradient-end: #0f3460;
+  --glow: rgba(201, 168, 76, 0.3);
+  --hover-bg: rgba(232, 224, 208, 0.05);
+  --accent-bg: rgba(201, 168, 76, 0.1);
+  --accent-bg-light: rgba(201, 168, 76, 0.08);
+  --accent-border: rgba(201, 168, 76, 0.15);
+  --sidebar-bg: linear-gradient(180deg, #1a1a2e, #12121f);
+  --scrollbar-thumb: rgba(201, 168, 76, 0.3);
+}
+
+// ---- 模式切换过渡动画 ----
+[data-mode] * {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: world
+  namespace: cultivation-game
+  labels:
+    app: world
+spec:
+  type: ClusterIP
+  selector:
+    app: world
+  ports:
+    - name: grpc
+      port: 50065
+      targetPort: 50065

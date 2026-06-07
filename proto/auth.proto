@@ -1,0 +1,42 @@
+syntax = "proto3";
+package game;
+option go_package = "cultivation-game/proto/auth";
+
+message LoginReq {
+  string username = 1;
+  string password = 2;
+  string device_id = 3;
+  string client_version = 4;
+}
+
+message LoginResp {
+  uint64 player_id = 1;
+  string token = 2;
+  string refresh_token = 3;
+  int64 expires_at = 4;
+  bool is_new_player = 5;
+}
+
+message RegisterReq {
+  string username = 1;
+  string password = 2;
+  string nickname = 3;
+  string spirit_root = 4;  // 灵根选择
+}
+
+message RegisterResp {
+  uint64 player_id = 1;
+  string token = 2;
+  string refresh_token = 3;
+}
+
+message TokenRefreshReq {
+  string refresh_token = 1;
+  uint64 player_id = 2;
+}
+
+message TokenRefreshResp {
+  string token = 1;
+  string refresh_token = 2;
+  int64 expires_at = 3;
+}

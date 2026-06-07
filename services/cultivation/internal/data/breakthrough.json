@@ -1,0 +1,31 @@
+{
+  "base_rates": {
+    "2": { "base_rate": 0.50, "penalty_realm_drop": true, "penalty_exp_loss": 0.2, "description": "筑基突破，基础概率50%，失败掉落至练气九层" },
+    "3": { "base_rate": 0.40, "penalty_realm_drop": true, "penalty_exp_loss": 0.2, "description": "金丹突破，基础概率40%，失败掉落至筑基大圆满" },
+    "4": { "base_rate": 0.30, "penalty_realm_drop": true, "penalty_exp_loss": 0.25, "description": "元婴突破，基础概率30%，失败掉落至金丹大圆满" },
+    "5": { "base_rate": 0.20, "penalty_realm_drop": true, "penalty_exp_loss": 0.30, "description": "化神突破，基础概率20%，失败掉落至元婴大圆满" },
+    "6": { "base_rate": 0.15, "penalty_realm_drop": true, "penalty_exp_loss": 0.30, "description": "炼虚突破，基础概率15%，失败掉落至化神大圆满" },
+    "7": { "base_rate": 0.10, "penalty_realm_drop": true, "penalty_exp_loss": 0.35, "description": "合体突破，基础概率10%，失败掉落至炼虚大圆满" },
+    "8": { "base_rate": 0.08, "penalty_realm_drop": true, "penalty_exp_loss": 0.40, "description": "大乘突破，基础概率8%，失败掉落至合体大圆满" },
+    "9": { "base_rate": 0.05, "penalty_realm_drop": true, "penalty_exp_loss": 0.50, "description": "渡劫突破，基础概率5%，失败掉落至大乘大圆满" }
+  },
+  "bonus_items": [
+    { "item_id": "pill_basic", "name": "筑基丹", "rate_bonus": 0.10, "description": "提高突破概率10%" },
+    { "item_id": "pill_advanced", "name": "聚灵丹", "rate_bonus": 0.15, "description": "提高突破概率15%" },
+    { "item_id": "pill_supreme", "name": "天灵丹", "rate_bonus": 0.25, "description": "提高突破概率25%" },
+    { "item_id": "artifact_talisman", "name": "破境符", "rate_bonus": 0.12, "description": "提高突破概率12%" },
+    { "item_id": "artifact_pearl", "name": "定魂珠", "rate_bonus": 0.18, "description": "提高突破概率18%" },
+    { "item_id": "artifact_ancient", "name": "上古灵器", "rate_bonus": 0.30, "description": "提高突破概率30%" }
+  ],
+  "realm_level_breakthroughs": {
+    "1_9": { "base_rate": 0.85, "penalty_realm_drop": false, "penalty_exp_loss": 0.05, "description": "练气小境界突破，基础85%，失败仅损失5%修为" },
+    "2_4": { "base_rate": 0.75, "penalty_realm_drop": false, "penalty_exp_loss": 0.10, "description": "筑基小境界突破，基础75%，失败损失10%修为" },
+    "3_4": { "base_rate": 0.70, "penalty_realm_drop": false, "penalty_exp_loss": 0.10, "description": "金丹小境界突破，基础70%，失败损失10%修为" },
+    "4_4": { "base_rate": 0.65, "penalty_realm_drop": false, "penalty_exp_loss": 0.12, "description": "元婴小境界突破，基础65%，失败损失12%修为" },
+    "5_4": { "base_rate": 0.60, "penalty_realm_drop": false, "penalty_exp_loss": 0.15, "description": "化神小境界突破，基础60%，失败损失15%修为" },
+    "6_4": { "base_rate": 0.55, "penalty_realm_drop": false, "penalty_exp_loss": 0.15, "description": "炼虚小境界突破，基础55%，失败损失15%修为" },
+    "7_4": { "base_rate": 0.50, "penalty_realm_drop": false, "penalty_exp_loss": 0.18, "description": "合体小境界突破，基础50%，失败损失18%修为" },
+    "8_4": { "base_rate": 0.45, "penalty_realm_drop": false, "penalty_exp_loss": 0.20, "description": "大乘小境界突破，基础45%，失败损失20%修为" },
+    "9_4": { "base_rate": 0.40, "penalty_realm_drop": false, "penalty_exp_loss": 0.25, "description": "渡劫小境界突破，基础40%，失败损失25%修为" }
+  }
+}

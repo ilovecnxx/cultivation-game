@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package ranking;
+
+option go_package = "cultivation-game/services/ranking/api;api";
+
+// RankingEntry 排行榜条目。
+message RankingEntry {
+  uint64 player_id = 1;
+  string nickname = 2;
+  string realm_name = 3;
+  double score = 4;
+  int32 rank = 5;
+  int64 updated_at = 6;
+}
+
+// GetRankingRequest 获取排行榜请求。
+message GetRankingRequest {
+  string ranking_type = 1; // realm / combat_power / wealth / sect
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+// GetRankingResponse 获取排行榜响应。
+message GetRankingResponse {
+  repeated RankingEntry entries = 1;
+  int32 total = 2;
+}
+
+// GetPlayerRankRequest 查询玩家排名请求。
+message GetPlayerRankRequest {
+  uint64 player_id = 1;
+  string ranking_type = 2;
+}
+
+// GetPlayerRankResponse 查询玩家排名响应。
+message GetPlayerRankResponse {
+  RankingEntry entry = 1;
+  repeated RankingEntry above = 2; // 排名靠前的邻居
+  repeated RankingEntry below = 3; // 排名靠后的邻居
+}
+
+// GetTopPlayersRequest 获取 Top N 玩家请求。
+message GetTopPlayersRequest {
+  string ranking_type = 1;
+  int32 limit = 2;
+}
+
+// GetTopPlayersResponse 获取 Top N 玩家响应。
+message GetTopPlayersResponse {
+  repeated RankingEntry entries = 1;
+}
+
+// RankingService 排行榜 gRPC 服务。
+service RankingService {
+  // GetRanking 获取排行榜（分页）。
+  rpc GetRanking(GetRankingRequest) returns (GetRankingResponse);
+
+  // GetPlayerRank 查询指定玩家的排名及周围邻居。
+  rpc GetPlayerRank(GetPlayerRankRequest) returns (GetPlayerRankResponse);
+
+  // GetTopPlayers 获取榜单前 N 名。
+  rpc GetTopPlayers(GetTopPlayersRequest) returns (GetTopPlayersResponse);
+}

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: combat
+  namespace: cultivation-game
+  labels:
+    app: combat
+spec:
+  type: ClusterIP
+  selector:
+    app: combat
+  ports:
+    - name: grpc
+      port: 50063
+      targetPort: 50063

@@ -1,0 +1,161 @@
+[
+  {
+    "id": "npc_old_zhang",
+    "name": "张老伯",
+    "type": "quest_giver",
+    "title": "青竹村村长",
+    "description": "青竹村的村长，一位和蔼可亲的老人，虽然修为不高，但见多识广。对每一位路过的修士都悉心指点。",
+    "region_id": "newbie_village_01",
+    "dialogues": [
+      "年轻人，你终于醒了。这里是青竹村，修仙之路的第一步。",
+      "村外的迷雾森林有些不太平，能帮我去看看吗？",
+      "修炼之道，贵在坚持。切忌急功近利。"
+    ],
+    "quests": ["quest_first_step", "quest_forest_clear"]
+  },
+  {
+    "id": "npc_hermit_li",
+    "name": "李隐士",
+    "type": "trainer",
+    "title": "青云散修",
+    "description": "一位在青云山脉深处隐居的散修，修为已达金丹期，性格孤僻但乐于指点有缘的后辈。",
+    "region_id": "qingyun_range_01",
+    "dialogues": [
+      "能走到这里，说明你与我有缘。",
+      "修炼一途，财侣法地，缺一不可。",
+      "你根骨不错，但还需打磨。"
+    ],
+    "quests": ["quest_qingyun_trial"]
+  },
+  {
+    "id": "npc_merchant_li",
+    "name": "李掌柜",
+    "type": "shop",
+    "title": "百草堂掌柜",
+    "description": "百草堂的掌柜，经营各类灵药和丹药，为人精明但价格公道。在星辉城经营多年，人脉极广。",
+    "region_id": "star_city_01",
+    "dialogues": [
+      "欢迎光临百草堂，本店灵药齐全。",
+      "最近灵药价格涨了不少，要买趁早。",
+      "客官需要点什么？我这里刚进了一批上好的丹药。"
+    ],
+    "shop_items": [
+      {"item_id": "pill_qi_01", "name": "聚气丹", "price": 100, "currency": "spirit_stone", "stock": 100, "level_req": 1},
+      {"item_id": "pill_heal_01", "name": "疗伤丹", "price": 50, "currency": "spirit_stone", "stock": 200, "level_req": 1},
+      {"item_id": "herb_lingzhi_01", "name": "灵芝草", "price": 30, "currency": "spirit_stone", "stock": 50, "level_req": 5},
+      {"item_id": "pill_breakthrough_01", "name": "破境丹", "price": 5000, "currency": "spirit_stone", "stock": 10, "level_req": 30}
+    ]
+  },
+  {
+    "id": "npc_blacksmith_wang",
+    "name": "王铁匠",
+    "type": "shop",
+    "title": "星辉铁铺",
+    "description": "星辉城的传奇铁匠，打造的灵器坚固耐用，据说曾为元婴期修士锻造过本命法宝。",
+    "region_id": "star_city_01",
+    "dialogues": [
+      "好铁要配好锤，好修士要配好法器。",
+      "这把剑我打了三天三夜，你摸摸这刃口。",
+      "想炼制本命法宝？那可得准备好材料。"
+    ],
+    "shop_items": [
+      {"item_id": "weapon_sword_iron_01", "name": "精铁剑", "price": 500, "currency": "spirit_stone", "stock": -1, "level_req": 10},
+      {"item_id": "armor_robe_01", "name": "法袍", "price": 800, "currency": "spirit_stone", "stock": -1, "level_req": 10}
+    ]
+  },
+  {
+    "id": "npc_elder_feng",
+    "name": "冯长老",
+    "type": "quest_giver",
+    "title": "天机阁外务长老",
+    "description": "天机阁的外务长老，负责接引有潜力的修士。为人神秘莫测，言语间暗藏玄机。",
+    "region_id": "heavenly_pavilion_01",
+    "dialogues": [
+      "你终于来到这里了，一切都在天机之中。",
+      "天机不可泄露，但你可以自己去寻找答案。",
+      "我观你面有紫气，日后必成大器。"
+    ],
+    "quests": ["quest_heavenly_trial", "quest_fate_seeker"]
+  },
+  {
+    "id": "npc_lake_spirit",
+    "name": "湖中仙子",
+    "type": "cultivator",
+    "title": "新月湖灵",
+    "description": "新月湖中修炼成精的湖灵，化为人形后常在月夜出现。性情温婉，偶尔会指点迷途的修士。",
+    "region_id": "crescent_lake_01",
+    "dialogues": [
+      "月光如水水如天，你也是来赏月的吗？",
+      "这湖底有一处灵脉，你若有机缘自会遇见。",
+      "你身上有一种熟悉的气息……我们是不是在哪见过？"
+    ]
+  },
+  {
+    "id": "npc_wandering_xian",
+    "name": "云游散修",
+    "type": "cultivator",
+    "title": "无名散修",
+    "description": "一位游历四方的散修，修为深不可测，言行间透露出对天道的独特理解。他似乎无处不在。",
+    "region_id": "sunset_valley_01",
+    "dialogues": [
+      "天地不仁，以万物为刍狗。修士之路，与天争命。",
+      "你我有缘，送你一句话：道法自然。",
+      "落霞与孤鹜齐飞，秋水共长天一色——你看这景色，像不像人生的起落？"
+    ]
+  },
+  {
+    "id": "npc_guardian_yan",
+    "name": "严守卫",
+    "type": "quest_giver",
+    "title": "蛮荒关守将",
+    "description": "蛮荒之地入口关隘的守将，负责阻挡修为不足者进入。性格刚正不阿，只认实力不认人情。",
+    "region_id": "wild_lands_01",
+    "dialogues": [
+      "前方是蛮荒之地，修为不足进去只会送命。",
+      "你确定要进去？里面的远古异兽可不长眼。",
+      "若你修为足够，我倒是有个任务交给你。"
+    ],
+    "quests": ["quest_wild_lands_patrol"]
+  },
+  {
+    "id": "npc_abyss_sage",
+    "name": "深渊隐士",
+    "type": "cultivator",
+    "title": "神秘隐士",
+    "description": "在无尽深渊边缘修行的神秘修士，没人知道他在这里待了多少年。修为深不可测，似乎是上古时期的人物。",
+    "region_id": "abyss_01",
+    "dialogues": [
+      "你终于走到这里了。很好，很好。",
+      "深渊之中藏着大秘密，但不是现在该知道的。",
+      "你的道心还不够坚定，再修炼修炼吧。",
+      "这片天地……远比你想象的要大。"
+    ]
+  },
+  {
+    "id": "npc_ice_guardian",
+    "name": "冰魄守卫",
+    "type": "quest_giver",
+    "title": "玄冰洞守护者",
+    "description": "玄冰洞深处的冰晶傀儡，由上古大能炼制而成，守护着洞中的秘密。它只对实力足够的人开口。",
+    "region_id": "ice_cave_01",
+    "dialogues": [
+      "……检测到来访者……修为评估中……达标。",
+      "冰窟深处封印着上古冰凤，不是你该触碰的。",
+      "你若能通过玄冰试炼，可继承洞中传承。"
+    ],
+    "quests": ["quest_ice_trial"]
+  },
+  {
+    "id": "npc_demon_lord",
+    "name": "妖皇残魂",
+    "type": "cultivator",
+    "title": "万妖窟旧主",
+    "description": "万妖窟上一任妖皇留下的一缕残魂，虽已陨落多年，但威严犹存。它对人类修士既敌视又好奇。",
+    "region_id": "myriad_demon_lair_01",
+    "dialogues": [
+      "人类……竟敢踏入本皇的领地。",
+      "你身上有几分胆色，倒不像那些虚伪的正道人士。",
+      "想获得妖族至宝？先证明你的实力。"
+    ]
+  }
+]

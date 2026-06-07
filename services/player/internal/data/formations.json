@@ -1,0 +1,93 @@
+{
+  "formations": [
+    {
+      "id": 1,
+      "name": "五行阵",
+      "type": 1,
+      "quality": 3,
+      "description": "引金木水火土五行之力，大幅提升元素伤害",
+      "effects": [
+        { "type": "element_dmg", "value": 0.20 }
+      ],
+      "learn_cost": 5000
+    },
+    {
+      "id": 2,
+      "name": "八卦阵",
+      "type": 2,
+      "quality": 3,
+      "description": "以八卦方位运转灵力，身法缥缈难以捉摸",
+      "effects": [
+        { "type": "dodge", "value": 0.15 },
+        { "type": "counter_rate", "value": 0.10 }
+      ],
+      "learn_cost": 5000
+    },
+    {
+      "id": 3,
+      "name": "诛仙阵",
+      "type": 3,
+      "quality": 4,
+      "description": "上古杀伐之阵，对单体敌人造成毁灭性打击",
+      "effects": [
+        { "type": "single_target_dmg", "value": 0.35 }
+      ],
+      "learn_cost": 8000
+    },
+    {
+      "id": 4,
+      "name": "护山大阵",
+      "type": 4,
+      "quality": 3,
+      "description": "汇聚天地灵气形成护盾，大幅提升全队防御",
+      "effects": [
+        { "type": "party_def", "value": 0.25 }
+      ],
+      "learn_cost": 5000
+    },
+    {
+      "id": 5,
+      "name": "聚灵阵",
+      "type": 5,
+      "quality": 2,
+      "description": "汇聚四方天地灵气，大幅加快修炼速度",
+      "effects": [
+        { "type": "cultivation_speed", "value": 0.10 }
+      ],
+      "learn_cost": 3000
+    },
+    {
+      "id": 6,
+      "name": "迷魂阵",
+      "type": 6,
+      "quality": 3,
+      "description": "以幻术迷惑敌人心神，大幅降低其命中率",
+      "effects": [
+        { "type": "enemy_accuracy", "value": -0.20 }
+      ],
+      "learn_cost": 4000
+    },
+    {
+      "id": 7,
+      "name": "传送阵",
+      "type": 7,
+      "quality": 2,
+      "description": "打通空间壁垒，可在不同区域间瞬间传送",
+      "effects": [
+        { "type": "travel_speed", "value": 0.50 }
+      ],
+      "learn_cost": 3000
+    },
+    {
+      "id": 8,
+      "name": "天罡北斗阵",
+      "type": 8,
+      "quality": 5,
+      "description": "引北斗七星之力加身，全面强化所有属性",
+      "effects": [
+        { "type": "all_stats", "value": 0.10 }
+      ],
+      "learn_cost": 10000
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+[
+  {
+    "id": "newbie_village_01",
+    "name": "青竹村",
+    "type": "newbie_village",
+    "description": "一座宁静的小村庄，四周翠竹环绕，灵气稀薄但安全。新手修士的起点，村中有简单的修炼设施和基础资源。",
+    "level_min": 1,
+    "level_max": 10,
+    "danger_level": 1,
+    "spirit_density": 0.5,
+    "connections": ["qingyun_range_01", "secret_forest_01"],
+    "resources": {
+      "spirit_qi": 0.3,
+      "items": [
+        {"item_id": "herb_lingzhi_01", "rate": 0.3},
+        {"item_id": "herb_yinchen_01", "rate": 0.5}
+      ]
+    }
+  },
+  {
+    "id": "qingyun_range_01",
+    "name": "青云山脉",
+    "type": "newbie_village",
+    "description": "连绵起伏的青云山脉，灵气充沛，山间散布着各类灵药和低阶妖兽。散修常在此闭关修炼，是通往修仙界的门户。",
+    "level_min": 5,
+    "level_max": 20,
+    "danger_level": 3,
+    "spirit_density": 1.0,
+    "connections": ["newbie_village_01", "star_city_01", "crescent_lake_01"],
+    "resources": {
+      "spirit_qi": 0.8,
+      "items": [
+        {"item_id": "herb_lingzhi_01", "rate": 0.3},
+        {"item_id": "herb_zicao_01", "rate": 0.3},
+        {"item_id": "ore_copper_01", "rate": 0.2}
+      ]
+    }
+  },
+  {
+    "id": "crescent_lake_01",
+    "name": "新月湖",
+    "type": "newbie_village",
+    "description": "形如新月的湖泊，水质清澈，湖底有少量灵石矿脉。月圆之夜灵气最为浓郁，常有修士在此悟道。",
+    "level_min": 8,
+    "level_max": 25,
+    "danger_level": 2,
+    "spirit_density": 0.8,
+    "connections": ["qingyun_range_01"],
+    "resources": {
+      "spirit_qi": 0.7,
+      "items": [
+        {"item_id": "ore_spirit_stone_01", "rate": 0.3},
+        {"item_id": "herb_shuixin_01", "rate": 0.4}
+      ]
+    }
+  },
+  {
+    "id": "star_city_01",
+    "name": "星辉城",
+    "type": "town",
+    "description": "修仙界东部最繁华的城池，灯火辉煌如星辉般璀璨。城中坊市交易活跃，百草堂、铁匠铺、修炼馆等设施齐全，是散修和中门弟子的重要聚集地。",
+    "level_min": 10,
+    "level_max": 40,
+    "danger_level": 3,
+    "spirit_density": 1.0,
+    "connections": ["qingyun_range_01", "secret_forest_01", "ancient_ruins_01", "sunset_valley_01"],
+    "resources": {
+      "spirit_qi": 0.9,
+      "items": [
+        {"item_id": "ore_silver_01", "rate": 0.3},
+        {"item_id": "herb_zicao_01", "rate": 0.3}
+      ]
+    }
+  },
+  {
+    "id": "ancient_ruins_01",
+    "name": "上古遗迹",
+    "type": "secret_realm",
+    "description": "上古修士留下的秘境遗迹，藏有珍贵的功法和法宝，但机关重重、陷阱密布。传说曾有化神期修士在此坐化，留下了毕生修为。",
+    "level_min": 20,
+    "level_max": 60,
+    "danger_level": 6,
+    "spirit_density": 2.0,
+    "connections": ["star_city_01", "sunset_valley_01"],
+    "resources": {
+      "spirit_qi": 1.5,
+      "items": [
+        {"item_id": "artifact_fragment_01", "rate": 0.1},
+        {"item_id": "herb_wannian_01", "rate": 0.05},
+        {"item_id": "ore_spirit_crystal_01", "rate": 0.15}
+      ]
+    }
+  },
+  {
+    "id": "secret_forest_01",
+    "name": "秘境森林",
+    "type": "newbie_village",
+    "description": "常年笼罩在五彩迷雾中的原始森林，生长着各类珍稀灵药。林中有天然迷阵，若无向导极易迷失方向，但也因此保留了最纯粹的天地灵气。",
+    "level_min": 10,
+    "level_max": 30,
+    "danger_level": 4,
+    "spirit_density": 1.5,
+    "connections": ["newbie_village_01", "star_city_01", "sunset_valley_01"],
+    "resources": {
+      "spirit_qi": 1.0,
+      "items": [
+        {"item_id": "herb_lingzhi_01", "rate": 0.3},
+        {"item_id": "herb_xuecan_01", "rate": 0.2},
+        {"item_id": "ore_copper_01", "rate": 0.2}
+      ]
+    }
+  },
+  {
+    "id": "sunset_valley_01",
+    "name": "落霞谷",
+    "type": "town",
+    "description": "每当夕阳西下，整座山谷被染成金色霞光，美不胜收。谷中灵气温和，适合长期闭关修炼。谷底深处藏有一处天然灵脉。",
+    "level_min": 20,
+    "level_max": 50,
+    "danger_level": 4,
+    "spirit_density": 1.5,
+    "connections": ["star_city_01", "secret_forest_01", "ancient_ruins_01", "ice_cave_01"],
+    "resources": {
+      "spirit_qi": 1.2,
+      "items": [
+        {"item_id": "herb_zixue_01", "rate": 0.2},
+        {"item_id": "ore_spirit_crystal_01", "rate": 0.1}
+      ]
+    }
+  },
+  {
+    "id": "ice_cave_01",
+    "name": "玄冰洞",
+    "type": "dangerous_land",
+    "description": "万年寒冰形成的洞窟，洞中温度极低，普通修士难以久留。冰壁上凝结着千年玄冰精华，是炼制冰属性法器的至宝。传闻洞底封印着一头上古冰凤。",
+    "level_min": 30,
+    "level_max": 70,
+    "danger_level": 7,
+    "spirit_density": 2.0,
+    "connections": ["sunset_valley_01", "heavenly_pavilion_01", "wild_lands_01"],
+    "resources": {
+      "spirit_qi": 1.8,
+      "items": [
+        {"item_id": "ore_ice_crystal_01", "rate": 0.15},
+        {"item_id": "herb_ice_lotus_01", "rate": 0.1}
+      ]
+    }
+  },
+  {
+    "id": "heavenly_pavilion_01",
+    "name": "天机阁",
+    "type": "town",
+    "description": "悬浮于九天之上的巍峨楼阁，是天机阁总坛所在。此处收藏着天下最全的典籍和情报，阁中弟子精通推演之术，可窥探天机。非有缘人不得入内。",
+    "level_min": 35,
+    "level_max": 80,
+    "danger_level": 4,
+    "spirit_density": 3.0,
+    "connections": ["ice_cave_01", "qingyun_range_01", "wild_lands_01"],
+    "resources": {
+      "spirit_qi": 2.0,
+      "items": [
+        {"item_id": "herb_tianji_01", "rate": 0.1},
+        {"item_id": "artifact_fortune_01", "rate": 0.05}
+      ]
+    }
+  },
+  {
+    "id": "wild_lands_01",
+    "name": "蛮荒之地",
+    "type": "dangerous_land",
+    "description": "未经开化的蛮荒地带，远古巨兽横行，天地法则紊乱。此处灵气狂暴难以直接吸收，但蕴含着罕见的修炼资源和上古传承。",
+    "level_min": 40,
+    "level_max": 85,
+    "danger_level": 8,
+    "spirit_density": 2.5,
+    "connections": ["ice_cave_01", "heavenly_pavilion_01", "thunder_valley_01", "myriad_demon_lair_01"],
+    "resources": {
+      "spirit_qi": 2.5,
+      "items": [
+        {"item_id": "ore_wild_core_01", "rate": 0.12},
+        {"item_id": "herb_wild_ginseng_01", "rate": 0.08}
+      ]
+    }
+  },
+  {
+    "id": "thunder_valley_01",
+    "name": "雷霆谷",
+    "type": "dangerous_land",
+    "description": "常年雷霆轰鸣的峡谷，天雷之力淬炼肉身，但也危机四伏。元婴期修士方可深入，谷中生长的雷音草是炼制渡劫丹的关键材料。",
+    "level_min": 50,
+    "level_max": 90,
+    "danger_level": 9,
+    "spirit_density": 3.0,
+    "connections": ["wild_lands_01", "myriad_demon_lair_01"],
+    "resources": {
+      "spirit_qi": 2.8,
+      "items": [
+        {"item_id": "ore_thunder_stone_01", "rate": 0.15},
+        {"item_id": "herb_leiyin_01", "rate": 0.1},
+        {"item_id": "artifact_fragment_02", "rate": 0.05}
+      ]
+    }
+  },
+  {
+    "id": "myriad_demon_lair_01",
+    "name": "万妖窟",
+    "type": "dangerous_land",
+    "description": "万妖聚集的巢穴，妖气冲天。无数妖兽在此修炼化形，窟中深处有妖皇坐镇。此处既是凶险之地，也藏着妖族至宝和修炼秘法。",
+    "level_min": 60,
+    "level_max": 100,
+    "danger_level": 10,
+    "spirit_density": 3.5,
+    "connections": ["wild_lands_01", "thunder_valley_01", "abyss_01", "ascension_platform_01"],
+    "resources": {
+      "spirit_qi": 3.0,
+      "items": [
+        {"item_id": "herb_moyuan_01", "rate": 0.08},
+        {"item_id": "ore_demon_core_01", "rate": 0.12}
+      ]
+    }
+  },
+  {
+    "id": "abyss_01",
+    "name": "无尽深渊",
+    "type": "dangerous_land",
+    "description": "深不见底的黑暗深渊，传说连接着魔界。化神期以下进入九死一生，深渊底部据说有通往更高位面的通道。",
+    "level_min": 70,
+    "level_max": 100,
+    "danger_level": 10,
+    "spirit_density": 4.0,
+    "connections": ["myriad_demon_lair_01"],
+    "resources": {
+      "spirit_qi": 3.5,
+      "items": [
+        {"item_id": "herb_abyss_flower_01", "rate": 0.06},
+        {"item_id": "ore_demon_core_01", "rate": 0.1},
+        {"item_id": "artifact_fragment_03", "rate": 0.03}
+      ]
+    }
+  },
+  {
+    "id": "ascension_platform_01",
+    "name": "飞升台",
+    "type": "town",
+    "description": "传说中的飞升之地，陈列着上古大能飞升时留下的天碑。此地灵气浓郁到近乎实质，在此修炼一日千里。据说修为足够者可通过飞升台破界飞升。",
+    "level_min": 80,
+    "level_max": 100,
+    "danger_level": 6,
+    "spirit_density": 5.0,
+    "connections": ["myriad_demon_lair_01"],
+    "resources": {
+      "spirit_qi": 4.0,
+      "items": [
+        {"item_id": "herb_ascension_grass_01", "rate": 0.05},
+        {"item_id": "artifact_ascension_01", "rate": 0.02}
+      ]
+    }
+  },
+  {
+    "id": "sect_area_01",
+    "name": "天玄宗",
+    "type": "town",
+    "description": "修仙界首屈一指的宗门驻地，群山环抱之中楼阁林立，护山大阵常年运转。宗内灵气汇聚成河，弟子在此修行事半功倍。",
+    "level_min": 15,
+    "level_max": 60,
+    "danger_level": 3,
+    "spirit_density": 1.5,
+    "connections": ["qingyun_range_01", "star_city_01", "secret_forest_01"],
+    "resources": {
+      "spirit_qi": 1.3,
+      "items": [
+        {"item_id": "herb_lingzhi_01", "rate": 0.3},
+        {"item_id": "herb_zicao_01", "rate": 0.3},
+        {"item_id": "ore_spirit_stone_01", "rate": 0.2}
+      ]
+    }
+  },
+  {
+    "id": "hidden_vein_01",
+    "name": "隐藏灵脉",
+    "type": "secret_realm",
+    "description": "罕见的极品灵脉偶尔显露于世，灵气浓郁到化为实质白雾。此脉位置飘忽不定，随地脉流转而移动，唯有缘人可偶遇。在此修炼一日千里，但灵脉随时可能隐去。",
+    "level_min": 30,
+    "level_max": 90,
+    "danger_level": 5,
+    "spirit_density": 5.0,
+    "connections": ["sunset_valley_01", "ancient_ruins_01"],
+    "resources": {
+      "spirit_qi": 4.5,
+      "items": [
+        {"item_id": "ore_spirit_crystal_01", "rate": 0.3},
+        {"item_id": "herb_wannian_01", "rate": 0.2},
+        {"item_id": "artifact_fragment_02", "rate": 0.1}
+      ]
+    }
+  }
+]

@@ -1,0 +1,354 @@
+{
+  "items": [
+    {
+      "id": 1, "name": "聚气丹", "type": "pill", "quality": 1, "realm_required": 1,
+      "effects": { "exp_bonus": 100 }, "buy_price": 50, "sell_price": 25,
+      "description": "最基础的修炼丹药，蕴含少量灵气，可增加100修为"
+    },
+    {
+      "id": 2, "name": "引气丹", "type": "pill", "quality": 1, "realm_required": 1,
+      "effects": { "exp_bonus": 50 }, "buy_price": 25, "sell_price": 12,
+      "description": "简易版聚气丹，药力较弱，可增加50修为"
+    },
+    {
+      "id": 3, "name": "培元丹", "type": "pill", "quality": 2, "realm_required": 2,
+      "effects": { "exp_bonus": 500, "hp_bonus": 50 }, "buy_price": 200, "sell_price": 100,
+      "description": "固本培元的中级丹药，增加500修为并永久提升50生命上限"
+    },
+    {
+      "id": 4, "name": "筑基丹", "type": "pill", "quality": 3, "realm_required": 1,
+      "effects": { "breakthrough_bonus": 0.15 }, "buy_price": 500, "sell_price": 250,
+      "description": "突破筑基期的关键丹药，提高突破概率15%"
+    },
+    {
+      "id": 5, "name": "凝神丹", "type": "pill", "quality": 2, "realm_required": 2,
+      "effects": { "cultivation_speed": 0.50, "duration": 3600 }, "buy_price": 300, "sell_price": 150,
+      "description": "凝神静气的丹药，修炼速度提升50%，持续1小时"
+    },
+    {
+      "id": 6, "name": "金创丹", "type": "pill", "quality": 1, "realm_required": 1,
+      "effects": { "heal_hp": 200 }, "buy_price": 30, "sell_price": 15,
+      "description": "疗伤丹药，立即恢复200生命值"
+    },
+    {
+      "id": 7, "name": "回元丹", "type": "pill", "quality": 2, "realm_required": 2,
+      "effects": { "mp_bonus": 100, "cultivation_speed": 0.30, "duration": 3600 }, "buy_price": 250, "sell_price": 125,
+      "description": "回复灵力并提升修炼速度30%，持续1小时"
+    },
+    {
+      "id": 8, "name": "聚灵丹", "type": "pill", "quality": 3, "realm_required": 3,
+      "effects": { "exp_bonus": 2000, "cultivation_speed": 0.50, "duration": 7200 }, "buy_price": 800, "sell_price": 400,
+      "description": "金丹期修炼丹药，增加2000修为并提升修炼速度50%，持续2小时"
+    },
+    {
+      "id": 9, "name": "破境丹", "type": "pill", "quality": 4, "realm_required": 3,
+      "effects": { "breakthrough_bonus": 0.25 }, "buy_price": 1500, "sell_price": 750,
+      "description": "金丹期破境圣药，提高突破概率25%"
+    },
+    {
+      "id": 10, "name": "洗髓丹", "type": "pill", "quality": 3, "realm_required": 2,
+      "effects": { "hp_bonus": 200, "attack_bonus": 10, "defense_bonus": 10 }, "buy_price": 600, "sell_price": 300,
+      "description": "洗髓伐脉的灵丹，永久提升生命200、攻击10、防御10"
+    },
+    {
+      "id": 11, "name": "青锋剑", "type": "weapon", "quality": 1, "realm_required": 1,
+      "effects": { "attack": 15 }, "buy_price": 100, "sell_price": 50,
+      "description": "普通铁剑，剑身泛青，适合练气期修士使用"
+    },
+    {
+      "id": 12, "name": "玄铁重剑", "type": "weapon", "quality": 2, "realm_required": 2,
+      "effects": { "attack": 30, "hp": 50 }, "buy_price": 300, "sell_price": 150,
+      "description": "以玄铁铸成的大剑，沉重有力，额外增加生命值"
+    },
+    {
+      "id": 13, "name": "烈焰刀", "type": "weapon", "quality": 3, "realm_required": 2,
+      "effects": { "attack": 45, "fire_damage_bonus": 0.10 }, "buy_price": 600, "sell_price": 300,
+      "description": "附著烈焰之力的宝刀，火系伤害增加10%"
+    },
+    {
+      "id": 14, "name": "寒冰剑", "type": "weapon", "quality": 3, "realm_required": 2,
+      "effects": { "attack": 40, "ice_damage_bonus": 0.10 }, "buy_price": 600, "sell_price": 300,
+      "description": "以北寒玄冰打造的冰剑，冰系伤害增加10%"
+    },
+    {
+      "id": 15, "name": "金环大刀", "type": "weapon", "quality": 2, "realm_required": 1,
+      "effects": { "attack": 25 }, "buy_price": 250, "sell_price": 125,
+      "description": "江湖常见的金环大刀，威力尚可"
+    },
+    {
+      "id": 16, "name": "紫电锤", "type": "weapon", "quality": 3, "realm_required": 3,
+      "effects": { "attack": 55, "lightning_damage_bonus": 0.10 }, "buy_price": 1000, "sell_price": 500,
+      "description": "蕴含雷电之力的紫金锤，雷系伤害增加10%"
+    },
+    {
+      "id": 17, "name": "碧水剑", "type": "weapon", "quality": 3, "realm_required": 2,
+      "effects": { "attack": 35, "water_damage_bonus": 0.10 }, "buy_price": 550, "sell_price": 275,
+      "description": "通体碧蓝如水的水属性灵剑，水系伤害增加10%"
+    },
+    {
+      "id": 18, "name": "破天戟", "type": "weapon", "quality": 4, "realm_required": 4,
+      "effects": { "attack": 100, "ignore_defense": 0.10 }, "buy_price": 3000, "sell_price": 1500,
+      "description": "元婴期方戟，无视10%防御，蕴含破天之势"
+    },
+    {
+      "id": 19, "name": "星辰剑", "type": "weapon", "quality": 4, "realm_required": 5,
+      "effects": { "attack": 150, "all_damage_bonus": 0.05 }, "buy_price": 5000, "sell_price": 2500,
+      "description": "以星辰铁铸就的神剑，提升全系伤害5%"
+    },
+    {
+      "id": 20, "name": "混沌开天斧", "type": "weapon", "quality": 5, "realm_required": 7,
+      "effects": { "attack": 300, "ignore_defense": 0.20, "crit_rate": 0.10 }, "buy_price": 20000, "sell_price": 10000,
+      "description": "传说中开天辟地的神斧，无视20%防御，暴击率+10%"
+    },
+    {
+      "id": 21, "name": "布衣", "type": "armor", "quality": 1, "realm_required": 1,
+      "effects": { "defense": 5 }, "buy_price": 30, "sell_price": 15,
+      "description": "粗布制成的普通衣物，聊胜于无"
+    },
+    {
+      "id": 22, "name": "铁甲", "type": "armor", "quality": 1, "realm_required": 1,
+      "effects": { "defense": 20 }, "buy_price": 150, "sell_price": 75,
+      "description": "铁片编制的铠甲，提供基础防护"
+    },
+    {
+      "id": 23, "name": "金蚕丝甲", "type": "armor", "quality": 3, "realm_required": 2,
+      "effects": { "defense": 40, "hp": 100 }, "buy_price": 800, "sell_price": 400,
+      "description": "以金蚕丝编织的宝甲，刀枪不入，兼有护体之效"
+    },
+    {
+      "id": 24, "name": "玄铁甲", "type": "armor", "quality": 2, "realm_required": 2,
+      "effects": { "defense": 35 }, "buy_price": 500, "sell_price": 250,
+      "description": "玄铁打造的厚重铠甲，防御力出众"
+    },
+    {
+      "id": 25, "name": "天蚕宝衣", "type": "armor", "quality": 4, "realm_required": 4,
+      "effects": { "defense": 80, "hp": 300, "dodge": 0.05 }, "buy_price": 3000, "sell_price": 1500,
+      "description": "天蚕吐丝织就的宝衣，轻若无物且防御惊人，闪避+5%"
+    },
+    {
+      "id": 26, "name": "龙鳞甲", "type": "armor", "quality": 5, "realm_required": 6,
+      "effects": { "defense": 150, "hp": 800, "fire_resistance": 0.20 }, "buy_price": 15000, "sell_price": 7500,
+      "description": "以真龙鳞片打造的绝世宝甲，火抗+20%"
+    },
+    {
+      "id": 27, "name": "凤凰羽衣", "type": "armor", "quality": 5, "realm_required": 7,
+      "effects": { "defense": 200, "hp": 500, "regen_hp": 10 }, "buy_price": 25000, "sell_price": 12500,
+      "description": "凤凰翎羽织就的神衣，每回合恢复10生命"
+    },
+    {
+      "id": 28, "name": "混沌战甲", "type": "armor", "quality": 5, "realm_required": 9,
+      "effects": { "defense": 400, "hp": 2000, "all_resistance": 0.15 }, "buy_price": 50000, "sell_price": 25000,
+      "description": "混沌中孕育出的至强战甲，全抗性+15%"
+    },
+    {
+      "id": 29, "name": "聚灵珠", "type": "artifact", "quality": 2, "realm_required": 1,
+      "effects": { "cultivation_speed": 0.10 }, "buy_price": 400, "sell_price": 200,
+      "description": "能自动汇聚灵气的宝珠，修炼速度提升10%"
+    },
+    {
+      "id": 30, "name": "护心镜", "type": "artifact", "quality": 2, "realm_required": 2,
+      "effects": { "damage_reduction": 0.05 }, "buy_price": 500, "sell_price": 250,
+      "description": "护持心脉的古镜，减少受到的伤害5%"
+    },
+    {
+      "id": 31, "name": "飞行梭", "type": "artifact", "quality": 2, "realm_required": 2,
+      "effects": { "explore_speed": 0.20 }, "buy_price": 600, "sell_price": 300,
+      "description": "御空飞行的法器，探索速度提升20%"
+    },
+    {
+      "id": 32, "name": "定魂珠", "type": "artifact", "quality": 4, "realm_required": 4,
+      "effects": { "breakthrough_bonus": 0.18, "soul_defense": 0.20 }, "buy_price": 4000, "sell_price": 2000,
+      "description": "稳固魂魄的宝珠，突破概率+18%，灵魂防御+20%"
+    },
+    {
+      "id": 33, "name": "破境符", "type": "artifact", "quality": 3, "realm_required": 2,
+      "effects": { "breakthrough_bonus": 0.12 }, "buy_price": 1000, "sell_price": 500,
+      "description": "刻画破境阵法的符箓，提高突破概率12%"
+    },
+    {
+      "id": 34, "name": "乾坤袋", "type": "artifact", "quality": 3, "realm_required": 2,
+      "effects": { "bag_space": 50 }, "buy_price": 800, "sell_price": 400,
+      "description": "内有乾坤的高级储物袋，增加50格背包空间"
+    },
+    {
+      "id": 35, "name": "镇魂塔", "type": "artifact", "quality": 4, "realm_required": 5,
+      "effects": { "attack": 80, "soul_damage": 0.15 }, "buy_price": 8000, "sell_price": 4000,
+      "description": "镇魂摄魄的古塔法宝，增加灵魂伤害15%"
+    },
+    {
+      "id": 36, "name": "混元金斗", "type": "artifact", "quality": 5, "realm_required": 8,
+      "effects": { "all_stats": 50, "damage_reduction": 0.10 }, "buy_price": 30000, "sell_price": 15000,
+      "description": "混元级别的先天灵宝，全属性+50，减伤10%"
+    },
+    {
+      "id": 37, "name": "灵力戒指", "type": "accessory", "quality": 2, "realm_required": 1,
+      "effects": { "attack": 10 }, "buy_price": 200, "sell_price": 100,
+      "description": "铭刻聚灵阵的戒指，增加10点攻击"
+    },
+    {
+      "id": 38, "name": "守护项链", "type": "accessory", "quality": 2, "realm_required": 2,
+      "effects": { "defense": 15, "hp": 100 }, "buy_price": 350, "sell_price": 175,
+      "description": "蕴含守护之力的项链，增加防御15和生命100"
+    },
+    {
+      "id": 39, "name": "疾风手环", "type": "accessory", "quality": 2, "realm_required": 2,
+      "effects": { "speed": 15 }, "buy_price": 300, "sell_price": 150,
+      "description": "轻盈如风的手环，增加15点速度"
+    },
+    {
+      "id": 40, "name": "智慧头冠", "type": "accessory", "quality": 3, "realm_required": 3,
+      "effects": { "cultivation_speed": 0.15, "exp_bonus": 0.10 }, "buy_price": 1200, "sell_price": 600,
+      "description": "开启智慧的头冠，修炼速度+15%，经验获取+10%"
+    },
+    {
+      "id": 41, "name": "生命玉佩", "type": "accessory", "quality": 3, "realm_required": 2,
+      "effects": { "hp": 300, "regen_hp": 5 }, "buy_price": 800, "sell_price": 400,
+      "description": "蕴含生命精气的玉佩，生命+300，每回合恢复5生命"
+    },
+    {
+      "id": 101, "name": "聚气草", "type": "material", "quality": 1, "realm_required": 1,
+      "effects": {}, "buy_price": 10, "sell_price": 5,
+      "description": "最常见的灵草，蕴含微弱灵气，是炼丹的基础材料"
+    },
+    {
+      "id": 102, "name": "灵芝", "type": "material", "quality": 2, "realm_required": 1,
+      "effects": {}, "buy_price": 30, "sell_price": 15,
+      "description": "百年灵芝，固本培元，可用于炼制中级丹药"
+    },
+    {
+      "id": 103, "name": "百年人参", "type": "material", "quality": 2, "realm_required": 1,
+      "effects": {}, "buy_price": 50, "sell_price": 25,
+      "description": "吸纳百年天地灵气的人参，珍贵药材"
+    },
+    {
+      "id": 104, "name": "灵泉之水", "type": "material", "quality": 2, "realm_required": 1,
+      "effects": {}, "buy_price": 20, "sell_price": 10,
+      "description": "灵脉中涌出的泉水，蕴含纯净灵力"
+    },
+    {
+      "id": 105, "name": "凝神花", "type": "material", "quality": 2, "realm_required": 2,
+      "effects": {}, "buy_price": 60, "sell_price": 30,
+      "description": "生长在灵气浓郁之地的奇花，有凝神之效"
+    },
+    {
+      "id": 106, "name": "龙血草", "type": "material", "quality": 3, "realm_required": 2,
+      "effects": {}, "buy_price": 120, "sell_price": 60,
+      "description": "沾染真龙之血的异草，蕴含磅礴血气"
+    },
+    {
+      "id": 107, "name": "玄冰果", "type": "material", "quality": 3, "realm_required": 3,
+      "effects": {}, "buy_price": 150, "sell_price": 75,
+      "description": "生长于极寒之地的冰属性灵果"
+    },
+    {
+      "id": 108, "name": "赤焰芝", "type": "material", "quality": 3, "realm_required": 3,
+      "effects": {}, "buy_price": 150, "sell_price": 75,
+      "description": "火属性灵芝，生于地火岩浆之畔"
+    },
+    {
+      "id": 109, "name": "星辰砂", "type": "material", "quality": 4, "realm_required": 3,
+      "effects": {}, "buy_price": 300, "sell_price": 150,
+      "description": "蕴含星辰之力的神秘砂砾，可用于高阶炼丹"
+    },
+    {
+      "id": 110, "name": "万年灵芝", "type": "material", "quality": 4, "realm_required": 4,
+      "effects": {}, "buy_price": 500, "sell_price": 250,
+      "description": "生长万年的灵芝王，药力磅礴，世所罕见"
+    },
+    {
+      "id": 111, "name": "菩提子", "type": "material", "quality": 4, "realm_required": 4,
+      "effects": {}, "buy_price": 600, "sell_price": 300,
+      "description": "悟道树所结圣果，有助参悟天道"
+    },
+    {
+      "id": 112, "name": "天心花", "type": "material", "quality": 5, "realm_required": 5,
+      "effects": {}, "buy_price": 1000, "sell_price": 500,
+      "description": "天道之痕凝结的花朵，蕴含天地法则"
+    },
+    {
+      "id": 113, "name": "九转青莲", "type": "material", "quality": 5, "realm_required": 6,
+      "effects": {}, "buy_price": 2000, "sell_price": 1000,
+      "description": "九转方能成型的无上灵药，传说级材料"
+    },
+    {
+      "id": 114, "name": "凤凰羽", "type": "material", "quality": 5, "realm_required": 7,
+      "effects": {}, "buy_price": 3000, "sell_price": 1500,
+      "description": "凤凰涅槃时落下的神羽，蕴含不死之力"
+    },
+    {
+      "id": 115, "name": "兔毛", "type": "material", "quality": 1, "realm_required": 1,
+      "effects": {}, "buy_price": 2, "sell_price": 1,
+      "description": "野兔身上采集的毛发，可用于制作低阶符纸"
+    },
+    {
+      "id": 116, "name": "羽毛", "type": "material", "quality": 1, "realm_required": 1,
+      "effects": {}, "buy_price": 3, "sell_price": 1,
+      "description": "山鸡或鸟类的羽毛，轻便柔软"
+    },
+    {
+      "id": 117, "name": "狼牙", "type": "material", "quality": 1, "realm_required": 1,
+      "effects": {}, "buy_price": 8, "sell_price": 4,
+      "description": "野狼的尖牙，可用于炼制低阶法器"
+    },
+    {
+      "id": 118, "name": "兽皮", "type": "material", "quality": 1, "realm_required": 1,
+      "effects": {}, "buy_price": 5, "sell_price": 2,
+      "description": "妖兽的毛皮，可用于制作防具"
+    },
+    {
+      "id": 119, "name": "蛇胆", "type": "material", "quality": 2, "realm_required": 1,
+      "effects": {}, "buy_price": 15, "sell_price": 7,
+      "description": "蛇类妖兽的苦胆，可炼解毒丹药"
+    },
+    {
+      "id": 120, "name": "玄铁矿石", "type": "material", "quality": 2, "realm_required": 2,
+      "effects": {}, "buy_price": 40, "sell_price": 20,
+      "description": "稀有玄铁矿石，经过提炼可得玄铁"
+    },
+    {
+      "id": 121, "name": "天蚕丝", "type": "material", "quality": 3, "realm_required": 2,
+      "effects": {}, "buy_price": 80, "sell_price": 40,
+      "description": "天蚕吐出的灵丝，坚韧无比，可织就宝衣"
+    },
+    {
+      "id": 122, "name": "灵石碎片", "type": "material", "quality": 2, "realm_required": 1,
+      "effects": {}, "buy_price": 100, "sell_price": 50,
+      "description": "碎裂的灵石，仍蕴含部分灵气，可用于交易和修炼"
+    },
+    {
+      "id": 123, "name": "幽魂精魄", "type": "material", "quality": 3, "realm_required": 3,
+      "effects": {}, "buy_price": 200, "sell_price": 100,
+      "description": "击败幽魂后凝结的精魄，可用于炼制灵魂类丹药"
+    },
+    {
+      "id": 124, "name": "熔岩核心", "type": "material", "quality": 3, "realm_required": 3,
+      "effects": {}, "buy_price": 250, "sell_price": 125,
+      "description": "熔岩巨兽体内凝聚的核心，蕴含炽热能量"
+    },
+    {
+      "id": 201, "name": "传送符", "type": "consumable", "quality": 2, "realm_required": 1,
+      "effects": { "teleport": true }, "buy_price": 200, "sell_price": 100,
+      "description": "刻有传送阵法的符箓，使用后可传送到已解锁的传送点"
+    },
+    {
+      "id": 202, "name": "隐匿符", "type": "consumable", "quality": 2, "realm_required": 1,
+      "effects": { "stealth": 1, "duration": 300 }, "buy_price": 150, "sell_price": 75,
+      "description": "隐匿身形的符箓，在野外探索时降低遇敌概率，持续5分钟"
+    },
+    {
+      "id": 203, "name": "引妖香", "type": "consumable", "quality": 2, "realm_required": 1,
+      "effects": { "lure_monster": 1, "duration": 300 }, "buy_price": 100, "sell_price": 50,
+      "description": "散发特殊气味的香料，吸引妖兽前来，持续5分钟"
+    },
+    {
+      "id": 204, "name": "悟道茶", "type": "consumable", "quality": 3, "realm_required": 3,
+      "effects": { "exp_bonus": 1000, "comprehension": 2.0, "duration": 600 }, "buy_price": 500, "sell_price": 250,
+      "description": "以悟道树叶泡制的灵茶，饮后可增加1000修为并悟性翻倍持续10分钟"
+    },
+    {
+      "id": 205, "name": "天劫灵符", "type": "consumable", "quality": 5, "realm_required": 9,
+      "effects": { "tribulation_shield": 1, "tribulation_damage_reduction": 0.30 }, "buy_price": 10000, "sell_price": 5000,
+      "description": "上古传下的渡劫秘符，减少天劫伤害30%，一次性消耗品"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]: ☯
+          - generic [ref=e9]: 修仙世界
+        - generic [ref=e10]:
+          - generic [ref=e11]: 1,283 在线修士
+          - button "🌙" [active] [ref=e107] [cursor=pointer]:
+            - generic [ref=e108]: 🌙
+    - main [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - heading "修仙世界" [level=1] [ref=e19]
+          - paragraph [ref=e20]: 修仙悟道 长生逍遥
+        - generic [ref=e21]:
+          - generic [ref=e23] [cursor=pointer]:
+            - generic [ref=e25]: ✓
+            - generic [ref=e26]: 练气
+          - generic [ref=e27] [cursor=pointer]:
+            - generic [ref=e29]: ✓
+            - generic [ref=e30]: 筑基
+          - generic [ref=e34] [cursor=pointer]: 金丹
+          - generic [ref=e37] [cursor=pointer]: 元婴
+          - generic [ref=e40] [cursor=pointer]: 化神
+          - generic [ref=e43] [cursor=pointer]: 炼虚
+          - generic [ref=e46] [cursor=pointer]: 合体
+          - generic [ref=e49] [cursor=pointer]: 大乘
+          - generic [ref=e52] [cursor=pointer]: 渡劫
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - button "登录" [ref=e56] [cursor=pointer]
+          - button "注册" [ref=e57] [cursor=pointer]
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - generic [ref=e61]: 账号
+            - textbox "请输入账号" [ref=e62]
+          - generic [ref=e63]:
+            - generic [ref=e64]: 密码
+            - textbox "至少6位密码" [ref=e65]
+          - button "踏入仙途" [ref=e66] [cursor=pointer]
+        - paragraph [ref=e67]:
+          - text: 点击即表示同意
+          - link "用户协议" [ref=e68] [cursor=pointer]:
+            - /url: "#"
+          - text: 和
+          - link "隐私政策" [ref=e69] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - link "🧘 修炼 打坐悟道 突破境界 →" [ref=e72] [cursor=pointer]:
+            - /url: "#/game/cultivation"
+            - generic [ref=e73]: 🧘
+            - generic [ref=e74]:
+              - generic [ref=e75]: 修炼
+              - generic [ref=e76]: 打坐悟道 突破境界
+            - generic [ref=e77]: →
+          - link "⚔ 战斗 降妖除魔 历练成长 →" [ref=e78] [cursor=pointer]:
+            - /url: "#/game/combat"
+            - generic [ref=e79]: ⚔
+            - generic [ref=e80]:
+              - generic [ref=e81]: 战斗
+              - generic [ref=e82]: 降妖除魔 历练成长
+            - generic [ref=e83]: →
+          - link "💰 交易 坊市互通 以物易物 →" [ref=e84] [cursor=pointer]:
+            - /url: "#/game/trade"
+            - generic [ref=e85]: 💰
+            - generic [ref=e86]:
+              - generic [ref=e87]: 交易
+              - generic [ref=e88]: 坊市互通 以物易物
+            - generic [ref=e89]: →
+          - link "🏛 宗门 加入仙门 共修大道 →" [ref=e90] [cursor=pointer]:
+            - /url: "#/game/social"
+            - generic [ref=e91]: 🏛
+            - generic [ref=e92]:
+              - generic [ref=e93]: 宗门
+              - generic [ref=e94]: 加入仙门 共修大道
+            - generic [ref=e95]: →
+        - generic [ref=e96]:
+          - generic [ref=e97]: 1,283
+          - generic [ref=e98]: 在线修士
+        - button "📖 修仙百科全书" [ref=e99] [cursor=pointer]:
+          - generic [ref=e100]: 📖
+          - generic [ref=e101]: 修仙百科全书
+    - contentinfo [ref=e102]:
+      - generic [ref=e104]: © 2026 修仙世界 · 以文为本 以心入道
+  - button "🎨" [ref=e106] [cursor=pointer]

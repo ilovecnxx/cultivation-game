@@ -1,0 +1,9 @@
+{
+  "default_admin": {
+    "username": "admin",
+    "password": "admin123",
+    "role": 1
+  },
+  "jwt_secret": "gm-jwt-secret-change-in-production",
+  "token_expire_hours": 24
+}

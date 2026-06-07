@@ -1,0 +1,32 @@
+- generic [ref=e4]:
+  - banner [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: ☯
+      - generic [ref=e10]: 修仙世界
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - generic [ref=e14]: "0"
+          - text: 在线修士
+        - generic [ref=e15]: 0 注册修士
+      - button "☀" [ref=e16] [cursor=pointer]
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - heading "修仙世界" [level=1] [ref=e23]
+        - paragraph [ref=e24]: 修仙悟道 长生逍遥
+      - generic [ref=e25]:
+        - generic [ref=e27] [cursor=pointer]:
+          - generic [ref=e29]: ✓
+          - generic [ref=e30]: 练气
+        - generic [ref=e31] [cursor=pointer]:
+          - generic [ref=e33]: ✓
+          - generic [ref=e34]: 筑基
+        - generic [ref=e38] [cursor=pointer]: 金丹
+        - generic [ref=e41] [cursor=pointer]: 元婴
+        - generic [ref=e44] [cursor=pointer]: 化神
+        - generic [ref=e47] [cursor=pointer]: 炼虚
+        - generic [ref=e50] [cursor=pointer]: 合体
+        - generic [ref=e53] [cursor=pointer]: 大乘
+        - generic [ref=e56] [cursor=pointer]: 渡劫
+      - button "踏入仙途" [ref=e57] [cursor=pointer]
+  - contentinfo [ref=e58]: © 2026 修仙世界 · 以文为本 以心入道

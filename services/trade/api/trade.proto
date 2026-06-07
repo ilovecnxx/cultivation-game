@@ -1,0 +1,169 @@
+// Package trade 定义交易服务的 gRPC 接口和消息类型。
+syntax = "proto3";
+
+package trade;
+option go_package = "cultivation-game/services/trade/api";
+
+// TradeService 交易服务，管理市场挂单、购买和拍卖功能。
+service TradeService {
+  // CreateListing 创建市场挂单：卖家上架物品。
+  rpc CreateListing(CreateListingRequest) returns (ListingResponse);
+
+  // CancelListing 取消挂单：卖家撤销自己的挂单。
+  rpc CancelListing(CancelListingRequest) returns (ListingResponse);
+
+  // BuyItem 购买物品：买家下单购买。
+  rpc BuyItem(BuyItemRequest) returns (TransactionResponse);
+
+  // GetListings 查询挂单列表：支持分页和条件筛选。
+  rpc GetListings(GetListingsRequest) returns (GetListingsResponse);
+
+  // StartAuction 发起拍卖：卖家创建拍卖。
+  rpc StartAuction(StartAuctionRequest) returns (AuctionResponse);
+
+  // PlaceBid 出价：买家对拍卖出价。
+  rpc PlaceBid(PlaceBidRequest) returns (AuctionResponse);
+
+  // GetActiveAuctions 获取活跃拍卖列表：支持分页。
+  rpc GetActiveAuctions(GetActiveAuctionsRequest) returns (GetActiveAuctionsResponse);
+}
+
+// ============================================================================
+// 市场挂单相关消息
+// ============================================================================
+
+// Listing 市场挂单信息。
+message Listing {
+  uint64 id = 1;                    // 挂单 ID
+  uint64 seller_id = 2;             // 卖家 ID
+  uint32 item_id = 3;               // 物品模板 ID
+  uint32 quantity = 4;              // 数量
+  uint64 unit_price = 5;            // 单价（灵石）
+  string currency_type = 6;         // 货币类型（如 "spirit_stone"）
+  string status = 7;                // 状态：active/sold/cancelled/expired
+  int64 created_at = 8;             // 创建时间戳（秒）
+  int64 expires_at = 9;             // 过期时间戳（秒）
+}
+
+// CreateListingRequest 创建挂单请求。
+message CreateListingRequest {
+  uint64 seller_id = 1;             // 卖家 ID
+  uint32 item_id = 2;               // 物品模板 ID
+  uint32 quantity = 3;              // 数量
+  uint64 unit_price = 4;            // 单价
+  string currency_type = 5;         // 货币类型
+  int64 expires_at = 6;             // 过期时间戳（秒），0 表示使用系统默认
+}
+
+// CancelListingRequest 取消挂单请求。
+message CancelListingRequest {
+  uint64 listing_id = 1;            // 挂单 ID
+  uint64 seller_id = 2;             // 卖家 ID（鉴权）
+}
+
+// ListingResponse 挂单响应。
+message ListingResponse {
+  Listing listing = 1;              // 挂单信息
+}
+
+// ============================================================================
+// 交易相关消息
+// ============================================================================
+
+// Transaction 交易记录信息。
+message Transaction {
+  uint64 id = 1;                    // 交易 ID
+  uint64 listing_id = 2;            // 关联挂单 ID
+  uint64 buyer_id = 3;              // 买家 ID
+  uint64 seller_id = 4;             // 卖家 ID
+  uint32 quantity = 5;              // 数量
+  uint64 unit_price = 6;            // 成交单价
+  uint64 total_price = 7;           // 总价
+  int64 created_at = 8;             // 创建时间戳（秒）
+}
+
+// BuyItemRequest 购买物品请求。
+message BuyItemRequest {
+  uint64 listing_id = 1;            // 挂单 ID
+  uint64 buyer_id = 2;              // 买家 ID
+  uint32 quantity = 3;              // 购买数量
+}
+
+// TransactionResponse 交易响应。
+message TransactionResponse {
+  Transaction transaction = 1;      // 交易记录
+}
+
+// ============================================================================
+// 挂单查询相关消息
+// ============================================================================
+
+// GetListingsRequest 查询挂单列表请求。
+message GetListingsRequest {
+  uint64 seller_id = 1;             // 卖家 ID（可选筛选）
+  uint32 item_id = 2;               // 物品 ID（可选筛选）
+  string status = 3;                // 状态筛选（可选）
+  string currency_type = 4;         // 货币类型筛选（可选）
+  int32 page = 5;                   // 页码，从 1 开始
+  int32 page_size = 6;              // 每页数量
+}
+
+// GetListingsResponse 挂单列表响应。
+message GetListingsResponse {
+  repeated Listing listings = 1;    // 挂单列表
+  int32 total = 2;                  // 总数
+  int32 page = 3;                   // 当前页码
+  int32 page_size = 4;              // 每页数量
+}
+
+// ============================================================================
+// 拍卖相关消息
+// ============================================================================
+
+// Auction 拍卖信息。
+message Auction {
+  uint64 id = 1;                    // 拍卖 ID
+  uint32 item_id = 2;               // 物品模板 ID
+  uint64 seller_id = 3;             // 卖家 ID
+  uint64 current_bid = 4;           // 当前最高出价
+  uint64 bidder_id = 5;             // 当前最高出价者 ID
+  uint64 reserve_price = 6;         // 保留价
+  int64 end_time = 7;               // 结束时间戳（秒）
+  string status = 8;                // 状态：active/completed/cancelled/expired
+  int64 created_at = 9;             // 创建时间戳（秒）
+}
+
+// StartAuctionRequest 发起拍卖请求。
+message StartAuctionRequest {
+  uint32 item_id = 1;               // 物品模板 ID
+  uint64 seller_id = 2;             // 卖家 ID
+  uint64 reserve_price = 3;         // 保留价（出价低于此价不成交）
+  uint32 duration_seconds = 4;      // 拍卖持续秒数，0 表示使用系统默认
+}
+
+// PlaceBidRequest 出价请求。
+message PlaceBidRequest {
+  uint64 auction_id = 1;            // 拍卖 ID
+  uint64 bidder_id = 2;             // 出价者 ID
+  uint64 bid_amount = 3;            // 出价金额
+}
+
+// AuctionResponse 拍卖响应。
+message AuctionResponse {
+  Auction auction = 1;              // 拍卖信息
+}
+
+// GetActiveAuctionsRequest 获取活跃拍卖列表请求。
+message GetActiveAuctionsRequest {
+  int32 page = 1;                   // 页码，从 1 开始
+  int32 page_size = 2;              // 每页数量
+  uint32 item_id = 3;               // 物品 ID（可选筛选）
+}
+
+// GetActiveAuctionsResponse 活跃拍卖列表响应。
+message GetActiveAuctionsResponse {
+  repeated Auction auctions = 1;    // 拍卖列表
+  int32 total = 2;                  // 总数
+  int32 page = 3;                   // 当前页码
+  int32 page_size = 4;              // 每页数量
+}

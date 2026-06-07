@@ -1,0 +1,218 @@
+{
+  "dungeons": [
+    {
+      "id": 1,
+      "name": "守护山门",
+      "realm_required": 1,
+      "boss_hp": 50000,
+      "boss_atk": 200,
+      "boss_def": 50,
+      "boss_skills": [
+        {"name": "山门震荡", "damage_mult": 1.5, "description": "以山门之力震荡周围敌人"},
+        {"name": "护山大阵", "damage_mult": 2.0, "description": "激活护山大阵，造成范围伤害"}
+      ],
+      "max_participants": 10,
+      "duration_minutes": 30,
+      "unlock_cost": 5000,
+      "rewards": [
+        {
+          "rank_from": 1,
+          "rank_to": 1,
+          "spirit_stones": 5000,
+          "sect_contribution": 200,
+          "items": [{"id": 101, "name": "灵石", "count": 100}]
+        },
+        {
+          "rank_from": 2,
+          "rank_to": 3,
+          "spirit_stones": 3000,
+          "sect_contribution": 150,
+          "items": [{"id": 101, "name": "灵石", "count": 60}]
+        },
+        {
+          "rank_from": 4,
+          "rank_to": 10,
+          "spirit_stones": 1500,
+          "sect_contribution": 100,
+          "items": [{"id": 101, "name": "灵石", "count": 30}]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "妖兽入侵",
+      "realm_required": 3,
+      "boss_hp": 200000,
+      "boss_atk": 500,
+      "boss_def": 150,
+      "boss_skills": [
+        {"name": "兽王咆哮", "damage_mult": 1.6, "description": "发出震天咆哮，震慑敌人"},
+        {"name": "利爪撕裂", "damage_mult": 2.2, "description": "以利爪撕裂对手防御"},
+        {"name": "妖兽狂潮", "damage_mult": 1.3, "description": "召唤妖兽群进行围攻"}
+      ],
+      "max_participants": 15,
+      "duration_minutes": 30,
+      "unlock_cost": 20000,
+      "rewards": [
+        {
+          "rank_from": 1,
+          "rank_to": 1,
+          "spirit_stones": 15000,
+          "sect_contribution": 500,
+          "items": [{"id": 101, "name": "灵石", "count": 300}, {"id": 201, "name": "妖兽内丹", "count": 1}]
+        },
+        {
+          "rank_from": 2,
+          "rank_to": 3,
+          "spirit_stones": 10000,
+          "sect_contribution": 350,
+          "items": [{"id": 101, "name": "灵石", "count": 200}]
+        },
+        {
+          "rank_from": 4,
+          "rank_to": 15,
+          "spirit_stones": 5000,
+          "sect_contribution": 200,
+          "items": [{"id": 101, "name": "灵石", "count": 100}]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "魔道来袭",
+      "realm_required": 5,
+      "boss_hp": 800000,
+      "boss_atk": 1200,
+      "boss_def": 400,
+      "boss_skills": [
+        {"name": "魔焰滔天", "damage_mult": 1.8, "description": "释放滔天魔焰灼烧一切"},
+        {"name": "暗影突袭", "damage_mult": 2.5, "description": "从暗影中发动致命突袭"},
+        {"name": "魔气侵蚀", "damage_mult": 1.5, "description": "以魔气侵蚀敌人经脉"},
+        {"name": "万魔归宗", "damage_mult": 3.0, "description": "召唤万魔之力，毁灭一切"}
+      ],
+      "max_participants": 20,
+      "duration_minutes": 45,
+      "unlock_cost": 50000,
+      "rewards": [
+        {
+          "rank_from": 1,
+          "rank_to": 1,
+          "spirit_stones": 50000,
+          "sect_contribution": 1000,
+          "items": [{"id": 101, "name": "灵石", "count": 1000}, {"id": 301, "name": "魔晶", "count": 1}]
+        },
+        {
+          "rank_from": 2,
+          "rank_to": 5,
+          "spirit_stones": 30000,
+          "sect_contribution": 700,
+          "items": [{"id": 101, "name": "灵石", "count": 600}]
+        },
+        {
+          "rank_from": 6,
+          "rank_to": 20,
+          "spirit_stones": 10000,
+          "sect_contribution": 400,
+          "items": [{"id": 101, "name": "灵石", "count": 200}]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "上古遗迹",
+      "realm_required": 7,
+      "boss_hp": 3000000,
+      "boss_atk": 3000,
+      "boss_def": 1000,
+      "boss_skills": [
+        {"name": "上古之力", "damage_mult": 2.0, "description": "唤醒上古之力，大幅提升攻击"},
+        {"name": "遗迹守护", "damage_mult": 1.6, "description": "驱动遗迹守护阵法"},
+        {"name": "时空乱流", "damage_mult": 2.8, "description": "操控时空之力制造乱流"},
+        {"name": "古神降临", "damage_mult": 3.5, "description": "召唤古神虚影降临战场"},
+        {"name": "毁灭之光", "damage_mult": 4.0, "description": "释放毁灭一切的远古之光"}
+      ],
+      "max_participants": 25,
+      "duration_minutes": 45,
+      "unlock_cost": 150000,
+      "rewards": [
+        {
+          "rank_from": 1,
+          "rank_to": 1,
+          "spirit_stones": 200000,
+          "sect_contribution": 3000,
+          "items": [{"id": 101, "name": "灵石", "count": 5000}, {"id": 401, "name": "上古碎片", "count": 1}]
+        },
+        {
+          "rank_from": 2,
+          "rank_to": 5,
+          "spirit_stones": 100000,
+          "sect_contribution": 2000,
+          "items": [{"id": 101, "name": "灵石", "count": 3000}]
+        },
+        {
+          "rank_from": 6,
+          "rank_to": 15,
+          "spirit_stones": 50000,
+          "sect_contribution": 1000,
+          "items": [{"id": 101, "name": "灵石", "count": 1500}]
+        },
+        {
+          "rank_from": 16,
+          "rank_to": 25,
+          "spirit_stones": 20000,
+          "sect_contribution": 500,
+          "items": [{"id": 101, "name": "灵石", "count": 500}]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "仙魔大战",
+      "realm_required": 9,
+      "boss_hp": 10000000,
+      "boss_atk": 8000,
+      "boss_def": 3000,
+      "boss_skills": [
+        {"name": "仙魔诀", "damage_mult": 2.5, "description": "运转仙魔决，天地变色"},
+        {"name": "九转轮回", "damage_mult": 3.0, "description": "施展九转轮回之力"},
+        {"name": "混沌初开", "damage_mult": 3.5, "description": "引动混沌之力，开天辟地"},
+        {"name": "万劫不复", "damage_mult": 4.0, "description": "降下万劫，毁灭众生"},
+        {"name": "天道裁决", "damage_mult": 5.0, "description": "以天道之力进行最终裁决"},
+        {"name": "仙魔合一", "damage_mult": 6.0, "description": "仙魔之力合为一体，毁天灭地"}
+      ],
+      "max_participants": 30,
+      "duration_minutes": 60,
+      "unlock_cost": 500000,
+      "rewards": [
+        {
+          "rank_from": 1,
+          "rank_to": 1,
+          "spirit_stones": 1000000,
+          "sect_contribution": 10000,
+          "items": [{"id": 101, "name": "灵石", "count": 20000}, {"id": 501, "name": "仙魔令", "count": 1}]
+        },
+        {
+          "rank_from": 2,
+          "rank_to": 5,
+          "spirit_stones": 500000,
+          "sect_contribution": 7000,
+          "items": [{"id": 101, "name": "灵石", "count": 10000}]
+        },
+        {
+          "rank_from": 6,
+          "rank_to": 10,
+          "spirit_stones": 200000,
+          "sect_contribution": 4000,
+          "items": [{"id": 101, "name": "灵石", "count": 5000}]
+        },
+        {
+          "rank_from": 11,
+          "rank_to": 30,
+          "spirit_stones": 50000,
+          "sect_contribution": 1000,
+          "items": [{"id": 101, "name": "灵石", "count": 1000}]
+        }
+      ]
+    }
+  ]
+}

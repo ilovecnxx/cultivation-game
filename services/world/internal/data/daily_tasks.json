@@ -1,0 +1,159 @@
+[
+  {
+    "id": "daily_cultivate_1h",
+    "name": "修炼1小时",
+    "description": "累计修炼60分钟，巩固修为",
+    "category": "cultivation",
+    "type": "cultivate_time",
+    "target_id": "daily_practice",
+    "required_count": 1,
+    "activity_points": 10,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 200}
+    ],
+    "sort_order": 1
+  },
+  {
+    "id": "daily_breakthrough",
+    "name": "突破1次",
+    "description": "尝试突破一次，冲击更高境界",
+    "category": "cultivation",
+    "type": "breakthrough_attempt",
+    "target_id": "any",
+    "required_count": 1,
+    "activity_points": 15,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 300}
+    ],
+    "sort_order": 2
+  },
+  {
+    "id": "daily_take_pill",
+    "name": "服用丹药3次",
+    "description": "服用3颗丹药，借助药力修炼",
+    "category": "cultivation",
+    "type": "use_item",
+    "target_id": "pill",
+    "required_count": 3,
+    "activity_points": 10,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 150}
+    ],
+    "sort_order": 3
+  },
+  {
+    "id": "daily_kill_monsters",
+    "name": "击杀20只妖兽",
+    "description": "消灭20只妖兽，斩妖除魔",
+    "category": "combat",
+    "type": "kill_monster",
+    "target_id": "any",
+    "required_count": 20,
+    "activity_points": 15,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 300},
+      {"type": "money", "id": "", "quantity": 100}
+    ],
+    "sort_order": 4
+  },
+  {
+    "id": "daily_dungeon",
+    "name": "完成1次副本",
+    "description": "挑战并完成一次秘境副本",
+    "category": "combat",
+    "type": "dungeon_run",
+    "target_id": "any",
+    "required_count": 1,
+    "activity_points": 20,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 500}
+    ],
+    "sort_order": 5
+  },
+  {
+    "id": "daily_tower",
+    "name": "挑战心魔塔5层",
+    "description": "在心魔塔中通过5层挑战",
+    "category": "combat",
+    "type": "defeat_tower",
+    "target_id": "heart_demon_tower",
+    "required_count": 5,
+    "activity_points": 15,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 400}
+    ],
+    "sort_order": 6
+  },
+  {
+    "id": "daily_gift_friend",
+    "name": "赠送灵力给好友",
+    "description": "赠送灵力给一位好友，互帮互助",
+    "category": "social",
+    "type": "gift_friend",
+    "target_id": "any",
+    "required_count": 1,
+    "activity_points": 10,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 100}
+    ],
+    "sort_order": 7
+  },
+  {
+    "id": "daily_chat",
+    "name": "在世界频道发言",
+    "description": "在世界频道发言一次，交流修仙心得",
+    "category": "social",
+    "type": "world_chat",
+    "target_id": "any",
+    "required_count": 1,
+    "activity_points": 5,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 50}
+    ],
+    "sort_order": 8
+  },
+  {
+    "id": "daily_sect_mission",
+    "name": "完成宗门任务",
+    "description": "完成一次宗门发布的日常任务",
+    "category": "social",
+    "type": "finish_quest",
+    "target_id": "sect",
+    "required_count": 1,
+    "activity_points": 15,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 200},
+      {"type": "reputation", "id": "", "quantity": 20}
+    ],
+    "sort_order": 9
+  },
+  {
+    "id": "daily_market_list",
+    "name": "在市场上架1件物品",
+    "description": "在交易市场上架一件物品出售",
+    "category": "economy",
+    "type": "market_list",
+    "target_id": "any",
+    "required_count": 1,
+    "activity_points": 10,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 100},
+      {"type": "money", "id": "", "quantity": 50}
+    ],
+    "sort_order": 10
+  },
+  {
+    "id": "daily_gather",
+    "name": "采集5次资源",
+    "description": "采集5次野外资源，积累修炼材料",
+    "category": "economy",
+    "type": "gather_item",
+    "target_id": "any",
+    "required_count": 5,
+    "activity_points": 10,
+    "rewards": [
+      {"type": "exp", "id": "", "quantity": 150}
+    ],
+    "sort_order": 11
+  }
+]

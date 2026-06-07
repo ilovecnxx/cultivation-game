@@ -1,0 +1,281 @@
+{
+  "title": "Game Overview",
+  "uid": "game_overview",
+  "version": 1,
+  "timezone": "browser",
+  "editable": true,
+  "tags": ["game", "cultivation", "sre"],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "panels": [
+    {
+      "title": "Real-time Online Players",
+      "type": "gauge",
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "gateway_online_players_total",
+          "legendFormat": "Online"
+        }
+      ],
+      "options": {
+        "min": 0,
+        "max": 10000,
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "thresholds": [
+          { "color": "green", "value": null },
+          { "color": "orange", "value": 5000 },
+          { "color": "red", "value": 8000 }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        }
+      }
+    },
+    {
+      "title": "Message Throughput (QPS)",
+      "type": "graph",
+      "gridPos": { "h": 6, "w": 12, "x": 6, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(rate(game_messages_total[1m]))",
+          "legendFormat": "Total QPS"
+        },
+        {
+          "expr": "sum(rate(game_messages_total{type=\"combat\"}[1m]))",
+          "legendFormat": "Combat"
+        },
+        {
+          "expr": "sum(rate(game_messages_total{type=\"social\"}[1m]))",
+          "legendFormat": "Social"
+        },
+        {
+          "expr": "sum(rate(game_messages_total{type=\"cultivation\"}[1m]))",
+          "legendFormat": "Cultivation"
+        }
+      ],
+      "options": { "dataLinks": [] },
+      "legend": { "show": true },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "decimals": 1
+        }
+      }
+    },
+    {
+      "title": "Message Latency P50 / P90 / P99",
+      "type": "graph",
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 6 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(game_message_duration_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P50"
+        },
+        {
+          "expr": "histogram_quantile(0.90, sum(rate(game_message_duration_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P90"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(game_message_duration_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P99"
+        }
+      ],
+      "options": { "dataLinks": [] },
+      "legend": { "show": true },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 3
+        }
+      }
+    },
+    {
+      "title": "Service CPU Usage",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 6 },
+      "targets": [
+        {
+          "expr": "100 - (avg by(instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+          "legendFormat": "CPU %"
+        }
+      ],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 60 },
+              { "color": "red", "value": 80 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "title": "Service Memory Usage",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 18, "y": 6 },
+      "targets": [
+        {
+          "expr": "process_resident_memory_bytes / 1024 / 1024",
+          "legendFormat": "Memory MB"
+        }
+      ],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 524288000 },
+              { "color": "red", "value": 1073741824 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "title": "Error Rate",
+      "type": "graph",
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 12 },
+      "targets": [
+        {
+          "expr": "(sum(rate(game_requests_total{status=\"error\"}[1m])) / sum(rate(game_requests_total[1m]))) * 100",
+          "legendFormat": "Error Rate %"
+        }
+      ],
+      "options": { "dataLinks": [] },
+      "legend": { "show": true },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 0.5 },
+              { "color": "red", "value": 1 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "title": "Error Rate (Current)",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 12 },
+      "targets": [
+        {
+          "expr": "(sum(rate(game_requests_total{status=\"error\"}[5m])) / sum(rate(game_requests_total[5m]))) * 100",
+          "legendFormat": "Current Error %"
+        }
+      ],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 2,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 0.5 },
+              { "color": "red", "value": 1 }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "title": "Active Players (24h)",
+      "type": "graph",
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 18 },
+      "targets": [
+        {
+          "expr": "sum(increase(gateway_online_players_total[24h]))",
+          "legendFormat": "Active Players"
+        }
+      ],
+      "options": { "dataLinks": [] },
+      "legend": { "show": true },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        }
+      }
+    },
+    {
+      "title": "Redis Hit Rate",
+      "type": "gauge",
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 18 },
+      "targets": [
+        {
+          "expr": "(redis_keyspace_hits_total / (redis_keyspace_hits_total + redis_keyspace_misses_total)) * 100",
+          "legendFormat": "Hit Rate %"
+        }
+      ],
+      "options": {
+        "min": 0,
+        "max": 100,
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "thresholds": [
+          { "color": "red", "value": null },
+          { "color": "orange", "value": 85 },
+          { "color": "green", "value": 95 }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "decimals": 1
+        }
+      }
+    }
+  ]
+}

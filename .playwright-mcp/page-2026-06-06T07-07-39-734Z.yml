@@ -1,0 +1,44 @@
+- generic [ref=e59]:
+  - banner [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]: ☯
+      - generic [ref=e65]: 修仙世界
+      - navigation [ref=e66]:
+        - generic [ref=e67] [cursor=pointer]: 宗门
+        - generic [ref=e68] [cursor=pointer]: 地图
+        - generic [ref=e69] [cursor=pointer]: 洞府
+        - generic [ref=e70] [cursor=pointer]: 坊市
+        - generic [ref=e71] [cursor=pointer]: 拍卖行
+        - generic [ref=e72] [cursor=pointer]: 修炼
+        - generic [ref=e73] [cursor=pointer]: 背包
+        - generic [ref=e74] [cursor=pointer]: 灵兽
+        - generic [ref=e75] [cursor=pointer]: 法宝
+        - generic [ref=e76] [cursor=pointer]: 排行
+        - generic [ref=e77] [cursor=pointer]: 传音
+        - generic [ref=e78] [cursor=pointer]: 设置
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - generic [ref=e81]: 1,283 在线修士
+          - generic [ref=e83]: 1.3万 注册修士
+        - button "☀" [ref=e84] [cursor=pointer]
+  - main [ref=e87]:
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - heading "修仙世界" [level=1] [ref=e91]
+        - paragraph [ref=e92]: 修仙悟道 长生逍遥
+      - generic [ref=e93]:
+        - generic [ref=e95] [cursor=pointer]:
+          - generic [ref=e97]: ✓
+          - generic [ref=e98]: 练气
+        - generic [ref=e99] [cursor=pointer]:
+          - generic [ref=e101]: ✓
+          - generic [ref=e102]: 筑基
+        - generic [ref=e106] [cursor=pointer]: 金丹
+        - generic [ref=e109] [cursor=pointer]: 元婴
+        - generic [ref=e112] [cursor=pointer]: 化神
+        - generic [ref=e115] [cursor=pointer]: 炼虚
+        - generic [ref=e118] [cursor=pointer]: 合体
+        - generic [ref=e121] [cursor=pointer]: 大乘
+        - generic [ref=e124] [cursor=pointer]: 渡劫
+      - paragraph [ref=e125]: 大道无形，生育天地
+  - contentinfo [ref=e126]: © 2026 修仙世界 · 以文为本 以心入道

@@ -1,0 +1,44 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: cultivation-game
+
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - gateway-deployment.yaml
+  - gateway-service.yaml
+  - auth-deployment.yaml
+  - auth-service.yaml
+  - player-deployment.yaml
+  - player-service.yaml
+  - cultivation-deployment.yaml
+  - cultivation-service.yaml
+  - combat-deployment.yaml
+  - combat-service.yaml
+  - social-deployment.yaml
+  - social-service.yaml
+  - world-deployment.yaml
+  - world-service.yaml
+  - trade-deployment.yaml
+  - trade-service.yaml
+  - ranking-deployment.yaml
+  - ranking-service.yaml
+  - frontend-deployment.yaml
+  - frontend-service.yaml
+  - nats-deployment.yaml
+  - nats-service.yaml
+  - redis-deployment.yaml
+  - redis-service.yaml
+  - mysql-statefulset.yaml
+  - mysql-service.yaml
+  - mongo-deployment.yaml
+  - mongo-service.yaml
+  - hpa.yaml
+  - ingress.yaml
+
+secretGenerator:
+  - name: mysql-secret
+    namespace: cultivation-game
+    literals:
+      - root-password=changeme

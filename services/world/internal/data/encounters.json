@@ -1,0 +1,521 @@
+[
+  {
+    "id": "enc_old_hermit",
+    "name": "山中老者",
+    "description": "你在林中遇到一位白发老者，他看起来修为深不可测。他微笑着看着你，似乎有话要说。",
+    "regions": ["secret_forest_01", "qingyun_range_01", "sunset_valley_01"],
+    "probability": 0.08,
+    "min_level": 5,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "恭敬行礼，请教修炼心得",
+        "outcome": {
+          "type": "exp",
+          "target_id": "",
+          "amount": 500,
+          "description": "老者赞你谦逊，指点了几句功法要诀，你感觉修为有所精进。"
+        }
+      },
+      {
+        "text": "打量老者，询问是否有宝物",
+        "outcome": {
+          "type": "item",
+          "target_id": "herb_lingzhi_01",
+          "amount": 3,
+          "description": "老者笑着摇头，随手给了你几株灵草。"
+        }
+      },
+      {
+        "text": "不理睬，径直离去",
+        "outcome": {
+          "type": "none",
+          "target_id": "",
+          "amount": 0,
+          "description": "你与老者擦肩而过，似乎错过了一次机缘。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_spirit_spring",
+    "name": "灵泉涌现",
+    "description": "一块岩石缝隙中突然涌出一股清澈的泉水，散发出浓郁的灵气！",
+    "regions": ["qingyun_range_01", "crescent_lake_01", "secret_forest_01"],
+    "probability": 0.05,
+    "min_level": 1,
+    "max_level": 100,
+    "conditions": [],
+    "auto_outcome": {
+      "type": "buff",
+      "target_id": "spirit_spring_blessing",
+      "amount": 3600,
+      "description": "你饮用了灵泉之水，修炼速度提升30%，持续1小时。"
+    },
+    "cooldown_sec": 86400
+  },
+  {
+    "id": "enc_treasure_guardian",
+    "name": "守护妖兽",
+    "description": "你在遗迹中发现了一个宝箱，但旁边盘踞着一只凶猛的守护妖兽！",
+    "regions": ["ancient_ruins_01", "ice_cave_01"],
+    "probability": 0.06,
+    "min_level": 20,
+    "max_level": 100,
+    "conditions": [
+      {"type": "level", "operator": "gte", "value": 20}
+    ],
+    "choices": [
+      {
+        "text": "正面迎战",
+        "outcome": {
+          "type": "item",
+          "target_id": "artifact_fragment_01",
+          "amount": 1,
+          "description": "经过一番苦战，你击败了妖兽，从宝箱中得到了一件上古法器碎片！"
+        }
+      },
+      {
+        "text": "谨慎撤退",
+        "outcome": {
+          "type": "none",
+          "target_id": "",
+          "amount": 0,
+          "description": "你选择保持谨慎，悄悄离开了这里。安全第一。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_spirit_rain",
+    "name": "天降甘露",
+    "description": "天空中突然下起了灵雨，每一滴雨水都蕴含着精纯的灵力！",
+    "regions": ["star_city_01", "qingyun_range_01", "secret_forest_01"],
+    "probability": 0.03,
+    "min_level": 1,
+    "max_level": 100,
+    "conditions": [],
+    "auto_outcome": {
+      "type": "exp",
+      "target_id": "",
+      "amount": 2000,
+      "description": "你在灵雨中修炼，修为大幅提升！"
+    },
+    "cooldown_sec": 43200
+  },
+  {
+    "id": "enc_demon_ambush",
+    "name": "妖魔伏击",
+    "description": "阴暗处突然窜出一只妖魔，向你发起偷袭！",
+    "regions": ["wild_lands_01", "myriad_demon_lair_01"],
+    "probability": 0.1,
+    "min_level": 40,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "迎头痛击",
+        "outcome": {
+          "type": "item",
+          "target_id": "ore_demon_core_01",
+          "amount": 2,
+          "description": "你成功击杀了妖魔，获得了妖魔内丹。"
+        }
+      },
+      {
+        "text": "避其锋芒",
+        "outcome": {
+          "type": "damage",
+          "target_id": "",
+          "amount": -300,
+          "description": "你撤退时被妖魔击中，受了一些伤。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_mystic_merchant",
+    "name": "云游商人",
+    "description": "一位自称云游四方的神秘商人出现在你面前，他的摊位上有一些稀奇古怪的东西。",
+    "regions": ["star_city_01", "newbie_village_01", "heavenly_pavilion_01"],
+    "probability": 0.04,
+    "min_level": 1,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "花费灵石购买神秘丹药",
+        "outcome": {
+          "type": "item",
+          "target_id": "pill_mystery_01",
+          "amount": 1,
+          "description": "你花了一些灵石买下一颗丹药，希望物有所值。"
+        }
+      },
+      {
+        "text": "以物易物交换情报",
+        "outcome": {
+          "type": "exp",
+          "target_id": "",
+          "amount": 1000,
+          "description": "商人告诉了你一处秘境的入口位置，你受益匪浅。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_cultivation_breakthrough",
+    "name": "顿悟契机",
+    "description": "你突然感到心神空明，天地灵气疯狂涌入体内——这是突破的契机！",
+    "regions": ["qingyun_range_01", "crescent_lake_01", "sunset_valley_01"],
+    "probability": 0.02,
+    "min_level": 10,
+    "max_level": 100,
+    "conditions": [
+      {"type": "cultivation", "operator": "gte", "value": 50}
+    ],
+    "auto_outcome": {
+      "type": "exp",
+      "target_id": "",
+      "amount": 10000,
+      "description": "你抓住了顿悟的机会，修为突飞猛进！"
+    },
+    "cooldown_sec": 259200
+  },
+  {
+    "id": "enc_fallen_star",
+    "name": "星陨奇缘",
+    "description": "一颗流星划破天际，坠落在不远处。火光冲天中，似乎有什么东西从天上掉下来了。",
+    "regions": ["star_city_01", "sunset_valley_01", "wild_lands_01"],
+    "probability": 0.03,
+    "min_level": 15,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "前往坠落点探查",
+        "outcome": {
+          "type": "item",
+          "target_id": "ore_star_metal_01",
+          "amount": 1,
+          "description": "你在陨石坑中发现了一块奇异的星辰陨铁，散发着淡淡星光。"
+        }
+      },
+      {
+        "text": "在附近寻找其他碎片",
+        "outcome": {
+          "type": "item",
+          "target_id": "ore_spirit_stone_01",
+          "amount": 5,
+          "description": "你找到了几块被震飞的灵石，虽不如陨铁珍贵，也算小有收获。"
+        }
+      },
+      {
+        "text": "静观其变",
+        "outcome": {
+          "type": "exp",
+          "target_id": "",
+          "amount": 500,
+          "description": "你远远观望流星坠落，心有所感，对天地之道多了一分领悟。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_ice_fairy",
+    "name": "冰晶幻境",
+    "description": "玄冰洞深处出现了奇异的光芒，冰壁上浮现出一位冰晶女子的幻影，她似乎在向你招手。",
+    "regions": ["ice_cave_01"],
+    "probability": 0.05,
+    "min_level": 30,
+    "level_max": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "跟随幻影深入洞窟",
+        "outcome": {
+          "type": "item",
+          "target_id": "herb_ice_lotus_01",
+          "amount": 1,
+          "description": "你跟随幻影来到一处隐秘的冰室，发现了一朵盛开的冰莲花！"
+        }
+      },
+      {
+        "text": "运功抵抗幻象",
+        "outcome": {
+          "type": "buff",
+          "target_id": "ice_resistance",
+          "amount": 1800,
+          "description": "你识破了幻象，心神更加坚定，对冰系法术的抗性提升了。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_heavenly_insight",
+    "name": "天机启示",
+    "description": "在天机阁的藏经阁中，你无意间翻开了一本尘封的古籍，书页上浮现出金色文字。",
+    "regions": ["heavenly_pavilion_01"],
+    "probability": 0.04,
+    "min_level": 35,
+    "max_level": 100,
+    "conditions": [
+      {"type": "probability", "operator": "gte", "value": 0.3}
+    ],
+    "choices": [
+      {
+        "text": "仔细研读古籍",
+        "outcome": {
+          "type": "exp",
+          "target_id": "",
+          "amount": 5000,
+          "description": "你花了一天一夜研读古籍，对天道法则有了更深的理解。"
+        }
+      },
+      {
+        "text": "抄录副本带走",
+        "outcome": {
+          "type": "item",
+          "target_id": "book_heavenly_script_01",
+          "amount": 1,
+          "description": "你将古籍内容抄录了一份，日后可以慢慢研读。"
+        }
+      },
+      {
+        "text": "放回原处",
+        "outcome": {
+          "type": "none",
+          "target_id": "",
+          "amount": 0,
+          "description": "你合上古籍放回原处，仿佛什么都没有发生过。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_wild_beast",
+    "name": "远古巨兽",
+    "description": "大地在震动！一头山岳般的远古巨兽从蛮荒之地深处走来，每走一步都地动山摇。",
+    "regions": ["wild_lands_01"],
+    "probability": 0.06,
+    "min_level": 50,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "正面挑战巨兽",
+        "outcome": {
+          "type": "item",
+          "target_id": "ore_wild_core_01",
+          "amount": 3,
+          "description": "苦战之后你终于击倒了巨兽，从它体内取得了珍贵的蛮荒兽核！"
+        }
+      },
+      {
+        "text": "潜伏跟踪，寻找巢穴",
+        "outcome": {
+          "type": "item",
+          "target_id": "herb_wild_ginseng_01",
+          "amount": 2,
+          "description": "你悄悄跟踪巨兽回到巢穴，趁它沉睡时偷走了巢穴中的万年野山参。"
+        }
+      },
+      {
+        "text": "绕道而行",
+        "outcome": {
+          "type": "none",
+          "target_id": "",
+          "amount": 0,
+          "description": "你明智地选择了绕路，安全第一。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_demon_refining",
+    "name": "妖皇试炼",
+    "description": "万妖窟深处，妖皇残魂突然现身，强大的威压让你几乎无法动弹。它审视着你，眼中闪过一丝兴趣。",
+    "regions": ["myriad_demon_lair_01"],
+    "probability": 0.04,
+    "min_level": 60,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "坦然面对，不卑不亢",
+        "outcome": {
+          "type": "item",
+          "target_id": "artifact_demon_royal_01",
+          "amount": 1,
+          "description": "妖皇残魂对你的胆识表示赞赏，赐予了你一件妖族至宝。"
+        }
+      },
+      {
+        "text": "出手试探妖皇实力",
+        "outcome": {
+          "type": "damage",
+          "target_id": "",
+          "amount": -1000,
+          "description": "你被妖皇残魂一击打飞，受了重伤。还好它没有下杀手。"
+        }
+      },
+      {
+        "text": "恭敬行礼，请求指点",
+        "outcome": {
+          "type": "exp",
+          "target_id": "",
+          "amount": 8000,
+          "description": "妖皇残魂虽不屑人类，但还是随口指点了几句妖族修炼秘法，你获益良多。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_abyss_whisper",
+    "name": "深渊低语",
+    "description": "你听到无尽深渊深处传来若有若无的低语声，那声音仿佛能穿透灵魂，邀请你走向深渊。",
+    "regions": ["abyss_01"],
+    "probability": 0.05,
+    "min_level": 70,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "凝神倾听，尝试理解",
+        "outcome": {
+          "type": "buff",
+          "target_id": "abyss_insight",
+          "amount": 3600,
+          "description": "你从低语中领悟到了一丝大道真意，修炼感悟速度提升。"
+        }
+      },
+      {
+        "text": "运功抵抗，封闭听觉",
+        "outcome": {
+          "type": "none",
+          "target_id": "",
+          "amount": 0,
+          "description": "你封闭了听觉，低语声渐渐远去。不知道错过了什么……"
+        }
+      },
+      {
+        "text": "循声而去，一探究竟",
+        "outcome": {
+          "type": "item",
+          "target_id": "artifact_fragment_03",
+          "amount": 1,
+          "description": "你在深渊边缘发现了一块上古法器碎片，似乎是被低语声吸引而来的。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_ascension_trial",
+    "name": "天碑悟道",
+    "description": "飞升台上的天碑突然发出万丈光芒，碑文上的古字一个个亮起，化作金色符文萦绕在你身边。",
+    "regions": ["ascension_platform_01"],
+    "probability": 0.03,
+    "min_level": 80,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "伸手触摸天碑",
+        "outcome": {
+          "type": "exp",
+          "target_id": "",
+          "amount": 50000,
+          "description": "你的意识被拉入一片混沌空间，看到了上古大能飞升时的场景，修为大涨！"
+        }
+      },
+      {
+        "text": "盘膝坐下，感悟碑文",
+        "outcome": {
+          "type": "buff",
+          "target_id": "ascension_enlightenment",
+          "amount": 7200,
+          "description": "你沉浸在碑文的玄妙之中，获得了两小时的悟道状态，修炼速度大幅提升。"
+        }
+      },
+      {
+        "text": "仔细观察周围环境",
+        "outcome": {
+          "type": "item",
+          "target_id": "herb_ascension_grass_01",
+          "amount": 1,
+          "description": "你在天碑旁的裂缝中发现了一株罕见的飞升草，这可是炼制飞升丹的主药！"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_sunset_duel",
+    "name": "落日论剑",
+    "description": "落霞谷的夕阳下，一位白衣剑客正在山巅舞剑。剑光如虹，与霞光交相辉映，美不胜收。",
+    "regions": ["sunset_valley_01"],
+    "probability": 0.05,
+    "min_level": 20,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "上前请教剑法",
+        "outcome": {
+          "type": "exp",
+          "target_id": "",
+          "amount": 3000,
+          "description": "剑客欣然指点，你学到了几招精妙剑式，剑道造诣提升。"
+        }
+      },
+      {
+        "text": "提议切磋",
+        "outcome": {
+          "type": "item",
+          "target_id": "weapon_sword_spirit_01",
+          "amount": 1,
+          "description": "一番切磋后，剑客对你的实力表示认可，赠予你一柄灵剑。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "enc_herb_garden",
+    "name": "隐藏药园",
+    "description": "你在秘境森林的迷雾中发现了一处被结界隐藏的药园，里面种满了珍稀灵药！",
+    "regions": ["secret_forest_01"],
+    "probability": 0.04,
+    "min_level": 10,
+    "max_level": 100,
+    "conditions": [],
+    "choices": [
+      {
+        "text": "小心采摘成熟的灵药",
+        "outcome": {
+          "type": "item",
+          "target_id": "herb_xuecan_01",
+          "amount": 5,
+          "description": "你小心翼翼地采摘了五株血参，这在外界可价值不菲。"
+        }
+      },
+      {
+        "text": "寻找药园主人的线索",
+        "outcome": {
+          "type": "exp",
+          "target_id": "",
+          "amount": 2000,
+          "description": "你在药园中发现了一本种植手札，记载了许多灵药培育秘诀。"
+        }
+      },
+      {
+        "text": "在药园中打坐修炼",
+        "outcome": {
+          "type": "buff",
+          "target_id": "garden_qi_boost",
+          "amount": 1800,
+          "description": "药园灵气浓度远超外界，你在此修炼半小时，抵得上外界三天。"
+        }
+      }
+    ]
+  }
+]

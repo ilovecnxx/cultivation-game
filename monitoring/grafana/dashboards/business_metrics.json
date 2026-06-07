@@ -1,0 +1,191 @@
+{
+  "title": "Business Metrics",
+  "uid": "business_metrics",
+  "version": 1,
+  "timezone": "browser",
+  "editable": true,
+  "tags": ["game", "cultivation", "business"],
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "panels": [
+    {
+      "title": "DAU (Daily Active Users)",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(increase(gateway_unique_logins_total[1d]))",
+          "legendFormat": "DAU"
+        }
+      ],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "sparkline",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        }
+      }
+    },
+    {
+      "title": "MAU (Monthly Active Users)",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 6, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(increase(gateway_unique_logins_total[30d]))",
+          "legendFormat": "MAU"
+        }
+      ],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "sparkline",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        }
+      }
+    },
+    {
+      "title": "DAU / MAU Trend",
+      "type": "graph",
+      "gridPos": { "h": 6, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(increase(gateway_unique_logins_total[1d]))",
+          "legendFormat": "DAU"
+        },
+        {
+          "expr": "sum(increase(gateway_unique_logins_total[30d])) / 30",
+          "legendFormat": "MAU (daily avg)"
+        }
+      ],
+      "options": { "dataLinks": [] },
+      "legend": { "show": true },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        }
+      }
+    },
+    {
+      "title": "New Registrations",
+      "type": "stat",
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 6 },
+      "targets": [
+        {
+          "expr": "sum(increase(game_registrations_total[1d]))",
+          "legendFormat": "New Users"
+        }
+      ],
+      "options": {
+        "colorMode": "background",
+        "graphMode": "sparkline",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        }
+      }
+    },
+    {
+      "title": "Recharge Amount / ARPU",
+      "type": "graph",
+      "gridPos": { "h": 6, "w": 12, "x": 6, "y": 6 },
+      "targets": [
+        {
+          "expr": "sum(increase(game_recharge_amount_total[1d]))",
+          "legendFormat": "Revenue (¥)"
+        },
+        {
+          "expr": "sum(increase(game_recharge_amount_total[1d])) / sum(increase(gateway_unique_logins_total[1d]))",
+          "legendFormat": "ARPU (¥)"
+        }
+      ],
+      "options": { "dataLinks": [] },
+      "legend": { "show": true },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "currencyCNY",
+          "decimals": 2
+        }
+      }
+    },
+    {
+      "title": "Realm Distribution",
+      "type": "piechart",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 12 },
+      "targets": [
+        {
+          "expr": "game_player_realm_total",
+          "legendFormat": "{{ realm }}"
+        }
+      ],
+      "options": {
+        "legend": { "show": true, "placement": "right", "values": true },
+        "pieType": "pie",
+        "displayLabels": ["name", "value", "percent"],
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        }
+      }
+    },
+    {
+      "title": "Online Duration Distribution",
+      "type": "barchart",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 12 },
+      "targets": [
+        {
+          "expr": "game_online_duration_bucket",
+          "legendFormat": "{{ le }}"
+        }
+      ],
+      "options": {
+        "groupWidth": 70,
+        "showValue": "auto",
+        "orientation": "auto",
+        "text": {},
+        "tooltip": { "mode": "single", "sort": "none" }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 0
+        },
+        "overrides": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+[
+  {
+    "id": "xianjie_01",
+    "name": "南天门",
+    "type": "secret_realm",
+    "description": "仙界入口，巍峨天门矗立云端，两侧天兵镇守。初入仙界者必经之路，灵气浓郁如实质，远处仙宫隐现。",
+    "level_min": 100,
+    "level_max": 200,
+    "danger_level": 5,
+    "spirit_density": 8.0,
+    "connections": ["xianjie_02", "xianjie_03"],
+    "resources": {
+      "spirit_qi": 8.0,
+      "items": [
+        {"item_id": "xian_ling_cao", "rate": 0.3},
+        {"item_id": "xian_shi_sui", "rate": 0.4}
+      ]
+    }
+  },
+  {
+    "id": "xianjie_02",
+    "name": "蟠桃园",
+    "type": "secret_realm",
+    "description": "广袤千里的仙家果园，三千株蟠桃树错落有致，三千年一开花、三千年一结果。林中灵气氤氲，时有仙兽出没。",
+    "level_min": 120,
+    "level_max": 280,
+    "danger_level": 4,
+    "spirit_density": 9.0,
+    "connections": ["xianjie_01", "xianjie_04"],
+    "resources": {
+      "spirit_qi": 9.0,
+      "items": [
+        {"item_id": "pan_tao", "rate": 0.15},
+        {"item_id": "xian_ling_zhi", "rate": 0.3},
+        {"item_id": "yu_lu_hua", "rate": 0.25}
+      ]
+    }
+  },
+  {
+    "id": "xianjie_03",
+    "name": "瑶池仙境",
+    "type": "secret_realm",
+    "description": "碧波万顷的瑶池，池水泛着七彩霞光，岸边长满琼枝玉树。池中灵气最为纯净，是仙人悟道闭关的绝佳之地。",
+    "level_min": 150,
+    "level_max": 320,
+    "danger_level": 3,
+    "spirit_density": 10.0,
+    "connections": ["xianjie_01", "xianjie_05", "xianjie_06"],
+    "resources": {
+      "spirit_qi": 10.0,
+      "items": [
+        {"item_id": "yao_chi_shui", "rate": 0.35},
+        {"item_id": "qiong_zhi_ye", "rate": 0.25},
+        {"item_id": "xian_yu", "rate": 0.2}
+      ]
+    }
+  },
+  {
+    "id": "xianjie_04",
+    "name": "兜率宫",
+    "type": "town",
+    "description": "太上老君的道场，宫中炼丹炉昼夜不息。此地汇聚天下丹方，仙界丹师云集，可在此学习高阶炼丹术、兑换仙丹。",
+    "level_min": 180,
+    "level_max": 400,
+    "danger_level": 2,
+    "spirit_density": 7.5,
+    "connections": ["xianjie_02", "xianjie_07"],
+    "resources": {
+      "spirit_qi": 7.5,
+      "items": [
+        {"item_id": "jiu_zhuan_dan", "rate": 0.05},
+        {"item_id": "xian_huo", "rate": 0.3},
+        {"item_id": "dan_fang_can", "rate": 0.15}
+      ]
+    }
+  },
+  {
+    "id": "xianjie_05",
+    "name": "灵霄宝殿",
+    "type": "town",
+    "description": "天庭中枢，三十六根通天玉柱撑起金碧辉煌的宝殿。此处可接取天庭悬赏任务，积累功勋换取仙界秘宝。",
+    "level_min": 200,
+    "level_max": 450,
+    "danger_level": 1,
+    "spirit_density": 6.0,
+    "connections": ["xianjie_03", "xianjie_08"],
+    "resources": {
+      "spirit_qi": 6.0,
+      "items": [
+        {"item_id": "tian_ting_ling", "rate": 0.2},
+        {"item_id": "gong_xun_bi", "rate": 0.35}
+      ]
+    }
+  },
+  {
+    "id": "xianjie_06",
+    "name": "广寒宫",
+    "type": "secret_realm",
+    "description": "月宫仙境，桂树飘香，寒玉为砖。月光之下修炼可大幅提升道心，但需抵御寒气侵袭。宫中有月兔精守护的秘宝。",
+    "level_min": 220,
+    "level_max": 500,
+    "danger_level": 6,
+    "spirit_density": 11.0,
+    "connections": ["xianjie_03", "xianjie_09"],
+    "resources": {
+      "spirit_qi": 11.0,
+      "items": [
+        {"item_id": "gui_hua_gao", "rate": 0.2},
+        {"item_id": "han_yu_jing", "rate": 0.3},
+        {"item_id": "yue_hua_shui", "rate": 0.25}
+      ]
+    }
+  },
+  {
+    "id": "xianjie_07",
+    "name": "天河畔",
+    "type": "dangerous_land",
+    "description": "横贯仙界的浩瀚天河，河水蕴含星辰之力。河畔常有星兽出没，击杀可得星核碎片。天河水可淬炼神器。",
+    "level_min": 250,
+    "level_max": 550,
+    "danger_level": 7,
+    "spirit_density": 9.5,
+    "connections": ["xianjie_04", "xianjie_08", "xianjie_10"],
+    "resources": {
+      "spirit_qi": 9.5,
+      "items": [
+        {"item_id": "xing_he_sha", "rate": 0.3},
+        {"item_id": "xing_he_sui", "rate": 0.2},
+        {"item_id": "tian_he_shui", "rate": 0.25}
+      ]
+    }
+  },
+  {
+    "id": "xianjie_08",
+    "name": "斩妖台",
+    "type": "dangerous_land",
+    "description": "上古战场遗迹，无数妖神陨落之地。煞气与仙气交织，孕育出强大的妖灵。在此历练可锤炼战意，但极度危险。",
+    "level_min": 280,
+    "level_max": 600,
+    "danger_level": 8,
+    "spirit_density": 8.5,
+    "connections": ["xianjie_05", "xianjie_07", "xianjie_09"],
+    "resources": {
+      "spirit_qi": 8.5,
+      "items": [
+        {"item_id": "yao_dan_sui", "rate": 0.3},
+        {"item_id": "zhan_po_qi", "rate": 0.2},
+        {"item_id": "sha_qi_jing", "rate": 0.15}
+      ]
+    }
+  },
+  {
+    "id": "xianjie_09",
+    "name": "火云洞",
+    "type": "dangerous_land",
+    "description": "太古火神遗留下的洞府，洞中三昧真火永不熄灭。深处藏有上古火系仙术传承，非金仙之躯无法靠近核心。",
+    "level_min": 320,
+    "level_max": 700,
+    "danger_level": 9,
+    "spirit_density": 12.0,
+    "connections": ["xianjie_06", "xianjie_08", "xianjie_10"],
+    "resources": {
+      "spirit_qi": 12.0,
+      "items": [
+        {"item_id": "san_mei_huo", "rate": 0.15},
+        {"item_id": "huo_yan_jing", "rate": 0.3},
+        {"item_id": "xian_huo_tan", "rate": 0.2}
+      ]
+    }
+  },
+  {
+    "id": "xianjie_10",
+    "name": "蓬莱仙岛",
+    "type": "secret_realm",
+    "description": "海上仙山之首，浮于天河尽头。岛上遍布上古仙人遗迹，传闻仙帝传承便藏于此岛最深处。非大机缘者不可入。",
+    "level_min": 380,
+    "level_max": 999,
+    "danger_level": 10,
+    "spirit_density": 15.0,
+    "connections": ["xianjie_07", "xianjie_09"],
+    "resources": {
+      "spirit_qi": 15.0,
+      "items": [
+        {"item_id": "xian_di_yi_zhi", "rate": 0.02},
+        {"item_id": "peng_lai_cao", "rate": 0.2},
+        {"item_id": "xian_ren_zhi", "rate": 0.15},
+        {"item_id": "hun_yuan_qi", "rate": 0.1}
+      ]
+    }
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "realms": [
+    {
+      "id": 1,
+      "name": "铜皮",
+      "description": "以肉身承受打击，淬炼皮肤如铜铁般坚硬，寻常刀剑难伤",
+      "level_cap": 10,
+      "hp_per_level": 100,
+      "defense_per_level": 50,
+      "damage_reduction": 0.05,
+      "base_breakthrough_rate": 0.85,
+      "unlock_realm_required": 3,
+      "exp_per_train": 50
+    },
+    {
+      "id": 2,
+      "name": "铁骨",
+      "description": "淬炼骨骼如百炼钢铁，筋骨齐鸣，力大无穷",
+      "level_cap": 10,
+      "hp_per_level": 100,
+      "defense_per_level": 50,
+      "damage_reduction": 0.05,
+      "base_breakthrough_rate": 0.75,
+      "unlock_realm_required": 4,
+      "exp_per_train": 80
+    },
+    {
+      "id": 3,
+      "name": "金刚",
+      "description": "肉身金刚不坏，法器难伤，徒手碎法宝",
+      "level_cap": 10,
+      "hp_per_level": 100,
+      "defense_per_level": 50,
+      "damage_reduction": 0.05,
+      "base_breakthrough_rate": 0.65,
+      "unlock_realm_required": 5,
+      "exp_per_train": 120
+    },
+    {
+      "id": 4,
+      "name": "不灭",
+      "description": "血肉重生，断肢再续，一念之间肉身复原",
+      "level_cap": 10,
+      "hp_per_level": 100,
+      "defense_per_level": 50,
+      "damage_reduction": 0.05,
+      "base_breakthrough_rate": 0.55,
+      "unlock_realm_required": 6,
+      "exp_per_train": 180
+    },
+    {
+      "id": 5,
+      "name": "混沌体",
+      "description": "混沌圣体，万法不侵，以肉身硬撼天劫",
+      "level_cap": 10,
+      "hp_per_level": 100,
+      "defense_per_level": 50,
+      "damage_reduction": 0.05,
+      "base_breakthrough_rate": 0.40,
+      "unlock_realm_required": 7,
+      "exp_per_train": 250
+    }
+  ],
+  "train_config": {
+    "damage_to_exp_ratio": 0.1,
+    "daily_damage_cap": 50000,
+    "pill_exp_base": 200,
+    "dungeon_exp_base": 500,
+    "failure_hp_penalty": 50,
+    "recover_hp_per_hour": 10
+  }
+}

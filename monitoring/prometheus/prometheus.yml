@@ -1,0 +1,38 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+rule_files:
+  - "alerts.yml"
+
+scrape_configs:
+  - job_name: 'game-gateway'
+    static_configs:
+      - targets: ['gateway:9090']
+
+  - job_name: 'game-services'
+    static_configs:
+      - targets:
+          - 'auth:9090'
+          - 'player:9090'
+          - 'cultivation:9090'
+          - 'combat:9090'
+          - 'social:9090'
+          - 'world:9090'
+
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis-exporter:9121']
+
+  - job_name: 'mysql'
+    static_configs:
+      - targets: ['mysql-exporter:9104']

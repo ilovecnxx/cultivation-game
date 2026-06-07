@@ -1,0 +1,807 @@
+[
+  {
+    "id": 1,
+    "name": "炼气",
+    "max_level": 10,
+    "exp_rate": 10,
+    "base_speed": 1,
+    "cultivation_base_speed": 1,
+    "sub_stages": [
+      {
+        "level": 1,
+        "name": "炼气一层",
+        "exp_required": 0,
+        "break_rate": 1.0,
+        "node_count": 0
+      },
+      {
+        "level": 2,
+        "name": "炼气二层",
+        "exp_required": 100,
+        "break_rate": 0.95,
+        "node_count": 4
+      },
+      {
+        "level": 3,
+        "name": "炼气三层",
+        "exp_required": 250,
+        "break_rate": 0.9,
+        "node_count": 6
+      },
+      {
+        "level": 4,
+        "name": "炼气四层",
+        "exp_required": 500,
+        "break_rate": 0.85,
+        "node_count": 8
+      },
+      {
+        "level": 5,
+        "name": "炼气五层",
+        "exp_required": 800,
+        "break_rate": 0.8,
+        "node_count": 10
+      },
+      {
+        "level": 6,
+        "name": "炼气六层",
+        "exp_required": 1200,
+        "break_rate": 0.75,
+        "node_count": 12
+      },
+      {
+        "level": 7,
+        "name": "炼气七层",
+        "exp_required": 1800,
+        "break_rate": 0.7,
+        "node_count": 14
+      },
+      {
+        "level": 8,
+        "name": "炼气八层",
+        "exp_required": 2800,
+        "break_rate": 0.65,
+        "node_count": 16
+      },
+      {
+        "level": 9,
+        "name": "炼气九层",
+        "exp_required": 4000,
+        "break_rate": 0.55,
+        "node_count": 18
+      },
+      {
+        "level": 10,
+        "name": "炼气圆满",
+        "exp_required": 6000,
+        "break_rate": 0.5,
+        "node_count": 20
+      }
+    ],
+    "breakthrough_item": {
+      "id": 1,
+      "name": "炼气丹",
+      "bonus": 0.2
+    },
+    "major_break_item": {
+      "id": 101,
+      "name": "筑基丹",
+      "bonus": 0.4
+    }
+  },
+  {
+    "id": 2,
+    "name": "筑基",
+    "max_level": 10,
+    "exp_rate": 30,
+    "base_speed": 2,
+    "cultivation_base_speed": 2,
+    "sub_stages": [
+      {
+        "level": 1,
+        "name": "筑基一层",
+        "exp_required": 0,
+        "break_rate": 1.0,
+        "node_count": 0
+      },
+      {
+        "level": 2,
+        "name": "筑基二层",
+        "exp_required": 500,
+        "break_rate": 0.85,
+        "node_count": 4
+      },
+      {
+        "level": 3,
+        "name": "筑基三层",
+        "exp_required": 1250,
+        "break_rate": 0.8,
+        "node_count": 6
+      },
+      {
+        "level": 4,
+        "name": "筑基四层",
+        "exp_required": 2500,
+        "break_rate": 0.75,
+        "node_count": 8
+      },
+      {
+        "level": 5,
+        "name": "筑基五层",
+        "exp_required": 4000,
+        "break_rate": 0.7,
+        "node_count": 10
+      },
+      {
+        "level": 6,
+        "name": "筑基六层",
+        "exp_required": 6000,
+        "break_rate": 0.65,
+        "node_count": 12
+      },
+      {
+        "level": 7,
+        "name": "筑基七层",
+        "exp_required": 9000,
+        "break_rate": 0.6,
+        "node_count": 14
+      },
+      {
+        "level": 8,
+        "name": "筑基八层",
+        "exp_required": 14000,
+        "break_rate": 0.55,
+        "node_count": 16
+      },
+      {
+        "level": 9,
+        "name": "筑基九层",
+        "exp_required": 20000,
+        "break_rate": 0.45,
+        "node_count": 18
+      },
+      {
+        "level": 10,
+        "name": "筑基圆满",
+        "exp_required": 30000,
+        "break_rate": 0.3,
+        "node_count": 20
+      }
+    ],
+    "breakthrough_item": {
+      "id": 2,
+      "name": "筑基丹",
+      "bonus": 0.2
+    },
+    "major_break_item": {
+      "id": 102,
+      "name": "凝金丹",
+      "bonus": 0.4
+    }
+  },
+  {
+    "id": 3,
+    "name": "金丹",
+    "max_level": 10,
+    "exp_rate": 60,
+    "base_speed": 3,
+    "cultivation_base_speed": 3,
+    "sub_stages": [
+      {
+        "level": 1,
+        "name": "金丹一层",
+        "exp_required": 0,
+        "break_rate": 1.0,
+        "node_count": 0
+      },
+      {
+        "level": 2,
+        "name": "金丹二层",
+        "exp_required": 1500,
+        "break_rate": 0.75,
+        "node_count": 4
+      },
+      {
+        "level": 3,
+        "name": "金丹三层",
+        "exp_required": 3750,
+        "break_rate": 0.7,
+        "node_count": 6
+      },
+      {
+        "level": 4,
+        "name": "金丹四层",
+        "exp_required": 7500,
+        "break_rate": 0.65,
+        "node_count": 8
+      },
+      {
+        "level": 5,
+        "name": "金丹五层",
+        "exp_required": 12000,
+        "break_rate": 0.6,
+        "node_count": 10
+      },
+      {
+        "level": 6,
+        "name": "金丹六层",
+        "exp_required": 18000,
+        "break_rate": 0.55,
+        "node_count": 12
+      },
+      {
+        "level": 7,
+        "name": "金丹七层",
+        "exp_required": 27000,
+        "break_rate": 0.5,
+        "node_count": 14
+      },
+      {
+        "level": 8,
+        "name": "金丹八层",
+        "exp_required": 42000,
+        "break_rate": 0.45,
+        "node_count": 16
+      },
+      {
+        "level": 9,
+        "name": "金丹九层",
+        "exp_required": 60000,
+        "break_rate": 0.35,
+        "node_count": 18
+      },
+      {
+        "level": 10,
+        "name": "金丹圆满",
+        "exp_required": 90000,
+        "break_rate": 0.2,
+        "node_count": 20
+      }
+    ],
+    "breakthrough_item": {
+      "id": 3,
+      "name": "金丹",
+      "bonus": 0.2
+    },
+    "major_break_item": {
+      "id": 103,
+      "name": "元婴丹",
+      "bonus": 0.4
+    }
+  },
+  {
+    "id": 4,
+    "name": "元婴",
+    "max_level": 10,
+    "exp_rate": 100,
+    "base_speed": 5,
+    "cultivation_base_speed": 5,
+    "sub_stages": [
+      {
+        "level": 1,
+        "name": "元婴一层",
+        "exp_required": 0,
+        "break_rate": 1.0,
+        "node_count": 0
+      },
+      {
+        "level": 2,
+        "name": "元婴二层",
+        "exp_required": 5000,
+        "break_rate": 0.7,
+        "node_count": 4
+      },
+      {
+        "level": 3,
+        "name": "元婴三层",
+        "exp_required": 12500,
+        "break_rate": 0.65,
+        "node_count": 6
+      },
+      {
+        "level": 4,
+        "name": "元婴四层",
+        "exp_required": 25000,
+        "break_rate": 0.6,
+        "node_count": 8
+      },
+      {
+        "level": 5,
+        "name": "元婴五层",
+        "exp_required": 40000,
+        "break_rate": 0.55,
+        "node_count": 10
+      },
+      {
+        "level": 6,
+        "name": "元婴六层",
+        "exp_required": 60000,
+        "break_rate": 0.5,
+        "node_count": 12
+      },
+      {
+        "level": 7,
+        "name": "元婴七层",
+        "exp_required": 90000,
+        "break_rate": 0.45,
+        "node_count": 14
+      },
+      {
+        "level": 8,
+        "name": "元婴八层",
+        "exp_required": 140000,
+        "break_rate": 0.4,
+        "node_count": 16
+      },
+      {
+        "level": 9,
+        "name": "元婴九层",
+        "exp_required": 200000,
+        "break_rate": 0.3,
+        "node_count": 18
+      },
+      {
+        "level": 10,
+        "name": "元婴圆满",
+        "exp_required": 300000,
+        "break_rate": 0.15,
+        "node_count": 20
+      }
+    ],
+    "breakthrough_item": {
+      "id": 4,
+      "name": "元婴丹",
+      "bonus": 0.2
+    },
+    "major_break_item": {
+      "id": 104,
+      "name": "化神丹",
+      "bonus": 0.4
+    }
+  },
+  {
+    "id": 5,
+    "name": "化神",
+    "max_level": 10,
+    "exp_rate": 150,
+    "base_speed": 8,
+    "cultivation_base_speed": 8,
+    "sub_stages": [
+      {
+        "level": 1,
+        "name": "化神一层",
+        "exp_required": 0,
+        "break_rate": 1.0,
+        "node_count": 0
+      },
+      {
+        "level": 2,
+        "name": "化神二层",
+        "exp_required": 15000,
+        "break_rate": 0.65,
+        "node_count": 4
+      },
+      {
+        "level": 3,
+        "name": "化神三层",
+        "exp_required": 37500,
+        "break_rate": 0.6,
+        "node_count": 6
+      },
+      {
+        "level": 4,
+        "name": "化神四层",
+        "exp_required": 75000,
+        "break_rate": 0.55,
+        "node_count": 8
+      },
+      {
+        "level": 5,
+        "name": "化神五层",
+        "exp_required": 120000,
+        "break_rate": 0.5,
+        "node_count": 10
+      },
+      {
+        "level": 6,
+        "name": "化神六层",
+        "exp_required": 180000,
+        "break_rate": 0.45,
+        "node_count": 12
+      },
+      {
+        "level": 7,
+        "name": "化神七层",
+        "exp_required": 270000,
+        "break_rate": 0.4,
+        "node_count": 14
+      },
+      {
+        "level": 8,
+        "name": "化神八层",
+        "exp_required": 420000,
+        "break_rate": 0.35,
+        "node_count": 16
+      },
+      {
+        "level": 9,
+        "name": "化神九层",
+        "exp_required": 600000,
+        "break_rate": 0.25,
+        "node_count": 18
+      },
+      {
+        "level": 10,
+        "name": "化神圆满",
+        "exp_required": 900000,
+        "break_rate": 0.1,
+        "node_count": 20
+      }
+    ],
+    "breakthrough_item": {
+      "id": 5,
+      "name": "化神丹",
+      "bonus": 0.2
+    },
+    "major_break_item": {
+      "id": 105,
+      "name": "炼虚丹",
+      "bonus": 0.4
+    }
+  },
+  {
+    "id": 6,
+    "name": "炼虚",
+    "max_level": 10,
+    "exp_rate": 200,
+    "base_speed": 12,
+    "cultivation_base_speed": 12,
+    "sub_stages": [
+      {
+        "level": 1,
+        "name": "炼虚一层",
+        "exp_required": 0,
+        "break_rate": 1.0,
+        "node_count": 0
+      },
+      {
+        "level": 2,
+        "name": "炼虚二层",
+        "exp_required": 50000,
+        "break_rate": 0.6,
+        "node_count": 4
+      },
+      {
+        "level": 3,
+        "name": "炼虚三层",
+        "exp_required": 125000,
+        "break_rate": 0.55,
+        "node_count": 6
+      },
+      {
+        "level": 4,
+        "name": "炼虚四层",
+        "exp_required": 250000,
+        "break_rate": 0.5,
+        "node_count": 8
+      },
+      {
+        "level": 5,
+        "name": "炼虚五层",
+        "exp_required": 400000,
+        "break_rate": 0.45,
+        "node_count": 10
+      },
+      {
+        "level": 6,
+        "name": "炼虚六层",
+        "exp_required": 600000,
+        "break_rate": 0.4,
+        "node_count": 12
+      },
+      {
+        "level": 7,
+        "name": "炼虚七层",
+        "exp_required": 900000,
+        "break_rate": 0.35,
+        "node_count": 14
+      },
+      {
+        "level": 8,
+        "name": "炼虚八层",
+        "exp_required": 1400000,
+        "break_rate": 0.3,
+        "node_count": 16
+      },
+      {
+        "level": 9,
+        "name": "炼虚九层",
+        "exp_required": 2000000,
+        "break_rate": 0.2,
+        "node_count": 18
+      },
+      {
+        "level": 10,
+        "name": "炼虚圆满",
+        "exp_required": 3000000,
+        "break_rate": 0.05,
+        "node_count": 20
+      }
+    ],
+    "breakthrough_item": {
+      "id": 6,
+      "name": "炼虚丹",
+      "bonus": 0.2
+    },
+    "major_break_item": {
+      "id": 106,
+      "name": "合体丹",
+      "bonus": 0.4
+    }
+  },
+  {
+    "id": 7,
+    "name": "合体",
+    "max_level": 10,
+    "exp_rate": 250,
+    "base_speed": 18,
+    "cultivation_base_speed": 18,
+    "sub_stages": [
+      {
+        "level": 1,
+        "name": "合体一层",
+        "exp_required": 0,
+        "break_rate": 1.0,
+        "node_count": 0
+      },
+      {
+        "level": 2,
+        "name": "合体二层",
+        "exp_required": 150000,
+        "break_rate": 0.55,
+        "node_count": 4
+      },
+      {
+        "level": 3,
+        "name": "合体三层",
+        "exp_required": 375000,
+        "break_rate": 0.5,
+        "node_count": 6
+      },
+      {
+        "level": 4,
+        "name": "合体四层",
+        "exp_required": 750000,
+        "break_rate": 0.45,
+        "node_count": 8
+      },
+      {
+        "level": 5,
+        "name": "合体五层",
+        "exp_required": 1200000,
+        "break_rate": 0.4,
+        "node_count": 10
+      },
+      {
+        "level": 6,
+        "name": "合体六层",
+        "exp_required": 1800000,
+        "break_rate": 0.35,
+        "node_count": 12
+      },
+      {
+        "level": 7,
+        "name": "合体七层",
+        "exp_required": 2700000,
+        "break_rate": 0.3,
+        "node_count": 14
+      },
+      {
+        "level": 8,
+        "name": "合体八层",
+        "exp_required": 4200000,
+        "break_rate": 0.25,
+        "node_count": 16
+      },
+      {
+        "level": 9,
+        "name": "合体九层",
+        "exp_required": 6000000,
+        "break_rate": 0.15,
+        "node_count": 18
+      },
+      {
+        "level": 10,
+        "name": "合体圆满",
+        "exp_required": 9000000,
+        "break_rate": 0.05,
+        "node_count": 20
+      }
+    ],
+    "breakthrough_item": {
+      "id": 7,
+      "name": "合体丹",
+      "bonus": 0.2
+    },
+    "major_break_item": {
+      "id": 107,
+      "name": "大乘丹",
+      "bonus": 0.4
+    }
+  },
+  {
+    "id": 8,
+    "name": "大乘",
+    "max_level": 10,
+    "exp_rate": 300,
+    "base_speed": 25,
+    "cultivation_base_speed": 25,
+    "sub_stages": [
+      {
+        "level": 1,
+        "name": "大乘一层",
+        "exp_required": 0,
+        "break_rate": 1.0,
+        "node_count": 0
+      },
+      {
+        "level": 2,
+        "name": "大乘二层",
+        "exp_required": 500000,
+        "break_rate": 0.5,
+        "node_count": 4
+      },
+      {
+        "level": 3,
+        "name": "大乘三层",
+        "exp_required": 1250000,
+        "break_rate": 0.45,
+        "node_count": 6
+      },
+      {
+        "level": 4,
+        "name": "大乘四层",
+        "exp_required": 2500000,
+        "break_rate": 0.4,
+        "node_count": 8
+      },
+      {
+        "level": 5,
+        "name": "大乘五层",
+        "exp_required": 4000000,
+        "break_rate": 0.35,
+        "node_count": 10
+      },
+      {
+        "level": 6,
+        "name": "大乘六层",
+        "exp_required": 6000000,
+        "break_rate": 0.3,
+        "node_count": 12
+      },
+      {
+        "level": 7,
+        "name": "大乘七层",
+        "exp_required": 9000000,
+        "break_rate": 0.25,
+        "node_count": 14
+      },
+      {
+        "level": 8,
+        "name": "大乘八层",
+        "exp_required": 14000000,
+        "break_rate": 0.2,
+        "node_count": 16
+      },
+      {
+        "level": 9,
+        "name": "大乘九层",
+        "exp_required": 20000000,
+        "break_rate": 0.1,
+        "node_count": 18
+      },
+      {
+        "level": 10,
+        "name": "大乘圆满",
+        "exp_required": 30000000,
+        "break_rate": 0.05,
+        "node_count": 20
+      }
+    ],
+    "breakthrough_item": {
+      "id": 8,
+      "name": "大乘丹",
+      "bonus": 0.2
+    },
+    "major_break_item": {
+      "id": 108,
+      "name": "渡劫丹",
+      "bonus": 0.4
+    }
+  },
+  {
+    "id": 9,
+    "name": "渡劫",
+    "max_level": 10,
+    "exp_rate": 0,
+    "base_speed": 0,
+    "cultivation_base_speed": 0,
+    "sub_stages": [
+      {
+        "level": 1,
+        "name": "渡劫一层",
+        "exp_required": 0,
+        "break_rate": 1.0,
+        "node_count": 0
+      },
+      {
+        "level": 2,
+        "name": "渡劫二层",
+        "exp_required": 0,
+        "break_rate": 0.45,
+        "node_count": 4
+      },
+      {
+        "level": 3,
+        "name": "渡劫三层",
+        "exp_required": 0,
+        "break_rate": 0.4,
+        "node_count": 6
+      },
+      {
+        "level": 4,
+        "name": "渡劫四层",
+        "exp_required": 0,
+        "break_rate": 0.35,
+        "node_count": 8
+      },
+      {
+        "level": 5,
+        "name": "渡劫五层",
+        "exp_required": 0,
+        "break_rate": 0.3,
+        "node_count": 10
+      },
+      {
+        "level": 6,
+        "name": "渡劫六层",
+        "exp_required": 0,
+        "break_rate": 0.25,
+        "node_count": 12
+      },
+      {
+        "level": 7,
+        "name": "渡劫七层",
+        "exp_required": 0,
+        "break_rate": 0.2,
+        "node_count": 14
+      },
+      {
+        "level": 8,
+        "name": "渡劫八层",
+        "exp_required": 0,
+        "break_rate": 0.15,
+        "node_count": 16
+      },
+      {
+        "level": 9,
+        "name": "渡劫九层",
+        "exp_required": 0,
+        "break_rate": 0.05,
+        "node_count": 18
+      },
+      {
+        "level": 10,
+        "name": "渡劫圆满",
+        "exp_required": 0,
+        "break_rate": 0.05,
+        "node_count": 20
+      }
+    ],
+    "breakthrough_item": {
+      "id": 9,
+      "name": "渡劫丹",
+      "bonus": 0.2
+    }
+  }
+]

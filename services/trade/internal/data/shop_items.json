@@ -1,0 +1,557 @@
+{
+  "items": [
+    {
+      "id": 1001,
+      "name": "聚气丹",
+      "category": "丹药",
+      "description": "恢复 500 点灵力值",
+      "price_type": "spirit_stone",
+      "price": 20,
+      "stock": -1,
+      "limit_buy": 0,
+      "vip_level": 0,
+      "icon": "elixir_juqi",
+      "discount": 1.0,
+      "sort_order": 1
+    },
+    {
+      "id": 1002,
+      "name": "凝血丹",
+      "category": "丹药",
+      "description": "恢复 1000 点生命值",
+      "price_type": "spirit_stone",
+      "price": 20,
+      "stock": -1,
+      "limit_buy": 0,
+      "vip_level": 0,
+      "icon": "elixir_ningxue",
+      "discount": 1.0,
+      "sort_order": 2
+    },
+    {
+      "id": 1003,
+      "name": "回元丹",
+      "category": "丹药",
+      "description": "恢复 800 点灵力值",
+      "price_type": "spirit_stone",
+      "price": 15,
+      "stock": -1,
+      "limit_buy": 0,
+      "vip_level": 0,
+      "icon": "elixir_huiyuan",
+      "discount": 1.0,
+      "sort_order": 3
+    },
+    {
+      "id": 1004,
+      "name": "大力丸",
+      "category": "丹药",
+      "description": "临时提升攻击力 10%，持续 30 分钟",
+      "price_type": "jade",
+      "price": 10,
+      "stock": -1,
+      "limit_buy": 10,
+      "vip_level": 0,
+      "icon": "elixir_dali",
+      "discount": 1.0,
+      "sort_order": 4
+    },
+    {
+      "id": 1005,
+      "name": "筑基丹",
+      "category": "丹药",
+      "description": "突破筑基境界的必备丹药",
+      "price_type": "jade",
+      "price": 50,
+      "stock": 500,
+      "limit_buy": 3,
+      "vip_level": 0,
+      "icon": "elixir_zhuji",
+      "discount": 1.0,
+      "sort_order": 5
+    },
+    {
+      "id": 1006,
+      "name": "增灵丹",
+      "category": "丹药",
+      "description": "永久增加 50 点最大灵力值",
+      "price_type": "jade",
+      "price": 30,
+      "stock": 200,
+      "limit_buy": 1,
+      "vip_level": 0,
+      "icon": "elixir_zengling",
+      "discount": 1.0,
+      "sort_order": 6
+    },
+    {
+      "id": 1007,
+      "name": "强体丹",
+      "category": "丹药",
+      "description": "永久增加 100 点最大生命值",
+      "price_type": "jade",
+      "price": 30,
+      "stock": 200,
+      "limit_buy": 1,
+      "vip_level": 0,
+      "icon": "elixir_qiangti",
+      "discount": 1.0,
+      "sort_order": 7
+    },
+    {
+      "id": 1008,
+      "name": "破境丹",
+      "category": "丹药",
+      "description": "突破境界时成功率增加 30%",
+      "price_type": "jade",
+      "price": 500,
+      "stock": 100,
+      "limit_buy": 1,
+      "vip_level": 3,
+      "icon": "elixir_pojing",
+      "discount": 1.0,
+      "sort_order": 8
+    },
+    {
+      "id": 1009,
+      "name": "玄黄丹",
+      "category": "丹药",
+      "description": "使用后获得 1000 点修炼经验",
+      "price_type": "jade",
+      "price": 100,
+      "stock": -1,
+      "limit_buy": 20,
+      "vip_level": 0,
+      "icon": "elixir_xuanhuang",
+      "discount": 1.0,
+      "sort_order": 9
+    },
+    {
+      "id": 1010,
+      "name": "九转金丹",
+      "category": "丹药",
+      "description": "使用后获得 10000 点修炼经验",
+      "price_type": "jade",
+      "price": 1000,
+      "stock": 50,
+      "limit_buy": 3,
+      "vip_level": 5,
+      "icon": "elixir_jiuzhuan",
+      "discount": 1.0,
+      "sort_order": 10
+    },
+    {
+      "id": 2001,
+      "name": "玄铁矿",
+      "category": "材料",
+      "description": "锻造装备的基础矿石",
+      "price_type": "spirit_stone",
+      "price": 5,
+      "stock": -1,
+      "limit_buy": 0,
+      "vip_level": 0,
+      "icon": "mat_xuantie",
+      "discount": 1.0,
+      "sort_order": 1
+    },
+    {
+      "id": 2002,
+      "name": "天蚕丝",
+      "category": "材料",
+      "description": "制作法袍的稀有丝线",
+      "price_type": "spirit_stone",
+      "price": 8,
+      "stock": -1,
+      "limit_buy": 0,
+      "vip_level": 0,
+      "icon": "mat_tiancan",
+      "discount": 1.0,
+      "sort_order": 2
+    },
+    {
+      "id": 2003,
+      "name": "灵木",
+      "category": "材料",
+      "description": "打造法器的灵木材料",
+      "price_type": "spirit_stone",
+      "price": 10,
+      "stock": -1,
+      "limit_buy": 0,
+      "vip_level": 0,
+      "icon": "mat_lingmu",
+      "discount": 1.0,
+      "sort_order": 3
+    },
+    {
+      "id": 2004,
+      "name": "赤铜",
+      "category": "材料",
+      "description": "蕴含火灵力的上等铜矿",
+      "price_type": "spirit_stone",
+      "price": 15,
+      "stock": -1,
+      "limit_buy": 0,
+      "vip_level": 0,
+      "icon": "mat_chitong",
+      "discount": 1.0,
+      "sort_order": 4
+    },
+    {
+      "id": 2005,
+      "name": "星辰石",
+      "category": "材料",
+      "description": "蕴含星辰之力的珍贵矿石",
+      "price_type": "spirit_stone",
+      "price": 50,
+      "stock": 500,
+      "limit_buy": 0,
+      "vip_level": 0,
+      "icon": "mat_xingchen",
+      "discount": 1.0,
+      "sort_order": 5
+    },
+    {
+      "id": 2006,
+      "name": "龙骨",
+      "category": "材料",
+      "description": "上古真龙遗骨，极其稀有",
+      "price_type": "spirit_stone",
+      "price": 100,
+      "stock": 200,
+      "limit_buy": 5,
+      "vip_level": 0,
+      "icon": "mat_longgu",
+      "discount": 1.0,
+      "sort_order": 6
+    },
+    {
+      "id": 2007,
+      "name": "凤凰羽",
+      "category": "材料",
+      "description": "凤凰涅槃留下的神羽",
+      "price_type": "jade",
+      "price": 200,
+      "stock": 100,
+      "limit_buy": 2,
+      "vip_level": 2,
+      "icon": "mat_fenghuang",
+      "discount": 1.0,
+      "sort_order": 7
+    },
+    {
+      "id": 2008,
+      "name": "万年玄冰",
+      "category": "材料",
+      "description": "极寒之地孕育的万年寒冰",
+      "price_type": "jade",
+      "price": 300,
+      "stock": 50,
+      "limit_buy": 1,
+      "vip_level": 4,
+      "icon": "mat_xuanbing",
+      "discount": 1.0,
+      "sort_order": 8
+    },
+    {
+      "id": 3001,
+      "name": "青云长袍",
+      "category": "时装",
+      "description": "青云宗制式长袍，飘逸出尘",
+      "price_type": "jade",
+      "price": 300,
+      "stock": 100,
+      "limit_buy": 1,
+      "vip_level": 0,
+      "icon": "fashion_qingyun",
+      "discount": 1.0,
+      "sort_order": 1
+    },
+    {
+      "id": 3002,
+      "name": "玄铁战甲",
+      "category": "时装",
+      "description": "玄铁铸就的战甲，防御力惊人",
+      "price_type": "jade",
+      "price": 500,
+      "stock": 80,
+      "limit_buy": 1,
+      "vip_level": 0,
+      "icon": "fashion_xiantie",
+      "discount": 1.0,
+      "sort_order": 2
+    },
+    {
+      "id": 3003,
+      "name": "月华仙衣",
+      "category": "时装",
+      "description": "以月光织就的仙衣，自带月华特效",
+      "price_type": "jade",
+      "price": 800,
+      "stock": 50,
+      "limit_buy": 1,
+      "vip_level": 3,
+      "icon": "fashion_yuehua",
+      "discount": 1.0,
+      "sort_order": 3
+    },
+    {
+      "id": 3004,
+      "name": "龙鳞战铠",
+      "category": "时装",
+      "description": "镶嵌龙鳞的威武战铠",
+      "price_type": "jade",
+      "price": 1200,
+      "stock": 30,
+      "limit_buy": 1,
+      "vip_level": 5,
+      "icon": "fashion_longlin",
+      "discount": 1.0,
+      "sort_order": 4
+    },
+    {
+      "id": 3005,
+      "name": "天玄道袍",
+      "category": "时装",
+      "description": "天道之力凝聚的无上道袍",
+      "price_type": "jade",
+      "price": 2000,
+      "stock": 10,
+      "limit_buy": 1,
+      "vip_level": 7,
+      "icon": "fashion_tianxuan",
+      "discount": 1.0,
+      "sort_order": 5
+    },
+    {
+      "id": 4001,
+      "name": "基础心法",
+      "category": "功法",
+      "description": "修仙入门基础心法，修炼速度+5%",
+      "price_type": "spirit_stone",
+      "price": 100,
+      "stock": -1,
+      "limit_buy": 1,
+      "vip_level": 0,
+      "icon": "skill_jichu",
+      "discount": 1.0,
+      "sort_order": 1
+    },
+    {
+      "id": 4002,
+      "name": "混元功",
+      "category": "功法",
+      "description": "混元一气，修炼速度+10%",
+      "price_type": "spirit_stone",
+      "price": 500,
+      "stock": 200,
+      "limit_buy": 1,
+      "vip_level": 0,
+      "icon": "skill_hunyuan",
+      "discount": 1.0,
+      "sort_order": 2
+    },
+    {
+      "id": 4003,
+      "name": "太清诀",
+      "category": "功法",
+      "description": "太清仙法，修炼速度+15%",
+      "price_type": "spirit_stone",
+      "price": 1000,
+      "stock": 100,
+      "limit_buy": 1,
+      "vip_level": 0,
+      "icon": "skill_taiqing",
+      "discount": 1.0,
+      "sort_order": 3
+    },
+    {
+      "id": 4004,
+      "name": "九转玄功",
+      "category": "功法",
+      "description": "九转玄妙，修炼速度+25%",
+      "price_type": "jade",
+      "price": 2000,
+      "stock": 50,
+      "limit_buy": 1,
+      "vip_level": 4,
+      "icon": "skill_jiuzhuan",
+      "discount": 1.0,
+      "sort_order": 4
+    },
+    {
+      "id": 4005,
+      "name": "太上忘情道",
+      "category": "功法",
+      "description": "太上忘情，修炼速度+50%",
+      "price_type": "jade",
+      "price": 5000,
+      "stock": 10,
+      "limit_buy": 1,
+      "vip_level": 8,
+      "icon": "skill_taishang",
+      "discount": 1.0,
+      "sort_order": 5
+    },
+    {
+      "id": 5001,
+      "name": "新手礼包",
+      "category": "宝箱",
+      "description": "内含：灵石x1000、聚气丹x5、强力装备",
+      "price_type": "jade",
+      "price": 0,
+      "stock": -1,
+      "limit_buy": 1,
+      "vip_level": 0,
+      "icon": "chest_novice",
+      "discount": 1.0,
+      "sort_order": 1
+    },
+    {
+      "id": 5002,
+      "name": "灵石宝箱",
+      "category": "宝箱",
+      "description": "开启获得 5000~10000 灵石",
+      "price_type": "jade",
+      "price": 100,
+      "stock": -1,
+      "limit_buy": 10,
+      "vip_level": 0,
+      "icon": "chest_stone",
+      "discount": 1.0,
+      "sort_order": 2
+    },
+    {
+      "id": 5003,
+      "name": "修炼加速宝箱",
+      "category": "宝箱",
+      "description": "开启获得修炼加速符x3（修炼速度翻倍，持续1小时）",
+      "price_type": "jade",
+      "price": 300,
+      "stock": 100,
+      "limit_buy": 5,
+      "vip_level": 0,
+      "icon": "chest_speed",
+      "discount": 1.0,
+      "sort_order": 3
+    },
+    {
+      "id": 5004,
+      "name": "VIP周卡",
+      "category": "宝箱",
+      "description": "激活后每日领取VIP奖励，持续7天",
+      "price_type": "jade",
+      "price": 600,
+      "stock": -1,
+      "limit_buy": 1,
+      "vip_level": 0,
+      "icon": "chest_vip",
+      "discount": 1.0,
+      "sort_order": 4
+    },
+    {
+      "id": 5005,
+      "name": "至尊礼包",
+      "category": "宝箱",
+      "description": "内含：九转金丹x3、灵石x50000、限定称号",
+      "price_type": "jade",
+      "price": 5000,
+      "stock": 20,
+      "limit_buy": 1,
+      "vip_level": 6,
+      "icon": "chest_ultimate",
+      "discount": 1.0,
+      "sort_order": 5
+    }
+  ],
+  "vip_configs": [
+    {
+      "level": 1,
+      "need_exp": 0,
+      "speed_bonus": 5,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 100 }
+      ]
+    },
+    {
+      "level": 2,
+      "need_exp": 1000,
+      "speed_bonus": 10,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 200 },
+        { "item_id": 1001, "item_name": "聚气丹", "quantity": 1 }
+      ]
+    },
+    {
+      "level": 3,
+      "need_exp": 3000,
+      "speed_bonus": 15,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 300 },
+        { "item_id": 1001, "item_name": "聚气丹", "quantity": 2 }
+      ]
+    },
+    {
+      "level": 4,
+      "need_exp": 6000,
+      "speed_bonus": 20,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 500 },
+        { "item_id": 1005, "item_name": "筑基丹", "quantity": 1 }
+      ]
+    },
+    {
+      "level": 5,
+      "need_exp": 10000,
+      "speed_bonus": 25,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 800 },
+        { "item_id": 1005, "item_name": "筑基丹", "quantity": 2 }
+      ]
+    },
+    {
+      "level": 6,
+      "need_exp": 18000,
+      "speed_bonus": 30,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 1000 },
+        { "item_id": 1006, "item_name": "增灵丹", "quantity": 1 }
+      ]
+    },
+    {
+      "level": 7,
+      "need_exp": 30000,
+      "speed_bonus": 35,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 1500 },
+        { "item_id": 1006, "item_name": "增灵丹", "quantity": 2 }
+      ]
+    },
+    {
+      "level": 8,
+      "need_exp": 50000,
+      "speed_bonus": 40,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 2000 },
+        { "item_id": 1008, "item_name": "破境丹", "quantity": 1 }
+      ]
+    },
+    {
+      "level": 9,
+      "need_exp": 80000,
+      "speed_bonus": 45,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 3000 },
+        { "item_id": 1008, "item_name": "破境丹", "quantity": 2 }
+      ]
+    },
+    {
+      "level": 10,
+      "need_exp": 120000,
+      "speed_bonus": 50,
+      "daily_items": [
+        { "item_id": 2001, "item_name": "灵石", "quantity": 5000 },
+        { "item_id": 1010, "item_name": "九转金丹", "quantity": 1 }
+      ]
+    }
+  ]
+}

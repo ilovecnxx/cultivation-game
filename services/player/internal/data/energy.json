@@ -1,0 +1,83 @@
+{
+  "meditation_config": {
+    "base_regen_per_minute": 10,
+    "realm_multiplier_base": 1.0,
+    "realm_multiplier_per_level": 0.3,
+    "technique_bonus_multiplier": 0.1,
+    "body_cultivation_bonus_per_level": 0.05
+  },
+  "realm_max_energy": {
+    "1": 100,
+    "2": 150,
+    "3": 220,
+    "4": 300,
+    "5": 400,
+    "6": 520,
+    "7": 660,
+    "8": 820,
+    "9": 1000
+  },
+  "body_cultivation_max_energy_bonus": {
+    "1": 20,
+    "2": 50,
+    "3": 100,
+    "4": 180,
+    "5": 300
+  },
+  "action_costs": {
+    "explore": 5,
+    "dungeon": 20,
+    "team_dungeon": 25,
+    "gather": 3,
+    "pvp": 10,
+    "boss_fight": 30,
+    "breakthrough_attempt": 50
+  },
+  "pill_tiers": [
+    {
+      "id": 201,
+      "name": "回体丹",
+      "tier": 1,
+      "restore_amount": 30,
+      "realm_required": 1,
+      "description": "基础体力丹药，恢复少量体力"
+    },
+    {
+      "id": 202,
+      "name": "续命丹",
+      "tier": 2,
+      "restore_amount": 60,
+      "realm_required": 2,
+      "description": "中等体力丹药，恢复较多体力"
+    },
+    {
+      "id": 203,
+      "name": "大还丹",
+      "tier": 3,
+      "restore_amount": 120,
+      "realm_required": 4,
+      "description": "高级体力丹药，恢复大量体力"
+    },
+    {
+      "id": 204,
+      "name": "太乙回元丹",
+      "tier": 4,
+      "restore_amount": 250,
+      "realm_required": 6,
+      "description": "极品体力丹药，恢复巨量体力"
+    },
+    {
+      "id": 205,
+      "name": "九转续命丹",
+      "tier": 5,
+      "restore_amount": 500,
+      "realm_required": 8,
+      "description": "传说级体力丹药，恢复海量体力"
+    }
+  ],
+  "pill_usage_config": {
+    "max_pills_per_day": 10,
+    "cooldown_seconds": 60
+  },
+  "meditation_duration_minutes": 30
+}

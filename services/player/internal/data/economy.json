@@ -1,0 +1,11 @@
+{
+  "initial_money": 100,
+  "monster_drop_rate": 0.4,
+  "money_per_level_monster": 5,
+  "market_tax_rate": 0.05,
+  "auction_fee": 100,
+  "equipment_strengthen_cost": {"base": 100, "per_level": 50},
+  "gathering_yield_base": {"common": 3, "uncommon": 1, "rare": 0.2},
+  "daily_quest_reward_money": 200,
+  "sect_contribution_per_daily": 50
+}

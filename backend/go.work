@@ -1,0 +1,17 @@
+go 1.24.0
+
+toolchain go1.24.4
+
+use (
+	../services/auth
+	../services/combat
+	../services/cultivation
+	../services/gateway
+	../services/player
+	../services/ranking
+	../services/server
+	../services/social
+	../services/trade
+	../services/world
+	../shared
+)

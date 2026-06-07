@@ -1,0 +1,32 @@
+syntax = "proto3";
+package cultivation.gateway;
+option go_package = "cultivation-game/services/gateway/pkg/protocol;protocol";
+
+// 网关消息包，所有 WebSocket 消息的通用信封。
+message Packet {
+  uint32 msg_id = 1;      // 消息 ID
+  uint64 player_id = 2;   // 玩家 ID
+  bytes  body = 3;        // 消息体（业务 protobuf 消息）
+  int64  timestamp = 4;   // 时间戳（毫秒）
+  string trace_id = 5;    // 追踪 ID
+}
+
+// 登录请求
+message LoginRequest {
+  string account = 1;
+  string password = 2;
+}
+
+// 登录响应
+message LoginResponse {
+  uint64 player_id = 1;
+  string access_token = 2;
+  string refresh_token = 3;
+  int64  expire_at = 4;
+}
+
+// 心跳消息
+message Heartbeat {
+  int64 client_time = 1;
+  int64 server_time = 2;
+}
