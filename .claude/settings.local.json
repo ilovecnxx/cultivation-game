@@ -85,11 +85,5 @@
         ]
       }
     ]
-  },
-  "modelOverrides": {
-    "haiku": "deepseek-v4-flash",
-    "sonnet": "deepseek-v4-flash",
-    "opus": "deepseek-v4-pro",
-    "subagent": "deepseek-v4-flash"
   }
 }
