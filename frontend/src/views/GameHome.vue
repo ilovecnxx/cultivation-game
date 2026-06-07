@@ -470,6 +470,28 @@
               <p class="wiki-note">品质倍率：无品×0.7, 下品×1.0, 中品×1.3, 上品×1.6, 极品×2.0</p>
               <p class="wiki-note">作用：①秘境发现概率 ②副职(炼丹/符箓/炼器)成功率=神识/50% ③优良品质概率=神识/200</p>
             </div>
+            <!-- 装备体系 -->
+            <div v-if="wikiTab==='equip'">
+              <h3>装备体系</h3>
+              <p class="wiki-note">10个装备部位×10个境界等级×5级品质。品质倍率：劣质×0.6 普通×1.0 优良×1.4 精良×1.8 完美×2.5</p>
+              <table class="wiki-table"><thead><tr><th>部位</th><th>主属性</th><th>锻体</th><th>练气</th><th>筑基</th><th>金丹</th><th>元婴</th><th>化神</th><th>炼虚</th><th>合体</th><th>大乘</th><th>渡劫</th></tr></thead><tbody>
+                <tr><td class="tc">🗡️ 武器</td><td>攻击·暴击</td><td>铁剑 15攻</td><td>灵剑 30攻</td><td>法宝剑 60攻</td><td>金丹剑 120攻</td><td>元婴剑 240攻</td><td>化神剑 480攻</td><td>炼虚剑 960攻</td><td>合体剑 1800攻</td><td>大乘剑 3500攻</td><td>渡劫剑 7000攻</td></tr>
+                <tr><td class="tc">👘 法袍</td><td>防御·生命</td><td>布袍 10防30血</td><td>灵袍 20防60血</td><td>金丹袍 40防120血</td><td>元婴袍 150防500血</td><td>化神袍 300防1000血</td><td>炼虚袍 600防2000血</td><td>合体袍 1200防4000血</td><td>大乘袍 2500防8000血</td><td>渡劫袍 5000防16000血</td></tr>
+                <tr><td class="tc">👑 发冠</td><td>灵力·回蓝</td><td>布冠 20灵</td><td>灵冠 40灵</td><td>金丹冠 80灵</td><td>元婴冠 150灵</td><td>化神冠 300灵</td><td>炼虚冠 600灵</td><td>合体冠 1200灵</td><td>大乘冠 2400灵</td><td>渡劫冠 4500灵</td></tr>
+                <tr><td class="tc">🎗️ 腰带</td><td>生命</td><td>布带 40血</td><td>灵带 80血</td><td>金丹带 150血</td><td>元婴带 300血</td><td>化神带 600血</td><td>炼虚带 1200血</td><td>合体带 2400血</td><td>大乘带 4800血</td><td>渡劫带 9000血</td></tr>
+                <tr><td class="tc">🛡️ 护腕</td><td>生命·暴击</td><td>铁腕 10血3暴</td><td>灵腕 20血6暴</td><td>金丹腕 40血10暴</td><td>元婴腕 80血15暴</td><td>化神腕 150血22暴</td><td>炼虚腕 300血30暴</td><td>合体腕 600血38暴</td><td>大乘腕 1200血48暴</td><td>渡劫腕 2500血58暴</td></tr>
+                <tr><td class="tc">👢 云靴</td><td>速度·闪避</td><td>布靴 8速</td><td>灵靴 12速</td><td>金丹靴 16速</td><td>元婴靴 20速</td><td>化神靴 25速</td><td>炼虚靴 30速</td><td>合体靴 35速</td><td>大乘靴 40速</td><td>渡劫靴 48速</td></tr>
+              </tbody></table>
+              <p class="wiki-note">※ 表中为普通品质(×1.0)数值。完美品质=×2.5。另有📿项链💍戒指🔮法宝🐉坐骑4个部位待扩展。</p>
+              <h4>品质概率</h4>
+              <table class="wiki-table"><thead><tr><th>品质</th><th>倍率</th><th>概率</th></tr></thead><tbody>
+                <tr><td>劣质</td><td>×0.6</td><td>35%</td></tr>
+                <tr><td>普通</td><td>×1.0</td><td>30%</td></tr>
+                <tr><td>优良</td><td>×1.4</td><td>20%</td></tr>
+                <tr><td>精良</td><td>×1.8</td><td>10%</td></tr>
+                <tr><td>完美</td><td>×2.5</td><td>5%</td></tr>
+              </tbody></table>
+            </div>
           </div>
         </div>
       </div>
@@ -674,7 +696,7 @@ const currentLocInfo=computed(()=>{for(const r of mapRegions)for(const l of r.lo
 function enterLocation(loc:MapLoc){currentLoc.value=loc.key;localStorage.setItem('cur_loc',loc.key);addLog('explore','📍 前往 '+loc.name);activeMenu.value=null}
 const showWiki=ref(false)
 const wikiTab=ref('realm')
-const wikiTabs=[{key:'realm',label:'境界体系'},{key:'root',label:'灵根体系'},{key:'attrs',label:'战斗属性'},{key:'innate',label:'先天属性'}]
+const wikiTabs=[{key:'realm',label:'境界体系'},{key:'root',label:'灵根体系'},{key:'attrs',label:'战斗属性'},{key:'innate',label:'先天属性'},{key:'equip',label:'装备体系'}]
 const wikiRealms=[{name:'锻体',coef:1,brk:70,atk:10,def:5,hp:100,mp:50,spd:100,cr:300,cd:15000,dg:200,mr:300,life:100,ss:100},{name:'练气',coef:2,brk:25,atk:25,def:12,hp:250,mp:125,spd:110,cr:500,cd:15500,dg:300,mr:400,life:150,ss:200},{name:'筑基',coef:3,brk:4,atk:60,def:30,hp:600,mp:300,spd:125,cr:800,cd:16000,dg:500,mr:500,life:200,ss:300},{name:'金丹',coef:4,brk:0.8,atk:140,def:70,hp:1400,mp:700,spd:140,cr:1200,cd:17000,dg:700,mr:600,life:300,ss:500},{name:'元婴',coef:5,brk:0.12,atk:300,def:150,hp:3000,mp:1500,spd:160,cr:1800,cd:18000,dg:1000,mr:800,life:500,ss:800},{name:'化神',coef:6,brk:0.015,atk:600,def:300,hp:6000,mp:3000,spd:185,cr:2500,cd:19000,dg:1300,mr:1000,life:800,ss:1200},{name:'炼虚',coef:7,brk:0.002,atk:1200,def:600,hp:12000,mp:6000,spd:210,cr:3200,cd:20000,dg:1600,mr:1200,life:1300,ss:1800},{name:'合体',coef:8,brk:0.0002,atk:2400,def:1200,hp:24000,mp:12000,spd:240,cr:4000,cd:21500,dg:2000,mr:1500,life:2000,ss:2500},{name:'大乘',coef:9,brk:0.00002,atk:4500,def:2250,hp:45000,mp:22500,spd:275,cr:5000,cd:23000,dg:2500,mr:1800,life:3500,ss:3500},{name:'渡劫',coef:10,brk:0.000002,atk:8000,def:4000,hp:80000,mp:40000,spd:310,cr:6000,cd:25000,dg:3000,mr:2200,life:5000,ss:5000}]
 const wikiSpiritReqs=[[100,120,150,180,220,270,330,400,500],[600,700,850,1000,1200,1450,1750,2100,2600],[3000,3600,4300,5200,6300,7600,9200,11000,13500],[16000,19000,23000,28000,34000,41000,50000,60000,73000],[88000,105000,125000,150000,180000,215000,260000,310000,375000],[450000,540000,650000,780000,935000,1120000,1350000,1620000,1950000],[2340000,2810000,3370000,4050000,4860000,5830000,7000000,8400000,10080000],[12100000,14500000,17400000,20900000,25100000,30100000,36100000,43300000,52000000],[62400000,74900000,89900000,107900000,129500000,155400000,186500000,223800000,268600000],[322300000,386800000,464200000,557000000,668400000,802100000,962500000,1155000000,1386000000]]
 const wikiRootBonuses=[{name:'金灵根',atk:12,def:0,hp:0,mp:0,cr:5,cd:0,dg:0,mr:0},{name:'木灵根',atk:0,def:0,hp:15,mp:0,cr:0,cd:0,dg:0,mr:10},{name:'水灵根',atk:0,def:0,hp:0,mp:12,cr:0,cd:0,dg:3,mr:15},{name:'火灵根',atk:8,def:0,hp:0,mp:0,cr:10,cd:10,dg:0,mr:0},{name:'土灵根',atk:0,def:15,hp:8,mp:0,cr:0,cd:0,dg:0,mr:0},{name:'地灵根',atk:8,def:8,hp:8,mp:8,cr:0,cd:0,dg:0,mr:0},{name:'天灵根',atk:12,def:10,hp:12,mp:10,cr:8,cd:0,dg:0,mr:8}]
