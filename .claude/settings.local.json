@@ -41,6 +41,7 @@
     ],
     "Stop": [
       {
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
@@ -48,10 +49,21 @@
             "timeout": 15000
           }
         ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/root/cultivation-game/.claude/hooks/auto-push.sh",
+            "timeout": 30000
+          }
+        ]
       }
     ],
     "SessionStart": [
       {
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
