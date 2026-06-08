@@ -1,12 +1,6 @@
 {
   "compilerOptions": {
     "paths": {
-      "vue-router": [
-        "../node_modules/nuxt/node_modules/vue-router"
-      ],
-      "nuxt": [
-        "../node_modules/nuxt"
-      ],
       "@unhead/vue": [
         "../node_modules/@unhead/vue"
       ],
@@ -19,8 +13,17 @@
       "@vue/compiler-sfc": [
         "../node_modules/@vue/compiler-sfc"
       ],
+      "vue-router": [
+        "../node_modules/nuxt/node_modules/vue-router"
+      ],
       "@nuxt/schema": [
         "../node_modules/@nuxt/schema"
+      ],
+      "nuxt": [
+        "../node_modules/nuxt"
+      ],
+      "nitropack": [
+        "../node_modules/nitropack"
       ],
       "defu": [
         "../node_modules/defu"
@@ -36,9 +39,6 @@
       ],
       "crossws": [
         "../node_modules/crossws"
-      ],
-      "nitropack": [
-        "../node_modules/nitropack"
       ],
       "vite/client": [
         "../node_modules/vite/client"

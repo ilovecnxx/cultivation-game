@@ -93,14 +93,14 @@ interface _GlobalComponents {
   VanPicker: typeof import("../../node_modules/vant/es/picker/Picker")['default']
   VanPickerGroup: typeof import("../../node_modules/vant/es/picker-group/PickerGroup")['default']
   VanPopover: typeof import("../../node_modules/vant/es/popover/Popover")['default']
+  VanPopup: typeof import("../../node_modules/vant/es/popup/Popup")['default']
   VanProgress: typeof import("../../node_modules/vant/es/progress/Progress")['default']
   VanPullRefresh: typeof import("../../node_modules/vant/es/pull-refresh/PullRefresh")['default']
-  VanPopup: typeof import("../../node_modules/vant/es/popup/Popup")['default']
-  VanRadio: typeof import("../../node_modules/vant/es/radio/Radio")['default']
   VanRadioGroup: typeof import("../../node_modules/vant/es/radio-group/RadioGroup")['default']
   VanRate: typeof import("../../node_modules/vant/es/rate/Rate")['default']
   VanRollingText: typeof import("../../node_modules/vant/es/rolling-text/RollingText")['default']
   VanRow: typeof import("../../node_modules/vant/es/row/Row")['default']
+  VanRadio: typeof import("../../node_modules/vant/es/radio/Radio")['default']
   VanSearch: typeof import("../../node_modules/vant/es/search/Search")['default']
   VanShareSheet: typeof import("../../node_modules/vant/es/share-sheet/ShareSheet")['default']
   VanSidebar: typeof import("../../node_modules/vant/es/sidebar/Sidebar")['default']
@@ -223,14 +223,14 @@ interface _GlobalComponents {
   LazyVanPicker: LazyComponent<typeof import("../../node_modules/vant/es/picker/Picker")['default']>
   LazyVanPickerGroup: LazyComponent<typeof import("../../node_modules/vant/es/picker-group/PickerGroup")['default']>
   LazyVanPopover: LazyComponent<typeof import("../../node_modules/vant/es/popover/Popover")['default']>
+  LazyVanPopup: LazyComponent<typeof import("../../node_modules/vant/es/popup/Popup")['default']>
   LazyVanProgress: LazyComponent<typeof import("../../node_modules/vant/es/progress/Progress")['default']>
   LazyVanPullRefresh: LazyComponent<typeof import("../../node_modules/vant/es/pull-refresh/PullRefresh")['default']>
-  LazyVanPopup: LazyComponent<typeof import("../../node_modules/vant/es/popup/Popup")['default']>
-  LazyVanRadio: LazyComponent<typeof import("../../node_modules/vant/es/radio/Radio")['default']>
   LazyVanRadioGroup: LazyComponent<typeof import("../../node_modules/vant/es/radio-group/RadioGroup")['default']>
   LazyVanRate: LazyComponent<typeof import("../../node_modules/vant/es/rate/Rate")['default']>
   LazyVanRollingText: LazyComponent<typeof import("../../node_modules/vant/es/rolling-text/RollingText")['default']>
   LazyVanRow: LazyComponent<typeof import("../../node_modules/vant/es/row/Row")['default']>
+  LazyVanRadio: LazyComponent<typeof import("../../node_modules/vant/es/radio/Radio")['default']>
   LazyVanSearch: LazyComponent<typeof import("../../node_modules/vant/es/search/Search")['default']>
   LazyVanShareSheet: LazyComponent<typeof import("../../node_modules/vant/es/share-sheet/ShareSheet")['default']>
   LazyVanSidebar: LazyComponent<typeof import("../../node_modules/vant/es/sidebar/Sidebar")['default']>

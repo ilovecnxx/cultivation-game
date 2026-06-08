@@ -34,7 +34,7 @@ export default defineNuxtConfig({
       },
     },
     resolve: {
-      alias: { '@styles': '/root/projects/cultivation-game/frontend/styles' },
+      alias: { '@': '/root/projects/cultivation-game/frontend', '@styles': '/root/projects/cultivation-game/frontend/styles' },
     },
     css: {
       preprocessorOptions: {
