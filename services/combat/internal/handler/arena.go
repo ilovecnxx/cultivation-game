@@ -266,11 +266,11 @@ func (h *ArenaHandler) createArenaMockTeam(playerID string, score int) []*model.
 	}
 
 	fighter := model.NewFighter(playerID, "玩家", model.FighterTypePlayer, model.ElementWater, estimatedLevel)
-	fighter.BaseAttack = float64(estimatedLevel) * 15
-	fighter.BaseDefense = float64(estimatedLevel) * 8
-	fighter.BaseSpeed = float64(estimatedLevel) * 5
-	fighter.BaseHP = float64(estimatedLevel) * 100
-	fighter.BaseMaxHP = float64(estimatedLevel) * 100
+	fighter.BaseAttack = int64(estimatedLevel) * 15
+	fighter.BaseDefense = int64(estimatedLevel) * 8
+	fighter.BaseSpeed = int64(estimatedLevel) * 5
+	fighter.BaseHP = int64(estimatedLevel) * 100
+	fighter.BaseMaxHP = int64(estimatedLevel) * 100
 	fighter.MP = 100
 	fighter.MaxMP = 100
 	fighter.ApplyPassiveStats()

@@ -252,7 +252,7 @@ func (b *Battle) GetSummary() string {
 		if !f.IsAlive() {
 			status = "死亡"
 		}
-		summary += fmt.Sprintf("%s(Lv.%d) HP: %.0f/%.0f MP: %d %s\n",
+		summary += fmt.Sprintf("%s(Lv.%d) HP: %d/%d MP: %d %s\n",
 			f.Name, f.Level, f.HP, f.MaxHP, f.MP, status)
 	}
 
@@ -263,7 +263,7 @@ func (b *Battle) GetSummary() string {
 		if !f.IsAlive() {
 			status = "死亡"
 		}
-		summary += fmt.Sprintf("%s(Lv.%d) HP: %.0f/%.0f %s\n",
+		summary += fmt.Sprintf("%s(Lv.%d) HP: %d/%d %s\n",
 			f.Name, f.Level, f.HP, f.MaxHP, status)
 	}
 

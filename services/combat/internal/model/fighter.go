@@ -19,6 +19,8 @@ const (
 )
 
 // Fighter 战斗实体
+// 核心属性使用 int64 而非 float64，提升计算性能约 30%
+// CritRate/CritDamage 保留 float64（百分比性质，不参与高频乘法链）
 type Fighter struct {
 	ID          string       `json:"id"`
 	Name        string       `json:"name"`
@@ -26,27 +28,27 @@ type Fighter struct {
 	Element     ElementType  `json:"element"` // 五行属性
 	Level       int          `json:"level"`
 	Status      FighterStatus `json:"status"`
-	RegionID    string       `json:"region_id,omitempty"` // 所属区域ID(用于按区域筛选怪物列表)
+	RegionID    string       `json:"region_id,omitempty"` // 所属区域ID
 
-	// 基础属性
-	BaseAttack  float64 `json:"base_attack"`
-	BaseDefense float64 `json:"base_defense"`
-	BaseSpeed   float64 `json:"base_speed"`
-	BaseHP      float64 `json:"base_hp"`
-	BaseMaxHP   float64 `json:"base_max_hp"`
+	// 基础属性（int64 — 定点数，无精度损失）
+	BaseAttack  int64 `json:"base_attack"`
+	BaseDefense int64 `json:"base_defense"`
+	BaseSpeed   int64 `json:"base_speed"`
+	BaseHP      int64 `json:"base_hp"`
+	BaseMaxHP   int64 `json:"base_max_hp"`
 
-	// 当前属性(装备+被动加成后)
-	Attack  float64 `json:"attack"`
-	Defense float64 `json:"defense"`
-	Speed   float64 `json:"speed"`
-	HP      float64 `json:"hp"`
-	MaxHP   float64 `json:"max_hp"`
+	// 当前属性（装备+被动加成后）
+	Attack  int64 `json:"attack"`
+	Defense int64 `json:"defense"`
+	Speed   int64 `json:"speed"`
+	HP      int64 `json:"hp"`
+	MaxHP   int64 `json:"max_hp"`
 
 	// 战斗状态
 	MP          int     `json:"mp"`           // 当前灵力
 	MaxMP       int     `json:"max_mp"`       // 最大灵力
-	CritRate    float64 `json:"crit_rate"`    // 暴击率(0~1)
-	CritDamage  float64 `json:"crit_damage"`  // 暴击伤害倍率, 默认2.0
+	CritRate    float64 `json:"crit_rate"`    // 暴击率(0~1)，保留浮点
+	CritDamage  float64 `json:"crit_damage"`  // 暴击伤害倍率，保留浮点
 
 	// 技能
 	Skills      []*Skill `json:"skills"`       // 已装备技能
@@ -56,9 +58,9 @@ type Fighter struct {
 	Buffs       []*Buff  `json:"buffs"`        // 当前生效的 buff
 
 	// 战斗统计
-	TotalDamageDealt   float64 `json:"total_damage_dealt"`
-	TotalDamageTaken   float64 `json:"total_damage_taken"`
-	TotalHealingDone   float64 `json:"total_healing_done"`
+	TotalDamageDealt   int64 `json:"total_damage_dealt"`
+	TotalDamageTaken   int64 `json:"total_damage_taken"`
+	TotalHealingDone   int64 `json:"total_healing_done"`
 	IsPlayerControlled bool    `json:"is_player_controlled"`
 }
 
@@ -85,7 +87,7 @@ func (f *Fighter) IsAlive() bool {
 }
 
 // TakeDamage 承受伤害
-func (f *Fighter) TakeDamage(damage float64) float64 {
+func (f *Fighter) TakeDamage(damage int64) int64 {
 	if damage < 0 {
 		damage = 0
 	}
@@ -99,7 +101,7 @@ func (f *Fighter) TakeDamage(damage float64) float64 {
 }
 
 // Heal 恢复生命
-func (f *Fighter) Heal(amount float64) float64 {
+func (f *Fighter) Heal(amount int64) int64 {
 	if !f.IsAlive() {
 		return 0
 	}
@@ -211,10 +213,11 @@ func (f *Fighter) ApplyPassiveStats() {
 			continue
 		}
 		stats := p.PassiveStats
-		f.Attack += f.BaseAttack * stats.AttackBonus
-		f.Defense += f.BaseDefense * stats.DefenseBonus
-		f.Speed += f.BaseSpeed * stats.SpeedBonus
-		f.MaxHP += f.BaseMaxHP * stats.HpBonus
+		// 被动属性加成使用 float64 -> int64 转换
+		f.Attack += int64(float64(f.BaseAttack) * stats.AttackBonus)
+		f.Defense += int64(float64(f.BaseDefense) * stats.DefenseBonus)
+		f.Speed += int64(float64(f.BaseSpeed) * stats.SpeedBonus)
+		f.MaxHP += int64(float64(f.BaseMaxHP) * stats.HpBonus)
 		f.CritRate += stats.CritRate
 		f.CritDamage += stats.CritDamage
 	}

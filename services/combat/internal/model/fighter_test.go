@@ -5,7 +5,7 @@ import (
 )
 
 // helper to create a pre-configured fighter for tests
-func newTestFighter(id string, hp float64) *Fighter {
+func newTestFighter(id string, hp int64) *Fighter {
 	f := NewFighter(id, "Test-"+id, FighterTypePlayer, ElementMetal, 10)
 	f.BaseAttack = 100
 	f.BaseDefense = 50

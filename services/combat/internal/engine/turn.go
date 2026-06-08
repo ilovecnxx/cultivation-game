@@ -159,12 +159,12 @@ func ProcessTurn(
 						critTag = " [暴击]"
 					}
 					actionLog.LogEntries = append(actionLog.LogEntries,
-						fmt.Sprintf("%s 对 %s 使用 %s, 造成 %.0f 点伤害%s",
+						fmt.Sprintf("%s 对 %s 使用 %s, 造成 %d 点伤害%s",
 							fighter.Name, tr.TargetName, selectedSkill.Name, tr.Damage, critTag))
 				}
 				if tr.Heal > 0 {
 					actionLog.LogEntries = append(actionLog.LogEntries,
-						fmt.Sprintf("%s 对 %s 使用 %s, 恢复 %.0f 点生命",
+						fmt.Sprintf("%s 对 %s 使用 %s, 恢复 %d 点生命",
 							fighter.Name, tr.TargetName, selectedSkill.Name, tr.Heal))
 				}
 				if tr.IsDead {
@@ -213,7 +213,7 @@ func ProcessTurn(
 						critTag = " [暴击]"
 					}
 					actionLog.LogEntries = append(actionLog.LogEntries,
-						fmt.Sprintf("%s 对 %s 发起普攻, 造成 %.0f 点伤害%s",
+						fmt.Sprintf("%s 对 %s 发起普攻, 造成 %d 点伤害%s",
 							fighter.Name, tr.TargetName, tr.Damage, critTag))
 					if tr.IsDead {
 						actionLog.LogEntries = append(actionLog.LogEntries,

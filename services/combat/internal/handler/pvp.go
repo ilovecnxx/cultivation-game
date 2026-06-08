@@ -251,11 +251,11 @@ func (h *PVPHandler) startPVPBattle(matchResult *service.MatchResult) {
 // createMockPlayerTeam 创建模拟玩家队伍(生产环境从数据库加载)
 func (h *PVPHandler) createMockPlayerTeam(profile *service.PlayerProfile) []*model.Fighter {
 	fighter := model.NewFighter(profile.PlayerID, profile.Name, model.FighterTypePlayer, model.ElementWater, profile.Level)
-	fighter.BaseAttack = float64(profile.Level) * 15
-	fighter.BaseDefense = float64(profile.Level) * 8
-	fighter.BaseSpeed = float64(profile.Level) * 5
-	fighter.BaseHP = float64(profile.Level) * 100
-	fighter.BaseMaxHP = float64(profile.Level) * 100
+	fighter.BaseAttack = int64(profile.Level) * 15
+	fighter.BaseDefense = int64(profile.Level) * 8
+	fighter.BaseSpeed = int64(profile.Level) * 5
+	fighter.BaseHP = int64(profile.Level) * 100
+	fighter.BaseMaxHP = int64(profile.Level) * 100
 	fighter.MP = 100
 	fighter.MaxMP = 100
 	fighter.ApplyPassiveStats()

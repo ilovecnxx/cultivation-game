@@ -10,7 +10,7 @@ import (
 
 // createTestFighter is a helper that builds a Fighter with deterministic stats.
 // Sets both Base* and current fields so the fighter is immediately usable.
-func createTestFighter(id, name string, fType model.FighterType, element model.ElementType, level int, atk, def, hp, speed float64) *model.Fighter {
+func createTestFighter(id, name string, fType model.FighterType, element model.ElementType, level int, atk, def, hp, speed int64) *model.Fighter {
 	f := model.NewFighter(id, name, fType, element, level)
 	f.BaseAttack = atk
 	f.Attack = atk
@@ -515,11 +515,11 @@ func TestProcessBuffEffects_StacksMultiplier(t *testing.T) {
 	initialHP := fighter.HP
 	ProcessBuffEffects(fighter)
 
-	expectedLoss := 10.0 * 3.0 // Value * Stacks
+	expectedLoss := int64(10.0 * 3.0) // Value * Stacks
 	if fighter.HP != initialHP-expectedLoss {
-		t.Errorf("expected HP %v (lost %v), got %v", initialHP-expectedLoss, expectedLoss, fighter.HP)
+		t.Errorf("expected HP %d (lost %d), got %d", initialHP-expectedLoss, expectedLoss, fighter.HP)
+		}
 	}
-}
 
 // ---------------------------------------------------------------------------
 // ReduceCooldowns
