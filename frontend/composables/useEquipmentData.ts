@@ -30,6 +30,20 @@ export const realmBaseAttack: Record<number, number> = {
   1:10, 2:25, 3:60, 4:140, 5:300, 6:600, 7:1200, 8:2400, 9:4500, 10:8000,
 }
 
+// 全属性基础值（来自百科境界表 wikiRealms）
+export const realmBaseStats: Record<number, { atk:number; def:number; hp:number; mp:number; spd:number; cr:number; cd:number; dg:number; mr:number }> = {
+  1:  {atk:10, def:5,   hp:100,  mp:50,   spd:100, cr:300, cd:15000, dg:200, mr:300},
+  2:  {atk:25, def:12,  hp:250,  mp:125,  spd:110, cr:500, cd:15500, dg:300, mr:400},
+  3:  {atk:60, def:30,  hp:600,  mp:300,  spd:125, cr:800, cd:16000, dg:500, mr:500},
+  4:  {atk:140, def:70, hp:1400, mp:700,  spd:140, cr:1200,cd:17000, dg:700, mr:600},
+  5:  {atk:300, def:150,hp:3000, mp:1500, spd:160, cr:1800,cd:18000, dg:1000,mr:800},
+  6:  {atk:600, def:300,hp:6000, mp:3000, spd:185, cr:2500,cd:19000, dg:1300,mr:1000},
+  7:  {atk:1200,def:600,hp:12000,mp:6000, spd:210, cr:3200,cd:20000, dg:1600,mr:1200},
+  8:  {atk:2400,def:1200,hp:24000,mp:12000,spd:240, cr:4000,cd:21500, dg:2000,mr:1500},
+  9:  {atk:4500,def:2250,hp:45000,mp:22500,spd:275, cr:5000,cd:23000, dg:2500,mr:1800},
+  10: {atk:8000,def:4000,hp:80000,mp:40000,spd:310, cr:6000,cd:25000, dg:3000,mr:2200},
+}
+
 // ============================================================
 // 300件装备名称表 (境界,品阶,部位)
 // ============================================================
@@ -107,26 +121,31 @@ export const equipNames: Record<number, Record<string, Record<EquipmentSlot, str
 }
 
 export interface Equipment {
-  id: string
-  name: string
-  slot: EquipmentSlot
-  realm: number
-  tier: string
-  tierMult: number
-  attack: number
+  id: string; name: string; slot: EquipmentSlot; realm: number
+  tier: string; tierMult: number; element: string
+  attack: number; defense: number; hp: number; mp: number
+  speed: number; critRate: number; critDmg: number; dodge: number; hit: number; mpRegen: number
   substats: Array<{ name: string; display: string }>
-  element: string
 }
+
+// 各部位属性公式系数
+const slotFormulas: Record<EquipmentSlot, (b: ReturnType<typeof getBase>, mult:number) => Partial<Equipment>> = {
+  weapon:   (b, m) => ({ attack:  Math.floor(b.atk * 0.6 * m) }),
+  robe:     (b, m) => ({ defense: Math.floor(b.def * 1.2 * m), hp: Math.floor(b.hp * 0.3 * m) }),
+  headgear: (b, m) => ({ mp:      Math.floor(b.mp  * 0.8 * m), mpRegen: Math.floor(b.mr/100 * m) }),
+  boots:    (b, m) => ({ speed:   Math.floor(b.spd * 0.5 * m), dodge: Math.floor(b.dg/100 * m) }),
+  necklace: (b, m) => ({ hp:      Math.floor(b.hp  * 0.4 * m), mpRegen: Math.floor(b.mr/100 * m) }),
+  ring:     (b, m) => ({ attack:  Math.floor(b.atk * 0.4 * m), critDmg: Math.floor(b.cd/100 * m) }),
+}
+function getBase(realm: number) { return realmBaseStats[realm] || realmBaseStats[1] }
 
 // 生成装备
 export function generateEquip(realm: number, tierKey: string, slot: EquipmentSlot): Equipment {
   const tier = tierInfo.find(t => t.key === tierKey) || tierInfo[0]
-  const baseAtk = realmBaseAttack[realm] || 10
-  const attack = slot === 'weapon' ? Math.floor(baseAtk * 0.6 * tier.mult) : 0
+  const base = getBase(realm)
   const name = equipNames[realm]?.[tierKey]?.[slot] || `${tier.name}·${slotInfo[slot].name}`
-
-  const elements = ['金','木','水','火','土']
-  const elem = elements[Math.floor(Math.random() * elements.length)]
+  const stats = slotFormulas[slot](base, tier.mult)
+  const elem = ['金','木','水','火','土'][Math.floor(Math.random()*5)]
 
   const subStatPool = ['暴击率','暴击伤害','闪避率','命中率','回蓝效率','速度']
   const substats: Equipment['substats'] = []
@@ -135,12 +154,15 @@ export function generateEquip(realm: number, tierKey: string, slot: EquipmentSlo
     let idx: number
     do { idx = Math.floor(Math.random() * subStatPool.length) } while (used.has(idx))
     used.add(idx)
-    const coeff = [0, 0.3, 0.45, 0.6, 0.8][i === 0 && tier.subStats > 0 ? 1 : Math.min(i + 1, 4)]
-    substats.push({ name: subStatPool[idx], display: `+${(baseAtk * coeff * 0.01).toFixed(1)}%` })
+    const coeff = tier.subStats === 1 ? 0.3 : tier.subStats === 2 ? 0.45 : tier.subStats === 3 ? 0.6 : 0.8
+    substats.push({ name: subStatPool[idx], display: `+${(base.atk * coeff * 0.01).toFixed(1)}%` })
   }
 
   return {
-    id: 'eq_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
-    name, slot, realm, tier: tier.name, tierMult: tier.mult, attack, substats, element: elem,
+    id: 'eq_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),
+    name, slot, realm, tier: tier.name, tierMult: tier.mult, element: elem,
+    attack: stats.attack||0, defense: stats.defense||0, hp: stats.hp||0, mp: stats.mp||0,
+    speed: stats.speed||0, critRate: stats.critRate||0, critDmg: stats.critDmg||0,
+    dodge: stats.dodge||0, hit: stats.hit||0, mpRegen: stats.mpRegen||0, substats,
   }
 }

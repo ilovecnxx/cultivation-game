@@ -53,7 +53,7 @@
               <tr v-for="s in equipSlotNames" :key="s">
                 <td class="tc">{{ slotInfo[s].icon }} {{ slotInfo[s].name }}</td>
                 <td>{{ equipNames[equipRealm]?.[equipTier]?.[s] || '—' }}</td>
-                <td style="font-size:12px">{{ slotInfo[s].desc }}</td>
+                <td style="font-size:11px;color:#6bcb77">{{ getSlotStats(s, equipRealm, tierInfo.find(t=>t.key===equipTier)?.mult||0.5) }}</td>
                 <td :style="{color:(tierInfo.find(t=>t.key===equipTier)?.color||'#888')}">×{{ tierInfo.find(t=>t.key===equipTier)?.mult||0.5 }}</td>
                 <td>{{ tierInfo.find(t=>t.key===equipTier)?.subStats||0 }}条</td>
               </tr></tbody></table>
@@ -69,11 +69,24 @@
 defineProps<{ show: boolean; realmId: number; playerSpiritName: string }>()
 defineEmits(['close'])
 import { fmt, wikiRealms, wikiSpiritReqs, wikiRootBonuses, rootNames, qualityNames, wikiQuality } from '@/composables/useGameData'
-import { equipNames, realmNames, realmBaseAttack, tierInfo, slotInfo, type EquipmentSlot } from '@/composables/useEquipmentData'
+import { equipNames, realmNames, realmBaseStats, tierInfo, slotInfo, type EquipmentSlot } from '@/composables/useEquipmentData'
 
 const tab = ref('realm')
 const wikiTabs = [{ key: 'realm', label: '境界体系' }, { key: 'root', label: '灵根体系' }, { key: 'equip', label: '装备体系' }]
 const equipRealm = ref(1)
 const equipTier = ref('human')
 const equipSlotNames: EquipmentSlot[] = ['weapon','robe','headgear','boots','necklace','ring']
+function getSlotStats(slot: EquipmentSlot, realm: number, mult: number): string {
+  const b = realmBaseStats[realm]||realmBaseStats[1]
+  const m = mult
+  switch(slot){
+    case 'weapon': return '攻+'+Math.floor(b.atk*0.6*m)
+    case 'robe': return '防+'+Math.floor(b.def*1.2*m)+' 血+'+Math.floor(b.hp*0.3*m)
+    case 'headgear': return '灵+'+Math.floor(b.mp*0.8*m)+' 回蓝+'+Math.floor(b.mr/100*m)
+    case 'boots': return '速+'+Math.floor(b.spd*0.5*m)+' 闪+'+Math.floor(b.dg/100*m)
+    case 'necklace': return '血+'+Math.floor(b.hp*0.4*m)+' 回蓝+'+Math.floor(b.mr/100*m)
+    case 'ring': return '攻+'+Math.floor(b.atk*0.4*m)+' 暴伤+'+Math.floor(b.cd/100*m)
+    default: return '—'
+  }
+}
 </script>

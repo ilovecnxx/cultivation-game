@@ -34,7 +34,7 @@ export { definePageMeta, PageMeta } from '#app/composables/pages';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { setAccessToken, getAccessToken, isLoggedIn, setRefreshToken, getRefreshToken, clearAuth, apiFetch, apiFetchWithToast } from '../composables/useApi';
 export { useAuth } from '../composables/useAuth';
-export { slotInfo, tierInfo, realmBaseAttack, equipNames, generateEquip, EquipmentSlot, SlotStats, Equipment } from '../composables/useEquipmentData';
+export { slotInfo, tierInfo, realmBaseAttack, realmBaseStats, equipNames, generateEquip, EquipmentSlot, SlotStats, Equipment } from '../composables/useEquipmentData';
 export { realmNames, realmCoefs, number, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, menus, descs, fmt, wikiRealms, wikiSpiritReqs, wikiRootBonuses, wikiQuality, MapLoc, MapRegion } from '../composables/useGameData';
 export { useGameState } from '../composables/useGameState';
 export { wsClient, WsEventType, WsEventHandlers, WsConnectionState } from '../composables/useWebSocket';

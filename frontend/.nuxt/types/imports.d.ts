@@ -96,6 +96,7 @@ declare global {
   const reactive: typeof import('vue').reactive
   const readonly: typeof import('vue').readonly
   const realmBaseAttack: typeof import('../../composables/useEquipmentData').realmBaseAttack
+  const realmBaseStats: typeof import('../../composables/useEquipmentData').realmBaseStats
   const realmCoefs: typeof import('../../composables/useGameData').realmCoefs
   const realmNames: typeof import('../../composables/useGameData').realmNames
   const ref: typeof import('vue').ref
@@ -357,6 +358,7 @@ declare module 'vue' {
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly realmBaseAttack: UnwrapRef<typeof import('../../composables/useEquipmentData')['realmBaseAttack']>
+    readonly realmBaseStats: UnwrapRef<typeof import('../../composables/useEquipmentData')['realmBaseStats']>
     readonly realmCoefs: UnwrapRef<typeof import('../../composables/useGameData')['realmCoefs']>
     readonly realmNames: UnwrapRef<typeof import('../../composables/useGameData')['realmNames']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
