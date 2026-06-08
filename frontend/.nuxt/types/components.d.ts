@@ -129,9 +129,9 @@ interface _GlobalComponents {
   VanTextEllipsis: typeof import("../../node_modules/vant/es/text-ellipsis/TextEllipsis")['default']
   VanTimePicker: typeof import("../../node_modules/vant/es/time-picker/TimePicker")['default']
   VanToast: typeof import("../../node_modules/vant/es/toast/Toast")['default']
+  VanTreeSelect: typeof import("../../node_modules/vant/es/tree-select/TreeSelect")['default']
   VanUploader: typeof import("../../node_modules/vant/es/uploader/Uploader")['default']
   VanWatermark: typeof import("../../node_modules/vant/es/watermark/Watermark")['default']
-  VanTreeSelect: typeof import("../../node_modules/vant/es/tree-select/TreeSelect")['default']
   NuxtPage: typeof import("../../node_modules/nuxt/dist/pages/runtime/page")['default']
   NoScript: typeof import("../../node_modules/nuxt/dist/head/runtime/components")['NoScript']
   Link: typeof import("../../node_modules/nuxt/dist/head/runtime/components")['Link']
@@ -258,9 +258,9 @@ interface _GlobalComponents {
   LazyVanTextEllipsis: LazyComponent<typeof import("../../node_modules/vant/es/text-ellipsis/TextEllipsis")['default']>
   LazyVanTimePicker: LazyComponent<typeof import("../../node_modules/vant/es/time-picker/TimePicker")['default']>
   LazyVanToast: LazyComponent<typeof import("../../node_modules/vant/es/toast/Toast")['default']>
+  LazyVanTreeSelect: LazyComponent<typeof import("../../node_modules/vant/es/tree-select/TreeSelect")['default']>
   LazyVanUploader: LazyComponent<typeof import("../../node_modules/vant/es/uploader/Uploader")['default']>
   LazyVanWatermark: LazyComponent<typeof import("../../node_modules/vant/es/watermark/Watermark")['default']>
-  LazyVanTreeSelect: LazyComponent<typeof import("../../node_modules/vant/es/tree-select/TreeSelect")['default']>
   LazyNuxtPage: LazyComponent<typeof import("../../node_modules/nuxt/dist/pages/runtime/page")['default']>
   LazyNoScript: LazyComponent<typeof import("../../node_modules/nuxt/dist/head/runtime/components")['NoScript']>
   LazyLink: LazyComponent<typeof import("../../node_modules/nuxt/dist/head/runtime/components")['Link']>

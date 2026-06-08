@@ -26,6 +26,14 @@ export default defineNuxtConfig({
   css: ['vant/lib/index.css', '~/src/styles/vant-theme.scss', '~/src/styles/main.scss'],
 
   vite: {
+    server: {
+      proxy: {
+        '/auth': 'http://localhost:8080',
+        '/api': 'http://localhost:8080',
+        '/health': 'http://localhost:8080',
+        '/ws': { target: 'ws://localhost:8080', ws: true },
+      },
+    },
     resolve: {
       alias: { '@': '/root/projects/cultivation-game/frontend/src' },
     },

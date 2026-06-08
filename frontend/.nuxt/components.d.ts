@@ -129,9 +129,9 @@ export const VanTag: typeof import("../node_modules/vant/es/tag/Tag")['default']
 export const VanTextEllipsis: typeof import("../node_modules/vant/es/text-ellipsis/TextEllipsis")['default']
 export const VanTimePicker: typeof import("../node_modules/vant/es/time-picker/TimePicker")['default']
 export const VanToast: typeof import("../node_modules/vant/es/toast/Toast")['default']
+export const VanTreeSelect: typeof import("../node_modules/vant/es/tree-select/TreeSelect")['default']
 export const VanUploader: typeof import("../node_modules/vant/es/uploader/Uploader")['default']
 export const VanWatermark: typeof import("../node_modules/vant/es/watermark/Watermark")['default']
-export const VanTreeSelect: typeof import("../node_modules/vant/es/tree-select/TreeSelect")['default']
 export const NuxtPage: typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']
 export const NoScript: typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']
 export const Link: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']
@@ -258,9 +258,9 @@ export const LazyVanTag: LazyComponent<typeof import("../node_modules/vant/es/ta
 export const LazyVanTextEllipsis: LazyComponent<typeof import("../node_modules/vant/es/text-ellipsis/TextEllipsis")['default']>
 export const LazyVanTimePicker: LazyComponent<typeof import("../node_modules/vant/es/time-picker/TimePicker")['default']>
 export const LazyVanToast: LazyComponent<typeof import("../node_modules/vant/es/toast/Toast")['default']>
+export const LazyVanTreeSelect: LazyComponent<typeof import("../node_modules/vant/es/tree-select/TreeSelect")['default']>
 export const LazyVanUploader: LazyComponent<typeof import("../node_modules/vant/es/uploader/Uploader")['default']>
 export const LazyVanWatermark: LazyComponent<typeof import("../node_modules/vant/es/watermark/Watermark")['default']>
-export const LazyVanTreeSelect: LazyComponent<typeof import("../node_modules/vant/es/tree-select/TreeSelect")['default']>
 export const LazyNuxtPage: LazyComponent<typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']>
 export const LazyNoScript: LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']>
 export const LazyLink: LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']>
