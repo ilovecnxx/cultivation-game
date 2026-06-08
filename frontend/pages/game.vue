@@ -352,7 +352,7 @@ const {
   onlineCount, registeredCount, fetchStats,
   calcOfflineGains,
   toggleMeditation, smallBreakRate, doBreakthrough, toggleTraining, startManual, showTooltip, showCultTooltip, tooltipStyle,
-  fightInProgress, fightResult, pveReport, pveRounds, encounterResult, encounterType, deathLog, reviveCountdown, isDead, handleQuit, startPve,
+  fightInProgress, fightResult, pveReport, pveRounds, encounterResult, encounterType, deathLog, reviveCountdown, handleQuit, startPve,
   showProfPanel, activeProf,
   wikiRealms, wikiRootBonuses, wikiSpiritReqs, wikiQuality, realmCoef, rootMult, cultBaseVal,
   timeDisplay, uptimeDisplay, getTimeDisplay, getUptimeDisplay,

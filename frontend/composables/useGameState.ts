@@ -26,7 +26,6 @@ export function useGameState() {
     comprehension: 10, luck: 10, spiritSense: 100, spirit: 0, maxSpirit: 100, gold: 0, jade: 0,
     isMeditating: false, cultRate: 11, breakRate: 90,
   })
-  const isDead = computed(() => player.hp <= 0)
   const hpPct = computed(() => Math.min(100, Math.round((player.hp / player.maxHp) * 100)))
   const mpPct = computed(() => Math.min(100, Math.round((player.mp / player.maxMp) * 100)))
   const yySpeed = computed(() => player.isMeditating ? 2 : 3)
