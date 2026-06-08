@@ -15,7 +15,7 @@
           <span class="online-badge"><span class="online-dot" />{{ fmt(onlineCount) }} 在线</span>
           <span class="registered-badge">{{ fmt(registeredCount) }} 修士</span>
         </div>
-        <button class="theme-toggle" @click="toggleThemeLocal">{{ isDark ? '☀' : '🌙' }}</button>
+        <button class="theme-toggle" onclick="document.querySelector('.gh-root').classList.toggle('light-mode');document.querySelector('html').classList.toggle('light-mode')">{{ isDark ? '☀' : '🌙' }}</button>
       </div>
     </header>
     <div class="gold-divider"><div class="gold-divider__light" /></div>
