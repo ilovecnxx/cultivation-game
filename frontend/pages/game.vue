@@ -164,7 +164,7 @@
       </div>
     </footer>
     <Teleport to="body">
-      <div <van-popup v-model:show="modalVisible" position="bottom" round :style="{ height:'60%', background:'#1a1a2e' }" v-if="activeMenu?.key!=='map'&&activeMenu?.key!=='profession'&&activeMenu?.key!=='pigeon'&&activeMenu?.key!=='backpack'">
+      <van-popup v-model:show="modalVisible" position="bottom" round :style="{ height:'60%', background:'#1a1a2e' }" v-if="activeMenu?.key!=='map'&&activeMenu?.key!=='profession'&&activeMenu?.key!=='pigeon'&&activeMenu?.key!=='backpack'">
         <div class="modal-card">
           <div class="modal-header"><h2>{{ activeMenu?.label }}</h2><van-icon name="cross" size="24" @click="modalVisible=false" /></div>
           <div v-if="activeMenu?.children" class="modal-tabs">

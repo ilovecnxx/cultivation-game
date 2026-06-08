@@ -62,8 +62,8 @@ export const VanCouponList: typeof import("../node_modules/vant/es/coupon-list/C
 export const VanDatePicker: typeof import("../node_modules/vant/es/date-picker/DatePicker")['default']
 export const VanDialog: typeof import("../node_modules/vant/es/dialog/Dialog")['default']
 export const VanDivider: typeof import("../node_modules/vant/es/divider/Divider")['default']
-export const VanDropdownItem: typeof import("../node_modules/vant/es/dropdown-item/DropdownItem")['default']
 export const VanDropdownMenu: typeof import("../node_modules/vant/es/dropdown-menu/DropdownMenu")['default']
+export const VanDropdownItem: typeof import("../node_modules/vant/es/dropdown-item/DropdownItem")['default']
 export const VanEmpty: typeof import("../node_modules/vant/es/empty/Empty")['default']
 export const VanField: typeof import("../node_modules/vant/es/field/Field")['default']
 export const VanFloatingBubble: typeof import("../node_modules/vant/es/floating-bubble/FloatingBubble")['default']
@@ -188,8 +188,8 @@ export const LazyVanCouponList: LazyComponent<typeof import("../node_modules/van
 export const LazyVanDatePicker: LazyComponent<typeof import("../node_modules/vant/es/date-picker/DatePicker")['default']>
 export const LazyVanDialog: LazyComponent<typeof import("../node_modules/vant/es/dialog/Dialog")['default']>
 export const LazyVanDivider: LazyComponent<typeof import("../node_modules/vant/es/divider/Divider")['default']>
-export const LazyVanDropdownItem: LazyComponent<typeof import("../node_modules/vant/es/dropdown-item/DropdownItem")['default']>
 export const LazyVanDropdownMenu: LazyComponent<typeof import("../node_modules/vant/es/dropdown-menu/DropdownMenu")['default']>
+export const LazyVanDropdownItem: LazyComponent<typeof import("../node_modules/vant/es/dropdown-item/DropdownItem")['default']>
 export const LazyVanEmpty: LazyComponent<typeof import("../node_modules/vant/es/empty/Empty")['default']>
 export const LazyVanField: LazyComponent<typeof import("../node_modules/vant/es/field/Field")['default']>
 export const LazyVanFloatingBubble: LazyComponent<typeof import("../node_modules/vant/es/floating-bubble/FloatingBubble")['default']>

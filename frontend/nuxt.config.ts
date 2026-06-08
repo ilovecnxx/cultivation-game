@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false, // 游戏不需要 SSR，纯客户端
+  ssr: false,
 
   modules: [
     '@vant/nuxt', // Vant 4 移动端 UI 组件库
@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['vant/lib/index.css', '@/styles/vant-theme.scss', '@/styles/main.scss'],
+  css: ['vant/lib/index.css', '~/styles/vant-theme.scss', '~/styles/main.scss'],
 
   vite: {
     css: {

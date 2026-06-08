@@ -62,8 +62,8 @@ interface _GlobalComponents {
   VanDatePicker: typeof import("../../node_modules/vant/es/date-picker/DatePicker")['default']
   VanDialog: typeof import("../../node_modules/vant/es/dialog/Dialog")['default']
   VanDivider: typeof import("../../node_modules/vant/es/divider/Divider")['default']
-  VanDropdownItem: typeof import("../../node_modules/vant/es/dropdown-item/DropdownItem")['default']
   VanDropdownMenu: typeof import("../../node_modules/vant/es/dropdown-menu/DropdownMenu")['default']
+  VanDropdownItem: typeof import("../../node_modules/vant/es/dropdown-item/DropdownItem")['default']
   VanEmpty: typeof import("../../node_modules/vant/es/empty/Empty")['default']
   VanField: typeof import("../../node_modules/vant/es/field/Field")['default']
   VanFloatingBubble: typeof import("../../node_modules/vant/es/floating-bubble/FloatingBubble")['default']
@@ -188,8 +188,8 @@ interface _GlobalComponents {
   LazyVanDatePicker: LazyComponent<typeof import("../../node_modules/vant/es/date-picker/DatePicker")['default']>
   LazyVanDialog: LazyComponent<typeof import("../../node_modules/vant/es/dialog/Dialog")['default']>
   LazyVanDivider: LazyComponent<typeof import("../../node_modules/vant/es/divider/Divider")['default']>
-  LazyVanDropdownItem: LazyComponent<typeof import("../../node_modules/vant/es/dropdown-item/DropdownItem")['default']>
   LazyVanDropdownMenu: LazyComponent<typeof import("../../node_modules/vant/es/dropdown-menu/DropdownMenu")['default']>
+  LazyVanDropdownItem: LazyComponent<typeof import("../../node_modules/vant/es/dropdown-item/DropdownItem")['default']>
   LazyVanEmpty: LazyComponent<typeof import("../../node_modules/vant/es/empty/Empty")['default']>
   LazyVanField: LazyComponent<typeof import("../../node_modules/vant/es/field/Field")['default']>
   LazyVanFloatingBubble: LazyComponent<typeof import("../../node_modules/vant/es/floating-bubble/FloatingBubble")['default']>
