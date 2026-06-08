@@ -16,7 +16,7 @@ export function useGameState() {
   const activeSub = ref('')
   const modalDesc = ref('')
   const activeSubLabel = computed(() => activeMenu.value?.children?.find((s: any) => s.key === activeSub.value)?.label || '')
-  function openMenu(m: any) { activeMenu.value = m; activeSub.value = m.children?.[0]?.key || m.key; modalDesc.value = descs[activeSub.value] || ''; if (!['map', 'profession', 'backpack'].includes(m.key)) modalVisible.value = true }
+  function openMenu(m: any) { activeMenu.value = m; activeSub.value = m.children?.[0]?.key || m.key; modalDesc.value = descs[activeSub.value] || ''; if (!['world-map', 'profession', 'backpack'].includes(m.key)) modalVisible.value = true }
 
   // ====== 玩家状态 ======
   const player = reactive({

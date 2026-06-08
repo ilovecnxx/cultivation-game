@@ -77,7 +77,7 @@
       </div>
     </footer>
     <Teleport to="body">
-      <div v-if="modalVisible&&activeMenu&&activeMenu.key!=='map'&&activeMenu.key!=='profession'&&activeMenu.key!=='backpack'" class="modal-overlay" @click.self="modalVisible=false">
+      <div v-if="modalVisible&&activeMenu&&activeMenu.key!=='world-map'&&activeMenu.key!=='profession'&&activeMenu.key!=='backpack'" class="modal-overlay" @click.self="modalVisible=false">
         <div class="wiki-modal">
           <div class="gold-divider"/><header class="top-bar" style="border-radius:8px 8px 0 0"><div class="top-bar-inner"><div class="top-bar-spacer"/><span class="brand-name" style="font-size:16px">{{ activeMenu?.label }}</span><div class="top-bar-spacer"/><button class="modal-close" @click="modalVisible=false">✕</button></div></header><div class="gold-divider"/>
           <div v-if="activeMenu?.children" class="wiki-tabs">
@@ -91,7 +91,7 @@
       </div>
     </Teleport>
     
-    <MapModal :show="activeMenu?.key==='map'" :player-realm-id="player.realmId" :player-hp="player.hp" :current-loc="currentLoc" @close="activeMenu=null" @enter="enterLocation" @fight="startPve" />
+    <MapModal :show="activeMenu?.key==='world-map'" :player-realm-id="player.realmId" :player-hp="player.hp" :current-loc="currentLoc" @close="activeMenu=null" @enter="enterLocation" @fight="startPve" />
     
     <WikiModal :show="showWiki" :realm-id="player.realmId" :player-spirit-name="player.spiritName" @close="showWiki=false" />
       <GameModals :pve-report="pveReport" :pve-rounds="pveRounds" :encounter-result="encounterResult" :is-dead="isDead" :revive-countdown="reviveCountdown" :death-log="deathLog" :gender="player.gender" :hp="player.maxHp>0?Math.round(player.hp/player.maxHp*100):0" :mp="player.maxMp>0?Math.round(player.mp/player.maxMp*100):0" :spirit-sense="player.spiritSense" @update:pve-report="(v:any)=>pveReport=v" @update:pve-rounds="(v:any)=>pveRounds=v" @update:encounter-result="(v:any)=>encounterResult=v" />
