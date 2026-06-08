@@ -181,17 +181,23 @@ export interface EquipVisual {
 }
 
 const tierHue: Record<string, number> = { human:30, yellow:45, dark:130, earth:210, heaven:350 }
+const tierIdx: Record<string, number> = { human:0, yellow:1, dark:2, earth:3, heaven:4 }
 
 export function equipVisual(realm: number, tier: string): EquipVisual {
   const hue = tierHue[tier] || 30
-  const lv = realm <= 2 ? 0 : realm <= 4 ? 1 : realm <= 6 ? 2 : realm <= 8 ? 3 : 4
-  const sat = 25 + realm * 7
-  const light = 45 + realm * 5
+  const ti = tierIdx[tier] || 0
+  // 饱和度: 境界+品阶双驱动, 天阶渡劫 = 100%
+  const sat = Math.min(100, 15 + realm * 7 + ti * 10)
+  // 亮度: 低境低品暗, 高境高品亮
+  const light = Math.min(95, 40 + realm * 4 + ti * 5)
+  // 特效等级: realm主驱动, tier微调 (同一境界内地阶/天阶高一档)
+  const lv = realm <= 1 ? 0 : realm <= 3 ? 1 : realm <= 5 ? 2 : realm <= 7 ? 3 : 4
+  const lvAdj = Math.min(4, lv + (ti >= 3 ? 1 : 0))
   const color = `hsl(${hue}, ${sat}%, ${light}%)`
-  const glow = lv >= 1 ? `text-shadow:0 0 ${2+realm}px ${color}` : ''
-  const box  = lv >= 2 ? `box-shadow:0 0 ${3+realm}px ${color}44` : ''
-  const bg   = lv >= 3 ? `background:linear-gradient(135deg,${color}18,transparent)` : ''
-  const anim = lv >= 4 ? `animation:equip-shimmer ${3-(realm-8)*0.5}s ease-in-out infinite` : ''
+  const glow = lvAdj >= 1 ? `text-shadow:0 0 ${2+realm+ti}px ${color}` : ''
+  const box  = lvAdj >= 2 ? `box-shadow:0 0 ${4+realm+ti}px ${color}44` : ''
+  const bg   = lvAdj >= 3 ? `background:linear-gradient(135deg,${color}22,transparent)` : ''
+  const anim = lvAdj >= 4 ? `animation:equip-shimmer ${3-(realm-8)*0.5}s ease-in-out infinite` : ''
   const style = [glow, box, bg, anim].filter(Boolean).join(';')
-  return { color, glow, box, bg, anim, level: lv, style }
+  return { color, glow, box, bg, anim, level: lvAdj, style }
 }
