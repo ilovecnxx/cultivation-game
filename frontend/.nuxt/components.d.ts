@@ -16,8 +16,6 @@ type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {},
 
 export const ChatPanel: typeof import("../components/ChatPanel.vue")['default']
 export const ErrorBoundary: typeof import("../components/ErrorBoundary.vue")['default']
-export const EventLog: typeof import("../components/EventLog.vue")['default']
-export const FriendPanel: typeof import("../components/FriendPanel.vue")['default']
 export const GameModals: typeof import("../components/GameModals.vue")['default']
 export const MapModal: typeof import("../components/MapModal.vue")['default']
 export const PlayerSidebar: typeof import("../components/PlayerSidebar.vue")['default']
@@ -148,8 +146,6 @@ export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const LazyChatPanel: LazyComponent<typeof import("../components/ChatPanel.vue")['default']>
 export const LazyErrorBoundary: LazyComponent<typeof import("../components/ErrorBoundary.vue")['default']>
-export const LazyEventLog: LazyComponent<typeof import("../components/EventLog.vue")['default']>
-export const LazyFriendPanel: LazyComponent<typeof import("../components/FriendPanel.vue")['default']>
 export const LazyGameModals: LazyComponent<typeof import("../components/GameModals.vue")['default']>
 export const LazyMapModal: LazyComponent<typeof import("../components/MapModal.vue")['default']>
 export const LazyPlayerSidebar: LazyComponent<typeof import("../components/PlayerSidebar.vue")['default']>

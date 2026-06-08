@@ -26,38 +26,41 @@
     </div>
     <div class="gold-divider"><div class="gold-divider__light" /></div>
     <main class="gh-main">
-      <PlayerSidebar :player="player" :isDead="isDead" />
+      <ErrorBoundary>
+        <PlayerSidebar :player="player" :isDead="isDead" />
+      </ErrorBoundary>
 
 
       <div class="gh-center"></div>
-    
-      <!-- 日志面板 -->
-      <aside class="gh-panel gh-log">
-        <div class="panel-header">
-          <h4>📜 日志</h4>
-          <div class="panel-actions panel-actions-center">
-            <button class="pa-btn" :class="{active:logFilter==='all'}" @click="logFilter='all'">全部</button>
-            <button class="pa-btn" :class="{active:logFilter==='combat'}" @click="logFilter='combat'">⚔️ 战斗</button>
-            <button class="pa-btn" :class="{active:logFilter==='cult'}" @click="logFilter='cult'">🧘 修炼</button>
-            <button class="pa-btn" :class="{active:logFilter==='item'}" @click="logFilter='item'">🎒 物品</button>
-            <button class="pa-btn" :class="{active:logFilter==='explore'}" @click="logFilter='explore'">📍 探索</button>
-            <button class="pa-btn" :class="{active:logFilter==='quest'}" @click="logFilter='quest'">📜 任务</button>
-            <button class="pa-btn" :class="{active:logFilter==='system'}" @click="logFilter='system'">⚙️ 系统</button>
-          </div>
-          <div class="panel-actions panel-actions-right">
-            <button class="pa-btn" @click="logLocked=!logLocked" :title="logLocked?'解锁滚动':'锁定滚动'">{{ logLocked?'🔓':'🔒' }}</button>
-            <button class="pa-btn" @click="logs.splice(0)" title="清屏">🗑️</button>
-          </div>
-        </div>
-        <div class="panel-body" ref="logBody">
-          <div v-for="(l,i) in filteredLogs" :key="i" class="log-entry" :class="l.type">{{ l.time }} {{ l.text }}</div>
-          <div v-if="filteredLogs.length===0" class="log-empty">暂无日志</div>
-        </div>
-      </aside>
 
-      
-      <!-- 社交面板（ChatPanel 组件） -->
-      <ChatPanel :player-name="player.name || '修仙者'" />
+      <ErrorBoundary>
+        <aside class="gh-panel gh-log">
+          <div class="panel-header">
+            <h4>📜 日志</h4>
+            <div class="panel-actions panel-actions-center">
+              <button class="pa-btn" :class="{active:logFilter==='all'}" @click="logFilter='all'">全部</button>
+              <button class="pa-btn" :class="{active:logFilter==='combat'}" @click="logFilter='combat'">⚔️ 战斗</button>
+              <button class="pa-btn" :class="{active:logFilter==='cult'}" @click="logFilter='cult'">🧘 修炼</button>
+              <button class="pa-btn" :class="{active:logFilter==='item'}" @click="logFilter='item'">🎒 物品</button>
+              <button class="pa-btn" :class="{active:logFilter==='explore'}" @click="logFilter='explore'">📍 探索</button>
+              <button class="pa-btn" :class="{active:logFilter==='quest'}" @click="logFilter='quest'">📜 任务</button>
+              <button class="pa-btn" :class="{active:logFilter==='system'}" @click="logFilter='system'">⚙️ 系统</button>
+            </div>
+            <div class="panel-actions panel-actions-right">
+              <button class="pa-btn" @click="logLocked=!logLocked">{{ logLocked?'🔓':'🔒' }}</button>
+              <button class="pa-btn" @click="logs.splice(0)">🗑️</button>
+            </div>
+          </div>
+          <div class="panel-body" ref="logBody">
+            <div v-for="(l,i) in filteredLogs" :key="i" class="log-entry" :class="l.type">{{ l.time }} {{ l.text }}</div>
+            <div v-if="filteredLogs.length===0" class="log-empty">暂无日志</div>
+          </div>
+        </aside>
+      </ErrorBoundary>
+
+      <ErrorBoundary>
+        <ChatPanel :player-name="player.name || '修仙者'" />
+      </ErrorBoundary>
 
       
 
