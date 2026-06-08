@@ -223,6 +223,10 @@ declare global {
   const watchEffect: typeof import('vue').watchEffect
   const watchPostEffect: typeof import('vue').watchPostEffect
   const watchSyncEffect: typeof import('vue').watchSyncEffect
+  const wikiQuality: typeof import('../../composables/useGameData').wikiQuality
+  const wikiRealms: typeof import('../../composables/useGameData').wikiRealms
+  const wikiRootBonuses: typeof import('../../composables/useGameData').wikiRootBonuses
+  const wikiSpiritReqs: typeof import('../../composables/useGameData').wikiSpiritReqs
   const withCtx: typeof import('vue').withCtx
   const withDirectives: typeof import('vue').withDirectives
   const withKeys: typeof import('vue').withKeys
@@ -472,6 +476,10 @@ declare module 'vue' {
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>
     readonly watchSyncEffect: UnwrapRef<typeof import('vue')['watchSyncEffect']>
+    readonly wikiQuality: UnwrapRef<typeof import('../../composables/useGameData')['wikiQuality']>
+    readonly wikiRealms: UnwrapRef<typeof import('../../composables/useGameData')['wikiRealms']>
+    readonly wikiRootBonuses: UnwrapRef<typeof import('../../composables/useGameData')['wikiRootBonuses']>
+    readonly wikiSpiritReqs: UnwrapRef<typeof import('../../composables/useGameData')['wikiSpiritReqs']>
     readonly withCtx: UnwrapRef<typeof import('vue')['withCtx']>
     readonly withDirectives: UnwrapRef<typeof import('vue')['withDirectives']>
     readonly withKeys: UnwrapRef<typeof import('vue')['withKeys']>

@@ -1,5 +1,5 @@
 // 修仙世界 — 游戏核心状态和逻辑（从 game.vue 提取）
-import { menus, descs, realmNames, realmCoefs, rootMults, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, fmt } from './useGameData'
+import { menus, descs, realmNames, realmCoefs, rootMults, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, fmt, wikiRealms, wikiSpiritReqs, wikiRootBonuses, wikiQuality } from './useGameData'
 
 export function useGameState() {
   // ====== 基础状态 ======
@@ -123,10 +123,6 @@ export function useGameState() {
   const activeProf = ref(false)
 
   // ====== 百科数据 ======
-  const wikiRealms = realmNames
-  const wikiRootBonuses = rootMults
-  const wikiSpiritReqs: Record<string,number> = {}
-  const wikiQuality = qualityNames
   const realmCoef = computed(() => realmCoefs[player.realmId] || 1)
   const rootMult = computed(() => rootMults[player.rootQuality] || 1)
   const cultBaseVal = computed(() => (10 + realmCoef.value * (player.realmStage - 1)) * rootMult.value)
