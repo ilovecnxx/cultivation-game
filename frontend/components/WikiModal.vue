@@ -52,7 +52,7 @@
             <table class="wiki-table"><thead><tr><th>部位</th><th>名称</th><th>主属性</th><th>品阶倍率</th><th>词缀</th></tr></thead><tbody>
               <tr v-for="s in equipSlotNames" :key="s">
                 <td class="tc">{{ slotInfo[s].icon }} {{ slotInfo[s].name }}</td>
-                <td>{{ equipNames[equipRealm]?.[equipTier]?.[s] || '—' }}</td>
+                <td :style="{color:(tierInfo.find(t=>t.key===equipTier)?.color||'#fff'),fontWeight:'700'}">{{ equipNames[equipRealm]?.[equipTier]?.[s] || '—' }}</td>
                 <td style="font-size:11px;color:#6bcb77">{{ getSlotStats(s, equipRealm, tierInfo.find(t=>t.key===equipTier)?.mult||0.5) }}</td>
                 <td :style="{color:(tierInfo.find(t=>t.key===equipTier)?.color||'#888')}">×{{ tierInfo.find(t=>t.key===equipTier)?.mult||0.5 }}</td>
                 <td>{{ tierInfo.find(t=>t.key===equipTier)?.subStats||0 }}条</td>
