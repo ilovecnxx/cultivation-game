@@ -5,8 +5,8 @@
       <div class="top-bar-inner">
         <span class="brand-logo">☯</span>
         <span class="brand-name">修仙世界</span>
-        <van-tabs class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false">
-          <van-tab title="百科" name="wiki" @click="showWiki=true" />
+        <van-tabs class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false" @click-tab="handleTabClick">
+          <van-tab title="百科" name="wiki" />
           
           <van-tab v-for="m in menus" :key="m.key" :title="m.label" :name="m.key"  />
         </van-tabs>
@@ -363,6 +363,11 @@ const {
 } = useGameState()
 
 
+function handleTabClick({ name }: { name: string }) {
+  if (name === "wiki") { showWiki.value = true; return }
+  const m = menus.find((x: any) => x.key === name)
+  if (m) openMenu(m)
+}
 </script>
 
 <style lang="scss" scoped>
