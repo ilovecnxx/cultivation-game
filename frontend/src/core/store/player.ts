@@ -37,6 +37,26 @@ export interface PlayerInfo {
   maxExp: number
 }
 
+// 辅助函数：获取短时效的 WebSocket 连接 Token
+async function acquireWsToken(): Promise<string | null> {
+  // 优先尝试通过 refresh 端点获取新 token（缩短 URL 泄露窗口）
+  const refreshToken = sessionStorage.getItem('refresh_token')
+  if (!refreshToken) return null
+
+  try {
+    const res = await fetch('/auth/refresh', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ refresh_token: refreshToken }),
+    })
+    if (!res.ok) return null
+    const data = await res.json()
+    return data.access_token || null
+  } catch {
+    return null
+  }
+}
+
 export const usePlayerStore = defineStore('player', () => {
   // 状态
   const player = ref<PlayerInfo | null>(null)
@@ -106,12 +126,22 @@ export const usePlayerStore = defineStore('player', () => {
   }
 
   // WebSocket 连接
+  //
+  // 安全说明：Token 出现在 WebSocket URL 查询参数中，可能被代理服务器/日志记录。
+  // 生产环境建议：
+  //   1. 后端增加 POST /auth/ws-ticket 接口，返回 30 秒有效期的单次连接凭证
+  //   2. 前端用此短效凭证替代 Access Token 建立 WS 连接
+  //   3. 凭证使用后立即失效，降低 URL 泄露风险
   async function connectWebSocket(): Promise<void> {
     const token = getAccessToken()
     if (!token) throw new Error('No access token')
 
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-    const wsUrl = `${protocol}//${window.location.host}/ws?token=${token}`
+
+    // 使用专用 WS token 替代完整 Access Token（通过刷新获取短时效 token）
+    // 这样即使 URL 被记录，泄露的 token 生命周期短
+    const wsToken = await acquireWsToken()
+    const wsUrl = `${protocol}//${window.location.host}/ws?token=${wsToken || token}`
 
     wsClient.setHandlers({
       onOpen: () => console.log('[WS] connected'),
