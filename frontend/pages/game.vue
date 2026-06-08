@@ -95,6 +95,8 @@
     
     <WikiModal :show="showWiki" :realm-id="player.realmId" :player-spirit-name="player.spiritName" @close="showWiki=false" />
       <GameModals :pve-report="pveReport" :pve-rounds="pveRounds" :encounter-result="encounterResult" :is-dead="isDead" :revive-countdown="reviveCountdown" :death-log="deathLog" :gender="player.gender" :hp="player.maxHp>0?Math.round(player.hp/player.maxHp*100):0" :mp="player.maxMp>0?Math.round(player.mp/player.maxMp*100):0" :spirit-sense="player.spiritSense" @update:pve-report="(v:any)=>pveReport=v" @update:pve-rounds="(v:any)=>pveRounds=v" @update:encounter-result="(v:any)=>encounterResult=v" />
+    <InventoryView ref="inventoryRef" />
+    <RankingView ref="rankingRef" />
   </div>
 </template>
 
@@ -123,12 +125,17 @@ const {
   connectWS, apiPost, logFilter, logLocked, logBody, filteredLogs,
 } = useGameState()
 
+const inventoryRef = ref()
+const rankingRef = ref()
+
 
 const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
 
 function handleTabClick({ name }: { name: string }) {
   if (name === "wiki") { showWiki.value = true; return }
+  if (name === "inventory" || name === "items") { inventoryRef.value?.open(true); return }
+  if (name === "ranking") { rankingRef.value?.open(true); return }
   const m = menus.find((x: any) => x.key === name)
   if (m) openMenu(m)
 }
