@@ -74,7 +74,7 @@
       </div>
     </footer>
     <Teleport to="body">
-      <van-popup v-model:show="modalVisible" position="center" :style="{ width:fit-content; minWidth:360px; maxWidth:95vw; borderRadius:8px; background:#0d0d1a; border:1px solid rgba(212,168,67,.2)' }" v-if="activeMenu?.key!=='map'&&activeMenu?.key!=='profession'&&activeMenu?.key!=='pigeon'&&activeMenu?.key!=='backpack'">
+      <van-popup v-model:show="modalVisible" position="center" :style="{ width: 'fit-content', minWidth: '360px', maxWidth: '95vw', borderRadius: '8px', background: '#0d0d1a', border: '1px solid rgba(212,168,67,.2)' }" v-if="activeMenu?.key!=='map'&&activeMenu?.key!=='profession'&&activeMenu?.key!=='pigeon'&&activeMenu?.key!=='backpack'">
         <div class="modal-card">
           <div class="gold-divider"/><header class="top-bar" style="border-radius:8px 8px 0 0"><div class="top-bar-inner"><div class="top-bar-spacer"/><span class="brand-name" style="font-size:16px">{{ activeMenu?.label }}</span><div class="top-bar-spacer"/><button class="modal-close" @click="modalVisible=false">✕</button></div></header><div class="gold-divider"/>
           <div v-if="activeMenu?.children" class="modal-tabs">
