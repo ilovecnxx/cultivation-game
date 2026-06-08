@@ -15,7 +15,7 @@
           <span class="online-badge"><span class="online-dot" />{{ fmt(onlineCount) }} 在线</span>
           <span class="registered-badge">{{ fmt(registeredCount) }} 修士</span>
         </div>
-        <van-button icon="exchange" size="small" round plain type="default" @click="toggleTheme" />
+        <button class="theme-toggle" @click="toggleTheme">{{ isDark ? '☀' : '🌙' }}</button>
       </div>
     </header>
     <div class="gold-divider"><div class="gold-divider__light" /></div>
