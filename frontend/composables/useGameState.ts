@@ -115,7 +115,7 @@ export function useGameState() {
   const deathLog = ref<any[]>([])
   const reviveCountdown = ref(0)
   const isDead = computed(() => player.hp <= 0)
-  const handleQuit = () => { player.hp = 1; reviveCountdown.value = 0 }
+  const handleQuit = () => { localStorage.clear(); window.location.href = '/' }
   function startPve() { fightInProgress.value = true; pveReport.value = null; pveRounds.value = 0 }
 
   // ====== 职业 ======
