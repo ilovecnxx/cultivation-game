@@ -107,9 +107,8 @@ const yyWrapRef = ref<HTMLElement|null>(null)
 const energyCanvas = ref<HTMLCanvasElement|null>(null)
 
 const equipSlots = [
-  {key:'weapon',icon:'🗡️',name:'武器'},{key:'crown',icon:'👑',name:'发冠'},
-  {key:'robe',icon:'👘',name:'法袍'},{key:'bracer',icon:'🛡️',name:'护腕'},
-  {key:'belt',icon:'🎗️',name:'腰带'},{key:'boots',icon:'👢',name:'云靴'},
+  {key:'weapon',icon:'🗡️',name:'武器'},{key:'headgear',icon:'👑',name:'发冠'},
+  {key:'robe',icon:'👘',name:'法袍'},{key:'boots',icon:'👢',name:'云靴'},
   {key:'necklace',icon:'📿',name:'项链'},{key:'ring',icon:'💍',name:'戒指'},
 ]
 

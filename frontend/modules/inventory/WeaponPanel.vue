@@ -34,23 +34,15 @@ const {token,playerId}=useAuth()
 
 async function load(){
   loading.value=true
-  try{
-    const r=await fetch('/api/v1/player/'+playerId.value+'/equipment',{headers:{Authorization:'Bearer '+token.value}})
-    const d=await r.json()
-    // If backend returns equipment, use it; otherwise generate demo weapons for each realm+tier
-    if(d.data && d.data.length){
-      weapons.value=d.data.map((e:any)=>({...e,slot:e.slot||'weapon',realm:e.realm||1,tier:e.tier||'人阶',tierMult:1,attack:e.atk||0,defense:0,hp:0,mp:0,speed:0,critRate:0,critDmg:0,dodge:0,hit:0,mpRegen:0,substats:[],element:''}))
-    } else {
-      // Demo: show one weapon per realm at 天阶
-      weapons.value = []
-      for(let realm=1; realm<=10; realm++){
-        for(let t=4; t<=4; t++){  // only 天阶 for demo
-          const tk = tierInfo[t]?.key || 'heaven'
-          weapons.value.push(generateEquip(realm, tk, 'weapon'))
-        }
-      }
+  // 展示所有境界+品阶的武器卡片
+  weapons.value = []
+  for(let realm=1; realm<=10; realm++){
+    for(let t=0; t<5; t++){
+      const tk = tierInfo[t]?.key || 'human'
+      weapons.value.push(generateEquip(realm, tk, 'weapon'))
     }
-  }catch{}finally{loading.value=false}
+  }
+  loading.value=false
 }
 
 async function doEquip(eq:Equipment){
