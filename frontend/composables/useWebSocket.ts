@@ -8,7 +8,7 @@
 // - 请求-响应配对
 // ============================================================
 
-import { getAccessToken, setAccessToken, clearAuth, getRefreshToken } from '@/core/api'
+import { getAccessToken, setAccessToken, clearAuth, getRefreshToken } from './useApi'
 
 /** WebSocket 事件类型 */
 export type WsEventType = 'open' | 'close' | 'error' | 'message' | 'reconnect'

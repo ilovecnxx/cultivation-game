@@ -4,8 +4,11 @@ declare global {
   const abortNavigation: typeof import('../../node_modules/nuxt/dist/app/composables/router').abortNavigation
   const addRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app/composables/router').addRouteMiddleware
   const allowMultipleToast: typeof import('vant').allowMultipleToast
+  const apiFetch: typeof import('../../composables/useApi').apiFetch
+  const apiFetchWithToast: typeof import('../../composables/useApi').apiFetchWithToast
   const callOnce: typeof import('../../node_modules/nuxt/dist/app/composables/once').callOnce
   const cancelIdleCallback: typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback').cancelIdleCallback
+  const clearAuth: typeof import('../../composables/useApi').clearAuth
   const clearError: typeof import('../../node_modules/nuxt/dist/app/composables/error').clearError
   const clearNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').clearNuxtData
   const clearNuxtState: typeof import('../../node_modules/nuxt/dist/app/composables/state').clearNuxtState
@@ -33,14 +36,17 @@ declare global {
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
   const fmt: typeof import('../../composables/useGameData').fmt
+  const getAccessToken: typeof import('../../composables/useApi').getAccessToken
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getAppManifest
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope
+  const getRefreshToken: typeof import('../../composables/useApi').getRefreshToken
   const getRouteRules: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getRouteRules
   const h: typeof import('vue').h
   const hasInjectionContext: typeof import('vue').hasInjectionContext
   const inject: typeof import('vue').inject
   const injectHead: typeof import('../../node_modules/nuxt/dist/app/composables/head').injectHead
+  const isLoggedIn: typeof import('../../composables/useApi').isLoggedIn
   const isNuxtError: typeof import('../../node_modules/nuxt/dist/app/composables/error').isNuxtError
   const isPrerendered: typeof import('../../node_modules/nuxt/dist/app/composables/payload').isPrerendered
   const isProxy: typeof import('vue').isProxy
@@ -99,10 +105,12 @@ declare global {
   const resetToastDefaultOptions: typeof import('vant').resetToastDefaultOptions
   const resolveComponent: typeof import('vue').resolveComponent
   const rootNames: typeof import('../../composables/useGameData').rootNames
+  const setAccessToken: typeof import('../../composables/useApi').setAccessToken
   const setDialogDefaultOptions: typeof import('vant').setDialogDefaultOptions
   const setInterval: typeof import('../../node_modules/nuxt/dist/app/compat/interval').setInterval
   const setNotifyDefaultOptions: typeof import('vant').setNotifyDefaultOptions
   const setPageLayout: typeof import('../../node_modules/nuxt/dist/app/composables/router').setPageLayout
+  const setRefreshToken: typeof import('../../composables/useApi').setRefreshToken
   const setResponseStatus: typeof import('../../node_modules/nuxt/dist/app/composables/ssr').setResponseStatus
   const setToastDefaultOptions: typeof import('vant').setToastDefaultOptions
   const shallowReactive: typeof import('vue').shallowReactive
@@ -221,6 +229,7 @@ declare global {
   const withMemo: typeof import('vue').withMemo
   const withModifiers: typeof import('vue').withModifiers
   const withScopeId: typeof import('vue').withScopeId
+  const wsClient: typeof import('../../composables/useWebSocket').wsClient
 }
 // for type re-export
 declare global {
@@ -233,6 +242,9 @@ declare global {
   // @ts-ignore
   export type { MapLoc, MapRegion } from '../../composables/useGameData'
   import('../../composables/useGameData')
+  // @ts-ignore
+  export type { WsEventType, WsEventHandlers, WsConnectionState } from '../../composables/useWebSocket'
+  import('../../composables/useWebSocket')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
@@ -241,8 +253,11 @@ declare module 'vue' {
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
     readonly allowMultipleToast: UnwrapRef<typeof import('vant')['allowMultipleToast']>
+    readonly apiFetch: UnwrapRef<typeof import('../../composables/useApi')['apiFetch']>
+    readonly apiFetchWithToast: UnwrapRef<typeof import('../../composables/useApi')['apiFetchWithToast']>
     readonly callOnce: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/once')['callOnce']>
     readonly cancelIdleCallback: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/idle-callback')['cancelIdleCallback']>
+    readonly clearAuth: UnwrapRef<typeof import('../../composables/useApi')['clearAuth']>
     readonly clearError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['clearError']>
     readonly clearNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['clearNuxtData']>
     readonly clearNuxtState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['clearNuxtState']>
@@ -270,14 +285,17 @@ declare module 'vue' {
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly fmt: UnwrapRef<typeof import('../../composables/useGameData')['fmt']>
+    readonly getAccessToken: UnwrapRef<typeof import('../../composables/useApi')['getAccessToken']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getRefreshToken: UnwrapRef<typeof import('../../composables/useApi')['getRefreshToken']>
     readonly getRouteRules: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getRouteRules']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly hasInjectionContext: UnwrapRef<typeof import('vue')['hasInjectionContext']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly injectHead: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/head')['injectHead']>
+    readonly isLoggedIn: UnwrapRef<typeof import('../../composables/useApi')['isLoggedIn']>
     readonly isNuxtError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['isNuxtError']>
     readonly isPrerendered: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['isPrerendered']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
@@ -336,10 +354,12 @@ declare module 'vue' {
     readonly resetToastDefaultOptions: UnwrapRef<typeof import('vant')['resetToastDefaultOptions']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly rootNames: UnwrapRef<typeof import('../../composables/useGameData')['rootNames']>
+    readonly setAccessToken: UnwrapRef<typeof import('../../composables/useApi')['setAccessToken']>
     readonly setDialogDefaultOptions: UnwrapRef<typeof import('vant')['setDialogDefaultOptions']>
     readonly setInterval: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/interval')['setInterval']>
     readonly setNotifyDefaultOptions: UnwrapRef<typeof import('vant')['setNotifyDefaultOptions']>
     readonly setPageLayout: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['setPageLayout']>
+    readonly setRefreshToken: UnwrapRef<typeof import('../../composables/useApi')['setRefreshToken']>
     readonly setResponseStatus: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['setResponseStatus']>
     readonly setToastDefaultOptions: UnwrapRef<typeof import('vant')['setToastDefaultOptions']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
@@ -458,5 +478,6 @@ declare module 'vue' {
     readonly withMemo: UnwrapRef<typeof import('vue')['withMemo']>
     readonly withModifiers: UnwrapRef<typeof import('vue')['withModifiers']>
     readonly withScopeId: UnwrapRef<typeof import('vue')['withScopeId']>
+    readonly wsClient: UnwrapRef<typeof import('../../composables/useWebSocket')['wsClient']>
   }
 }

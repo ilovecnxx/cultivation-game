@@ -1,3 +1,4 @@
+// Nuxt composable — API fetch wrapper (从 src/core/api.ts 迁移)
 // ============================================================
 // 统一 API 请求工具
 // 封装 fetch，自动携带 token、处理 401 跳转、错误提示
@@ -64,9 +65,10 @@ export function clearAuth(): void {
 }
 
 /** token 过期，跳转登录页 */
-function redirectToLogin(): never {
+// Nuxt 重定向用 navigateTo
+function goLogin() {
   clearAuth()
-  window.location.href = '/'
+  return navigateTo(.)/'
   throw new Error('登录已过期，请重新登录')
 }
 

@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted, onUnmounted, watch } from 'vue'
 // router from nuxt auto-import
-import { apiFetch } from '../src/core/api'
+// apiFetch auto-imported from composables
 // use Nuxt routing
 function goGame() { window.location.href = '/game' }
 
