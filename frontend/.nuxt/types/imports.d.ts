@@ -36,6 +36,7 @@ declare global {
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
   const fmt: typeof import('../../composables/useGameData').fmt
+  const generateEquip: typeof import('../../composables/useEquipmentData').generateEquip
   const getAccessToken: typeof import('../../composables/useApi').getAccessToken
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getAppManifest
   const getCurrentInstance: typeof import('vue').getCurrentInstance
@@ -93,6 +94,7 @@ declare global {
   const qualityNames: typeof import('../../composables/useGameData').qualityNames
   const reactive: typeof import('vue').reactive
   const readonly: typeof import('vue').readonly
+  const realmBaseAttack: typeof import('../../composables/useEquipmentData').realmBaseAttack
   const realmCoefs: typeof import('../../composables/useGameData').realmCoefs
   const realmNames: typeof import('../../composables/useGameData').realmNames
   const ref: typeof import('vue').ref
@@ -125,6 +127,8 @@ declare global {
   const showNotify: typeof import('vant').showNotify
   const showSuccessToast: typeof import('vant').showSuccessToast
   const showToast: typeof import('vant').showToast
+  const slotInfo: typeof import('../../composables/useEquipmentData').slotInfo
+  const tierInfo: typeof import('../../composables/useEquipmentData').tierInfo
   const toRaw: typeof import('vue').toRaw
   const toRef: typeof import('vue').toRef
   const toRefs: typeof import('vue').toRefs
@@ -244,6 +248,9 @@ declare global {
   export type { PageMeta } from '../../node_modules/nuxt/dist/app/composables/pages'
   import('../../node_modules/nuxt/dist/app/composables/pages')
   // @ts-ignore
+  export type { EquipmentSlot, Equipment } from '../../composables/useEquipmentData'
+  import('../../composables/useEquipmentData')
+  // @ts-ignore
   export type { MapLoc, MapRegion } from '../../composables/useGameData'
   import('../../composables/useGameData')
   // @ts-ignore
@@ -289,6 +296,7 @@ declare module 'vue' {
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly fmt: UnwrapRef<typeof import('../../composables/useGameData')['fmt']>
+    readonly generateEquip: UnwrapRef<typeof import('../../composables/useEquipmentData')['generateEquip']>
     readonly getAccessToken: UnwrapRef<typeof import('../../composables/useApi')['getAccessToken']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -346,6 +354,7 @@ declare module 'vue' {
     readonly qualityNames: UnwrapRef<typeof import('../../composables/useGameData')['qualityNames']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
+    readonly realmBaseAttack: UnwrapRef<typeof import('../../composables/useEquipmentData')['realmBaseAttack']>
     readonly realmCoefs: UnwrapRef<typeof import('../../composables/useGameData')['realmCoefs']>
     readonly realmNames: UnwrapRef<typeof import('../../composables/useGameData')['realmNames']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
@@ -378,6 +387,8 @@ declare module 'vue' {
     readonly showNotify: UnwrapRef<typeof import('vant')['showNotify']>
     readonly showSuccessToast: UnwrapRef<typeof import('vant')['showSuccessToast']>
     readonly showToast: UnwrapRef<typeof import('vant')['showToast']>
+    readonly slotInfo: UnwrapRef<typeof import('../../composables/useEquipmentData')['slotInfo']>
+    readonly tierInfo: UnwrapRef<typeof import('../../composables/useEquipmentData')['tierInfo']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
