@@ -32,5 +32,7 @@ export { setInterval } from '#app/compat/interval';
 export { showDialog, showConfirmDialog, showImagePreview, showNotify, showToast, showFailToast, showLoadingToast, showSuccessToast, closeDialog, setDialogDefaultOptions, resetDialogDefaultOptions, closeNotify, setNotifyDefaultOptions, resetNotifyDefaultOptions, closeToast, allowMultipleToast, setToastDefaultOptions, resetToastDefaultOptions } from 'vant';
 export { definePageMeta, PageMeta } from '#app/composables/pages';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
+export { useAuth } from '../composables/useAuth';
+export { realmNames, realmCoefs, number, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, menus, descs, fmt, MapLoc, MapRegion } from '../composables/useGameData';
 export { defineStore, acceptHMRUpdate, usePinia, storeToRefs } from '../node_modules/@pinia/nuxt/dist/runtime/composables';
 export { useNuxtDevTools } from '../node_modules/nuxt/node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

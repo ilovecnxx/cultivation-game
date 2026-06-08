@@ -31,8 +31,10 @@ declare global {
   const definePayloadReducer: typeof import('../../node_modules/nuxt/dist/app/composables/payload').definePayloadReducer
   const definePayloadReviver: typeof import('../../node_modules/nuxt/dist/app/composables/payload').definePayloadReviver
   const defineStore: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').defineStore
+  const descs: typeof import('../../composables/useGameData').descs
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
+  const fmt: typeof import('../../composables/useGameData').fmt
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getAppManifest
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope
@@ -51,9 +53,12 @@ declare global {
   const isVue2: typeof import('../../node_modules/nuxt/dist/app/compat/vue-demi').isVue2
   const isVue3: typeof import('../../node_modules/nuxt/dist/app/compat/vue-demi').isVue3
   const loadPayload: typeof import('../../node_modules/nuxt/dist/app/composables/payload').loadPayload
+  const mapRegions: typeof import('../../composables/useGameData').mapRegions
   const markRaw: typeof import('vue').markRaw
+  const menus: typeof import('../../composables/useGameData').menus
   const navigateTo: typeof import('../../node_modules/nuxt/dist/app/composables/router').navigateTo
   const nextTick: typeof import('vue').nextTick
+  const number: typeof import('../../composables/useGameData').number
   const onActivated: typeof import('vue').onActivated
   const onBeforeMount: typeof import('vue').onBeforeMount
   const onBeforeRouteLeave: typeof import('vue-router').onBeforeRouteLeave
@@ -72,6 +77,7 @@ declare global {
   const onUnmounted: typeof import('vue').onUnmounted
   const onUpdated: typeof import('vue').onUpdated
   const onWatcherCleanup: typeof import('vue').onWatcherCleanup
+  const pillQualityColors: typeof import('../../composables/useGameData').pillQualityColors
   const prefetchComponents: typeof import('../../node_modules/nuxt/dist/app/composables/preload').prefetchComponents
   const preloadComponents: typeof import('../../node_modules/nuxt/dist/app/composables/preload').preloadComponents
   const preloadPayload: typeof import('../../node_modules/nuxt/dist/app/composables/payload').preloadPayload
@@ -79,8 +85,12 @@ declare global {
   const prerenderRoutes: typeof import('../../node_modules/nuxt/dist/app/composables/ssr').prerenderRoutes
   const provide: typeof import('vue').provide
   const proxyRefs: typeof import('vue').proxyRefs
+  const qualityColors: typeof import('../../composables/useGameData').qualityColors
+  const qualityNames: typeof import('../../composables/useGameData').qualityNames
   const reactive: typeof import('vue').reactive
   const readonly: typeof import('vue').readonly
+  const realmCoefs: typeof import('../../composables/useGameData').realmCoefs
+  const realmNames: typeof import('../../composables/useGameData').realmNames
   const ref: typeof import('vue').ref
   const refreshCookie: typeof import('../../node_modules/nuxt/dist/app/composables/cookie').refreshCookie
   const refreshNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').refreshNuxtData
@@ -90,6 +100,7 @@ declare global {
   const resetNotifyDefaultOptions: typeof import('vant').resetNotifyDefaultOptions
   const resetToastDefaultOptions: typeof import('vant').resetToastDefaultOptions
   const resolveComponent: typeof import('vue').resolveComponent
+  const rootNames: typeof import('../../composables/useGameData').rootNames
   const setDialogDefaultOptions: typeof import('vant').setDialogDefaultOptions
   const setInterval: typeof import('../../node_modules/nuxt/dist/app/compat/interval').setInterval
   const setNotifyDefaultOptions: typeof import('vant').setNotifyDefaultOptions
@@ -121,6 +132,7 @@ declare global {
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app/config').useAppConfig
   const useAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').useAsyncData
   const useAttrs: typeof import('vue').useAttrs
+  const useAuth: typeof import('../../composables/useAuth').useAuth
   const useCookie: typeof import('../../node_modules/nuxt/dist/app/composables/cookie').useCookie
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
@@ -221,6 +233,9 @@ declare global {
   // @ts-ignore
   export type { PageMeta } from '../../node_modules/nuxt/dist/app/composables/pages'
   import('../../node_modules/nuxt/dist/app/composables/pages')
+  // @ts-ignore
+  export type { MapLoc, MapRegion } from '../../composables/useGameData'
+  import('../../composables/useGameData')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
@@ -256,8 +271,10 @@ declare module 'vue' {
     readonly definePayloadReducer: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['definePayloadReducer']>
     readonly definePayloadReviver: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['definePayloadReviver']>
     readonly defineStore: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['defineStore']>
+    readonly descs: UnwrapRef<typeof import('../../composables/useGameData')['descs']>
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly fmt: UnwrapRef<typeof import('../../composables/useGameData')['fmt']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
@@ -276,9 +293,12 @@ declare module 'vue' {
     readonly isVue2: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/vue-demi')['isVue2']>
     readonly isVue3: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/vue-demi')['isVue3']>
     readonly loadPayload: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['loadPayload']>
+    readonly mapRegions: UnwrapRef<typeof import('../../composables/useGameData')['mapRegions']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
+    readonly menus: UnwrapRef<typeof import('../../composables/useGameData')['menus']>
     readonly navigateTo: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['navigateTo']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
+    readonly number: UnwrapRef<typeof import('../../composables/useGameData')['number']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
     readonly onBeforeRouteLeave: UnwrapRef<typeof import('vue-router')['onBeforeRouteLeave']>
@@ -297,6 +317,7 @@ declare module 'vue' {
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
     readonly onWatcherCleanup: UnwrapRef<typeof import('vue')['onWatcherCleanup']>
+    readonly pillQualityColors: UnwrapRef<typeof import('../../composables/useGameData')['pillQualityColors']>
     readonly prefetchComponents: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preload')['prefetchComponents']>
     readonly preloadComponents: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preload')['preloadComponents']>
     readonly preloadPayload: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['preloadPayload']>
@@ -304,8 +325,12 @@ declare module 'vue' {
     readonly prerenderRoutes: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['prerenderRoutes']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly proxyRefs: UnwrapRef<typeof import('vue')['proxyRefs']>
+    readonly qualityColors: UnwrapRef<typeof import('../../composables/useGameData')['qualityColors']>
+    readonly qualityNames: UnwrapRef<typeof import('../../composables/useGameData')['qualityNames']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
+    readonly realmCoefs: UnwrapRef<typeof import('../../composables/useGameData')['realmCoefs']>
+    readonly realmNames: UnwrapRef<typeof import('../../composables/useGameData')['realmNames']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly refreshCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['refreshCookie']>
     readonly refreshNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['refreshNuxtData']>
@@ -315,6 +340,7 @@ declare module 'vue' {
     readonly resetNotifyDefaultOptions: UnwrapRef<typeof import('vant')['resetNotifyDefaultOptions']>
     readonly resetToastDefaultOptions: UnwrapRef<typeof import('vant')['resetToastDefaultOptions']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
+    readonly rootNames: UnwrapRef<typeof import('../../composables/useGameData')['rootNames']>
     readonly setDialogDefaultOptions: UnwrapRef<typeof import('vant')['setDialogDefaultOptions']>
     readonly setInterval: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/compat/interval')['setInterval']>
     readonly setNotifyDefaultOptions: UnwrapRef<typeof import('vant')['setNotifyDefaultOptions']>
@@ -346,6 +372,7 @@ declare module 'vue' {
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
+    readonly useAuth: UnwrapRef<typeof import('../../composables/useAuth')['useAuth']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>

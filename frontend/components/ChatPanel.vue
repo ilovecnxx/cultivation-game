@@ -39,8 +39,7 @@ const chatInput = ref('')
 const logLocked = ref(false)
 let ws: WebSocket | null = null
 let chatWs: WebSocket | null = null
-function getToken() { return localStorage.getItem('token') || '' }
-function getPID() { return localStorage.getItem('player_id') || '0' }
+const { token, playerId } = useAuth()
 const chatPlaceholder = computed(() => {
   const t: Record<string,string> = { all:'发送全服消息...', world:'世界频道发言...', sect:'宗门频道发言...', private:'输入私聊对象和内容...', friend:'给好友留言...', daoyou:'道侣悄悄话...', master:'向师父/徒弟发言...' }
   return t[chatTab.value] || '说点什么...'
@@ -51,7 +50,7 @@ const chatEmptyText = computed(() => {
 })
 const filteredChat = computed(() => chatTab.value === 'all' ? chatMessages : chatMessages.filter((m: any) => m.channel === chatTab.value))
 function connectWS() {
-  const t = getToken(); if (!t) return
+  const t = token.value; if (!t) return
   try {
     ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/ws', ['authorization.' + t])
     ws.onopen = () => { ws?.send(JSON.stringify({ type: 'auth', token: t })) }
@@ -69,7 +68,7 @@ function connectWS() {
   connectChatWS()
 }
 function connectChatWS() {
-  const t = getToken(); if (!t) return
+  const t = token.value; if (!t) return
   try {
     chatWs = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/api/v1/chat/ws?token=' + t)
     chatWs.onmessage = (e) => { try { const m = JSON.parse(e.data); handleServerChat(m) } catch {} }
@@ -83,7 +82,7 @@ function handleServerChat(m: any) {
 }
 async function loadChatHistory() {
   try {
-    const t = getToken(); if (!t) return
+    const t = token.value; if (!t) return
     const r = await fetch('/api/v1/chat/history?channel=world&limit=50', { headers: { Authorization: 'Bearer ' + t } })
     const d = await r.json()
     if (d.data && d.data.length) { d.data.reverse().forEach((m: any) => handleServerChat(m)) }
