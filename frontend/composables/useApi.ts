@@ -68,8 +68,8 @@ export function clearAuth(): void {
 // Nuxt 重定向用 navigateTo
 function goLogin() {
   clearAuth()
-  return navigateTo(.)/'
-  throw new Error('登录已过期，请重新登录')
+  window.location.href = "/"
+  throw new Error("登录已过期，请重新登录")
 }
 
 // 简单 Toast 实现（不依赖 eventBus，避免耦合）
