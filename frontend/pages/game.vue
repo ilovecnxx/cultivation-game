@@ -15,7 +15,7 @@
           <span class="online-badge"><span class="online-dot" />{{ fmt(onlineCount) }} 在线</span>
           <span class="registered-badge">{{ fmt(registeredCount) }} 修士</span>
         </div>
-        <button class="theme-toggle" @click="toggleTheme">{{ isDark ? '☀' : '🌙' }}</button>
+        <button class="theme-toggle" @click="toggleThemeLocal">{{ isDark ? '☀' : '🌙' }}</button>
       </div>
     </header>
     <div class="gold-divider"><div class="gold-divider__light" /></div>
@@ -363,6 +363,7 @@ const {
 } = useGameState()
 
 
+function toggleThemeLocal() { isDark.value = !isDark.value; localStorage.setItem('theme-mode', isDark.value ? 'dark' : 'light'); document.documentElement.classList.toggle('light-mode', !isDark.value) }
 function handleTabClick({ name }: { name: string }) {
   if (name === "wiki") { showWiki.value = true; return }
   const m = menus.find((x: any) => x.key === name)
