@@ -7,7 +7,7 @@
         <span class="brand-name">修仙世界</span>
         <van-tabs v-model:active="activeNav" class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false">
           <van-tab title="📖 百科" name="wiki" @click="showWiki=true" />
-          <van-tab v-for="m in menus" :key="m.key" :title="m.label" :name="m.key" @click="openMenu(m)" />
+          <van-tab v-for="m in menus" :key="m.key" :title="m.label" :name="m.key" @click-tab="({name}) => { const m = menus.find(x => x.key === name); if (m) openMenu(m) }" />
         </van-tabs>
         <div class="top-bar-spacer"></div>
         <div class="player-stats">
