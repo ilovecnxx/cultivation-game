@@ -35,8 +35,8 @@ type Handlers struct {
 	Pill         *handler.PillHandler
 	Friend       *handler.FriendHandler
 	Pve          *handler.PveHandler
-	Backpack     *handler.BackpackHandler
-		Equip        *handler.EquipHandler
+	Backpack     *handler.InventoryHandler
+	Equip        *handler.EquipHandler
 }
 
 // Bootstrap initializes the player service layer and returns handlers.

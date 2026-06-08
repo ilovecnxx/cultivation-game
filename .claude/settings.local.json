@@ -3,7 +3,10 @@
     "allow": [
       "Read(//root/.claude/**)",
       "Read(//root/.config/claude/**)",
-      "Read(//root/**)"
+      "Read(//root/**)",
+      "Bash(go vet *)",
+      "Bash(go work *)",
+      "Bash(gofmt *)"
     ]
   },
   "enabledMcpjsonServers": [

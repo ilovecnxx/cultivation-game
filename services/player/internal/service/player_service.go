@@ -41,37 +41,37 @@ func (s *PlayerService) CreatePlayer(ctx context.Context, req *model.CreatePlaye
 	atk, def, hp, maxMp, spd, critRate, critDmg, dodge, hit, cultBonus, breakBonus, mpRegen, lifespan := model.CalcRealmAttributes(model.RealmForge, 1)
 
 	player := &model.Player{
-		UserID:      req.UserID,
-		Name:        req.Name,
-		Gender:      req.Gender,
-		Level:       1,
-		Realm:       model.RealmForge,
-		RealmStage:  1,
-		SpiritRoot:  0,
-		RootQuality: 0,
-		HP:          hp,
-		MaxHP:       hp,
-		MP:          maxMp,
-		MaxMP:       maxMp,
-		Attack:      atk,
-		Defense:     def,
-		Speed:       spd,
-		CritRate:    critRate,
-		CritDmg:     critDmg,
-		Dodge:       dodge,
-		Hit:         hit,
-		CultBonus:   cultBonus,
-		BreakBonus:  breakBonus,
-		MPRegen:     mpRegen,
-		Lifespan:       lifespan,
-		Comprehension:  model.RandomComprehension(0),
-		Luck:           model.RollDailyLuck(0, 0),
-		SpiritSense:    model.CalcSpiritSense(model.RealmForge, 0),
-		LastLuckDate:   "",
-		SpiritPower:    0,
-		MaxSpirit:   maxSpirit,
-		Gold:        100,
-		Jade:        0,
+		UserID:        req.UserID,
+		Name:          req.Name,
+		Gender:        req.Gender,
+		Level:         1,
+		Realm:         model.RealmForge,
+		RealmStage:    1,
+		SpiritRoot:    0,
+		RootQuality:   0,
+		HP:            hp,
+		MaxHP:         hp,
+		MP:            maxMp,
+		MaxMP:         maxMp,
+		Attack:        atk,
+		Defense:       def,
+		Speed:         spd,
+		CritRate:      critRate,
+		CritDmg:       critDmg,
+		Dodge:         dodge,
+		Hit:           hit,
+		CultBonus:     cultBonus,
+		BreakBonus:    breakBonus,
+		MPRegen:       mpRegen,
+		Lifespan:      lifespan,
+		Comprehension: model.RandomComprehension(0),
+		Luck:          model.RollDailyLuck(0, 0),
+		SpiritSense:   model.CalcSpiritSense(model.RealmForge, 0),
+		LastLuckDate:  "",
+		SpiritPower:   0,
+		MaxSpirit:     maxSpirit,
+		Gold:          100,
+		Jade:          0,
 	}
 
 	if err := s.playerRepo.Create(player); err != nil {
@@ -238,11 +238,15 @@ func (s *PlayerService) Breakthrough(ctx context.Context, playerID int64) (bool,
 		if player.SpiritPower >= player.MaxSpirit {
 			// 升小期 — 随机判定（失败扣20%修为）
 			smallRate := smallStageRates[player.RootQuality]
-			if smallRate < 1 { smallRate = 50 }
+			if smallRate < 1 {
+				smallRate = 50
+			}
 			if rand.Intn(100) >= int(smallRate) {
 				cost := player.MaxSpirit * 20 / 100
 				player.SpiritPower -= cost
-				if player.SpiritPower < 0 { player.SpiritPower = 0 }
+				if player.SpiritPower < 0 {
+					player.SpiritPower = 0
+				}
 				_ = s.UpdatePlayer(ctx, player)
 				return false, cost, player.Realm, model.RealmNames[player.Realm], nil
 			}
@@ -296,13 +300,12 @@ func (s *PlayerService) Breakthrough(ctx context.Context, playerID int64) (bool,
 			player.SpiritSense = model.CalcSpiritSense(player.Realm, player.RootQuality)
 		}
 
-
 		if err := s.UpdatePlayer(ctx, player); err != nil {
 			return false, 0, 0, "", err
 		}
 		return true, cost, player.Realm, model.RealmNames[player.Realm], nil
 	}
-		// 失败
+	// 失败
 	player.SpiritPower -= cost
 	if player.SpiritPower < 0 {
 		player.SpiritPower = 0
@@ -345,6 +348,21 @@ func (s *PlayerService) assignRandomSpiritRoot(player *model.Player) {
 	default:
 		player.RootQuality = model.RootQualityNone
 	}
+}
+
+// AddRewards 添加奖励（经验+金币+物品）
+func (s *PlayerService) AddRewards(ctx context.Context, playerID int64, exp int64, gold int64, items []int64) error {
+	player, err := s.GetPlayer(ctx, playerID)
+	if err != nil {
+		return err
+	}
+	if exp > 0 {
+		player.Experience += exp
+	}
+	if gold > 0 {
+		player.Gold += gold
+	}
+	return s.UpdatePlayer(ctx, player)
 }
 
 // AddExp 增加经验（战斗/世界等服务调用）
@@ -510,4 +528,36 @@ func (s *PlayerService) RemoveDaolvStatsBonus(ctx context.Context, playerID int6
 		return nil, err
 	}
 	return player, nil
+}
+
+// initAttributes 初始属性
+type initAttributes struct {
+	hp      int64
+	mp      int64
+	attack  int64
+	defense int64
+}
+
+// calcInitAttributes 根据灵根计算初始属性
+func (s *PlayerService) calcInitAttributes(spiritRoot int32) initAttributes {
+	switch spiritRoot {
+	case model.SpiritRootMetal:
+		return initAttributes{hp: 100, mp: 50, attack: 12, defense: 5}
+	case model.SpiritRootWood:
+		return initAttributes{hp: 130, mp: 50, attack: 10, defense: 5}
+	case model.SpiritRootWater:
+		return initAttributes{hp: 100, mp: 80, attack: 10, defense: 5}
+	case model.SpiritRootFire:
+		return initAttributes{hp: 100, mp: 50, attack: 13, defense: 3}
+	case model.SpiritRootEarth:
+		return initAttributes{hp: 100, mp: 50, attack: 10, defense: 10}
+	case model.SpiritRootWind:
+		return initAttributes{hp: 100, mp: 65, attack: 14, defense: 5}
+	case model.SpiritRootThunder:
+		return initAttributes{hp: 100, mp: 50, attack: 16, defense: 7}
+	case model.SpiritRootIce:
+		return initAttributes{hp: 115, mp: 50, attack: 10, defense: 9}
+	default:
+		return initAttributes{hp: 100, mp: 50, attack: 10, defense: 5}
+	}
 }

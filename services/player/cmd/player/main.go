@@ -387,13 +387,13 @@ func main() {
 		activityV1.POST("/titles/equip", activityHandler.EquipTitle)
 	}
 
-		// ================= 推荐/邀请系统 API =================
-		referralV1 := r.Group("/api/v1/referral")
-		{
-			referralV1.GET("/info", referralHandler.GetReferralInfo)
-			referralV1.POST("/apply", referralHandler.ApplyInviteCode)
-			referralV1.POST("/claim/:inviteeId", referralHandler.ClaimReferralReward)
-		}
+	// ================= 推荐/邀请系统 API =================
+	referralV1 := r.Group("/api/v1/referral")
+	{
+		referralV1.GET("/info", referralHandler.GetReferralInfo)
+		referralV1.POST("/apply", referralHandler.ApplyInviteCode)
+		referralV1.POST("/claim/:inviteeId", referralHandler.ClaimReferralReward)
+	}
 
 	// ================= VIP系统 API =================
 	vipV1 := r.Group("/api/v1/vip")

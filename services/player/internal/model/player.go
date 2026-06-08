@@ -10,6 +10,7 @@ import (
 // ============================================================
 
 const (
+	RealmMortal  = 0  // 凡人
 	RealmForge   = 1  // 锻体
 	RealmQiRef   = 2  // 练气
 	RealmBase    = 3  // 筑基
@@ -23,6 +24,7 @@ const (
 )
 
 var RealmNames = map[int32]string{
+	RealmMortal:  "凡人",
 	RealmForge:   "锻体",
 	RealmQiRef:   "练气",
 	RealmBase:    "筑基",
@@ -37,6 +39,7 @@ var RealmNames = map[int32]string{
 
 // RealmCoefficient 境界系数（修炼速度）
 var RealmCoefficient = map[int32]int64{
+	RealmMortal:  0,
 	RealmForge:   1,
 	RealmQiRef:   2,
 	RealmBase:    3,
@@ -51,17 +54,19 @@ var RealmCoefficient = map[int32]int64{
 
 // BreakthroughBaseRate 突破基础成功率(%) — 真实修仙界比例
 var BreakthroughBaseRate = map[int32]int32{
-	RealmForge:   7000,   // 锻体→练气: 70%（凡人→修士）
-	RealmQiRef:   2500,   // 练气→筑基: 25%（外门→内门）
-	RealmBase:    400,    // 筑基→金丹: 4%（百里挑一）
-	RealmGolden:  80,     // 金丹→元婴: 0.8%（万中无一）
-	RealmNascent: 12,     // 元婴→化神: 0.12%（十万中一）
-	RealmSpirit:  1,      // 化神→炼虚: 0.015%（百万中一）
-	RealmVoid:    0,      // 炼虚→合体: 0.002%（亿中无一）
-	RealmMerge:   0,      // 合体→大乘: 0.0002%
-	RealmAscend:  0,      // 大乘→渡劫: 0.00002%
-	RealmTrib:    0,      // 渡劫→飞升: 0.000002%
+	RealmMortal:  10000, // 凡人→锻体: 100%（入门）
+	RealmForge:   7000,  // 锻体→练气: 70%（凡人→修士）
+	RealmQiRef:   2500,  // 练气→筑基: 25%（外门→内门）
+	RealmBase:    400,   // 筑基→金丹: 4%（百里挑一）
+	RealmGolden:  80,    // 金丹→元婴: 0.8%（万中无一）
+	RealmNascent: 12,    // 元婴→化神: 0.12%（十万中一）
+	RealmSpirit:  1,     // 化神→炼虚: 0.015%（百万中一）
+	RealmVoid:    0,     // 炼虚→合体: 0.002%（亿中无一）
+	RealmMerge:   0,     // 合体→大乘: 0.0002%
+	RealmAscend:  0,     // 大乘→渡劫: 0.00002%
+	RealmTrib:    0,     // 渡劫→飞升: 0.000002%
 }
+
 // 注意：基础值存储为 ×100 倍（如 7000=70.00%, 80=0.80%, 1=0.01%）。高境界极低，依赖灵根品质倍率拉升。
 
 // QualityBreakthroughMultiplier 灵根品质对突破率的倍率（核心：好灵根才能冲击高境界）
@@ -194,34 +199,34 @@ var RootBreakthroughBonus = map[int32]int32{
 
 // SpiritRootAttrBonus 灵根类型对属性的百分比加成
 type SpiritRootAttrBonus struct {
-	AttackPct  float64 // 攻击加成%
-	DefensePct float64 // 防御加成%
-	MaxHPPct   float64 // 生命加成%
-	MaxMPPct   float64 // 灵力加成%
+	AttackPct   float64 // 攻击加成%
+	DefensePct  float64 // 防御加成%
+	MaxHPPct    float64 // 生命加成%
+	MaxMPPct    float64 // 灵力加成%
 	CritRatePct float64 // 暴击率加成%
-	CritDmgPct float64 // 暴击伤害加成%
-	DodgePct   float64 // 闪避加成%
-	MPRegenPct float64 // 灵力恢复加成%
+	CritDmgPct  float64 // 暴击伤害加成%
+	DodgePct    float64 // 闪避加成%
+	MPRegenPct  float64 // 灵力恢复加成%
 }
 
 var SpiritRootAttrBonuses = map[int32]SpiritRootAttrBonus{
 	SpiritRootNone:  {},
-	SpiritRootMetal: {AttackPct: 0.12, CritRatePct: 0.05},                         // 金：主攻伐，暴击
-	SpiritRootWood:  {MaxHPPct: 0.15, MPRegenPct: 0.10},                            // 木：主生机，恢复
-	SpiritRootWater: {MaxMPPct: 0.12, MPRegenPct: 0.15, DodgePct: 0.03},            // 水：主灵力，灵动
-	SpiritRootFire:  {AttackPct: 0.08, CritRatePct: 0.10, CritDmgPct: 0.10},        // 火：主爆发，暴伤
-	SpiritRootEarth: {DefensePct: 0.15, MaxHPPct: 0.08},                            // 土：主防御，厚实
-	SpiritRootDi:    {AttackPct: 0.08, DefensePct: 0.08, MaxHPPct: 0.08, MaxMPPct: 0.08}, // 地：均衡+8%
+	SpiritRootMetal: {AttackPct: 0.12, CritRatePct: 0.05},                                                                     // 金：主攻伐，暴击
+	SpiritRootWood:  {MaxHPPct: 0.15, MPRegenPct: 0.10},                                                                       // 木：主生机，恢复
+	SpiritRootWater: {MaxMPPct: 0.12, MPRegenPct: 0.15, DodgePct: 0.03},                                                       // 水：主灵力，灵动
+	SpiritRootFire:  {AttackPct: 0.08, CritRatePct: 0.10, CritDmgPct: 0.10},                                                   // 火：主爆发，暴伤
+	SpiritRootEarth: {DefensePct: 0.15, MaxHPPct: 0.08},                                                                       // 土：主防御，厚实
+	SpiritRootDi:    {AttackPct: 0.08, DefensePct: 0.08, MaxHPPct: 0.08, MaxMPPct: 0.08},                                      // 地：均衡+8%
 	SpiritRootTian:  {AttackPct: 0.12, DefensePct: 0.10, MaxHPPct: 0.12, MaxMPPct: 0.10, CritRatePct: 0.08, MPRegenPct: 0.08}, // 天：全属性
 }
 
 // QualityAttrMultiplier 品质对属性加成的倍率
 var QualityAttrMultiplier = map[int32]float64{
-	RootQualityNone:    0.5,  // 无品：加成打对折
-	RootQualityLow:     1.0,  // 下品：全额
-	RootQualityMedium:  1.5,  // 中品：1.5倍
-	RootQualityHigh:    2.0,  // 上品：2倍
-	RootQualityPerfect: 3.0,  // 极品：3倍
+	RootQualityNone:    0.5, // 无品：加成打对折
+	RootQualityLow:     1.0, // 下品：全额
+	RootQualityMedium:  1.5, // 中品：1.5倍
+	RootQualityHigh:    2.0, // 上品：2倍
+	RootQualityPerfect: 3.0, // 极品：3倍
 }
 
 // ApplySpiritRootBonuses 将灵根类型+品质加成应用到属性上
@@ -325,6 +330,7 @@ func CalcBreakthroughRate(realm int32, rootQuality int32, ageDays int64, lifespa
 
 // RealmComprehensionBonus 每个大境界的悟性加成
 var RealmComprehensionBonus = map[int32]int64{
+	RealmMortal:  0,
 	RealmForge:   0,
 	RealmQiRef:   5,
 	RealmBase:    10,
@@ -417,6 +423,7 @@ func LuckEncounterChance(luck int64) float64 {
 
 // RealmSpiritSense 每个境界的神识基础值
 var RealmSpiritSense = map[int32]int64{
+	RealmMortal:  50,
 	RealmForge:   100,
 	RealmQiRef:   200,
 	RealmBase:    300,
@@ -482,6 +489,7 @@ type RealmBaseAttr struct {
 }
 
 var RealmAttributes = map[int32]RealmBaseAttr{
+	RealmMortal:  {Attack: 3, Defense: 2, MaxHP: 50, MaxMP: 25, Speed: 95, CritRate: 200, CritDmg: 15000, Dodge: 100, Hit: 9400, CultBonus: 0, BreakBonus: 0, MPRegen: 200, Lifespan: 80},
 	RealmForge:   {Attack: 10, Defense: 5, MaxHP: 100, MaxMP: 50, Speed: 100, CritRate: 300, CritDmg: 15000, Dodge: 200, Hit: 9500, CultBonus: 0, BreakBonus: 0, MPRegen: 300, Lifespan: 100},
 	RealmQiRef:   {Attack: 25, Defense: 12, MaxHP: 250, MaxMP: 125, Speed: 110, CritRate: 500, CritDmg: 15500, Dodge: 300, Hit: 9600, CultBonus: 0, BreakBonus: 0, MPRegen: 400, Lifespan: 150},
 	RealmBase:    {Attack: 60, Defense: 30, MaxHP: 600, MaxMP: 300, Speed: 125, CritRate: 800, CritDmg: 16000, Dodge: 500, Hit: 9700, CultBonus: 0, BreakBonus: 0, MPRegen: 500, Lifespan: 200},
@@ -522,126 +530,126 @@ func CalcRealmAttributes(realm int32, stage int32) (attack, defense, maxHP, maxM
 // ============================================================
 
 type Player struct {
-	ID          int64     `json:"id" gorm:"primaryKey"`
-	UserID      string    `json:"user_id" gorm:"uniqueIndex;size:64;not null"`
-	Name        string    `json:"name" gorm:"uniqueIndex;size:32;not null"`
-	Gender            string    `json:"gender" gorm:"default:male"`
-	Profession        string    `json:"profession" gorm:"default:''"`
-	ProfessionLevel   int32     `json:"profession_level" gorm:"default:0"`
-	ProfessionExp     int64     `json:"profession_exp" gorm:"default:0"`
-	Level       int32     `json:"level" gorm:"default:1"`
-	Realm       int32     `json:"realm_id" gorm:"default:1"`
-	RealmStage  int32     `json:"realm_stage" gorm:"default:1"`
-	SpiritRoot  int32     `json:"spirit_root" gorm:"default:0"`
-	RootQuality int32     `json:"root_quality" gorm:"default:0"`
-	HP          int64     `json:"hp" gorm:"default:100"`
-	MaxHP       int64     `json:"max_hp" gorm:"default:100"`
-	MP          int64     `json:"mp" gorm:"default:50"`
-	MaxMP       int64     `json:"max_mp" gorm:"default:50"`
-	Attack      int64     `json:"attack" gorm:"default:10"`
-	Defense     int64     `json:"defense" gorm:"default:5"`
-	Speed       int64     `json:"speed" gorm:"default:100"`
-	CritRate    int64     `json:"crit_rate" gorm:"default:300"`
-	CritDmg     int64     `json:"crit_dmg" gorm:"default:15000"`
-	Dodge       int64     `json:"dodge" gorm:"default:200"`
-	Hit         int64     `json:"hit" gorm:"default:9500"`
-	CultBonus   int64     `json:"cult_bonus" gorm:"default:0"`
-	BreakBonus  int64     `json:"break_bonus" gorm:"default:0"`
-	MPRegen     int64     `json:"mp_regen" gorm:"default:300"`
-	Lifespan       int64     `json:"lifespan" gorm:"default:100"`
-	Comprehension  int64     `json:"comprehension" gorm:"default:10"`
-	Luck           int64     `json:"luck" gorm:"default:10"`
-	SpiritSense    int64     `json:"spirit_sense" gorm:"default:100"`
-	LastLuckDate   string    `json:"last_luck_date" gorm:"default:"`
-	SpiritPower int64     `json:"spirit_power" gorm:"default:0"`
-	MaxSpirit   int64     `json:"max_spirit" gorm:"default:100"`
-	Experience  int64     `json:"experience" gorm:"default:0"`
-	Gold        int64     `json:"gold" gorm:"default:0"`
-	BoundGold   int64     `json:"bound_gold" gorm:"default:0"`
-	Jade        int64     `json:"jade" gorm:"default:0"`
-	CreatedAt   time.Time `json:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at"`
+	ID              int64     `json:"id" gorm:"primaryKey"`
+	UserID          string    `json:"user_id" gorm:"uniqueIndex;size:64;not null"`
+	Name            string    `json:"name" gorm:"uniqueIndex;size:32;not null"`
+	Gender          string    `json:"gender" gorm:"default:male"`
+	Profession      string    `json:"profession" gorm:"default:''"`
+	ProfessionLevel int32     `json:"profession_level" gorm:"default:0"`
+	ProfessionExp   int64     `json:"profession_exp" gorm:"default:0"`
+	Level           int32     `json:"level" gorm:"default:1"`
+	Realm           int32     `json:"realm_id" gorm:"default:1"`
+	RealmStage      int32     `json:"realm_stage" gorm:"default:1"`
+	SpiritRoot      int32     `json:"spirit_root" gorm:"default:0"`
+	RootQuality     int32     `json:"root_quality" gorm:"default:0"`
+	HP              int64     `json:"hp" gorm:"default:100"`
+	MaxHP           int64     `json:"max_hp" gorm:"default:100"`
+	MP              int64     `json:"mp" gorm:"default:50"`
+	MaxMP           int64     `json:"max_mp" gorm:"default:50"`
+	Attack          int64     `json:"attack" gorm:"default:10"`
+	Defense         int64     `json:"defense" gorm:"default:5"`
+	Speed           int64     `json:"speed" gorm:"default:100"`
+	CritRate        int64     `json:"crit_rate" gorm:"default:300"`
+	CritDmg         int64     `json:"crit_dmg" gorm:"default:15000"`
+	Dodge           int64     `json:"dodge" gorm:"default:200"`
+	Hit             int64     `json:"hit" gorm:"default:9500"`
+	CultBonus       int64     `json:"cult_bonus" gorm:"default:0"`
+	BreakBonus      int64     `json:"break_bonus" gorm:"default:0"`
+	MPRegen         int64     `json:"mp_regen" gorm:"default:300"`
+	Lifespan        int64     `json:"lifespan" gorm:"default:100"`
+	Comprehension   int64     `json:"comprehension" gorm:"default:10"`
+	Luck            int64     `json:"luck" gorm:"default:10"`
+	SpiritSense     int64     `json:"spirit_sense" gorm:"default:100"`
+	LastLuckDate    string    `json:"last_luck_date" gorm:"default:"`
+	SpiritPower     int64     `json:"spirit_power" gorm:"default:0"`
+	MaxSpirit       int64     `json:"max_spirit" gorm:"default:100"`
+	Experience      int64     `json:"experience" gorm:"default:0"`
+	Gold            int64     `json:"gold" gorm:"default:0"`
+	BoundGold       int64     `json:"bound_gold" gorm:"default:0"`
+	Jade            int64     `json:"jade" gorm:"default:0"`
+	CreatedAt       time.Time `json:"created_at"`
+	UpdatedAt       time.Time `json:"updated_at"`
 }
 
 type PlayerCache struct {
-	ID          int64  `json:"id"`
-	UserID      string `json:"user_id"`
-	Name        string `json:"name"`
-	Gender            string `json:"gender"`
-	Profession        string `json:"profession"`
-	ProfessionLevel   int32  `json:"profession_level"`
-	ProfessionExp     int64  `json:"profession_exp"`
-	Level       int32  `json:"level"`
-	Realm       int32  `json:"realm"`
-	RealmStage  int32  `json:"realm_stage"`
-	SpiritRoot  int32  `json:"spirit_root"`
-	RootQuality int32  `json:"root_quality"`
-	HP          int64  `json:"hp"`
-	MaxHP       int64  `json:"max_hp"`
-	MP          int64  `json:"mp"`
-	MaxMP       int64  `json:"max_mp"`
-	Attack      int64  `json:"attack"`
-	Defense     int64  `json:"defense"`
-	Speed       int64  `json:"speed"`
-	CritRate    int64  `json:"crit_rate"`
-	CritDmg     int64  `json:"crit_dmg"`
-	Dodge       int64  `json:"dodge"`
-	Hit         int64  `json:"hit"`
-	CultBonus   int64  `json:"cult_bonus"`
-	BreakBonus  int64  `json:"break_bonus"`
-	MPRegen     int64  `json:"mp_regen"`
-	Lifespan       int64  `json:"lifespan"`
-	Comprehension  int64  `json:"comprehension"`
-	Luck           int64  `json:"luck"`
-	SpiritSense    int64  `json:"spirit_sense"`
-	LastLuckDate   string `json:"last_luck_date"`
-	SpiritPower int64  `json:"spirit_power"`
-	MaxSpirit   int64  `json:"max_spirit"`
-	Experience  int64  `json:"experience"`
-	Gold        int64  `json:"gold"`
-	BoundGold   int64  `json:"bound_gold"`
-	Jade        int64  `json:"jade"`
+	ID              int64  `json:"id"`
+	UserID          string `json:"user_id"`
+	Name            string `json:"name"`
+	Gender          string `json:"gender"`
+	Profession      string `json:"profession"`
+	ProfessionLevel int32  `json:"profession_level"`
+	ProfessionExp   int64  `json:"profession_exp"`
+	Level           int32  `json:"level"`
+	Realm           int32  `json:"realm"`
+	RealmStage      int32  `json:"realm_stage"`
+	SpiritRoot      int32  `json:"spirit_root"`
+	RootQuality     int32  `json:"root_quality"`
+	HP              int64  `json:"hp"`
+	MaxHP           int64  `json:"max_hp"`
+	MP              int64  `json:"mp"`
+	MaxMP           int64  `json:"max_mp"`
+	Attack          int64  `json:"attack"`
+	Defense         int64  `json:"defense"`
+	Speed           int64  `json:"speed"`
+	CritRate        int64  `json:"crit_rate"`
+	CritDmg         int64  `json:"crit_dmg"`
+	Dodge           int64  `json:"dodge"`
+	Hit             int64  `json:"hit"`
+	CultBonus       int64  `json:"cult_bonus"`
+	BreakBonus      int64  `json:"break_bonus"`
+	MPRegen         int64  `json:"mp_regen"`
+	Lifespan        int64  `json:"lifespan"`
+	Comprehension   int64  `json:"comprehension"`
+	Luck            int64  `json:"luck"`
+	SpiritSense     int64  `json:"spirit_sense"`
+	LastLuckDate    string `json:"last_luck_date"`
+	SpiritPower     int64  `json:"spirit_power"`
+	MaxSpirit       int64  `json:"max_spirit"`
+	Experience      int64  `json:"experience"`
+	Gold            int64  `json:"gold"`
+	BoundGold       int64  `json:"bound_gold"`
+	Jade            int64  `json:"jade"`
 }
 
 func (p *Player) ToCache() *PlayerCache {
 	return &PlayerCache{
-		ID:          p.ID,
-		UserID:      p.UserID,
-		Name:        p.Name,
-		Gender:            p.Gender,
-		Profession:        p.Profession,
-		ProfessionLevel:   p.ProfessionLevel,
-		ProfessionExp:     p.ProfessionExp,
-		Level:       p.Level,
-		Realm:       p.Realm,
-		RealmStage:  p.RealmStage,
-		SpiritRoot:  p.SpiritRoot,
-		RootQuality: p.RootQuality,
-		HP:          p.HP,
-		MaxHP:       p.MaxHP,
-		MP:          p.MP,
-		MaxMP:       p.MaxMP,
-		Attack:      p.Attack,
-		Defense:     p.Defense,
-		Speed:       p.Speed,
-		CritRate:    p.CritRate,
-		CritDmg:     p.CritDmg,
-		Dodge:       p.Dodge,
-		Hit:         p.Hit,
-		CultBonus:   p.CultBonus,
-		BreakBonus:  p.BreakBonus,
-		MPRegen:     p.MPRegen,
-		Lifespan:       p.Lifespan,
-		Comprehension:  p.Comprehension,
-		Luck:           p.Luck,
-		SpiritSense:    p.SpiritSense,
-		LastLuckDate:   p.LastLuckDate,
-		SpiritPower:    p.SpiritPower,
-		MaxSpirit:   p.MaxSpirit,
-		Experience:  p.Experience,
-		Gold:        p.Gold,
-		BoundGold:   p.BoundGold,
-		Jade:        p.Jade,
+		ID:              p.ID,
+		UserID:          p.UserID,
+		Name:            p.Name,
+		Gender:          p.Gender,
+		Profession:      p.Profession,
+		ProfessionLevel: p.ProfessionLevel,
+		ProfessionExp:   p.ProfessionExp,
+		Level:           p.Level,
+		Realm:           p.Realm,
+		RealmStage:      p.RealmStage,
+		SpiritRoot:      p.SpiritRoot,
+		RootQuality:     p.RootQuality,
+		HP:              p.HP,
+		MaxHP:           p.MaxHP,
+		MP:              p.MP,
+		MaxMP:           p.MaxMP,
+		Attack:          p.Attack,
+		Defense:         p.Defense,
+		Speed:           p.Speed,
+		CritRate:        p.CritRate,
+		CritDmg:         p.CritDmg,
+		Dodge:           p.Dodge,
+		Hit:             p.Hit,
+		CultBonus:       p.CultBonus,
+		BreakBonus:      p.BreakBonus,
+		MPRegen:         p.MPRegen,
+		Lifespan:        p.Lifespan,
+		Comprehension:   p.Comprehension,
+		Luck:            p.Luck,
+		SpiritSense:     p.SpiritSense,
+		LastLuckDate:    p.LastLuckDate,
+		SpiritPower:     p.SpiritPower,
+		MaxSpirit:       p.MaxSpirit,
+		Experience:      p.Experience,
+		Gold:            p.Gold,
+		BoundGold:       p.BoundGold,
+		Jade:            p.Jade,
 	}
 }
 
@@ -686,9 +694,10 @@ func (p *Player) FromCache(c *PlayerCache) {
 }
 
 type CreatePlayerRequest struct {
-	UserID string `json:"user_id" binding:"required"`
-	Name   string `json:"name" binding:"required,min=2,max=16"`
-	Gender string `json:"gender"`
+	UserID     string `json:"user_id" binding:"required"`
+	Name       string `json:"name" binding:"required,min=2,max=16"`
+	Gender     string `json:"gender"`
+	SpiritRoot int32  `json:"spirit_root"`
 }
 
 type PlayerResponse struct {
@@ -700,4 +709,3 @@ type PlayerResponse struct {
 	CultRate    float64 `json:"cult_rate"`
 	BreakRate   int32   `json:"break_rate"`
 }
-
