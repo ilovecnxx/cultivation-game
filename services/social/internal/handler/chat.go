@@ -3,6 +3,7 @@ package handler
 
 import (
 	"encoding/json"
+	"fmt"
 	"log/slog"
 	"net/http"
 	"strconv"
@@ -173,25 +174,30 @@ func (h *ChatHandler) GetHistory(c *gin.Context) {
 }
 
 
-// SendMessage 发送聊天消息 — HTTP 通道（供前端发送非系统消息）。
+// SendMessage 发送聊天消息 — HTTP 通道。
+// sender 身份从 JWT 中提取，不接受请求体传参（防伪造身份）。
 // @Router POST /api/v1/chat/send [post]
 func (h *ChatHandler) SendMessage(c *gin.Context) {
 	var req struct {
-		Channel    string `json:"channel" binding:"required"`
-		Content    string `json:"content" binding:"required"`
-		SenderID   string `json:"sender_id"`
-		SenderName string `json:"sender_name"`
-		TargetID   string `json:"target_id"`
+		Channel  string `json:"channel" binding:"required"`
+		Content  string `json:"content" binding:"required"`
+		TargetID string `json:"target_id"`
 	}
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "参数错误"})
 		return
 	}
+	// 从 JWT 提取身份（由 jwtAuthMiddleware 注入 context）
+	senderID := fmt.Sprint(c.GetInt64("player_id"))
+	senderName := c.GetString("account")
+	if senderName == "" {
+		senderName = "匿名修士"
+	}
 	msg, err := h.svc.SendMessage(
 		c.Request.Context(),
 		model.ChatChannel(req.Channel),
-		req.SenderID,
-		req.SenderName,
+		senderID,
+		senderName,
 		req.TargetID,
 		req.Content,
 	)

@@ -603,7 +603,7 @@ func main() {
 			v1Social.GET("/chat/history", s.Chat.GetHistory)
 			v1Social.POST("/chat/online", s.Chat.GetOnlineStatus)
 			v1Social.POST("/chat/system-notify", s.Chat.SendSystemNotification)
-				v1Social.POST("/chat/send", s.Chat.SendMessage)
+				v1Social.POST("/chat/send", jwtAuthMiddleware(jwtManager), s.Chat.SendMessage)
 
 			v1Social.GET("/friends", s.Friend.GetFriendList)
 			v1Social.GET("/friends/blacklist", s.Friend.GetBlacklist)
