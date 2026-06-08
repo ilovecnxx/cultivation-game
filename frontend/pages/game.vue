@@ -150,7 +150,7 @@ const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
 
 function handleMenu(key: string) {
-  if (key === 'inventory' || key === 'items') { modalVisible.value=false; inventoryRef.value?.open(true); return }
+  if (key === 'items') { modalVisible.value=false; inventoryRef.value?.open(true); return }
   if (key === 'ranking') { modalVisible.value=false; rankingRef.value?.open(true); return }
   if (key === 'social') { showPigeon.value = true; return }
   if (key === 'friend-list') { modalVisible.value=false; socialRef.value?.open(true); return }
