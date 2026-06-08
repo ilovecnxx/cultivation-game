@@ -36,5 +36,6 @@ export { setAccessToken, getAccessToken, isLoggedIn, setRefreshToken, getRefresh
 export { useAuth } from '../composables/useAuth';
 export { realmNames, realmCoefs, number, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, menus, descs, fmt, wikiRealms, wikiSpiritReqs, wikiRootBonuses, wikiQuality, MapLoc, MapRegion } from '../composables/useGameData';
 export { useGameState } from '../composables/useGameState';
+export { weaponTiers, weaponTypes, elements, elementNames, realmBaseAttack, generateWeapon, Element, Weapon } from '../composables/useWeaponSystem';
 export { wsClient, WsEventType, WsEventHandlers, WsConnectionState } from '../composables/useWebSocket';
 export { useNuxtDevTools } from '../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

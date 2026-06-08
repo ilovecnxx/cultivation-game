@@ -100,6 +100,7 @@
     <PigeonPanel :show="showPigeon" :player-name="player.name||'修仙者'" @close="showPigeon=false" />
     <AlchemyView ref="alchemyRef" />
     <TradeView ref="tradeRef" />
+    <PlayerView ref="forgeRef" />
     <CombatView ref="combatRef" />
   </div>
 </template>
@@ -111,6 +112,7 @@ import SocialView from '@/modules/social/SocialView.vue'
 import AlchemyView from '@/modules/cultivation/AlchemyView.vue'
 import TradeView from '@/modules/trade/TradeView.vue'
 import CombatView from '@/modules/combat/CombatView.vue'
+import PlayerView from '@/modules/player/PlayerView.vue'
 // useGameState auto-imported by Nuxt
 const {
   isDark, toggleTheme, getToken, getPID, refreshToken, activeNav,
@@ -142,6 +144,7 @@ const showPigeon = ref(false)
 const alchemyRef = ref()
 const tradeRef = ref()
 const combatRef = ref()
+const forgeRef = ref()
 
 const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
@@ -154,6 +157,7 @@ function handleMenu(key: string) {
   if (key === 'pill' || key === 'alchemy') { modalVisible.value=false; alchemyRef.value?.open(true); return }
   if (key === 'auction' || key === 'buy') { modalVisible.value=false; tradeRef.value?.open(true); return }
   if (key === 'dungeon') { modalVisible.value=false; combatRef.value?.open(true); return }
+  if (key === 'equipment' || key === 'craft') { modalVisible.value=false; forgeRef.value?.open(true); return }
   const m = menus.find((x: any) => x.key === key)
   if (m) openMenu(m)
 }
