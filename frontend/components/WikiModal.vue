@@ -77,8 +77,7 @@ const equipRealm = ref(1)
 const equipTier = ref('human')
 const equipSlotNames: EquipmentSlot[] = ['weapon','robe','headgear','boots','necklace','ring']
 function getSlotVisual(slot: EquipmentSlot, realm: number, tierKey: string) {
-  const tier = tierInfo.find(t=>t.key===tierKey)
-  return equipVisual(realm, tier?.name?.toLowerCase()||'human')
+  return equipVisual(realm, tierKey)
 }
 function getSlotStats(slot: EquipmentSlot, realm: number, mult: number): string {
   const b = realmBaseStats[realm]||realmBaseStats[1]
