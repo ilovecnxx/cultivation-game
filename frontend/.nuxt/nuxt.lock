@@ -1,0 +1,9 @@
+{
+  "pid": 3859,
+  "startedAt": 1780940706315,
+  "command": "dev",
+  "cwd": "/root/projects/cultivation-game/frontend",
+  "port": 3000,
+  "hostname": "::",
+  "url": "http://localhost:3000"
+}
