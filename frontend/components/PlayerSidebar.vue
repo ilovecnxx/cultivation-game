@@ -76,7 +76,7 @@
     <!-- 装备槽 -->
     <div class="side-card side-equip">
       <div class="equip-slots">
-        <div v-for="s in equipSlots" :key="s.key" class="eq-slot" :title="s.name">{{ s.icon }}<span>{{ getEquipName(s.key) }}</span></div>
+        <div v-for="s in equipSlots" :key="s.key" class="eq-slot" :title="getEquipTooltip(s.key)">{{ s.icon }}<span>{{ getEquipName(s.key) }}</span></div>
       </div>
     </div>
   </aside>
@@ -113,4 +113,5 @@ const equipSlots = [
 ]
 
 function getEquipName(slot: string): string { const eq = equips.value.find((e:any)=>e.slot===slot); return eq ? eq.name : equipSlots.find(s=>s.key===slot)?.name || slot }
+function getEquipTooltip(slot: string): string { const eq = equips.value.find((e:any)=>e.slot===slot); if(!eq) return slotInfo[slot]?.name||slot; const lines=[eq.name]; if(eq.atk)lines.push('攻击:'+eq.atk); if(eq.def)lines.push('防御:'+eq.def); if(eq.hp)lines.push('生命:'+eq.hp); return lines.join('\n') }
 </script>
