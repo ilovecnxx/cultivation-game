@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted, onUnmounted, watch } from 'vue'
 // router from nuxt auto-import
-import { apiFetch } from '@/core/api'
+import { apiFetch } from '../src/core/api'
 // navigateTo auto-imported by Nuxt
 
 function getIsNight(): boolean {

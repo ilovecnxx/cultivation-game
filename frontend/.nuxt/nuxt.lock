@@ -1,6 +1,6 @@
 {
-  "pid": 195144,
-  "startedAt": 1780909560141,
+  "pid": 201804,
+  "startedAt": 1780910019364,
   "command": "dev",
   "cwd": "/root/projects/cultivation-game/frontend",
   "port": 3000,

@@ -62,8 +62,8 @@ interface _GlobalComponents {
   VanDatePicker: typeof import("../../node_modules/vant/es/date-picker/DatePicker")['default']
   VanDialog: typeof import("../../node_modules/vant/es/dialog/Dialog")['default']
   VanDivider: typeof import("../../node_modules/vant/es/divider/Divider")['default']
-  VanDropdownMenu: typeof import("../../node_modules/vant/es/dropdown-menu/DropdownMenu")['default']
   VanDropdownItem: typeof import("../../node_modules/vant/es/dropdown-item/DropdownItem")['default']
+  VanDropdownMenu: typeof import("../../node_modules/vant/es/dropdown-menu/DropdownMenu")['default']
   VanEmpty: typeof import("../../node_modules/vant/es/empty/Empty")['default']
   VanField: typeof import("../../node_modules/vant/es/field/Field")['default']
   VanFloatingBubble: typeof import("../../node_modules/vant/es/floating-bubble/FloatingBubble")['default']
@@ -79,8 +79,8 @@ interface _GlobalComponents {
   VanIndexBar: typeof import("../../node_modules/vant/es/index-bar/IndexBar")['default']
   VanList: typeof import("../../node_modules/vant/es/list/List")['default']
   VanLoading: typeof import("../../node_modules/vant/es/loading/Loading")['default']
-  VanNavBar: typeof import("../../node_modules/vant/es/nav-bar/NavBar")['default']
   VanNoticeBar: typeof import("../../node_modules/vant/es/notice-bar/NoticeBar")['default']
+  VanNavBar: typeof import("../../node_modules/vant/es/nav-bar/NavBar")['default']
   VanNotify: typeof import("../../node_modules/vant/es/notify/Notify")['default']
   VanNumberKeyboard: typeof import("../../node_modules/vant/es/number-keyboard/NumberKeyboard")['default']
   VanOverlay: typeof import("../../node_modules/vant/es/overlay/Overlay")['default']
@@ -89,8 +89,8 @@ interface _GlobalComponents {
   VanPicker: typeof import("../../node_modules/vant/es/picker/Picker")['default']
   VanPickerGroup: typeof import("../../node_modules/vant/es/picker-group/PickerGroup")['default']
   VanPopover: typeof import("../../node_modules/vant/es/popover/Popover")['default']
-  VanPopup: typeof import("../../node_modules/vant/es/popup/Popup")['default']
   VanProgress: typeof import("../../node_modules/vant/es/progress/Progress")['default']
+  VanPopup: typeof import("../../node_modules/vant/es/popup/Popup")['default']
   VanPullRefresh: typeof import("../../node_modules/vant/es/pull-refresh/PullRefresh")['default']
   VanRadio: typeof import("../../node_modules/vant/es/radio/Radio")['default']
   VanRadioGroup: typeof import("../../node_modules/vant/es/radio-group/RadioGroup")['default']
@@ -103,11 +103,11 @@ interface _GlobalComponents {
   VanSidebarItem: typeof import("../../node_modules/vant/es/sidebar-item/SidebarItem")['default']
   VanSignature: typeof import("../../node_modules/vant/es/signature/Signature")['default']
   VanSkeleton: typeof import("../../node_modules/vant/es/skeleton/Skeleton")['default']
-  VanSkeletonAvatar: typeof import("../../node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']
   VanSkeletonImage: typeof import("../../node_modules/vant/es/skeleton-image/SkeletonImage")['default']
   VanSkeletonParagraph: typeof import("../../node_modules/vant/es/skeleton-paragraph/SkeletonParagraph")['default']
-  VanSkeletonTitle: typeof import("../../node_modules/vant/es/skeleton-title/SkeletonTitle")['default']
+  VanSkeletonAvatar: typeof import("../../node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']
   VanSlider: typeof import("../../node_modules/vant/es/slider/Slider")['default']
+  VanSkeletonTitle: typeof import("../../node_modules/vant/es/skeleton-title/SkeletonTitle")['default']
   VanSpace: typeof import("../../node_modules/vant/es/space/Space")['default']
   VanStep: typeof import("../../node_modules/vant/es/step/Step")['default']
   VanStepper: typeof import("../../node_modules/vant/es/stepper/Stepper")['default']
@@ -188,8 +188,8 @@ interface _GlobalComponents {
   LazyVanDatePicker: LazyComponent<typeof import("../../node_modules/vant/es/date-picker/DatePicker")['default']>
   LazyVanDialog: LazyComponent<typeof import("../../node_modules/vant/es/dialog/Dialog")['default']>
   LazyVanDivider: LazyComponent<typeof import("../../node_modules/vant/es/divider/Divider")['default']>
-  LazyVanDropdownMenu: LazyComponent<typeof import("../../node_modules/vant/es/dropdown-menu/DropdownMenu")['default']>
   LazyVanDropdownItem: LazyComponent<typeof import("../../node_modules/vant/es/dropdown-item/DropdownItem")['default']>
+  LazyVanDropdownMenu: LazyComponent<typeof import("../../node_modules/vant/es/dropdown-menu/DropdownMenu")['default']>
   LazyVanEmpty: LazyComponent<typeof import("../../node_modules/vant/es/empty/Empty")['default']>
   LazyVanField: LazyComponent<typeof import("../../node_modules/vant/es/field/Field")['default']>
   LazyVanFloatingBubble: LazyComponent<typeof import("../../node_modules/vant/es/floating-bubble/FloatingBubble")['default']>
@@ -205,8 +205,8 @@ interface _GlobalComponents {
   LazyVanIndexBar: LazyComponent<typeof import("../../node_modules/vant/es/index-bar/IndexBar")['default']>
   LazyVanList: LazyComponent<typeof import("../../node_modules/vant/es/list/List")['default']>
   LazyVanLoading: LazyComponent<typeof import("../../node_modules/vant/es/loading/Loading")['default']>
-  LazyVanNavBar: LazyComponent<typeof import("../../node_modules/vant/es/nav-bar/NavBar")['default']>
   LazyVanNoticeBar: LazyComponent<typeof import("../../node_modules/vant/es/notice-bar/NoticeBar")['default']>
+  LazyVanNavBar: LazyComponent<typeof import("../../node_modules/vant/es/nav-bar/NavBar")['default']>
   LazyVanNotify: LazyComponent<typeof import("../../node_modules/vant/es/notify/Notify")['default']>
   LazyVanNumberKeyboard: LazyComponent<typeof import("../../node_modules/vant/es/number-keyboard/NumberKeyboard")['default']>
   LazyVanOverlay: LazyComponent<typeof import("../../node_modules/vant/es/overlay/Overlay")['default']>
@@ -215,8 +215,8 @@ interface _GlobalComponents {
   LazyVanPicker: LazyComponent<typeof import("../../node_modules/vant/es/picker/Picker")['default']>
   LazyVanPickerGroup: LazyComponent<typeof import("../../node_modules/vant/es/picker-group/PickerGroup")['default']>
   LazyVanPopover: LazyComponent<typeof import("../../node_modules/vant/es/popover/Popover")['default']>
-  LazyVanPopup: LazyComponent<typeof import("../../node_modules/vant/es/popup/Popup")['default']>
   LazyVanProgress: LazyComponent<typeof import("../../node_modules/vant/es/progress/Progress")['default']>
+  LazyVanPopup: LazyComponent<typeof import("../../node_modules/vant/es/popup/Popup")['default']>
   LazyVanPullRefresh: LazyComponent<typeof import("../../node_modules/vant/es/pull-refresh/PullRefresh")['default']>
   LazyVanRadio: LazyComponent<typeof import("../../node_modules/vant/es/radio/Radio")['default']>
   LazyVanRadioGroup: LazyComponent<typeof import("../../node_modules/vant/es/radio-group/RadioGroup")['default']>
@@ -229,11 +229,11 @@ interface _GlobalComponents {
   LazyVanSidebarItem: LazyComponent<typeof import("../../node_modules/vant/es/sidebar-item/SidebarItem")['default']>
   LazyVanSignature: LazyComponent<typeof import("../../node_modules/vant/es/signature/Signature")['default']>
   LazyVanSkeleton: LazyComponent<typeof import("../../node_modules/vant/es/skeleton/Skeleton")['default']>
-  LazyVanSkeletonAvatar: LazyComponent<typeof import("../../node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']>
   LazyVanSkeletonImage: LazyComponent<typeof import("../../node_modules/vant/es/skeleton-image/SkeletonImage")['default']>
   LazyVanSkeletonParagraph: LazyComponent<typeof import("../../node_modules/vant/es/skeleton-paragraph/SkeletonParagraph")['default']>
-  LazyVanSkeletonTitle: LazyComponent<typeof import("../../node_modules/vant/es/skeleton-title/SkeletonTitle")['default']>
+  LazyVanSkeletonAvatar: LazyComponent<typeof import("../../node_modules/vant/es/skeleton-avatar/SkeletonAvatar")['default']>
   LazyVanSlider: LazyComponent<typeof import("../../node_modules/vant/es/slider/Slider")['default']>
+  LazyVanSkeletonTitle: LazyComponent<typeof import("../../node_modules/vant/es/skeleton-title/SkeletonTitle")['default']>
   LazyVanSpace: LazyComponent<typeof import("../../node_modules/vant/es/space/Space")['default']>
   LazyVanStep: LazyComponent<typeof import("../../node_modules/vant/es/step/Step")['default']>
   LazyVanStepper: LazyComponent<typeof import("../../node_modules/vant/es/stepper/Stepper")['default']>

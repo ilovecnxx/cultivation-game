@@ -26,6 +26,9 @@ export default defineNuxtConfig({
   css: ['vant/lib/index.css', '~/styles/vant-theme.scss', '~/styles/main.scss'],
 
   vite: {
+    resolve: {
+      alias: { '@': '/root/projects/cultivation-game/frontend/src' },
+    },
     css: {
       preprocessorOptions: {
         scss: {
