@@ -647,6 +647,22 @@ func main() {
 			v1Social.POST("/sect/war/enroll", s.SectExtra.EnrollWar)
 			v1Social.POST("/sect/rank", s.SectExtra.GetSectRank)
 
+				// 宗门科技树
+				v1Social.GET("/sect/tech/list", s.SectTech.ListTechs)
+				v1Social.POST("/sect/tech/upgrade", s.SectTech.UpgradeTech)
+
+				// 宗门仓库
+				v1Social.POST("/sect/warehouse/donate", s.SectWarehouse.DonateItem)
+				v1Social.GET("/sect/warehouse/list", s.SectWarehouse.GetWarehouseItems)
+				v1Social.POST("/sect/warehouse/buy", s.SectWarehouse.BuyItem)
+				v1Social.POST("/sect/warehouse/donate-funds", s.SectWarehouse.DonateFunds)
+
+				// 功法阁
+				v1Social.GET("/sect/technique/list", s.SectTechnique.GetTechniques)
+				v1Social.POST("/sect/technique/exchange", s.SectTechnique.ExchangeTechnique)
+				v1Social.POST("/sect/technique/upgrade", s.SectTechnique.UpgradeTechnique)
+				v1Social.GET("/sect/technique/my", s.SectTechnique.GetMyTechniques)
+
 			v1Social.POST("/daolv/propose", s.DaoLv.Propose)
 			v1Social.POST("/daolv/handle-proposal", s.DaoLv.HandleProposal)
 			v1Social.GET("/daolv/status/:playerID", s.DaoLv.GetStatus)

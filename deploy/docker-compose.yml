@@ -21,6 +21,8 @@ networks:
 
 volumes:
   mysql-data:
+  mongo-data:
+  redis-data:
 
 services:
   # ============================================
@@ -34,12 +36,20 @@ services:
       dockerfile: services/server/Dockerfile
     ports:
       - "${SERVER_PORT:-8080}:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       - GAME_ENV=${GAME_ENV:-development}
       - SERVER_PORT=8080
-      - MYSQL_DSN=${SERVER_MYSQL_DSN:-root:${MYSQL_ROOT_PASSWORD}@tcp(mysql:3306)/${MYSQL_DATABASE:-cultivation_game}?charset=utf8mb4&parseTime=True&loc=Local}
+      - MYSQL_DSN=${SERVER_MYSQL_DSN:-root:root@tcp(mysql:3306)/${MYSQL_DATABASE:-cultivation_game}?charset=utf8mb4&parseTime=True&loc=Local}
+      - JWT_ACCESS_SECRET=${JWT_ACCESS_SECRET:-cultivation-game-access-secret-dev-only}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET:-cultivation-game-refresh-secret-dev-only}
+      - MONGO_URI=${MONGO_URI:-mongodb://root:example@mongo:27017/cultivation_game?authSource=admin}
+      - REDIS_ADDR=${REDIS_ADDR:-host.docker.internal:6379}
     depends_on:
       mysql:
+        condition: service_healthy
+      mongo:
         condition: service_healthy
     deploy:
       resources:
@@ -92,6 +102,32 @@ services:
           cpus: "0.5"
           memory: 512M
 
+  # ============================================
+  # MongoDB
+  # ============================================
+  mongo:
+    <<: *service-common
+    image: mongo:7.0
+    ports:
+      - "127.0.0.1:27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+
+  # Redis runs on host, not in Docker (host.docker.internal:6379)
   # ============================================
   # Nginx (serves frontend + proxies to server)
   # ============================================
