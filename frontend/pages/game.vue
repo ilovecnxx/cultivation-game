@@ -98,6 +98,7 @@
     <InventoryView ref="inventoryRef" />
     <RankingView ref="rankingRef" />
     <SocialView ref="socialRef" />
+    <PigeonPanel :show="showPigeon" :player-name="player.name||'修仙者'" @close="showPigeon=false" />
   </div>
 </template>
 
@@ -132,6 +133,7 @@ const {
 const inventoryRef = ref()
 const rankingRef = ref()
 const socialRef = ref()
+const showPigeon = ref(false)
 
 
 const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
@@ -144,7 +146,8 @@ watch(activeNav, (name) => {
   if (name === 'wiki') { showWiki.value = true; return }
   if (name === 'inventory' || name === 'items') { inventoryRef.value?.open(true); return }
   if (name === 'ranking') { rankingRef.value?.open(true); return }
-  if (name === 'friend-list' || name === 'social') { socialRef.value?.open(true); return }
+  if (name === 'social') { showPigeon.value = true; return }
+  if (name === 'friend-list') { socialRef.value?.open(true); return }
   const m = menus.find((x: any) => x.key === name)
   if (m) openMenu(m)
 })

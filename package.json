@@ -1,1 +1,1 @@
-{}
+{"name":"cultivation-game","version":"0.1.0","private":true,"type":"module","scripts":{"dev":"nuxt dev","build":"nuxt build","generate":"nuxt generate","preview":"nuxt preview","test":"vitest run"},"dependencies":{"@vant/nuxt":"^1.0.7","nuxt":"^4.4.7","pinia":"^2.1.7","vant":"^4.9.24","vue":"^3.4.21"},"devDependencies":{"sass":"^1.71.1","typescript":"^5.3.3","vitest":"^1.6.0","vue-tsc":"^2.0.6"}}
