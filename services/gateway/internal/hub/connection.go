@@ -40,6 +40,7 @@ const (
 // Connection 代表一个 WebSocket 连接。
 // 每个连接运行 ReadPump 和 WritePump 两个 goroutine。
 type Connection struct {
+	Dropped	atomic.Uint64	`json:"-"`  // 丢弃消息计数器
 	ID        string                     // 连接唯一 ID
 	PlayerID  uint64                     // 玩家 ID（认证后设置）
 	Account   string                     // 账号
@@ -262,8 +263,11 @@ func (c *Connection) ReadPump() {
 func (c *Connection) WritePump() {
 	// 心跳定时器
 	pingTicker := time.NewTicker(c.hub.config.PingInterval)
+	// 丢弃消息统计定时器
+	dropLogTicker := time.NewTicker(30 * time.Second)
 	defer func() {
 		pingTicker.Stop()
+		dropLogTicker.Stop()
 		slog.Info("write pump exit", "player_id", c.PlayerID, "conn_id", c.ID)
 		c.Close()
 	}()
@@ -283,6 +287,16 @@ func (c *Connection) WritePump() {
 					"conn_id", c.ID,
 				)
 				return
+			}
+
+		case <-dropLogTicker.C:
+			// 定期输出丢弃消息统计
+			if dropped := c.Dropped.Swap(0); dropped > 0 {
+				slog.Warn("send buffer full, messages dropped",
+					"count", dropped,
+					"player_id", c.PlayerID,
+					"conn_id", c.ID,
+				)
 			}
 
 		case <-pingTicker.C:
@@ -328,10 +342,8 @@ func (c *Connection) Send(data []byte) bool {
 	case c.SendCh <- data:
 		return true
 	default:
-		slog.Warn("send buffer full, dropping message",
-			"player_id", c.PlayerID,
-			"conn_id", c.ID,
-		)
+		// 使用原子计数器记录丢弃量，避免高频 slog.Warn 调用
+		c.Dropped.Add(1)
 		return false
 	}
 }

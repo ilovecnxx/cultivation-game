@@ -67,6 +67,10 @@ func main() {
 	// =========================================================
 	rateLimiter := ratelimit.NewRateLimiter(cfg.RateLimitRate, cfg.RateLimitCapacity)
 
+	// HTTP 端点独立限流器（防止暴力破解）
+	loginLimiter := ratelimit.NewRateLimiter(5.0, 10)    // 登录：5 req/s/IP，突发 10
+	registerLimiter := ratelimit.NewRateLimiter(2.0, 5)   // 注册：2 req/s/IP，突发 5
+
 	// =========================================================
 	// 5. 初始化消息路由器（NATS）
 	// =========================================================
@@ -160,8 +164,6 @@ func main() {
 
 	r.GET("/ws", wsHandler(hub, jwtManager, cfg, allowedOrigins))
 	r.POST("/auth/refresh", refreshTokenHandler(jwtManager))
-	r.POST("/auth/login", loginHandler(jwtManager, grpcClient))
-	r.POST("/auth/register", registerHandler(jwtManager, grpcClient, hub))
 	r.GET("/health", healthHandler(hub, msgRouter))
 
 	// 注册分析引擎路由
@@ -169,6 +171,10 @@ func main() {
 		analyticsHandler := analytics.NewHandler(analyticsEngine, nil)
 		analyticsHandler.RegisterRoutes(r)
 	}
+
+	// 应用 HTTP 限流中间件到登录/注册端点
+	r.POST("/auth/login", rateLimitMiddleware(loginLimiter, "login"), loginHandler(jwtManager, grpcClient))
+	r.POST("/auth/register", rateLimitMiddleware(registerLimiter, "register"), registerHandler(jwtManager, grpcClient, hub))
 
 	// =========================================================
 	// 12. 启动 HTTP 服务器
@@ -548,6 +554,22 @@ func registerHandler(jwtManager *auth.JWTManager, grpcClient *server.GRPCClient,
 			"access_token":  accessToken,
 			"refresh_token": refreshToken,
 		})
+	}
+}
+
+// rateLimitMiddleware HTTP 端点限流中间件，基于客户端 IP。
+func rateLimitMiddleware(rl *ratelimit.RateLimiter, action string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		key := "http:" + action + ":" + c.ClientIP()
+		if !rl.Allow(key) {
+			slog.Warn("HTTP rate limit exceeded", "action", action, "ip", c.ClientIP())
+			c.AbortWithStatusJSON(http.StatusTooManyRequests, gin.H{
+				"code": 429,
+				"msg":  "请求过于频繁，请稍后重试",
+			})
+			return
+		}
+		c.Next()
 	}
 }
 
