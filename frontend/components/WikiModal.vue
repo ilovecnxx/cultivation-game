@@ -52,7 +52,7 @@
             <table class="wiki-table"><thead><tr><th>部位</th><th>名称</th><th>主属性</th><th>品阶倍率</th><th>词缀</th></tr></thead><tbody>
               <tr v-for="s in equipSlotNames" :key="s">
                 <td class="tc">{{ slotInfo[s].icon }} {{ slotInfo[s].name }}</td>
-                <td :style="({...getSlotVisual(s, equipRealm, equipTier),fontWeight:'700',padding:'6px 10px',borderRadius:'4px'})">{{ equipNames[equipRealm]?.[equipTier]?.[s] || '—' }}<span v-if="getSlotVisual(s,equipRealm,equipTier).level>=3" style="font-size:10px;display:block;color:inherit">✦</span></td>
+                <td :style="({...getSlotVisual(s, equipRealm, equipTier),fontWeight:'700',padding:'6px 10px',borderRadius:'4px'})" v-html="(colorizeName(equipNames[equipRealm]?.[equipTier]?.[s]||'—', equipTier)) + (getSlotVisual(s,equipRealm,equipTier).level>=3 ? '<span style=font-size:10px;display:block>✦</span>' : '')"></td>
                 <td style="font-size:11px;color:#6bcb77">{{ getSlotStats(s, equipRealm, tierInfo.find(t=>t.key===equipTier)?.mult||0.5) }}</td>
                 <td :style="{color:(tierInfo.find(t=>t.key===equipTier)?.color||'#888')}">×{{ tierInfo.find(t=>t.key===equipTier)?.mult||0.5 }}</td>
                 <td>{{ tierInfo.find(t=>t.key===equipTier)?.subStats||0 }}条</td>
@@ -69,7 +69,7 @@
 defineProps<{ show: boolean; realmId: number; playerSpiritName: string }>()
 defineEmits(['close'])
 import { fmt, wikiRealms, wikiSpiritReqs, wikiRootBonuses, rootNames, qualityNames, wikiQuality } from '@/composables/useGameData'
-import { equipNames, realmNames, realmBaseStats, tierInfo, slotInfo, equipVisual, type EquipmentSlot } from '@/composables/useEquipmentData'
+import { equipNames, realmNames, realmBaseStats, tierInfo, slotInfo, equipVisual, colorizeName, type EquipmentSlot } from '@/composables/useEquipmentData'
 
 const tab = ref('realm')
 const wikiTabs = [{ key: 'realm', label: '境界体系' }, { key: 'root', label: '灵根体系' }, { key: 'equip', label: '装备体系' }]

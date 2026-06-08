@@ -15,6 +15,7 @@ declare global {
   const closeDialog: typeof import('vant').closeDialog
   const closeNotify: typeof import('vant').closeNotify
   const closeToast: typeof import('vant').closeToast
+  const colorizeName: typeof import('../../composables/useEquipmentData').colorizeName
   const computed: typeof import('vue').computed
   const createError: typeof import('../../node_modules/nuxt/dist/app/composables/error').createError
   const createUseAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').createUseAsyncData
@@ -131,6 +132,7 @@ declare global {
   const showSuccessToast: typeof import('vant').showSuccessToast
   const showToast: typeof import('vant').showToast
   const slotInfo: typeof import('../../composables/useEquipmentData').slotInfo
+  const tierColors: typeof import('../../composables/useEquipmentData').tierColors
   const tierInfo: typeof import('../../composables/useEquipmentData').tierInfo
   const toRaw: typeof import('vue').toRaw
   const toRef: typeof import('vue').toRef
@@ -278,6 +280,7 @@ declare module 'vue' {
     readonly closeDialog: UnwrapRef<typeof import('vant')['closeDialog']>
     readonly closeNotify: UnwrapRef<typeof import('vant')['closeNotify']>
     readonly closeToast: UnwrapRef<typeof import('vant')['closeToast']>
+    readonly colorizeName: UnwrapRef<typeof import('../../composables/useEquipmentData')['colorizeName']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['createError']>
     readonly createUseAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['createUseAsyncData']>
@@ -394,6 +397,7 @@ declare module 'vue' {
     readonly showSuccessToast: UnwrapRef<typeof import('vant')['showSuccessToast']>
     readonly showToast: UnwrapRef<typeof import('vant')['showToast']>
     readonly slotInfo: UnwrapRef<typeof import('../../composables/useEquipmentData')['slotInfo']>
+    readonly tierColors: UnwrapRef<typeof import('../../composables/useEquipmentData')['tierColors']>
     readonly tierInfo: UnwrapRef<typeof import('../../composables/useEquipmentData')['tierInfo']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>

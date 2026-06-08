@@ -183,6 +183,25 @@ export interface EquipVisual {
 const tierHue: Record<string, number> = { human:30, yellow:45, dark:130, earth:210, heaven:350 }
 const tierIdx: Record<string, number> = { human:0, yellow:1, dark:2, earth:3, heaven:4 }
 
+// 品阶字独立颜色（天/地/玄/黄/人）
+export const tierColors: Record<string, string> = {
+  human:  '#9e9e9e',  // 人·灰
+  yellow: '#daa520',  // 黄·金
+  dark:   '#4caf50',  // 玄·翠
+  earth:  '#448aff',  // 地·蓝
+  heaven: '#ff5252',  // 天·赤
+}
+
+// 给装备名加品阶颜色标签：天·碎星戟 → <span style=color>天</span>·碎星戟
+export function colorizeName(name: string, tier: string): string {
+  const color = tierColors[tier] || '#fff'
+  const dot = name.indexOf('·')
+  if (dot > 0) {
+    return `<span style="color:${color};font-weight:900">${name.slice(0,dot)}</span>·${name.slice(dot+1)}`
+  }
+  return `<span style="color:${color}">${name}</span>`
+}
+
 export function equipVisual(realm: number, tier: string): EquipVisual {
   const hue = tierHue[tier] || 30
   const ti = tierIdx[tier] || 0
