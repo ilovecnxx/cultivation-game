@@ -172,6 +172,36 @@ func (h *ChatHandler) GetHistory(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": messages})
 }
 
+
+// SendMessage 发送聊天消息 — HTTP 通道（供前端发送非系统消息）。
+// @Router POST /api/v1/chat/send [post]
+func (h *ChatHandler) SendMessage(c *gin.Context) {
+	var req struct {
+		Channel    string `json:"channel" binding:"required"`
+		Content    string `json:"content" binding:"required"`
+		SenderID   string `json:"sender_id"`
+		SenderName string `json:"sender_name"`
+		TargetID   string `json:"target_id"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "参数错误"})
+		return
+	}
+	msg, err := h.svc.SendMessage(
+		c.Request.Context(),
+		model.ChatChannel(req.Channel),
+		req.SenderID,
+		req.SenderName,
+		req.TargetID,
+		req.Content,
+	)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": msg})
+}
+
 // SendSystemNotification 发送系统通知(供世界事件等服务调用)
 // @Router POST /api/v1/chat/system-notify [post]
 func (h *ChatHandler) SendSystemNotification(c *gin.Context) {

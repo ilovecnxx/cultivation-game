@@ -161,6 +161,25 @@ func (s *ChatService) HandleSystemMessage(channel model.ChatChannel, content str
 }
 
 // broadcastMessage 向频道内所有在线客户端广播消息
+// SendMessage 发送普通玩家聊天消息（HTTP 通道）。
+func (s *ChatService) SendMessage(ctx context.Context, channel model.ChatChannel, senderID, senderName, targetID, content string) (*model.ChatMessage, error) {
+	msg := &model.ChatMessage{
+		ID:        uuid.New().String(),
+		Channel:   channel,
+		SenderID:  senderID,
+		SenderName: senderName,
+		TargetID:  targetID,
+		Content:   content,
+		IsSystem:  false,
+	}
+	if err := s.repo.Insert(ctx, msg); err != nil {
+		return nil, fmt.Errorf("发送消息失败: %w", err)
+	}
+	// 广播给所有在线的频道订阅者
+	s.broadcastMessage(msg)
+	return msg, nil
+}
+
 func (s *ChatService) broadcastMessage(msg *model.ChatMessage) {
 	s.clientsLock.RLock()
 	defer s.clientsLock.RUnlock()

@@ -903,7 +903,7 @@ function startRevive(){
   const maleJokes=['刚才是不是有人飞升了？哦，看错了，是脸着地。','这位道友被怪物一个喷嚏喷死了...','修仙界快讯：又一位猛男体验了免费回城服务。','怪物：就这？我还没用力呢！','据目击者称，临终前大喊"我还没存档！！"','系统提示：该猛男已进入躺平状态。','男人至死是少年，但他现在真的是少年了...','兄弟，下次记得先存档再打架。']
   const femaleJokes=['仙女下凡...脸先着地了。','这位仙子被怪物吓得花容失色，香消玉殒。','修仙界快讯：一位仙女体验了免费回城服务。','怪物：对不起对不起，我不是故意的！','修真界八卦：又一位仙子去轮回重修了。','系统提示：该仙子已进入美容觉模式。','红颜薄命，但5秒后又是一条好汉！','下次记得带护花使者一起出门哦~']
   const jokes=player.gender==='female'?femaleJokes:maleJokes
-  chatMessages.push({time:new Date().toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),name:'⚰️ 讣告',text:player.name+' '+deathTitle+' — '+jokes[Math.floor(Math.random()*jokes.length)],color:'#e53935',channel:'world'});saveChat()
+  chatMessages.push({time:new Date().toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),name:'⚰️ 讣告',text:player.name+' '+deathTitle+' — '+jokes[Math.floor(Math.random()*jokes.length)],color:'#e53935',channel:'world'})
   reviveTimer=setInterval(()=>{
     reviveCountdown.value--
     if(reviveCountdown.value<=0){
@@ -933,7 +933,7 @@ async function doTrain(){
     encounterType.value=d.data.encounter
     encounterResult.value={title:d.data.encounter,old:player.spiritName+'·'+player.qualityName,new:sn+'·'+qn,icon:d.data.encounter==='仙人点化'?'✨':'🍄'}
     addLog('explore','🌟 奇遇！'+d.data.encounter+'：灵根洗炼 '+encounterResult.value.old+' → '+encounterResult.value.new)
-    if(d.data.encounter==='仙人点化'){chatMessages.push({time:new Date().toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),name:'📢 系统',text:player.name+' 获得仙人点化，灵根品质提升至 '+sn+'·'+qn+'！',color:'#ffd700',channel:'world'});saveChat()}
+    if(d.data.encounter==='仙人点化'){chatMessages.push({time:new Date().toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),name:'📢 系统',text:player.name+' 获得仙人点化，灵根品质提升至 '+sn+'·'+qn+'！',color:'#ffd700',channel:'world'})}
     setTimeout(()=>{encounterResult.value=null;encounterType.value=''},5000)
   }
   if(d.data.dead){startRevive();return}
@@ -1032,20 +1032,18 @@ const logFilter=ref('all')
 const logLocked=ref(false)
 const logs=reactive([])
 const filteredLogs=computed(()=>logFilter.value==='all'?logs:logs.filter(l=>l.type===logFilter.value))
-const CHAT_KEY='game_chat'
-function loadChat(){try{const d=localStorage.getItem(CHAT_KEY);if(d)chatMessages.push(...JSON.parse(d))}catch{}}
-function saveChat(){try{const items=chatMessages.slice(-200);localStorage.setItem(CHAT_KEY,JSON.stringify(items))}catch{}}
+	const CHAT_KEY='game_chat'
+	async function loadChatHistory(){
+	  try{
+	    const t=getToken();if(!t)return
+	    const r=await fetch('/api/v1/chat/history?channel=world&limit=50',{headers:{Authorization:'Bearer '+t}})
+	    const d=await r.json()
+	    if(d.data&&d.data.length){d.data.reverse().forEach((m:any)=>{chatMessages.push({time:new Date(m.created_at).toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),name:m.sender_name||'未知',text:m.content||'',color:m.is_system?'#ffd700':'#d4a843',channel:m.channel||'world'})})}
+	  }catch{}
+	}
+	function saveChat(){/* 聊天由后端MongoDB持久化 */}
 const chatTab=ref('all')
-const chatMessages=reactive([
-  {time:'10:30',name:'剑修无名',text:'有人组队刷秘境吗？',color:'#ff6b6b',channel:'world'},
-  {time:'10:31',name:'丹道大师',text:'出售三品聚气丹，量大从优',color:'#6bcb77',channel:'world'},
-  {time:'10:32',name:'阵法宗师',text:'宗门收人，筑基以上来',color:'#4d96ff',channel:'sect'},
-  {time:'10:33',name:'散修小明',text:'新手求带，在线等',color:'#ffd93d',channel:'world'},
-  {time:'10:34',name:'师姐小云',text:'今天的宗门任务记得做哦~',color:'#ff69b4',channel:'sect'},
-  {time:'10:35',name:'神秘商人',text:'私聊我，有好货',color:'#d4a843',channel:'private'},
-  {time:'10:36',name:'道侣小月',text:'双修吗？我在青云山等你',color:'#ff6b9e',channel:'daoyou'},
-  {time:'10:37',name:'师父青云子',text:'徒儿记得每日修炼',color:'#64b5f6',channel:'master'},
-])
+	const chatMessages=reactive([])
 const chatInput=ref('')
 const filteredChat=computed(()=>chatTab.value==='all'?chatMessages:chatMessages.filter(m=>m.channel===chatTab.value))
 const chatPlaceholder=computed(()=>{const t:Record<string,string>={all:'发送全服消息...',world:'世界频道发言...',sect:'宗门频道发言...',private:'输入私聊对象和内容...',friend:'给好友留言...',daoyou:'道侣悄悄话...',master:'向师父/徒弟发言...'};return t[chatTab.value]||'说点什么...'})
@@ -1070,26 +1068,45 @@ const playerEquips=ref<any[]>([]);const equipCraftSlot=ref('')
 function getEquip(slot:string){return playerEquips.value.find((e:any)=>e.slot===slot)}
 async function loadEquips(){const pid=getPID();if(!pid)return;try{const r=await fetch('/api/v1/player/'+pid+'/equipment',{headers:{Authorization:'Bearer '+getToken()}});const d=await r.json();playerEquips.value=d.data||[]}catch{}}
 async function craftEquip(s:any){equipCraftSlot.value=s.key;const pid=getPID();if(!pid)return;await apiPost('/api/v1/player/'+pid+'/equipment/craft',{slot:s.key,tier:player.realmId});loadEquips();addLog('item','⚒️ 打造 '+s.name);equipCraftSlot.value=''}
-let ws:WebSocket|null=null
-function connectWS(){
-  const t=getToken();if(!t)return
-  try{
-    ws=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws?token='+t)
-    ws.onmessage=(e)=>{try{const m=JSON.parse(e.data);if(m.type==='chat'){chatMessages.push({time:new Date().toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),name:m.name,text:m.text,color:m.color,channel:m.channel||'world'});saveChat();if(chatMessages.length>300)chatMessages.shift()}}catch{}}
-    ws.onclose=()=>{setTimeout(connectWS,5000)}
-    ws.onerror=()=>{ws?.close()}
-  }catch{}
-}
-function sendChat(){
-  const v=chatInput.value.trim();if(!v)return
-  const ch=chatTab.value==='all'?'world':chatTab.value
-  chatInput.value=''
-  if(ws&&ws.readyState===WebSocket.OPEN){ws.send(JSON.stringify({type:'chat',channel:ch,text:v}))}
-  else{chatMessages.push({time:new Date().toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),name:player.name||'修仙者',text:v,color:'#d4a843',channel:ch});saveChat()}
-}
+	let ws:WebSocket|null=null
+	let chatWs:WebSocket|null=null
+	function connectWS(){
+	  const t=getToken();if(!t)return
+	  try{
+	    ws=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws?token='+t)
+	    ws.onmessage=(e)=>{try{const m=JSON.parse(e.data);if(m.type==='chat'){handleServerChat(m)}}catch{}}
+	    ws.onclose=()=>{setTimeout(connectWS,5000)}
+	    ws.onerror=()=>{ws?.close()}
+	  }catch{}
+	  connectChatWS()
+	}
+	function connectChatWS(){
+	  try{
+	    chatWs=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/api/v1/chat/ws?user_id='+(getPID()||''))
+	    chatWs.onmessage=(e)=>{try{const m=JSON.parse(e.data);handleServerChat(m)}catch{}}
+	    chatWs.onclose=()=>{setTimeout(connectChatWS,5000)}
+	    chatWs.onerror=()=>{chatWs?.close()}
+	  }catch{}
+	}
+	function handleServerChat(m:any){
+	  chatMessages.push({time:new Date(m.created_at||Date.now()).toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),name:m.sender_name||m.name||'未知',text:m.content||m.text||'',color:m.is_system?'#ffd700':(m.color||'#d4a843'),channel:m.channel||'world'})
+	  if(chatMessages.length>300)chatMessages.shift()
+	}
+	function sendChat(){
+	  const v=chatInput.value.trim();if(!v)return
+	  const ch=chatTab.value==='all'?'world':chatTab.value
+	  chatInput.value=''
+	  if(chatWs&&chatWs.readyState===WebSocket.OPEN){
+	    chatWs.send(JSON.stringify({channel:ch,content:v,sender_name:player.name||'修仙者'}))
+	  }else if(ws&&ws.readyState===WebSocket.OPEN){
+	    ws.send(JSON.stringify({type:'chat',channel:ch,text:v}))
+	  }
+	  // 乐观更新
+	  handleServerChat({channel:ch,content:v,sender_name:player.name||'修仙者'})
+	}
 const onlineCount=ref(0),registeredCount=ref(0)
 async function fetchStats(){try{const r=await fetch('/health');const d=await r.json();if(d.online!==undefined)onlineCount.value=d.online;if(d.registered!==undefined)registeredCount.value=d.registered}catch{}}
-onMounted(()=>{fetchStats();setInterval(fetchStats,30000);loadLogs();loadChat();loadPlayer();loadPills();loadRecipes();loadBackpack();loadFriends();loadPending();calcOfflineGains();connectWS();setTimeout(()=>{addLog('system','🌟 登录修仙世界')},500)})
+onMounted(()=>{fetchStats();setInterval(fetchStats,30000);loadLogs();loadChatHistory();loadPlayer();loadPills();loadRecipes();loadBackpack();loadFriends();loadPending();calcOfflineGains();connectWS();setTimeout(()=>{addLog('system','🌟 登录修仙世界')},500)})
 function fmt(n:number):string{return n>=10000?(n/10000).toFixed(1)+'万':n.toLocaleString()}
 const currentRealmIndex=2
 const realms=[{name:'练气'},{name:'筑基'},{name:'金丹'},{name:'元婴'},{name:'化神'},{name:'炼虚'},{name:'合体'},{name:'大乘'},{name:'渡劫'}]
