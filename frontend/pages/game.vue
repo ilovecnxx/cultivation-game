@@ -5,13 +5,13 @@
       <div class="top-bar-inner">
         <span class="brand-logo">☯</span>
         <span class="brand-name">修仙世界</span>
-        <van-tabs class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false" @click-tab="handleTabClick">
+        <van-tabs class="main-nav-tabs desktop-only" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false" @click-tab="handleTabClick">
           <van-tab title="百科" name="wiki" />
           
           <van-tab v-for="m in menus" :key="m.key" :title="m.label" :name="m.key"  />
         </van-tabs>
         <div class="top-bar-spacer"></div>
-        <div class="player-stats">
+        <div class="player-stats desktop-only">
           <span class="online-badge"><span class="online-dot" />{{ fmt(onlineCount) }} 在线</span>
           <span class="registered-badge">{{ fmt(registeredCount) }} 修士</span>
         </div>
@@ -26,7 +26,7 @@
     </div>
     <div class="gold-divider"><div class="gold-divider__light" /></div>
     <main class="gh-main">
-      <ErrorBoundary>
+      <ErrorBoundary class="desktop-only">
         <PlayerSidebar :player="player" :isDead="isDead" :training="training" :trainMult="trainMult" :currentLocInfo="currentLocInfo" :yySpeed="yySpeed" :hpPct="hpPct" :mpPct="mpPct" :cultExpPct="player.maxSpirit>0?Math.round(player.spirit/player.maxSpirit*100):0" @toggle-meditation="toggleMeditation" @do-breakthrough="doBreakthrough" @toggle-training="toggleTraining" @start-manual="startManual" @show-tooltip="showTooltip" @hide-tooltip="showCultTooltip=false" @update:train-mult="(v:number)=>trainMult=v" />
       </ErrorBoundary>
 
@@ -96,6 +96,7 @@
     <WikiModal :show="showWiki" :realm-id="player.realmId" :player-spirit-name="player.spiritName" @close="showWiki=false" />
       <GameModals :pve-report="pveReport" :pve-rounds="pveRounds" :encounter-result="encounterResult" :is-dead="isDead" :revive-countdown="reviveCountdown" :death-log="deathLog" :gender="player.gender" :hp="player.maxHp>0?Math.round(player.hp/player.maxHp*100):0" :mp="player.maxMp>0?Math.round(player.mp/player.maxMp*100):0" :spirit-sense="player.spiritSense" @update:pve-report="(v:any)=>pveReport=v" @update:pve-rounds="(v:any)=>pveRounds=v" @update:encounter-result="(v:any)=>encounterResult=v" />
   </div>
+    <MobileNav class="mobile-only" @open-sidebar="showMobileSidebar=true" @open-chat="focusChat" @open-menu="activeNav=""" @open-map="activeMenu={key:"world-map"}" @open-wiki="showWiki=true" />
 </template>
 
 <script setup lang="ts">
@@ -124,8 +125,10 @@ const {
 } = useGameState()
 
 
+const showMobileSidebar = ref(false)
 const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
+function focusChat() { document.querySelector('.chat-input-vant input')?.focus() }
 
 function handleTabClick({ name }: { name: string }) {
   if (name === "wiki") { showWiki.value = true; return }
