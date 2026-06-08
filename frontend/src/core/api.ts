@@ -8,8 +8,7 @@
 // - 生产环境建议迁移到 httpOnly Cookie + CSRF Token 方案
 // ============================================================
 
-import router from '@/router'
-
+// Nuxt: 使用 navigateTo 替代 vue-router
 /** 内存中的 Access Token（页面刷新后需要重新获取） */
 let inMemoryAccessToken: string | null = null
 
@@ -67,7 +66,7 @@ export function clearAuth(): void {
 /** token 过期，跳转登录页 */
 function redirectToLogin(): never {
   clearAuth()
-  router.push('/login')
+  window.location.href = '/'
   throw new Error('登录已过期，请重新登录')
 }
 
