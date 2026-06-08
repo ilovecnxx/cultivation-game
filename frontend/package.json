@@ -4,15 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
     "typecheck": "vue-tsc --noEmit",
-    "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
   },
   "dependencies": {
-    "pinia": "^2.1.7",
+    "@pinia/nuxt": "^0.11.3",
+    "@vant/nuxt": "^1.0.7",
+    "nuxt": "^4.4.7",
+    "pinia": "^3.0.4",
+    "vant": "^4.9.24",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
