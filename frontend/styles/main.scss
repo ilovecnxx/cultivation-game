@@ -1,6 +1,3 @@
-/* 允许文字复制 */
-body, .gh-root, .gh-panel, .chat-msg, .log-msg, .profile-attrs, .modal-card, .wiki-modal { user-select: text !important; -webkit-user-select: text !important; }
-// ============================================================
 // 修仙世界 — 全局样式入口
 // ============================================================
 @use 'variables' as *;
@@ -9,6 +6,9 @@ body, .gh-root, .gh-panel, .chat-msg, .log-msg, .profile-attrs, .modal-card, .wi
 @use 'pc';
 @use 'mobile';
 @use 'breakpoints';
+
+/* 允许文字复制 */
+body, .gh-root, .gh-panel, .chat-msg, .log-msg, .profile-attrs, .modal-card, .wiki-modal { user-select: text !important; -webkit-user-select: text !important; }
 
 // ============================================================
 // 本地字体回退 — Google Fonts 加载失败时使用系统字体
