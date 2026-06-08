@@ -98,6 +98,9 @@
     <RankingView ref="rankingRef" />
     <SocialView ref="socialRef" />
     <PigeonPanel :show="showPigeon" :player-name="player.name||'修仙者'" @close="showPigeon=false" />
+    <AlchemyView ref="alchemyRef" />
+    <TradeView ref="tradeRef" />
+    <CombatView ref="combatRef" />
   </div>
 </template>
 
@@ -105,6 +108,9 @@
 import InventoryView from '@/modules/inventory/InventoryView.vue'
 import RankingView from '@/modules/ranking/RankingView.vue'
 import SocialView from '@/modules/social/SocialView.vue'
+import AlchemyView from '@/modules/cultivation/AlchemyView.vue'
+import TradeView from '@/modules/trade/TradeView.vue'
+import CombatView from '@/modules/combat/CombatView.vue'
 // useGameState auto-imported by Nuxt
 const {
   isDark, toggleTheme, getToken, getPID, refreshToken, activeNav,
@@ -133,7 +139,9 @@ const inventoryRef = ref()
 const rankingRef = ref()
 const socialRef = ref()
 const showPigeon = ref(false)
-
+const alchemyRef = ref()
+const tradeRef = ref()
+const combatRef = ref()
 
 const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
@@ -143,6 +151,9 @@ function handleMenu(key: string) {
   if (key === 'ranking') { rankingRef.value?.open(true); return }
   if (key === 'social') { showPigeon.value = true; return }
   if (key === 'friend-list') { socialRef.value?.open(true); return }
+  if (key === 'pill' || key === 'alchemy') { alchemyRef.value?.open(true); return }
+  if (key === 'auction' || key === 'buy') { tradeRef.value?.open(true); return }
+  if (key === 'dungeon') { combatRef.value?.open(true); return }
   const m = menus.find((x: any) => x.key === key)
   if (m) openMenu(m)
 }
