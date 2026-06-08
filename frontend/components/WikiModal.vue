@@ -49,10 +49,10 @@
               <span style="color:#d4a843;font-weight:700;font-size:13px">品阶:</span>
               <button v-for="t in tierInfo" :key="t.key" class="modal-tab" :class="{active:equipTier===t.key}" @click="equipTier=t.key" :style="{color:equipTier===t.key?t.color:''}">{{ t.name }}</button>
             </div>
-            <table class="wiki-table"><thead><tr><th>部位</th><th>名称</th><th>主属性</th><th>品阶倍率</th><th>词缀</th></tr></thead><tbody>
+            <table class="wiki-table" style="font-size:12px"><thead><tr><th>部位</th><th>名称</th><th>属性值</th><th>倍率</th><th>词缀</th></tr></thead><tbody>
               <tr v-for="s in equipSlotNames" :key="s">
-                <td class="tc">{{ slotInfo[s].icon }} {{ slotInfo[s].name }}</td>
-                <td :style="{border:'2px solid '+getSlotVisual(s,equipRealm,equipTier).borderColor,padding:'6px 10px',borderRadius:'6px',fontWeight:'700'}" v-html="colorizeName(equipNames[equipRealm]?.[equipTier]?.[s]||'—', equipTier)"></td>
+                <td class="tc" style="padding:3px 6px">{{ slotInfo[s].icon }} {{ slotInfo[s].name }}</td>
+                <td :style="{border:'2px solid '+getSlotVisual(s,equipRealm,equipTier).borderColor,padding:'4px 6px',borderRadius:'4px',fontWeight:'700',fontSize:'15px',textAlign:'center'}" v-html="colorizeName(equipNames[equipRealm]?.[equipTier]?.[s]||'—', equipTier)"></td>
                 <td style="font-size:11px;color:#6bcb77">{{ getSlotStats(s, equipRealm, tierInfo.find(t=>t.key===equipTier)?.mult||0.5) }}</td>
                 <td :style="{color:(tierInfo.find(t=>t.key===equipTier)?.color||'#888')}">×{{ tierInfo.find(t=>t.key===equipTier)?.mult||0.5 }}</td>
                 <td>{{ tierInfo.find(t=>t.key===equipTier)?.subStats||0 }}条</td>
