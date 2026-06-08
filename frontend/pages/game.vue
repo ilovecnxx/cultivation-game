@@ -80,7 +80,7 @@
         <div class="wiki-modal">
           <div class="gold-divider"/><header class="top-bar" style="border-radius:8px 8px 0 0"><div class="top-bar-inner"><div class="top-bar-spacer"/><span class="brand-name" style="font-size:16px">{{ activeMenu?.label }}</span><div class="top-bar-spacer"/><button class="modal-close" @click="modalVisible=false">✕</button></div></header><div class="gold-divider"/>
           <div v-if="activeMenu?.children" class="wiki-tabs">
-            <button v-for="sub in activeMenu.children" :key="sub.key" class="modal-tab" :class="{active:activeSub===sub.key}" @click="activeSub=sub.key;modalDesc=descs[sub.key]||''">{{ sub.label }}</button>
+            <button v-for="sub in activeMenu.children" :key="sub.key" class="modal-tab" :class="{active:activeSub===sub.key}" @click="activeSub=sub.key;handleMenu(sub.key)">{{ sub.label }}</button>
           </div>
           <div class="wiki-body">
             <p class="wiki-note">※ {{ activeSubLabel }} 功能即将上线，敬请期待！</p>
@@ -147,13 +147,13 @@ const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
 
 function handleMenu(key: string) {
-  if (key === 'inventory' || key === 'items') { inventoryRef.value?.open(true); return }
-  if (key === 'ranking') { rankingRef.value?.open(true); return }
+  if (key === 'inventory' || key === 'items') { modalVisible.value=false; inventoryRef.value?.open(true); return }
+  if (key === 'ranking') { modalVisible.value=false; rankingRef.value?.open(true); return }
   if (key === 'social') { showPigeon.value = true; return }
-  if (key === 'friend-list') { socialRef.value?.open(true); return }
-  if (key === 'pill' || key === 'alchemy') { alchemyRef.value?.open(true); return }
-  if (key === 'auction' || key === 'buy') { tradeRef.value?.open(true); return }
-  if (key === 'dungeon') { combatRef.value?.open(true); return }
+  if (key === 'friend-list') { modalVisible.value=false; socialRef.value?.open(true); return }
+  if (key === 'pill' || key === 'alchemy') { modalVisible.value=false; alchemyRef.value?.open(true); return }
+  if (key === 'auction' || key === 'buy') { modalVisible.value=false; tradeRef.value?.open(true); return }
+  if (key === 'dungeon') { modalVisible.value=false; combatRef.value?.open(true); return }
   const m = menus.find((x: any) => x.key === key)
   if (m) openMenu(m)
 }
