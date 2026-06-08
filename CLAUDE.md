@@ -19,10 +19,17 @@
 ```bash
 # Backend: always run Go commands from backend/ (go.work lives there)
 cd backend
-go test ./... -race -count=1 -timeout=60s          # All tests
-go test ./services/combat/... -v                    # Single service tests
-go vet ./...                                         # Lint
-gofmt -l -s ./services/...                           # Format check
+# go test ./... does NOT work from backend/ — use ../services/ pattern
+go test ../services/... -race -count=1 -timeout=120s       # All tests
+go test ../services/combat/... -v                           # Single service tests
+go test ../services/combat/... -v -run TestBattleStart     # Single test
+go vet ../services/...                                       # Lint all
+go vet ../services/combat/...                                # Lint one
+gofmt -l -s ../services/combat/                              # Format check (per directory)
+gofmt -w ../services/combat/                                 # Auto-format
+
+# Or work from within a service directory:
+cd services/combat && go test ./... && go vet ./...
 
 # Frontend
 cd frontend
@@ -41,7 +48,7 @@ make -f deploy/Makefile logs   # Tail all logs
 
 | Directory | What's there | CLAUDE.md? |
 |-----------|-------------|------------|
-| `services/` | 9 Go microservices (gateway, auth, player, combat, cultivation, social, world, trade, ranking) | ✅ `services/CLAUDE.md` |
+| `services/` | 10 Go modules: 9 microservices (gateway, auth, player, combat, cultivation, social, world, trade, ranking) + 1 monolith (server) | ✅ `services/CLAUDE.md` |
 | `frontend/` | Vue 3 SPA — WebSocket client, ~35 routes, Pinia stores, SCSS | ✅ `frontend/CLAUDE.md` |
 | `database/` | MySQL migrations (~20 files), Redis config, MongoDB schema | ✅ `database/CLAUDE.md` |
 | `shared/` | Go shared library: config, eventbus, models, codec, proto, plugin | — |
@@ -66,6 +73,8 @@ Client(Vue3) ──WebSocket──▶ Gateway(:8080) ──NATS──▶ Auth(:8
 - **Service pattern**: Handler → Service → Repository (see `services/CLAUDE.md` for full template)
 - **DB**: MySQL 8.0 (structured data), Redis 7 (cache/leaderboards), MongoDB 7 (chat/logs)
 - **Inter-service**: Gateway routes by msg_id. Some services call each other (e.g., Combat → Player for rewards).
+- **Monolith alternative**: `services/server` merges all microservices into a single process via adapters — use for local dev or single-binary deployment.
+- **Ports**: gateway 8080-8081, auth 8082, player 8083, cultivation 8084, combat 8085, social 8086, world 8087, trade 8088, ranking 8089, server 8090.
 
 ## Hard Constraints
 
@@ -84,12 +93,13 @@ Client(Vue3) ──WebSocket──▶ Gateway(:8080) ──NATS──▶ Auth(:8
 
 <!-- Things Claude consistently gets wrong. Add to this list. -->
 
-1. **go.work is in `backend/`, not repo root** — `cd backend` before any `go` command that spans modules.
-2. **go.work uses Go 1.24** — some services' go.mod declare >= 1.24. If `go work use` complains, check individual go.mod files.
-3. **Some services use `database/sql`, others GORM** — check the existing repo pattern before adding new queries.
-4. **Game data lives in JSON files** (`internal/data/*.json`), not always in MySQL — check `internal/data/` before adding config tables.
-5. **Frontend `@/` alias = `src/`** — imports like `@/core/api` resolve to `frontend/src/core/api.ts`.
-6. **Vite proxies API calls to individual backends in dev** — Gateway is bypassed during development.
+1. **`go test ./...` from backend/ does NOT work** — backend/ has no Go source files. Use `../services/...` pattern instead: `go test ../services/...` or `go test ../services/combat/...`.
+2. **go.work is in `backend/`, not repo root** — `cd backend` before any `go` command that spans modules.
+3. **go.work uses Go 1.24** — some services' go.mod declare >= 1.24. If `go work use` complains, check individual go.mod files.
+4. **Some services use `database/sql`, others GORM** — check the existing repo pattern before adding new queries.
+5. **Game data lives in JSON files** (`internal/data/*.json`), not always in MySQL — check `internal/data/` before adding config tables.
+6. **Frontend `@/` alias = `src/`** — imports like `@/core/api` resolve to `frontend/src/core/api.ts`.
+7. **Vite proxies API calls to individual backends in dev** — Gateway is bypassed during development.
 
 ## Git Conventions
 
