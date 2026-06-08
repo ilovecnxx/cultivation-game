@@ -15,6 +15,7 @@ type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {},
 
 
 export const ChatPanel: typeof import("../components/ChatPanel.vue")['default']
+export const FriendPanel: typeof import("../components/FriendPanel.vue")['default']
 export const PlayerSidebar: typeof import("../components/PlayerSidebar.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
@@ -141,6 +142,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const LazyChatPanel: LazyComponent<typeof import("../components/ChatPanel.vue")['default']>
+export const LazyFriendPanel: LazyComponent<typeof import("../components/FriendPanel.vue")['default']>
 export const LazyPlayerSidebar: LazyComponent<typeof import("../components/PlayerSidebar.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>

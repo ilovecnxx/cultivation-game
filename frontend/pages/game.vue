@@ -25,99 +25,8 @@
     </div>
     <div class="gold-divider"><div class="gold-divider__light" /></div>
     <main class="gh-main">
-      <!-- 右1/6: 侧边栏 -->
-      <aside class="gh-sidebar">
-        <div class="side-card side-profile">
-          <div class="profile-top">
-            <div class="profile-top-left">
-              <div class="profile-name-row">
-                <span class="side-avatar">{{ player.name?.[0] || '修' }}</span>
-                <span class="side-name">{{ player.name || '修仙者' }}<span v-if="isDead" class="dead-skull">💀</span><span class="gender-tag" :style="{color:player.gender==='female'?'#ff6b6b':'#4d96ff'}">{{ player.gender==='female'?'♀':'♂' }}</span></span>
-              </div>
-              <div class="profile-tags">
-                <span class="side-realm">{{ player.realmName }} {{ player.realmStage }}期</span>
-                <span v-if="player.spiritName!=='无灵根'" class="side-spirit" :style="{color:qualityColors[player.rootQuality]||'#fff'}">{{ player.spiritName }} · {{ player.qualityName }}</span>
-                <span v-else class="side-spirit" style="color:#666">灵根未觉醒</span>
-              </div>
-              <div class="profile-loc" v-if="currentLocInfo"><span class="pl-icon">{{ currentLocInfo.icon }}</span><span>{{ currentLocInfo.name }}</span></div>
-            </div>
-            <div class="profile-power-badge">
-              <span class="pp-label">战力</span>
-              <span class="pp-val">{{ fmt(player.power) }}</span>
-            </div>
-          </div>
-          <div class="profile-bars">
-            <div class="pbar-row"><span>❤️</span><div class="pbar-track"><div class="pbar-fill hp" :style="{width:hpPct+'%'}" /></div><span class="pbar-val">{{ player.hp }}/{{ player.maxHp }}</span></div>
-            <div class="pbar-row"><span>💙</span><div class="pbar-track"><div class="pbar-fill mp" :style="{width:mpPct+'%'}" /></div><span class="pbar-val">{{ player.mp }}/{{ player.maxMp }}</span></div>
-          </div>
-          <div class="profile-attrs">
-            <div class="pa-row"><span>🗡️ 攻击</span><span>{{ player.attack }}</span></div>
-            <div class="pa-row"><span>🛡️ 防御</span><span>{{ player.defense }}</span></div>
-            <div class="pa-row"><span>💨 速度</span><span>{{ player.speed }}</span></div>
-            <div class="pa-row"><span>💥 暴击</span><span>{{ player.critRate }}%</span></div>
-            <div class="pa-row"><span>💢 暴伤</span><span>{{ player.critDmg }}%</span></div>
-            <div class="pa-row"><span>🎯 命中</span><span>{{ player.hit }}%</span></div>
-            <div class="pa-row"><span>💨 闪避</span><span>{{ player.dodge }}%</span></div>
-            <div class="pa-row"><span>🌀 修炼</span><span>+{{ player.cultBonus }}%</span></div>
-            <div class="pa-row"><span>💧 回蓝</span><span>{{ player.mpRegen }}%/回合</span></div>
-            <div class="pa-row"><span>⏳ 寿元</span><span>{{ player.lifespan }}年</span></div>
-            <div class="pa-row"><span>🎂 年龄</span><span>{{ ageDays }}天({{ ageBracket }})</span></div>
-            <div class="pa-row"><span>📖 悟性</span><span>{{ player.comprehension }}</span></div>
-            <div class="pa-row"><span>🍀 气运</span><span>{{ player.luck }}</span></div>
-            <div class="pa-row"><span>👁️ 神识</span><span>{{ player.spiritSense }}</span></div>
-            <div class="pa-row"><span>💰 灵石</span><span>{{ player.gold }}</span></div>
-            <div class="pa-row"><span>💎 仙玉</span><span>{{ player.jade }}</span></div>
-          </div>
-        </div>
-        <div class="side-loc" v-if="currentLocInfo"><span class="sl-icon">{{ currentLocInfo.icon }}</span><span class="sl-name">{{ currentLocInfo.name }}</span><span class="sl-monsters">🐾 {{ currentLocInfo.monsters }}</span></div>
-      <div class="side-card side-cultivation">
-          <div ref="yyWrapRef" class="cult-yy-wrap" :class="{meditating:player.isMeditating}" @mouseenter="showTooltip" @mouseleave="showCultTooltip=false">
-            <div class="cult-yy" :class="[player.gender==='female'?'female':'male']" :style="{animationDuration:yySpeed+'s'}" />
-            <canvas ref="energyCanvas" v-if="player.isMeditating" class="energy-canvas" />
-          </div>
-          <div class="cult-info">
-            <div class="cult-bar-wrap">
-              <div class="cult-bar-label">修为</div>
-              <div class="cult-bar"><div class="cult-fill" :style="{width:expPercent+'%'}" /></div>
-            </div>
-            <div class="cult-stats"><span>{{ player.spirit }}/{{ player.maxSpirit }}</span><span>+{{ player.cultRate.toFixed(1) }}/秒</span></div>
-          </div>
-          <div class="cult-btns">
-            <button class="cult-btn primary" @click="toggleMeditation()">{{ player.isMeditating?'出关':'闭关' }}</button>
-            <button class="cult-btn" :class="{danger:player.breakRate<60}" @click="doBreakthrough()">{{ player.realmStage<10?'突破 '+smallBreakRate+'%':'突破 '+player.breakRate+'%' }}</button>
-            <button class="cult-btn train-btn" @click="toggleTraining()">{{ training?'历练中':'历练' }}</button>
-          </div>
-          <div class="train-panel" v-if="showTrainPanel">
-            <div class="train-info">
-              <span>👁️ 神识: {{ player.spiritSense }}</span>
-              <span>倍率: <button v-for="m in [1,2,5,10]" :key="m" class="mult-btn" :class="{on:trainMult===m}" @click="trainMult=m" :disabled="training||isDead">×{{ m }}</button></span>
-              <button class="manual-train-btn" @click="startManual()" :disabled="training||isDead||player.spiritSense<trainMult">⚡ 历练一次</button>
-            </div>
-            <label class="train-switch" @click.prevent="toggleTraining()"><input type="checkbox" :checked="training" :disabled="isDead||player.spiritSense<trainMult" tabindex="-1" /> 自动历练 (每3秒)</label>
-            <div v-if="training" class="train-info" style="color:#6bcb77">预计: +{{ trainCultEst }}修为 +{{ trainGoldEst }}灵石/次 (消耗{{ trainMult }}神识)</div>
-            <div v-if="isDead" class="dead-warn">💀 {{ player.gender==='female'?'香消玉殒':'道心破碎' }} · {{ reviveCountdown }}秒后复活</div>
-            <!-- 战斗报告 -->
-            <div v-if="combatReport" class="combat-report">
-              <div class="cr-header">⚔️ 遭遇战斗 — {{ combatReport.result }}</div>
-              <div v-for="r in combatReport.rounds" :key="r.round" class="cr-round">
-                <span>第{{ r.round }}回合:</span>
-                <span class="cr-dmg">你对敌人造成 {{ r.playerDmg }} 伤害</span>
-                <span v-if="r.desc" class="cr-special">{{ r.desc }}</span>
-                <span class="cr-dmg">敌人对你造成 {{ r.monsterDmg }} 伤害</span>
-                <span class="cr-hp">❤️{{ r.playerHP }} 💙{{ r.playerMP>0?r.playerMP:'空蓝' }} | 👹{{ r.monsterHP>0?r.monsterHP:'击败！' }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="side-card side-equip">
-          <div class="equip-slots">
-            <div v-for="s in equipSlots" :key="s.key" class="eq-slot" :style="{borderColor:getEquip(s.key)?'#d4a843':'rgba(212,168,67,.25)'}" @click="craftEquip(s)" :title="getEquip(s.key)?getEquip(s.key).name:'点击打造'">
-              <span>{{ getEquip(s.key)?.icon||s.icon }}</span>
-              <span style="font-size:10px">{{ getEquip(s.key)?.name||s.name }}</span>
-            </div>
-          </div>
-        </div>
-      </aside>
+      <PlayerSidebar :player="player" :isDead="isDead" />
+
 
       <div class="gh-center"></div>
     
@@ -1065,4 +974,8 @@ html.light-mode .map-modal{background:#fafafa}html.light-mode .map-region{backgr
 .prof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin:12px 0}.prof-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,168,67,.15);border-radius:12px;padding:16px;text-align:center;transition:all .2s}.prof-card:hover{border-color:#d4a843;background:rgba(212,168,67,.08)}.prof-card.locked{opacity:.4;pointer-events:none}.pc-icon{font-size:40px;margin-bottom:8px}.pc-name{font-size:17px;font-weight:800;color:#d4a843;margin-bottom:6px}.pc-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:8px}.pc-bonus{font-size:11px;color:#6bcb77;margin-bottom:6px}.pc-status{font-size:11px;color:rgba(255,255,255,.3)}.pc-card{cursor:pointer}.prof-detail{margin-bottom:16px}.pill-craft-list{display:flex;flex-direction:column;gap:6px}.pill-craft-row{display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;font-size:12px}.pcr-icon{font-size:22px;min-width:28px;text-align:center}.pcr-info{flex:1;color:rgba(255,255,255,.7)}.pcr-info b{color:#fff}.pcr-rate{color:#6bcb77;font-size:11px;min-width:70px;text-align:center}.pcr-cost{color:rgba(255,255,255,.4);font-size:11px;min-width:50px;text-align:center}
 .alchemy-hero{display:flex;align-items:center;gap:16px;padding:16px 20px;background:linear-gradient(135deg,rgba(255,107,107,.05),rgba(212,168,67,.08));border:1px solid rgba(212,168,67,.15);border-radius:14px;margin-bottom:14px}.ah-furnace{font-size:52px;animation:em-bounce .5s ease-in-out infinite alternate}.ah-info{flex:1}.ah-title{font-size:20px;font-weight:900;color:#fff;margin-bottom:6px}.ah-lv{color:#d4a843;font-size:16px}.ah-exp-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin-bottom:4px}.ah-exp-fill{height:100%;background:linear-gradient(90deg,#d4a843,#f0d878);border-radius:3px;transition:width .8s ease}.ah-exp-text{font-size:10px;color:rgba(255,255,255,.3);margin-bottom:2px}.ah-stats{font-size:11px;color:rgba(255,255,255,.5)}.pill-filter{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px}.pill-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:20px}.pill-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;overflow:hidden;transition:all .25s ease;position:relative}.pill-card:hover{transform:translateY(-2px);border-color:rgba(212,168,67,.3);box-shadow:0 8px 24px rgba(0,0,0,.3)}.pill-card.locked{opacity:.35;pointer-events:none}.pc-quality-strip{position:absolute;top:0;left:0;right:0;background:linear-gradient(90deg,#888,#aaa,#6bcb77,#4d96ff,#ff6b9e)}.pc-top{display:flex;align-items:flex-start;justify-content:space-between;padding:10px 12px 0}.pc-icon-lg{font-size:32px}.pc-badges{display:flex;flex-direction:column;align-items:flex-end;gap:3px}.pc-tier-badge{color:#d4a843;font-size:10px;letter-spacing:1px}.pc-cat-badge{padding:1px 6px;border-radius:8px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);font-size:9px}.pc-name-lg{padding:4px 12px 0;font-size:16px;font-weight:800;color:#fff}.pc-desc-lg{padding:2px 12px;font-size:11px;color:rgba(255,255,255,.4)}.pc-stats-row{display:flex;gap:16px;padding:8px 12px 4px}.pc-stat{display:flex;flex-direction:column}.pc-stat-label{font-size:9px;color:rgba(255,255,255,.3);margin-bottom:1px}.pc-stat-val{font-size:14px;font-weight:700;color:#fff}.pc-stat-val.green{color:#6bcb77}.pc-quality-bar{display:flex;height:8px;margin:4px 12px 0;border-radius:4px;overflow:hidden}.pc-qb-seg{cursor:help;transition:opacity .2s}.pc-qb-seg:hover{opacity:.8}.pc-actions-lg{display:flex;align-items:center;gap:6px;padding:8px 12px 12px}.pc-btn-minus,.pc-btn-plus{width:28px;height:28px;border:1px solid rgba(255,255,255,.1);border-radius:6px;background:rgba(255,255,255,.04);color:#fff;font-size:16px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center}.pc-btn-minus:hover,.pc-btn-plus:hover{background:rgba(255,255,255,.1)}.pc-qty-display{min-width:32px;text-align:center;font-size:16px;font-weight:700;color:#fff}.pc-btn-craft{flex:1;padding:8px 16px;border:none;border-radius:8px;background:linear-gradient(135deg,#d4a843,#b8860b);color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;text-align:center}.pc-btn-craft:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(212,168,67,.3)}.pc-btn-craft:disabled{background:rgba(255,255,255,.06);color:rgba(255,255,255,.2);transform:none;box-shadow:none;cursor:not-allowed}.craft-modal-lg{background:linear-gradient(180deg,#1a1a2e,#0d0d1a);border-radius:24px;width:420px;max-width:92vw;padding:32px 28px;text-align:center;animation:modal-in .3s ease}.craft-ok{border:2px solid #6bcb77;box-shadow:0 0 60px rgba(107,203,119,.15),0 0 120px rgba(107,203,119,.05)}.craft-no{border:2px solid #e53935;box-shadow:0 0 60px rgba(229,57,53,.15),0 0 120px rgba(229,57,53,.05)}.cml-top{font-size:26px;font-weight:900;margin-bottom:16px}.craft-ok .cml-top{color:#6bcb77}.craft-no .cml-top{color:#e53935}.cml-pill-show{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px}.cml-pill-icon-lg{font-size:44px}.cml-pill-name-lg{font-size:22px;font-weight:900}.cml-stats-grid{display:flex;gap:12px;justify-content:center;margin-bottom:16px}.cml-stat-box{padding:10px 18px;background:rgba(255,255,255,.04);border-radius:10px;min-width:80px}.cml-stat-v{display:block;font-size:22px;font-weight:900;color:#d4a843}.cml-stat-l{display:block;font-size:10px;color:rgba(255,255,255,.3);margin-top:2px}.cml-fail-reason{font-size:15px;color:rgba(255,255,255,.4);margin-bottom:16px}.cml-btns{display:flex;gap:10px;justify-content:center}.cml-btn-retry{padding:10px 24px;border:1px solid #d4a843;border-radius:10px;background:rgba(212,168,67,.1);color:#d4a843;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}.cml-btn-retry:hover{background:#d4a843;color:#fff}.cml-btn-close{padding:10px 24px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:transparent;color:rgba(255,255,255,.5);font-size:14px;cursor:pointer;font-family:inherit;transition:all .2s}.cml-btn-close:hover{border-color:rgba(255,255,255,.3);color:#fff}.wiki-table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:12px}.wiki-table th{background:rgba(212,168,67,.12);color:#d4a843;padding:6px 8px;text-align:center;font-weight:700;border:1px solid rgba(212,168,67,.1)}.wiki-table td{padding:4px 6px;text-align:center;border:1px solid rgba(255,255,255,.05);white-space:nowrap}.wiki-table td.tc{text-align:center}.wiki-table tr.highlight td{background:rgba(212,168,67,.1);color:#f0d878}.wiki-table tr:hover td{background:rgba(255,255,255,.04)}.wiki-note{color:rgba(255,255,255,.4);font-size:11px;margin:4px 0 12px}.wiki-formula{background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.2);border-radius:8px;padding:8px 16px;color:#f0d878;font-size:13px;font-weight:600;text-align:center;margin:8px 0}html.light-mode .wiki-body{color:rgba(0,0,0,.7)}html.light-mode .wiki-table td{border-color:rgba(0,0,0,.05)}html.light-mode .wiki-table tr:hover td{background:rgba(0,0,0,.02)}html.light-mode .wiki-note{color:rgba(0,0,0,.4)}
 .pigeon-modal{width:820px;max-width:96vw;background:linear-gradient(180deg,#12122a,#0d0d1a)!important;overflow:hidden!important}.pigeon-body{display:flex;height:540px;max-height:72vh}.pig-left{width:270px;min-width:210px;display:flex;flex-direction:column;overflow:hidden;border-right:1px solid rgba(212,168,67,.1);background:rgba(0,0,0,.2)}.pig-right{flex:1;display:flex;flex-direction:column;background:rgba(0,0,0,.08)}.pig-search-box{padding:12px;background:rgba(0,0,0,.2)}.pig-search-inp{width:100%;padding:8px 14px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.05);color:#fff;font-size:12px;outline:none;font-family:inherit}.pig-search-inp:focus{border-color:#d4a843}.pig-sr-row{display:flex;align-items:center;gap:8px;padding:9px 12px;font-size:12px;border-bottom:1px solid rgba(255,255,255,.03)}.pig-sr-name{color:#fff;flex:1}.pig-sr-tag{font-size:10px;color:rgba(255,255,255,.25);background:rgba(255,255,255,.04);padding:1px 6px;border-radius:3px}.pig-sr-row button{padding:4px 12px;border:1px solid #d4a843;border-radius:12px;background:rgba(212,168,67,.1);color:#d4a843;font-size:11px;cursor:pointer;font-family:inherit}.pig-sr-row button:hover{background:#d4a843;color:#fff}.pig-group{margin:2px 0}.pig-group-head{display:flex;align-items:center;gap:6px;padding:11px 14px;font-size:13px;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;user-select:none;transition:all .15s;border-left:3px solid transparent}.pig-group-head:hover{background:rgba(255,255,255,.03);color:#d4a843;border-left-color:rgba(212,168,67,.3)}.pig-group-arrow{font-size:8px;transition:transform .2s;color:rgba(255,255,255,.25);margin-left:auto}.pig-group-arrow.open{transform:rotate(0deg)}.pig-group-arrow:not(.open){transform:rotate(-90deg)}.pig-badge{min-width:18px;height:18px;line-height:18px;text-align:center;border-radius:10px;background:#e53935;color:#fff;font-size:10px;font-weight:700;margin-left:auto;padding:0 5px}.pig-friend{display:flex;align-items:center;gap:10px;padding:8px 14px;cursor:pointer;transition:all .12s}.pig-friend:hover{background:rgba(212,168,67,.05)}.pig-friend.active{background:linear-gradient(90deg,rgba(212,168,67,.12),rgba(212,168,67,.04));border-right:3px solid #d4a843}.pig-f-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#d4a843,#b8860b);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;flex-shrink:0}.pig-f-info{flex:1}.pig-f-name{font-size:13px;color:#fff;display:flex;align-items:center;gap:6px}.pig-f-online{width:6px;height:6px;border-radius:50%;background:#666;flex-shrink:0}.pig-f-online.online{background:#4caf50;box-shadow:0 0 6px rgba(76,175,80,.5);animation:pig-dot-pulse 2s ease-in-out infinite}@keyframes pig-dot-pulse{0%{box-shadow:0 0 4px rgba(76,175,80,.3)}50%{box-shadow:0 0 8px rgba(76,175,80,.6)}}.pig-f-realm{font-size:10px;color:rgba(255,255,255,.25);margin-top:2px}.pig-empty-tip{text-align:center;padding:20px;font-size:12px;color:rgba(255,255,255,.15);font-style:italic}.pig-request-row{display:flex;align-items:center;gap:8px;padding:9px 14px}.pig-r-name{flex:1;font-size:12px;color:#fff}.pig-r-btns{display:flex;gap:4px}.pig-r-btns button{padding:4px 12px;border-radius:12px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .15s;border:1px solid #6bcb77;background:rgba(107,203,119,.08);color:#6bcb77}.pig-r-btns button:hover{background:#6bcb77;color:#fff}.pig-r-btns .pig-r-reject{border-color:rgba(229,57,53,.3);background:rgba(229,57,53,.05);color:rgba(229,57,53,.6)}.pig-r-btns .pig-r-reject:hover{background:#e53935;color:#fff}.pig-chat-msgs{flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:10px}.pig-msg-bubble{display:flex;gap:8px;max-width:75%}.pig-msg-bubble.self{align-self:flex-end;flex-direction:row-reverse}.pig-msg-avatar{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:rgba(255,255,255,.6);flex-shrink:0;align-self:flex-end}.pig-msg-bub-text{padding:8px 12px;border-radius:14px;font-size:13px;line-height:1.4;word-break:break-word}.pig-msg-bubble:not(.self) .pig-msg-bub-text{background:rgba(255,255,255,.08);color:#ddd;border-bottom-left-radius:4px}.pig-msg-bubble.self .pig-msg-bub-text{background:linear-gradient(135deg,rgba(212,168,67,.25),rgba(212,168,67,.12));color:#fff;border-bottom-right-radius:4px}.pig-chat-send{display:flex;gap:6px;padding:10px 14px;border-top:1px solid rgba(255,255,255,.06)}.pig-send-inp{flex:1;padding:8px 14px;border:1px solid rgba(255,255,255,.08);border-radius:20px;background:rgba(255,255,255,.04);color:#fff;font-size:13px;outline:none;font-family:inherit}.pig-send-btn{padding:8px 20px;border:none;border-radius:20px;background:linear-gradient(135deg,#d4a843,#b8860b);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+
+.van-button--primary { --van-button-primary-background: linear-gradient(135deg,#8B6914,#d4a843) !important; }
+.van-button--danger { --van-button-danger-background: linear-gradient(135deg,#8B2020,#ff4d4d) !important; }
+.cult-btn-area { display:flex; gap:6px; flex-wrap:wrap; }
 </style>
