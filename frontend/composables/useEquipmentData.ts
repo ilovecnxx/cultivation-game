@@ -193,14 +193,19 @@ export const tierColors: Record<string, string> = {
   heaven: '#ff5252',  // 天·赤
 }
 
-// 给装备名加品阶颜色标签：天·碎星戟 → <span style=color>天</span>·碎星戟
-export function colorizeName(name: string, tier: string): string {
-  const color = tierColors[tier] || '#fff'
+// 给装备名加颜色: 前缀(天/地/玄/黄/人)=品阶色, 身体文字=境界色
+export function colorizeName(name: string, tier: string, realm: number): string {
+  const tierColor = tierColors[tier] || '#fff'
+  const hue = realmHue[realm] || 0
+  const ti = tierIdx[tier] || 0
+  const sat = realm === 1 ? 0 : Math.min(100, 25 + ti * 18)
+  const light = Math.min(90, 30 + ti * 12 + realm * 2)
+  const bodyColor = `hsl(${hue}, ${sat}%, ${light}%)`
   const dot = name.indexOf('·')
   if (dot > 0) {
-    return `<span style="color:${color};font-weight:900">${name.slice(0,dot)}</span>·${name.slice(dot+1)}`
+    return `<span style="color:${tierColor};font-weight:900">${name.slice(0,dot)}</span>·<span style="color:${bodyColor};font-weight:700">${name.slice(dot+1)}</span>`
   }
-  return `<span style="color:${color}">${name}</span>`
+  return `<span style="color:${tierColor}">${name}</span>`
 }
 
 // 境界色相映射（字体/边框基础色）
