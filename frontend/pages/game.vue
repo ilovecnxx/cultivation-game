@@ -141,8 +141,6 @@ const isDark2 = inject('isDark', ref(true))
 
 let _init = false
 onMounted(() => { setTimeout(() => _init = true, 300) })
-let _init = false
-onMounted(() => { setTimeout(() => _init = true, 300) })
 watch(activeNav, (name) => {
   if (!_init || !name) return
   if (name === 'wiki') { showWiki.value = true }
