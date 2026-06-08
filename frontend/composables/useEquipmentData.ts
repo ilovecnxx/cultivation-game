@@ -203,25 +203,36 @@ export function colorizeName(name: string, tier: string): string {
   return `<span style="color:${color}">${name}</span>`
 }
 
+// 境界色相映射（字体/边框基础色）
+const realmHue: Record<number, number> = {
+  1:0,     // 锻体·黑
+  2:120,   // 练气·绿
+  3:270,   // 筑基·紫
+  4:195,   // 金丹·天蓝
+  5:25,    // 元婴·橙
+  6:0,     // 化神·老红(深)
+  7:330,   // 炼虚·粉
+  8:0,     // 合体·红
+  9:50,    // 大乘·黄
+  10:40,   // 渡劫·金
+}
+
 export function equipVisual(realm: number, tier: string): EquipVisual {
-  const hue = tierHue[tier] || 30
+  const hue = realmHue[realm] || 0
   const ti = tierIdx[tier] || 0
-  // 饱和度: 境界+品阶双驱动, 天阶渡劫 = 100%
-  const sat = Math.min(100, 15 + realm * 7 + ti * 10)
-  // 亮度: 低境低品暗, 高境高品亮
-  const light = Math.min(95, 40 + realm * 4 + ti * 5)
-  // 特效等级: realm主驱动, tier微调 (同一境界内地阶/天阶高一档)
-  const lv = realm <= 1 ? 0 : realm <= 3 ? 1 : realm <= 5 ? 2 : realm <= 7 ? 3 : 4
-  const lvAdj = Math.min(4, lv + (ti >= 3 ? 1 : 0))
+  // 锻体=黑(无彩), 其余境界饱和度随品阶从30→100
+  const sat = realm === 1 ? 0 : Math.min(100, 25 + ti * 18)
+  // 亮度: 品阶越高越亮
+  const light = Math.min(90, 30 + ti * 12 + realm * 2)
   const color = `hsl(${hue}, ${sat}%, ${light}%)`
-  // 边框色: 随境界+品阶从黑→灰→亮色→品阶色
-  const borderSat = 5 + realm * 5 + ti * 8
-  const borderLight = 5 + realm * 5 + ti * 6
-  const borderColor = `hsl(${hue}, ${borderSat}%, ${borderLight}%)`
-  const glow = lvAdj >= 1 ? `text-shadow:0 0 ${2+realm+ti}px ${color}` : ''
-  const box  = lvAdj >= 2 ? `box-shadow:0 0 ${4+realm+ti}px ${color}44` : ''
-  const bg   = lvAdj >= 3 ? `background:linear-gradient(135deg,${color}22,transparent)` : ''
-  const anim = lvAdj >= 4 ? `animation:equip-shimmer ${3-(realm-8)*0.5}s ease-in-out infinite` : ''
+  // 边框色: 比字体稍暗
+  const borderColor = `hsl(${hue}, ${sat-5 > 0 ? sat-5 : 0}%, ${light-10 > 0 ? light-10 : 5}%)`
+  // 特效等级: realm主驱动
+  const lv = realm <= 2 ? 0 : realm <= 4 ? 1 : realm <= 6 ? 2 : realm <= 8 ? 3 : 4
+  const glow = lv >= 1 ? `text-shadow:0 0 ${2+realm+ti}px ${color}` : ''
+  const box  = lv >= 2 ? `box-shadow:0 0 ${4+realm+ti}px ${color}44` : ''
+  const bg   = lv >= 3 ? `background:linear-gradient(135deg,${color}22,transparent)` : ''
+  const anim = lv >= 4 ? `animation:equip-shimmer ${3-(realm-8)*0.5}s ease-in-out infinite` : ''
   const style = [glow, box, bg, anim].filter(Boolean).join(';')
-  return { color, borderColor, glow, box, bg, anim, level: lvAdj, style }
+  return { color, borderColor, glow, box, bg, anim, level: lv, style }
 }
