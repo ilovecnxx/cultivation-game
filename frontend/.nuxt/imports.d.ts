@@ -34,5 +34,4 @@ export { definePageMeta, PageMeta } from '#app/composables/pages';
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { useAuth } from '../composables/useAuth';
 export { realmNames, realmCoefs, number, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, menus, descs, fmt, MapLoc, MapRegion } from '../composables/useGameData';
-export { defineStore, acceptHMRUpdate, usePinia, storeToRefs } from '../node_modules/@pinia/nuxt/dist/runtime/composables';
 export { useNuxtDevTools } from '../node_modules/nuxt/node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

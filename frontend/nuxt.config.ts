@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['vant/lib/index.css', '~/styles/vant-theme.scss', '~/styles/main.scss'],
+  css: ['vant/lib/index.css', '~/src/styles/vant-theme.scss', '~/src/styles/main.scss'],
 
   vite: {
     resolve: {
