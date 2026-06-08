@@ -26,9 +26,11 @@
             <!-- 师父分组 -->
             <div class="pig-group"><div class="pig-group-head" @click="showMaster=!showMaster">👴 师父 <span class="pig-group-arrow" :class="{open:showMaster}">▾</span></div>
               <div v-if="showMaster"><div v-if="masterName" class="pig-contact-list"><div class="pig-contact" :class="{active:activeChat==='master'}" @click="openMasterChat"><span class="pig-contact-avatar">👴</span><span class="pig-contact-name">{{ masterName }}</span></div></div><div v-else class="pig-empty-tip">尚未拜师</div></div>
+            </div>
             <!-- 徒儿分组 -->
             <div class="pig-group"><div class="pig-group-head" @click="showDisciple=!showDisciple">🧒 徒儿 <span class="pig-group-arrow" :class="{open:showDisciple}">▾</span></div>
               <div v-if="showDisciple"><div v-if="discipleList.length" class="pig-contact-list"><div v-for="d in discipleList" :key="d.id" class="pig-contact" :class="{active:activeChat==='d_'+d.id}" @click="openDiscipleChat(d)"><span class="pig-contact-avatar">{{ d.nickname[0] }}</span><span class="pig-contact-name">{{ d.nickname }}</span></div></div><div v-else class="pig-empty-tip">尚未收徒</div></div>
+            </div>
             </div>
             <!-- 世界频道 -->
             <div class="pig-group"><div class="pig-group-head" @click="activeChat='world';loadWorldHistory()">🌍 世界频道</div></div>
@@ -78,7 +80,7 @@ function openMasterChat(){activeChat.value='master';currentMessages.value=[{text
 function openDiscipleChat(d:any){activeChat.value='d_'+d.id;currentMessages.value=[{text:'与徒儿 '+d.nickname+' 的传音',sender_name:'系统',time:'',sender_id:'system'}]}
 function sendMsg(){const v=chatInput.value.trim();if(!v)return;currentMessages.value.push({text:v,sender_name:myName.value,time:new Date().toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),sender_id:playerId.value});chatInput.value='';nextTick(()=>{if(chatMsgs.value)chatMsgs.value.scrollTop=chatMsgs.value.scrollHeight})}
 
-watch(()=>props.show,v=>{if(v){loadFriends();loadSect();loadDaolv();loadMaster()}})
+watch(()=>props.show,v=>{if(v){loadFriends();loadSect();loadDaolv();loadMaster();loadDisciples()}})
 </script>
 
 <style scoped>
