@@ -116,7 +116,29 @@ export function useGameState() {
   const reviveCountdown = ref(0)
   const isDead = computed(() => player.hp <= 0)
   const handleQuit = () => { localStorage.clear(); window.location.href = '/' }
-  function startPve() { fightInProgress.value = true; pveReport.value = null; pveRounds.value = 0 }
+  async function startPve(loc?: any) {
+    if (player.hp <= 0) { addLog('combat','💀 已死亡，无法战斗'); return }
+    const pid = getPID(); if (!pid) return
+    const locKey = loc?.key || currentLoc.value
+    const locName = loc?.name || currentLocInfo.value?.name || '未知区域'
+    addLog('combat','⚔️ 在 '+locName+' 遭遇战斗...')
+    try {
+      const r = await fetch('/api/v1/player/'+pid+'/pve',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+getToken()},body:JSON.stringify({location:locKey})})
+      const d = await r.json()
+      if (d.data) {
+        pveReport.value = d.data
+        pveRounds.value = d.data.rounds || []
+        if (d.data.won) {
+          player.hp = Math.max(0, player.hp - (d.data.hp_lost||0))
+          player.gold = (player.gold||0) + (d.data.gold||0)
+          addLog('combat','🎉 胜利！获得 '+fmt(d.data.cult||0)+' 修为 +'+fmt(d.data.gold||0)+' 灵石')
+        } else {
+          player.hp = 0
+          addLog('combat','💀 战败...')
+        }
+      } else { addLog('combat','战斗结束（无数据）') }
+    } catch { addLog('combat','⚡ 战斗异常') }
+  }
 
   // ====== 职业 ======
   const showProfPanel = ref(false)

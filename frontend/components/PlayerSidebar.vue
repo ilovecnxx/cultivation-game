@@ -92,6 +92,17 @@ const props = defineProps<{
 }>()
 defineEmits(['toggleMeditation','doBreakthrough','toggleTraining','startManual','showTooltip','hideTooltip','update:trainMult'])
 
+const {token} = useAuth()
+const equips = ref<any[]>([])
+async function loadEquips() {
+  try {
+    const pid = localStorage.getItem('player_id')||'0'
+    const r = await fetch('/api/v1/player/'+pid+'/equipment',{headers:{Authorization:'Bearer '+token.value}})
+    const d = await r.json(); equips.value = d.data||[]
+  } catch {}
+}
+onMounted(loadEquips)
+
 const yyWrapRef = ref<HTMLElement|null>(null)
 const energyCanvas = ref<HTMLCanvasElement|null>(null)
 
@@ -103,5 +114,5 @@ const equipSlots = [
   {key:'artifact',icon:'🔮',name:'法宝'},{key:'mount',icon:'🐉',name:'坐骑'},
 ]
 
-function getEquipName(slot: string): string { return equipSlots.find(s=>s.key===slot)?.name?.slice(0,2)||slot }
+function getEquipName(slot: string): string { const eq = equips.value.find((e:any)=>e.slot===slot); return eq ? eq.name?.slice(0,2) : equipSlots.find(s=>s.key===slot)?.name?.slice(0,2)||slot }
 </script>
