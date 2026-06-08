@@ -27,7 +27,7 @@
     <div class="gold-divider"><div class="gold-divider__light" /></div>
     <main class="gh-main">
       <ErrorBoundary>
-        <PlayerSidebar :player="player" :isDead="isDead" />
+        <PlayerSidebar :player="player" :isDead="isDead" :training="training" :trainMult="trainMult" :currentLocInfo="currentLocInfo" :yySpeed="yySpeed" :hpPct="hpPct" :mpPct="mpPct" :cultExpPct="player.maxSpirit>0?Math.round(player.spirit/player.maxSpirit*100):0" @toggle-meditation="toggleMeditation" @do-breakthrough="doBreakthrough" @toggle-training="toggleTraining" @start-manual="startManual" @show-tooltip="showTooltip" @hide-tooltip="showCultTooltip=false" @update:train-mult="(v:number)=>trainMult=v" />
       </ErrorBoundary>
 
 
