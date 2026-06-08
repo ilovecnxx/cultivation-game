@@ -61,7 +61,8 @@
 import { ref, reactive, computed, onMounted, onUnmounted, watch } from 'vue'
 // router from nuxt auto-import
 import { apiFetch } from '../src/core/api'
-// navigateTo auto-imported by Nuxt
+// use Nuxt routing
+function goGame() { window.location.href = '/game' }
 
 function getIsNight(): boolean {
   const now = new Date()
@@ -134,7 +135,7 @@ async function doAuth() {
     const body: any = { account: auth.account, password: auth.password }
     if (authTab.value === 'register') { body.nickname = auth.nickname; body.gender = auth.gender }
     const data = await apiFetch(endpoint, { method: 'POST', body: JSON.stringify(body) })
-    if (data.access_token) { localStorage.setItem('token', data.access_token); localStorage.setItem('player_id', String(data.player_id ?? 0)); if (data.refresh_token) localStorage.setItem('refresh_token', data.refresh_token); navigateTo('/game') }
+    if (data.access_token) { localStorage.setItem('token', data.access_token); localStorage.setItem('player_id', String(data.player_id ?? 0)); if (data.refresh_token) localStorage.setItem('refresh_token', data.refresh_token); goGame() }
   } catch (e: any) { authError.value = e.message || '操作失败' } finally { authLoading.value = false }
 }
 
