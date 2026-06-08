@@ -40,7 +40,7 @@ export const menus: Array<{key:string;label:string;children?:Array<{key:string;l
   {key:'sect',label:'宗门',children:[{key:'my-sect',label:'我的宗门'},{key:'sect-list',label:'宗门列表'},{key:'sect-war',label:'宗门大战'}]},
   {key:'world',label:'世界',children:[{key:'world-map',label:'世界地图'},{key:'encounter',label:'奇遇'},{key:'fishing',label:'钓鱼'},{key:'ascend',label:'飞升'}]},
   {key:'trade',label:'交易',children:[{key:'buy',label:'购买'},{key:'sell',label:'出售'},{key:'auction',label:'拍卖'},{key:'auction-list',label:'拍卖列表'}]},
-  {key:'social',label:'社交',children:[{key:'friend-list',label:'好友列表'},{key:'master',label:'师徒'},{key:'daolv',label:'道侣'}]},
+  {key:'social',label:'🕊️飞鸽',children:[{key:'friend-list',label:'好友列表'},{key:'master',label:'师父'},{key:'daolv',label:'道侣'},{key:'disciple',label:'徒儿'}]},
   {key:'inventory',label:'背包',children:[{key:'items',label:'全部物品'},{key:'equipment',label:'装备'},{key:'skills',label:'技能'},{key:'pets',label:'灵兽'},{key:'artifact',label:'法宝'},{key:'formation',label:'阵法'}]},
   {key:'ranking',label:'排行',children:[{key:'power-rank',label:'战力排行'},{key:'realm-rank',label:'境界排行'},{key:'wealth-rank',label:'财富排行'}]},
   {key:'chat',label:'传音',children:[{key:'world-chat',label:'世界频道'},{key:'sect-chat',label:'宗门频道'},{key:'private-chat',label:'私聊'}]},
