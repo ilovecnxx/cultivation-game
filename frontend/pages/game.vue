@@ -430,6 +430,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted, watch } from 'vue'
 const isDark=ref(true)
+const activeNav=ref("")
 function toggleTheme(){isDark.value=!isDark.value;localStorage.setItem('theme-mode',isDark.value?'dark':'light');document.documentElement.className=isDark.value?'':'light-mode'}
 onMounted(()=>{const m=localStorage.getItem('theme-mode');if(m)isDark.value=m==='dark';document.documentElement.className=isDark.value?'':'light-mode'})
 
