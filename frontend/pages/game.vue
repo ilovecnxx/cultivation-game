@@ -136,7 +136,7 @@
     <Teleport to="body">
       <div v-if="showWiki" class="modal-overlay" @click.self="showWiki=false">
         <div class="wiki-modal">
-          <div class="gold-divider"/><header class="top-bar" style="border-radius:8px 8px 0 0"><div class="top-bar-inner"><span class="brand-logo" style="font-size:24px">📖</span><span class="brand-name" style="font-size:18px">百科</span><div class="top-bar-spacer"/><button class="modal-close" @click="showWiki=false">✕</button></div></header><div class="gold-divider"/>
+          <div class="gold-divider"/><header class="top-bar" style="border-radius:8px 8px 0 0"><div class="top-bar-inner"><div class="top-bar-spacer"/><span class="brand-name" style="font-size:18px">百科</span><div class="top-bar-spacer"/><button class="modal-close" @click="showWiki=false">✕</button></div></header><div class="gold-divider"/>
           <div class="wiki-tabs">
             <button v-for="t in wikiTabs" :key="t.key" class="modal-tab" :class="{active:wikiTab===t.key}" @click="wikiTab=t.key">{{ t.label }}</button>
           </div>
