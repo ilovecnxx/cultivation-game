@@ -337,7 +337,7 @@
 </template>
 
 <script setup lang="ts">
-import { useGameState } from '@/composables/useGameState'
+// useGameState auto-imported by Nuxt
 const {
   isDark, toggleTheme, getToken, getPID, refreshToken,
   menus, descs, realmNames, realmCoefs, rootMults, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, fmt,
