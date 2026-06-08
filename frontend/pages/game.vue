@@ -140,17 +140,17 @@ const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
 
 let _init = false
-onMounted(() => { setTimeout(() => _init = true, 300) })
+let _lastNav = ''
+onMounted(() => { setTimeout(() => _init = true, 800) })
 watch(activeNav, (name) => {
-  if (!_init || !name) return
+  if (!_init || !name || name === _lastNav) return
+  _lastNav = name
   if (name === 'wiki') { showWiki.value = true }
   else if (name === 'inventory' || name === 'items') { inventoryRef.value?.open(true) }
   else if (name === 'ranking') { rankingRef.value?.open(true) }
   else if (name === 'social') { showPigeon.value = true }
   else if (name === 'friend-list') { socialRef.value?.open(true) }
   else { const m = menus.find((x: any) => x.key === name); if (m) openMenu(m) }
-  // 延迟重置，允许同一tab被再次点击
-  setTimeout(() => { activeNav.value = '' }, 100)
 })
 </script>
 
