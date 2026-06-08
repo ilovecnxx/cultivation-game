@@ -361,7 +361,7 @@ const {
   connectWS, apiPost, logFilter, logLocked, logBody, filteredLogs,
 } = useGameState()
 
-function onNavChange(name: string) { const m = menus.find((x: any) => x.key === name); if (m) openMenu(m) }
+function onNavChange(name: string) { if (name === "wiki") { showWiki.value = true; return } const m = menus.find((x: any) => x.key === name); if (m) openMenu(m) }
 </script>
 
 <style lang="scss" scoped>
