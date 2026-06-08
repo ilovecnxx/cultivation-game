@@ -4,7 +4,6 @@ export default defineNuxtConfig({
 
   modules: [
     '@vant/nuxt', // Vant 4 移动端 UI 组件库
-    '@pinia/nuxt', // Pinia 状态管理
   ],
 
   app: {

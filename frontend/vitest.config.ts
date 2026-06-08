@@ -7,11 +7,12 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
-    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    include: ['composables/**/*.test.ts', 'components/**/*.test.ts'],
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': resolve(__dirname, '.'),
+      '@styles': resolve(__dirname, 'styles'),
     },
   },
 })

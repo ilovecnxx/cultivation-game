@@ -24,9 +24,8 @@
     /* 路径映射 */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "env.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["pages/**/*.vue", "components/**/*.vue", "composables/**/*.ts", "layouts/**/*.vue", "modules/**/*.vue", "env.d.ts"]
 }
