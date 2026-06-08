@@ -25,15 +25,11 @@
       "command": "npx",
       "args": [
         "-y",
-        "@berthojoris/mcp-mysql-server"
+        "@berthojoris/mcp-mysql-server",
+        "mysql://root:root@localhost:3306/cultivation",
+        "list,read,utility,create,update,delete"
       ],
-      "env": {
-        "DB_HOST": "localhost",
-        "DB_PORT": "3306",
-        "DB_USER": "root",
-        "DB_PASSWORD": "root",
-        "DB_NAME": "cultivation"
-      }
+      "env": {}
     },
     "github": {
       "type": "stdio",
