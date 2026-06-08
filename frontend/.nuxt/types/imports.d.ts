@@ -249,7 +249,7 @@ declare global {
   export type { PageMeta } from '../../node_modules/nuxt/dist/app/composables/pages'
   import('../../node_modules/nuxt/dist/app/composables/pages')
   // @ts-ignore
-  export type { EquipmentSlot, Equipment } from '../../composables/useEquipmentData'
+  export type { EquipmentSlot, SlotStats, Equipment } from '../../composables/useEquipmentData'
   import('../../composables/useEquipmentData')
   // @ts-ignore
   export type { MapLoc, MapRegion } from '../../composables/useGameData'

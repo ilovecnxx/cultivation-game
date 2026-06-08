@@ -49,15 +49,15 @@
               <span style="color:#d4a843;font-weight:700;font-size:13px">品阶:</span>
               <button v-for="t in tierInfo" :key="t.key" class="modal-tab" :class="{active:equipTier===t.key}" @click="equipTier=t.key" :style="{color:equipTier===t.key?t.color:''}">{{ t.name }}</button>
             </div>
-            <table class="wiki-table"><thead><tr><th>部位</th><th>名称</th><th>攻击</th><th>品阶倍率</th><th>词缀数</th></tr></thead><tbody>
+            <table class="wiki-table"><thead><tr><th>部位</th><th>名称</th><th>主属性</th><th>品阶倍率</th><th>词缀</th></tr></thead><tbody>
               <tr v-for="s in equipSlotNames" :key="s">
                 <td class="tc">{{ slotInfo[s].icon }} {{ slotInfo[s].name }}</td>
                 <td>{{ equipNames[equipRealm]?.[equipTier]?.[s] || '—' }}</td>
-                <td><b>{{ s==='weapon' ? Math.floor((realmBaseAttack[equipRealm]||10)*0.6*(tierInfo.find(t=>t.key===equipTier)?.mult||0.5)) : '—' }}</b></td>
+                <td style="font-size:12px">{{ slotInfo[s].desc }}</td>
                 <td :style="{color:(tierInfo.find(t=>t.key===equipTier)?.color||'#888')}">×{{ tierInfo.find(t=>t.key===equipTier)?.mult||0.5 }}</td>
-                <td>{{ tierInfo.find(t=>t.key===equipTier)?.subStats||0 }}</td>
+                <td>{{ tierInfo.find(t=>t.key===equipTier)?.subStats||0 }}条</td>
               </tr></tbody></table>
-            <p class="wiki-note">※ 攻击 = 境界基础攻击({{ realmBaseAttack[equipRealm]||'?' }}) × 0.6 × 品阶倍率。武器可附加随机词缀(暴击/闪避/命中/回蓝/速度)。佩戴要求：武器境界 ≤ 角色境界。</p>
+            <p class="wiki-note">※ 武器攻击 = 境界基础攻击({{ realmBaseAttack[equipRealm]||'?' }}) × 0.6 × 品阶倍率。其他部位按境界基础值 × 品阶倍率提供对应属性。所有装备属性直接加算到角色面板，不参与灵根乘算。佩戴要求：装备境界 ≤ 角色境界。</p>
           </div>
         </div>
       </div>

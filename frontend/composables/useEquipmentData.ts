@@ -5,13 +5,15 @@
 
 export type EquipmentSlot = 'weapon'|'robe'|'headgear'|'boots'|'necklace'|'ring'
 
-export const slotInfo: Record<EquipmentSlot, { name: string; icon: string }> = {
-  weapon:   { name: '武器', icon: '⚔️' },
-  robe:     { name: '法衣', icon: '👘' },
-  headgear: { name: '头饰', icon: '👑' },
-  boots:    { name: '鞋履', icon: '👢' },
-  necklace: { name: '项链', icon: '📿' },
-  ring:     { name: '戒指', icon: '💍' },
+export interface SlotStats { attack?: number; defense?: number; hp?: number; mp?: number; speed?: number; critRate?: number; critDmg?: number; dodge?: number; mpRegen?: number }
+
+export const slotInfo: Record<EquipmentSlot, { name: string; icon: string; stats: SlotStats; desc: string }> = {
+  weapon:   { name: '武器', icon: '⚔️', stats: {attack:1},                     desc: '攻击' },
+  robe:     { name: '法衣', icon: '👘', stats: {defense:1,hp:1},              desc: '防御·生命' },
+  headgear: { name: '头饰', icon: '👑', stats: {mp:1,mpRegen:1},              desc: '灵力·回蓝' },
+  boots:    { name: '鞋履', icon: '👢', stats: {speed:1,dodge:1},             desc: '速度·闪避' },
+  necklace: { name: '项链', icon: '📿', stats: {hp:1,mpRegen:1},              desc: '生命·回蓝' },
+  ring:     { name: '戒指', icon: '💍', stats: {attack:1,critDmg:1},           desc: '攻击·暴伤' },
 }
 
 export const tierInfo = [
