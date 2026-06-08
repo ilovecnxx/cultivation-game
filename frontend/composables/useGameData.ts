@@ -39,7 +39,14 @@ export const menus: Array<{key:string;label:string;children?:Array<{key:string;l
     {key:'talisman',label:'📝 符师'},{key:'herb',label:'🌱 灵植师'}
   ]},
   {key:'combat',label:'战斗',children:[{key:'pve',label:'野外战斗'},{key:'dungeon',label:'副本'},{key:'arena',label:'竞技场'},{key:'tower',label:'爬塔'},{key:'world-boss',label:'世界Boss'}]},
-  {key:'sect',label:'宗门',children:[{key:'my-sect',label:'我的宗门'},{key:'sect-list',label:'宗门列表'},{key:'sect-war',label:'宗门大战'}]},
+  {key:'sect',label:'宗门',children:[
+    {key:'my-sect',label:'🏯 我的宗门'},
+    {key:'sect-list',label:'🔍 宗门列表'},
+    {key:'sect-warehouse',label:'📦 宗门仓库'},
+    {key:'sect-technique',label:'📚 功法阁'},
+    {key:'sect-skills',label:'⚡ 宗门技能'},
+    {key:'sect-war',label:'⚔️ 宗门大战'}
+  ]},
   {key:'world',label:'世界',children:[{key:'world-map',label:'世界地图'},{key:'encounter',label:'奇遇'},{key:'fishing',label:'钓鱼'},{key:'ascend',label:'飞升'}]},
   {key:'trade',label:'交易',children:[{key:'buy',label:'购买'},{key:'sell',label:'出售'},{key:'auction',label:'拍卖'},{key:'auction-list',label:'拍卖列表'}]},
   {key:'social',label:'🕊️飞鸽',children:[{key:'friend-list',label:'好友列表'},{key:'master',label:'师父'},{key:'daolv',label:'道侣'},{key:'disciple',label:'徒儿'}]},

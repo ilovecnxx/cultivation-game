@@ -80,6 +80,9 @@ func main() {
 	sectSkillSvc := service.NewSectSkillService(mongoDB)
 	sectMissionSvc := service.NewSectMissionService(mongoDB)
 	sectWarSvc := service.NewSectWarService(logger, mongoDB)
+	sectTechSvc := service.NewSectTechService(mongoDB)
+	sectWarehouseSvc := service.NewSectWarehouseService(mongoDB)
+	sectTechniqueSvc := service.NewSectTechniqueService(mongoDB)
 
 	// 道侣系统
 	daolvRepo := repository.NewDaoLvRepo(mongoDB)
@@ -99,6 +102,9 @@ func main() {
 	mailHandler := handler.NewMailHandler(mailSvc)
 	sectHandler := handler.NewSectHandler(sectSvc)
 	sectExtraHandler := handler.NewSectExtraHandler(sectSkillSvc, sectMissionSvc, sectWarSvc)
+	sectTechHandler := handler.NewSectTechHandler(sectTechSvc)
+	sectWarehouseHandler := handler.NewSectWarehouseHandler(sectWarehouseSvc)
+	sectTechniqueHandler := handler.NewSectTechniqueHandler(sectTechniqueSvc)
 	daolvHandler := handler.NewDaoLvHandler(daolvSvc)
 
 	// 设置 Gin 路由
@@ -183,6 +189,22 @@ func main() {
 
 		// 宗门排名
 		v1.POST("/sect/rank", sectExtraHandler.GetSectRank)
+
+		// 宗门科技树
+		v1.GET("/sect/tech/list", sectTechHandler.ListTechs)
+		v1.POST("/sect/tech/upgrade", sectTechHandler.UpgradeTech)
+
+		// 宗门仓库
+		v1.POST("/sect/warehouse/donate", sectWarehouseHandler.DonateItem)
+		v1.GET("/sect/warehouse/list", sectWarehouseHandler.GetWarehouseItems)
+		v1.POST("/sect/warehouse/buy", sectWarehouseHandler.BuyItem)
+		v1.POST("/sect/warehouse/donate-funds", sectWarehouseHandler.DonateFunds)
+
+		// 功法阁
+		v1.GET("/sect/technique/list", sectTechniqueHandler.GetTechniques)
+		v1.POST("/sect/technique/exchange", sectTechniqueHandler.ExchangeTechnique)
+		v1.POST("/sect/technique/upgrade", sectTechniqueHandler.UpgradeTechnique)
+		v1.GET("/sect/technique/my", sectTechniqueHandler.GetMyTechniques)
 
 		// 道侣系统
 		v1.POST("/daolv/propose", daolvHandler.Propose)
