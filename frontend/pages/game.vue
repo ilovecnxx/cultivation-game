@@ -340,7 +340,7 @@
 import { watch, onMounted } from "vue"
 // useGameState auto-imported by Nuxt
 const {
-  isDark, toggleTheme, getToken, getPID, refreshToken,
+  isDark, toggleTheme, getToken, getPID, refreshToken, activeNav,
   menus, descs, realmNames, realmCoefs, rootMults, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, fmt,
   activeMenu, modalVisible, activeSub, modalDesc, activeSubLabel, openMenu,
   player, isDead, hpPct, mpPct, yySpeed, ageBracket, ageDays, loadPlayer,
