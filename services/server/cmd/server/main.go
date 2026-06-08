@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"log/slog"
 	"sync"
+	"sync/atomic"
 	"net/http"
 	"os"
 	"strings"
@@ -44,11 +45,11 @@ import (
 )
 
 // ============================================================================
-// 全局配置(从环境变量读取)
+// 服务上下文 — 后续应重构为 struct 以支持依赖注入和单元测试(TODO)
 // ============================================================================
 var startedAt = time.Now()
-var serverRegistered int64 = 0 // 总注册人数（缓存）
-var appDB *sql.DB // 全局 DB 引用，供 wsHandler 等使用
+var serverRegistered atomic.Int64 // 总注册人数（缓存）
+var appDB *sql.DB                 // 全局 DB 引用，供 wsHandler 等使用
 
 func main() {
 	// ---------------------------------------------------------------
@@ -62,6 +63,13 @@ func main() {
 	serverPort := getEnv("SERVER_PORT", "8080")
 	jwtAccessSecret := getEnv("JWT_ACCESS_SECRET", "default-access-secret-change-in-production")
 	jwtRefreshSecret := getEnv("JWT_REFRESH_SECRET", "default-refresh-secret-change-in-production")
+
+	// 安全校验：拒绝使用默认值的 JWT 密钥
+	if jwtAccessSecret == "default-access-secret-change-in-production" || jwtRefreshSecret == "default-refresh-secret-change-in-production" {
+		slog.Error("JWT 密钥使用了不安全的默认值，请在环境变量中设置 JWT_ACCESS_SECRET 和 JWT_REFRESH_SECRET")
+		os.Exit(1)
+	}
+
 	jwtAccessExpire := getDuration("JWT_ACCESS_EXPIRE", 24*time.Hour)
 	jwtRefreshExpire := getDuration("JWT_REFRESH_EXPIRE", 7*24*time.Hour)
 	jwtIssuer := getEnv("JWT_ISSUER", "cultivation-game")
@@ -241,9 +249,12 @@ func main() {
 		if err := rdb.Ping(c.Request.Context()).Err(); err != nil {
 			redisStatus = "degraded"
 		}
-		if serverRegistered == 0 {
-			if err := appDB.QueryRow("SELECT COUNT(*) FROM players").Scan(&serverRegistered); err != nil {
-				serverRegistered = 0
+		if serverRegistered.Load() == 0 {
+			var cnt int64
+			if err := appDB.QueryRow("SELECT COUNT(*) FROM players").Scan(&cnt); err != nil {
+				serverRegistered.Store(0)
+			} else {
+				serverRegistered.Store(cnt)
 			}
 		}
 		var online int64
@@ -254,7 +265,7 @@ func main() {
 			"mysql":      dbStatus,
 			"redis":      redisStatus,
 			"online":     online,
-			"registered": serverRegistered,
+			"registered": serverRegistered.Load(),
 		}
 		if hasMongo {
 			mongoStatus := "ok"
@@ -324,7 +335,7 @@ func main() {
 			v1.POST("/:id/breakthrough", jwtAuthMiddleware(jwtManager), p.Cultivation.Breakthrough)
 		v1.POST("/:id/train", jwtAuthMiddleware(jwtManager), p.Training.Train)
 		v1.POST("/:id/pve", jwtAuthMiddleware(jwtManager), p.Pve.Fight)
-		v1.GET("/:id/inventory", jwtAuthMiddleware(jwtManager), p.Backpack.ListItems)
+		v1.GET("/:id/inventory", jwtAuthMiddleware(jwtManager), p.Backpack.ListInventory)
 		v1.GET("/:id/equipment", jwtAuthMiddleware(jwtManager), p.Equip.ListEquipment)
 		v1.POST("/:id/equipment/craft", jwtAuthMiddleware(jwtManager), p.Equip.CraftEquipment)
 		v1.POST("/:id/equipment/unequip", jwtAuthMiddleware(jwtManager), p.Equip.Unequip)

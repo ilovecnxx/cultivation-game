@@ -8,8 +8,31 @@ package protocol
 import (
 	"encoding/json"
 	"errors"
+	"sync"
 	"time"
 )
+
+// packetPool 复用 Packet 对象以减少 GC 压力，适用于高频消息场景。
+var packetPool = sync.Pool{
+	New: func() interface{} {
+		return &Packet{}
+	},
+}
+
+// AcquirePacket 从池中获取一个 Packet 实例。
+func AcquirePacket() *Packet {
+	return packetPool.Get().(*Packet)
+}
+
+// ReleasePacket 将 Packet 归还到池中。
+func ReleasePacket(p *Packet) {
+	p.MsgID = 0
+	p.PlayerID = 0
+	p.Body = nil
+	p.Timestamp = 0
+	p.TraceID = ""
+	packetPool.Put(p)
+}
 
 // 系统错误码
 const (

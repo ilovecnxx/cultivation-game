@@ -14,6 +14,8 @@ type Config struct {
 	ServerPort int `json:"server_port"`
 	// 优雅关闭超时
 	ShutdownTimeout time.Duration `json:"shutdown_timeout"`
+	// CORS 允许的来源域名（逗号分隔），为空则限制同源，设为 "*" 表示允许所有（不推荐）
+	CORSAllowedOrigins string `json:"cors_allowed_origins"`
 
 	// WebSocket 读缓冲大小（字节）
 	WSReadBufferSize int `json:"ws_read_buffer_size"`
@@ -75,8 +77,9 @@ type Config struct {
 // Load 从环境变量加载配置，缺失项使用默认值。
 func Load() *Config {
 	return &Config{
-		ServerPort:       getEnvInt("SERVER_PORT", 8080),
-		ShutdownTimeout:  getEnvDuration("SHUTDOWN_TIMEOUT", 15*time.Second),
+		ServerPort:         getEnvInt("SERVER_PORT", 8080),
+		ShutdownTimeout:    getEnvDuration("SHUTDOWN_TIMEOUT", 15*time.Second),
+		CORSAllowedOrigins: getEnv("CORS_ALLOWED_ORIGINS", ""),
 		WSReadBufferSize:  getEnvInt("WS_READ_BUFFER_SIZE", 4096),
 		WSWriteBufferSize: getEnvInt("WS_WRITE_BUFFER_SIZE", 4096),
 		WSMaxMessageSize:  int64(getEnvInt("WS_MAX_MESSAGE_SIZE", 65536)),

@@ -15,6 +15,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -151,12 +152,13 @@ func main() {
 	// =========================================================
 	// 11. 注册 HTTP 路由
 	// =========================================================
+	allowedOrigins := allowedOrigins(cfg)
 	r := gin.New()
 	r.Use(gin.Recovery())
 	r.Use(RequestLogger())
-	r.Use(CORSMiddleware())
+	r.Use(CORSMiddleware(allowedOrigins))
 
-	r.GET("/ws", wsHandler(hub, jwtManager, cfg))
+	r.GET("/ws", wsHandler(hub, jwtManager, cfg, allowedOrigins))
 	r.POST("/auth/refresh", refreshTokenHandler(jwtManager))
 	r.POST("/auth/login", loginHandler(jwtManager, grpcClient))
 	r.POST("/auth/register", registerHandler(jwtManager, grpcClient, hub))
@@ -225,14 +227,39 @@ func main() {
 // HTTP Handlers
 // =========================================================
 
-// upgrader WebSocket 升级器。
+// upgrader WebSocket 升级器（在 wsHandler 中按配置覆盖 CheckOrigin）。
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  4096,
 	WriteBufferSize: 4096,
-	// 允许所有来源（生产环境应限制）
-	CheckOrigin: func(r *http.Request) bool {
-		return true
-	},
+	// CheckOrigin 在 wsHandler 中按配置动态设置
+	CheckOrigin: func(r *http.Request) bool { return true },
+}
+
+// allowedOrigins 从配置解析的可信来源列表，用于 CORS 和 WebSocket Origin 校验。
+func allowedOrigins(cfg *config.Config) map[string]bool {
+	origins := make(map[string]bool)
+	if cfg.CORSAllowedOrigins == "" || cfg.CORSAllowedOrigins == "*" {
+		return nil // nil = 不限制（需配合配置明确设置）
+	}
+	for _, o := range strings.Split(cfg.CORSAllowedOrigins, ",") {
+		o = strings.TrimSpace(o)
+		if o != "" {
+			origins[o] = true
+		}
+	}
+	return origins
+}
+
+// checkOrigin 根据配置检查 WebSocket Origin 是否允许。
+func checkOrigin(r *http.Request, allowed map[string]bool) bool {
+	if allowed == nil {
+		return true // 未配置白名单时放行（兼容旧配置）
+	}
+	origin := r.Header.Get("Origin")
+	if origin == "" {
+		return true // 无 Origin 头的非浏览器客户端放行
+	}
+	return allowed[origin]
 }
 
 // RequestLogger 请求日志中间件，使用 slog 记录每个 HTTP 请求。
@@ -258,10 +285,22 @@ func RequestLogger() gin.HandlerFunc {
 	}
 }
 
-// CORSMiddleware CORS 中间件，允许所有来源（生产环境应限制）。
-func CORSMiddleware() gin.HandlerFunc {
+// CORSMiddleware CORS 中间件，按配置限制可信来源。
+func CORSMiddleware(allowedOrigins map[string]bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		c.Header("Access-Control-Allow-Origin", "*")
+		origin := c.Request.Header.Get("Origin")
+
+		// 如果配置了白名单，只允许白名单中的来源
+		if allowedOrigins != nil {
+			if !allowedOrigins[origin] {
+				c.AbortWithStatus(http.StatusForbidden)
+				return
+			}
+			c.Header("Access-Control-Allow-Origin", origin)
+		} else {
+			c.Header("Access-Control-Allow-Origin", "*")
+		}
+
 		c.Header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 		c.Header("Access-Control-Allow-Headers", "Origin, Content-Type, Authorization")
 		c.Header("Access-Control-Allow-Credentials", "true")
@@ -277,7 +316,7 @@ func CORSMiddleware() gin.HandlerFunc {
 
 // wsHandler 处理 WebSocket 升级请求。
 // 路径: GET /ws?token=<access_token>
-func wsHandler(hub *hub.Hub, jwtManager *auth.JWTManager, cfg *config.Config) gin.HandlerFunc {
+func wsHandler(hub *hub.Hub, jwtManager *auth.JWTManager, cfg *config.Config, allowedOrigins map[string]bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// 验证 Token
 		token := c.Query("token")
@@ -293,8 +332,14 @@ func wsHandler(hub *hub.Hub, jwtManager *auth.JWTManager, cfg *config.Config) gi
 			return
 		}
 
+		// 检查 WebSocket Origin（覆盖 upgrader 默认的 CheckOrigin）
+		origUpgrader := upgrader
+		origUpgrader.CheckOrigin = func(r *http.Request) bool {
+			return checkOrigin(r, allowedOrigins)
+		}
+
 		// 升级为 WebSocket 连接
-		conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
+		conn, err := origUpgrader.Upgrade(c.Writer, c.Request, nil)
 		if err != nil {
 			slog.Error("websocket upgrade failed", "error", err)
 			return

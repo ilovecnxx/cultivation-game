@@ -192,6 +192,17 @@ func (c *Connection) ReadPump() {
 			continue
 		}
 
+
+		// 输入校验：拒绝过大的消息体（防御恶意客户端）
+		if len(packet.Body) > 10*1024 {
+			slog.Warn("packet body too large",
+				"size", len(packet.Body),
+				"player_id", c.PlayerID,
+				"conn_id", c.ID,
+			)
+			c.sendErrorPacket(protocol.ErrInvalidPacket, "消息体过大")
+			continue
+		}
 		// 注入玩家 ID
 		c.mu.RLock()
 		packet.PlayerID = c.PlayerID

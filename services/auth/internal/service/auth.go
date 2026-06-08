@@ -4,6 +4,8 @@ package service
 import (
 	"bytes"
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -63,9 +65,6 @@ func NewAuthService(userRepo *repository.UserRepo, rdb *redis.Client, cfg *confi
 	playerAddr := os.Getenv("PLAYER_SERVICE_ADDR")
 	if playerAddr == "" {
 		playerAddr = "http://127.0.0.1:8080"
-	if v := os.Getenv("PLAYER_SERVICE_ADDR"); v != "" {
-		playerAddr = v
-	}
 	}
 	return &AuthService{
 		userRepo:          userRepo,
@@ -519,14 +518,8 @@ func (s *AuthService) cleanupOldSession(ctx context.Context, userID uint64) erro
 
 // ---- 辅助函数 ----
 
-// hashToken 对 Token 字符串进行哈希，用作 Redis 键（避免存储完整 Token）。
+// hashToken 对 Token 字符串进行 SHA256 哈希，用作 Redis 键（避免存储完整 Token）。
 func hashToken(token string) string {
-	// 这里简化处理：取 Token 的 SHA256 前缀。
-	// 生产环境应使用完整的 crypto/sha256。
-	// 由于 token 本身已通过 JWT 签名，取前 32 位作为简略索引已足够。
-	if len(token) > 32 {
-		// 取最后 32 字符（JWT 的签名部分变化大，适合做区分）
-		return token[len(token)-32:]
-	}
-	return token
+	hash := sha256.Sum256([]byte(token))
+	return hex.EncodeToString(hash[:])
 }

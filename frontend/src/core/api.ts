@@ -1,28 +1,72 @@
 // ============================================================
 // 统一 API 请求工具
 // 封装 fetch，自动携带 token、处理 401 跳转、错误提示
+//
+// 安全说明：
+// - Access Token 仅保存在内存中（页面刷新需要重新登录或使用 Refresh Token）
+// - Refresh Token 保存在 sessionStorage（关闭标签页即清除）
+// - 生产环境建议迁移到 httpOnly Cookie + CSRF Token 方案
 // ============================================================
 
 import router from '@/router'
 
-/** localStorage token 键名 */
-const TOKEN_KEY = 'token'
+/** 内存中的 Access Token（页面刷新后需要重新获取） */
+let inMemoryAccessToken: string | null = null
 
-/** 获取认证头 */
-function getAuthHeaders(): Record<string, string> {
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  const token = localStorage.getItem(TOKEN_KEY)
+/** sessionStorage 中 Refresh Token 的键名 */
+const REFRESH_TOKEN_KEY = 'refresh_token'
+
+/**
+ * 设置 Access Token（仅保存在内存中）。
+ * 页面刷新或关闭标签页后失效，有效防止 XSS 窃取。
+ */
+export function setAccessToken(token: string | null): void {
+  inMemoryAccessToken = token
+}
+
+/**
+ * 获取当前的 Access Token。
+ * 优先从内存返回，如果没有则尝试从 sessionStorage 的 Refresh Token 刷新。
+ */
+export function getAccessToken(): string | null {
+  return inMemoryAccessToken
+}
+
+/**
+ * 检查是否已登录（内存中有 Access Token 或 sessionStorage 中有 Refresh Token）。
+ */
+export function isLoggedIn(): boolean {
+  return !!inMemoryAccessToken || !!sessionStorage.getItem(REFRESH_TOKEN_KEY)
+}
+
+/**
+ * 设置 Refresh Token（保存在 sessionStorage，关闭标签页即清除）。
+ */
+export function setRefreshToken(token: string | null): void {
   if (token) {
-    headers['Authorization'] = `Bearer ${token}`
+    sessionStorage.setItem(REFRESH_TOKEN_KEY, token)
+  } else {
+    sessionStorage.removeItem(REFRESH_TOKEN_KEY)
   }
-  return headers
+}
+
+/**
+ * 获取 Refresh Token。
+ */
+export function getRefreshToken(): string | null {
+  return sessionStorage.getItem(REFRESH_TOKEN_KEY)
+}
+
+/** 清除所有认证信息 */
+export function clearAuth(): void {
+  inMemoryAccessToken = null
+  sessionStorage.removeItem(REFRESH_TOKEN_KEY)
+  localStorage.removeItem('player_id')
 }
 
 /** token 过期，跳转登录页 */
 function redirectToLogin(): never {
-  localStorage.removeItem(TOKEN_KEY)
-  localStorage.removeItem('player_id')
-  localStorage.removeItem('refresh_token')
+  clearAuth()
   router.push('/login')
   throw new Error('登录已过期，请重新登录')
 }
@@ -64,8 +108,13 @@ export function showToast(message: string, type: 'info' | 'success' | 'warning' 
 export async function apiFetch<T = any>(url: string, options: RequestInit = {}): Promise<T> {
   // 合并 headers
   const headers: Record<string, string> = {
-    ...getAuthHeaders(),
+    'Content-Type': 'application/json',
     ...(options.headers as Record<string, string> || {}),
+  }
+
+  const token = getAccessToken()
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`
   }
 
   let res: Response
@@ -75,8 +124,17 @@ export async function apiFetch<T = any>(url: string, options: RequestInit = {}):
     throw new Error('网络连接失败，请检查服务器是否运行')
   }
 
-  // 401 → 登录过期
+  // 401 → 尝试用 Refresh Token 刷新
   if (res.status === 401) {
+    const refreshed = await tryRefreshToken()
+    if (refreshed) {
+      // 重试原请求（更新 token）
+      headers['Authorization'] = `Bearer ${getAccessToken()}`
+      res = await fetch(url, { ...options, headers })
+      if (res.ok) {
+        return await res.json() as T
+      }
+    }
     redirectToLogin()
   }
 
@@ -93,6 +151,37 @@ export async function apiFetch<T = any>(url: string, options: RequestInit = {}):
   }
 
   return body as T
+}
+
+/**
+ * 尝试用 Refresh Token 刷新 Access Token。
+ * @returns 是否刷新成功
+ */
+async function tryRefreshToken(): Promise<boolean> {
+  const refreshToken = getRefreshToken()
+  if (!refreshToken) return false
+
+  try {
+    const res = await fetch('/auth/refresh', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ refresh_token: refreshToken }),
+    })
+    if (!res.ok) return false
+
+    const data = await res.json()
+    if (data.access_token) {
+      setAccessToken(data.access_token)
+      // 如果返回了新的 Refresh Token，轮换存储
+      if (data.refresh_token) {
+        setRefreshToken(data.refresh_token)
+      }
+      return true
+    }
+    return false
+  } catch {
+    return false
+  }
 }
 
 /**
