@@ -36,6 +36,7 @@ declare global {
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
   const equipNames: typeof import('../../composables/useEquipmentData').equipNames
+  const equipVisual: typeof import('../../composables/useEquipmentData').equipVisual
   const fmt: typeof import('../../composables/useGameData').fmt
   const generateEquip: typeof import('../../composables/useEquipmentData').generateEquip
   const getAccessToken: typeof import('../../composables/useApi').getAccessToken
@@ -250,7 +251,7 @@ declare global {
   export type { PageMeta } from '../../node_modules/nuxt/dist/app/composables/pages'
   import('../../node_modules/nuxt/dist/app/composables/pages')
   // @ts-ignore
-  export type { EquipmentSlot, SlotStats, Equipment } from '../../composables/useEquipmentData'
+  export type { EquipmentSlot, SlotStats, Equipment, EquipVisual } from '../../composables/useEquipmentData'
   import('../../composables/useEquipmentData')
   // @ts-ignore
   export type { MapLoc, MapRegion } from '../../composables/useGameData'
@@ -298,6 +299,7 @@ declare module 'vue' {
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly equipNames: UnwrapRef<typeof import('../../composables/useEquipmentData')['equipNames']>
+    readonly equipVisual: UnwrapRef<typeof import('../../composables/useEquipmentData')['equipVisual']>
     readonly fmt: UnwrapRef<typeof import('../../composables/useGameData')['fmt']>
     readonly generateEquip: UnwrapRef<typeof import('../../composables/useEquipmentData')['generateEquip']>
     readonly getAccessToken: UnwrapRef<typeof import('../../composables/useApi')['getAccessToken']>

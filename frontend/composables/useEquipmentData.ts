@@ -166,3 +166,32 @@ export function generateEquip(realm: number, tierKey: string, slot: EquipmentSlo
     dodge: stats.dodge||0, hit: stats.hit||0, mpRegen: stats.mpRegen||0, substats,
   }
 }
+
+// ============================================================
+// 装备视觉效果 — 境界+品阶双维度
+// ============================================================
+export interface EquipVisual {
+  color: string       // hsl 颜色
+  glow: string        // text-shadow
+  box: string         // box-shadow  
+  bg: string          // background gradient
+  anim: string        // animation
+  level: number       // 特效等级 0-4
+  style: string       // 拼好的完整 style 字符串
+}
+
+const tierHue: Record<string, number> = { human:30, yellow:45, dark:130, earth:210, heaven:350 }
+
+export function equipVisual(realm: number, tier: string): EquipVisual {
+  const hue = tierHue[tier] || 30
+  const lv = realm <= 2 ? 0 : realm <= 4 ? 1 : realm <= 6 ? 2 : realm <= 8 ? 3 : 4
+  const sat = 25 + realm * 7
+  const light = 45 + realm * 5
+  const color = `hsl(${hue}, ${sat}%, ${light}%)`
+  const glow = lv >= 1 ? `text-shadow:0 0 ${2+realm}px ${color}` : ''
+  const box  = lv >= 2 ? `box-shadow:0 0 ${3+realm}px ${color}44` : ''
+  const bg   = lv >= 3 ? `background:linear-gradient(135deg,${color}18,transparent)` : ''
+  const anim = lv >= 4 ? `animation:equip-shimmer ${3-(realm-8)*0.5}s ease-in-out infinite` : ''
+  const style = [glow, box, bg, anim].filter(Boolean).join(';')
+  return { color, glow, box, bg, anim, level: lv, style }
+}
