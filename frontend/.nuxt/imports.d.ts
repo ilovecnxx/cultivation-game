@@ -37,5 +37,6 @@ export { useAuth } from '../composables/useAuth';
 export { slotInfo, tierInfo, realmBaseAttack, realmBaseStats, equipNames, generateEquip, tierColors, colorizeName, equipVisual, EquipmentSlot, SlotStats, Equipment, EquipVisual } from '../composables/useEquipmentData';
 export { realmNames, realmCoefs, number, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, menus, descs, fmt, wikiRealms, wikiSpiritReqs, wikiRootBonuses, wikiQuality, MapLoc, MapRegion } from '../composables/useGameData';
 export { useGameState } from '../composables/useGameState';
+export { generateLore } from '../composables/useWeaponLore';
 export { wsClient, WsEventType, WsEventHandlers, WsConnectionState } from '../composables/useWebSocket';
 export { useNuxtDevTools } from '../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

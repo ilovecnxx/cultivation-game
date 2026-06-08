@@ -20,6 +20,7 @@ export const GameModals: typeof import("../components/GameModals.vue")['default'
 export const MapModal: typeof import("../components/MapModal.vue")['default']
 export const PigeonPanel: typeof import("../components/PigeonPanel.vue")['default']
 export const PlayerSidebar: typeof import("../components/PlayerSidebar.vue")['default']
+export const WeaponCard: typeof import("../components/WeaponCard.vue")['default']
 export const WikiModal: typeof import("../components/WikiModal.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
@@ -151,6 +152,7 @@ export const LazyGameModals: LazyComponent<typeof import("../components/GameModa
 export const LazyMapModal: LazyComponent<typeof import("../components/MapModal.vue")['default']>
 export const LazyPigeonPanel: LazyComponent<typeof import("../components/PigeonPanel.vue")['default']>
 export const LazyPlayerSidebar: LazyComponent<typeof import("../components/PlayerSidebar.vue")['default']>
+export const LazyWeaponCard: LazyComponent<typeof import("../components/WeaponCard.vue")['default']>
 export const LazyWikiModal: LazyComponent<typeof import("../components/WikiModal.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>

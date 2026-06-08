@@ -102,6 +102,7 @@
     <TradeView ref="tradeRef" />
     <CombatView ref="combatRef" />
   </div>
+    <WeaponPanel ref="weaponRef" />
 </template>
 
 <script setup lang="ts">
@@ -111,6 +112,7 @@ import SocialView from '@/modules/social/SocialView.vue'
 import AlchemyView from '@/modules/cultivation/AlchemyView.vue'
 import TradeView from '@/modules/trade/TradeView.vue'
 import CombatView from '@/modules/combat/CombatView.vue'
+import WeaponPanel from '@/modules/inventory/WeaponPanel.vue'
 // useGameState auto-imported by Nuxt
 const {
   isDark, toggleTheme, getToken, getPID, refreshToken, activeNav,
@@ -142,6 +144,7 @@ const showPigeon = ref(false)
 const alchemyRef = ref()
 const tradeRef = ref()
 const combatRef = ref()
+const weaponRef = ref()
 
 const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
@@ -153,6 +156,7 @@ function handleMenu(key: string) {
   if (key === 'friend-list') { modalVisible.value=false; socialRef.value?.open(true); return }
   if (key === 'pill' || key === 'alchemy') { modalVisible.value=false; alchemyRef.value?.open(true); return }
   if (key === 'auction' || key === 'buy') { modalVisible.value=false; tradeRef.value?.open(true); return }
+  if (key === 'equipment') { modalVisible.value=false; weaponRef.value?.open(true); return }
   if (key === 'dungeon') { modalVisible.value=false; combatRef.value?.open(true); return }
   const m = menus.find((x: any) => x.key === key)
   if (m) openMenu(m)

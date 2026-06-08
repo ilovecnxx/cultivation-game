@@ -40,6 +40,7 @@ declare global {
   const equipVisual: typeof import('../../composables/useEquipmentData').equipVisual
   const fmt: typeof import('../../composables/useGameData').fmt
   const generateEquip: typeof import('../../composables/useEquipmentData').generateEquip
+  const generateLore: typeof import('../../composables/useWeaponLore').generateLore
   const getAccessToken: typeof import('../../composables/useApi').getAccessToken
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getAppManifest
   const getCurrentInstance: typeof import('vue').getCurrentInstance
@@ -305,6 +306,7 @@ declare module 'vue' {
     readonly equipVisual: UnwrapRef<typeof import('../../composables/useEquipmentData')['equipVisual']>
     readonly fmt: UnwrapRef<typeof import('../../composables/useGameData')['fmt']>
     readonly generateEquip: UnwrapRef<typeof import('../../composables/useEquipmentData')['generateEquip']>
+    readonly generateLore: UnwrapRef<typeof import('../../composables/useWeaponLore')['generateLore']>
     readonly getAccessToken: UnwrapRef<typeof import('../../composables/useApi')['getAccessToken']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
