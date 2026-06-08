@@ -40,6 +40,25 @@
                 <td>{{ r.dg>0?'+'+r.dg+'%':'—' }}</td><td>{{ r.mr>0?'+'+r.mr+'%':'—' }}</td>
               </tr></tbody></table>
           </div>
+          <div v-if="tab==='equip'">
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:16px">
+              <span style="color:#d4a843;font-weight:700;font-size:13px">境界:</span>
+              <button v-for="r in 10" :key="r" class="modal-tab" :class="{active:equipRealm===r}" @click="equipRealm=r">{{ realmNames[r] }}</button>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:16px">
+              <span style="color:#d4a843;font-weight:700;font-size:13px">品阶:</span>
+              <button v-for="t in tierInfo" :key="t.key" class="modal-tab" :class="{active:equipTier===t.key}" @click="equipTier=t.key" :style="{color:equipTier===t.key?t.color:''}">{{ t.name }}</button>
+            </div>
+            <table class="wiki-table"><thead><tr><th>部位</th><th>名称</th><th>攻击</th><th>品阶倍率</th><th>词缀数</th></tr></thead><tbody>
+              <tr v-for="s in equipSlotNames" :key="s">
+                <td class="tc">{{ slotInfo[s].icon }} {{ slotInfo[s].name }}</td>
+                <td>{{ equipNames[equipRealm]?.[equipTier]?.[s] || '—' }}</td>
+                <td><b>{{ s==='weapon' ? Math.floor((realmBaseAttack[equipRealm]||10)*0.6*(tierInfo.find(t=>t.key===equipTier)?.mult||0.5)) : '—' }}</b></td>
+                <td :style="{color:(tierInfo.find(t=>t.key===equipTier)?.color||'#888')}">×{{ tierInfo.find(t=>t.key===equipTier)?.mult||0.5 }}</td>
+                <td>{{ tierInfo.find(t=>t.key===equipTier)?.subStats||0 }}</td>
+              </tr></tbody></table>
+            <p class="wiki-note">※ 攻击 = 境界基础攻击({{ realmBaseAttack[equipRealm]||'?' }}) × 0.6 × 品阶倍率。武器可附加随机词缀(暴击/闪避/命中/回蓝/速度)。佩戴要求：武器境界 ≤ 角色境界。</p>
+          </div>
         </div>
       </div>
     </div>
@@ -50,6 +69,11 @@
 defineProps<{ show: boolean; realmId: number; playerSpiritName: string }>()
 defineEmits(['close'])
 import { fmt, wikiRealms, wikiSpiritReqs, wikiRootBonuses, rootNames, qualityNames, wikiQuality } from '@/composables/useGameData'
+import { equipNames, realmNames, realmBaseAttack, tierInfo, slotInfo, type EquipmentSlot } from '@/composables/useEquipmentData'
+
 const tab = ref('realm')
-const wikiTabs = [{ key: 'realm', label: '境界体系' }, { key: 'root', label: '灵根体系' }, { key: 'attrs', label: '战斗属性' }, { key: 'innate', label: '先天属性' }, { key: 'equip', label: '装备体系' }]
+const wikiTabs = [{ key: 'realm', label: '境界体系' }, { key: 'root', label: '灵根体系' }, { key: 'equip', label: '装备体系' }]
+const equipRealm = ref(1)
+const equipTier = ref('human')
+const equipSlotNames: EquipmentSlot[] = ['weapon','robe','headgear','boots','necklace','ring']
 </script>

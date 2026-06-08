@@ -31,7 +31,7 @@ export const realmBaseAttack: Record<number, number> = {
 // ============================================================
 // 300件装备名称表 (境界,品阶,部位)
 // ============================================================
-const equipNames: Record<number, Record<string, Record<EquipmentSlot, string>>> = {
+export const equipNames: Record<number, Record<string, Record<EquipmentSlot, string>>> = {
   1: { // 锻体
     human:   {weapon:'人·凡铁剑',robe:'人·凡铁铠',headgear:'人·凡铁冠',boots:'人·凡铁靴',necklace:'人·凡铁坠',ring:'人·凡铁戒'},
     yellow:  {weapon:'黄·百炼刀',robe:'黄·百炼袍',headgear:'黄·百炼盔',boots:'黄·百炼履',necklace:'黄·百炼佩',ring:'黄·百炼环'},

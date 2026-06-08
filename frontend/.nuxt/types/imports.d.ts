@@ -35,6 +35,7 @@ declare global {
   const descs: typeof import('../../composables/useGameData').descs
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
+  const equipNames: typeof import('../../composables/useEquipmentData').equipNames
   const fmt: typeof import('../../composables/useGameData').fmt
   const generateEquip: typeof import('../../composables/useEquipmentData').generateEquip
   const getAccessToken: typeof import('../../composables/useApi').getAccessToken
@@ -295,6 +296,7 @@ declare module 'vue' {
     readonly descs: UnwrapRef<typeof import('../../composables/useGameData')['descs']>
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly equipNames: UnwrapRef<typeof import('../../composables/useEquipmentData')['equipNames']>
     readonly fmt: UnwrapRef<typeof import('../../composables/useGameData')['fmt']>
     readonly generateEquip: UnwrapRef<typeof import('../../composables/useEquipmentData')['generateEquip']>
     readonly getAccessToken: UnwrapRef<typeof import('../../composables/useApi')['getAccessToken']>
