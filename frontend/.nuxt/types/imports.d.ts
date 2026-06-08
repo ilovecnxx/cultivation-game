@@ -35,10 +35,7 @@ declare global {
   const descs: typeof import('../../composables/useGameData').descs
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
-  const elementNames: typeof import('../../composables/useWeaponSystem').elementNames
-  const elements: typeof import('../../composables/useWeaponSystem').elements
   const fmt: typeof import('../../composables/useGameData').fmt
-  const generateWeapon: typeof import('../../composables/useWeaponSystem').generateWeapon
   const getAccessToken: typeof import('../../composables/useApi').getAccessToken
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getAppManifest
   const getCurrentInstance: typeof import('vue').getCurrentInstance
@@ -96,7 +93,6 @@ declare global {
   const qualityNames: typeof import('../../composables/useGameData').qualityNames
   const reactive: typeof import('vue').reactive
   const readonly: typeof import('vue').readonly
-  const realmBaseAttack: typeof import('../../composables/useWeaponSystem').realmBaseAttack
   const realmCoefs: typeof import('../../composables/useGameData').realmCoefs
   const realmNames: typeof import('../../composables/useGameData').realmNames
   const ref: typeof import('vue').ref
@@ -227,8 +223,6 @@ declare global {
   const watchEffect: typeof import('vue').watchEffect
   const watchPostEffect: typeof import('vue').watchPostEffect
   const watchSyncEffect: typeof import('vue').watchSyncEffect
-  const weaponTiers: typeof import('../../composables/useWeaponSystem').weaponTiers
-  const weaponTypes: typeof import('../../composables/useWeaponSystem').weaponTypes
   const wikiQuality: typeof import('../../composables/useGameData').wikiQuality
   const wikiRealms: typeof import('../../composables/useGameData').wikiRealms
   const wikiRootBonuses: typeof import('../../composables/useGameData').wikiRootBonuses
@@ -252,9 +246,6 @@ declare global {
   // @ts-ignore
   export type { MapLoc, MapRegion } from '../../composables/useGameData'
   import('../../composables/useGameData')
-  // @ts-ignore
-  export type { Element, Weapon } from '../../composables/useWeaponSystem'
-  import('../../composables/useWeaponSystem')
   // @ts-ignore
   export type { WsEventType, WsEventHandlers, WsConnectionState } from '../../composables/useWebSocket'
   import('../../composables/useWebSocket')
@@ -297,10 +288,7 @@ declare module 'vue' {
     readonly descs: UnwrapRef<typeof import('../../composables/useGameData')['descs']>
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
-    readonly elementNames: UnwrapRef<typeof import('../../composables/useWeaponSystem')['elementNames']>
-    readonly elements: UnwrapRef<typeof import('../../composables/useWeaponSystem')['elements']>
     readonly fmt: UnwrapRef<typeof import('../../composables/useGameData')['fmt']>
-    readonly generateWeapon: UnwrapRef<typeof import('../../composables/useWeaponSystem')['generateWeapon']>
     readonly getAccessToken: UnwrapRef<typeof import('../../composables/useApi')['getAccessToken']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -358,7 +346,6 @@ declare module 'vue' {
     readonly qualityNames: UnwrapRef<typeof import('../../composables/useGameData')['qualityNames']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
-    readonly realmBaseAttack: UnwrapRef<typeof import('../../composables/useWeaponSystem')['realmBaseAttack']>
     readonly realmCoefs: UnwrapRef<typeof import('../../composables/useGameData')['realmCoefs']>
     readonly realmNames: UnwrapRef<typeof import('../../composables/useGameData')['realmNames']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
@@ -489,8 +476,6 @@ declare module 'vue' {
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>
     readonly watchSyncEffect: UnwrapRef<typeof import('vue')['watchSyncEffect']>
-    readonly weaponTiers: UnwrapRef<typeof import('../../composables/useWeaponSystem')['weaponTiers']>
-    readonly weaponTypes: UnwrapRef<typeof import('../../composables/useWeaponSystem')['weaponTypes']>
     readonly wikiQuality: UnwrapRef<typeof import('../../composables/useGameData')['wikiQuality']>
     readonly wikiRealms: UnwrapRef<typeof import('../../composables/useGameData')['wikiRealms']>
     readonly wikiRootBonuses: UnwrapRef<typeof import('../../composables/useGameData')['wikiRootBonuses']>
