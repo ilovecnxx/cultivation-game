@@ -171,13 +171,14 @@ export function generateEquip(realm: number, tierKey: string, slot: EquipmentSlo
 // 装备视觉效果 — 境界+品阶双维度
 // ============================================================
 export interface EquipVisual {
-  color: string       // hsl 颜色
-  glow: string        // text-shadow
-  box: string         // box-shadow  
-  bg: string          // background gradient
-  anim: string        // animation
-  level: number       // 特效等级 0-4
-  style: string       // 拼好的完整 style 字符串
+  color: string
+  borderColor: string
+  glow: string
+  box: string
+  bg: string
+  anim: string
+  level: number
+  style: string
 }
 
 const tierHue: Record<string, number> = { human:30, yellow:45, dark:130, earth:210, heaven:350 }
@@ -213,10 +214,14 @@ export function equipVisual(realm: number, tier: string): EquipVisual {
   const lv = realm <= 1 ? 0 : realm <= 3 ? 1 : realm <= 5 ? 2 : realm <= 7 ? 3 : 4
   const lvAdj = Math.min(4, lv + (ti >= 3 ? 1 : 0))
   const color = `hsl(${hue}, ${sat}%, ${light}%)`
+  // 边框色: 随境界+品阶从黑→灰→亮色→品阶色
+  const borderSat = 5 + realm * 5 + ti * 8
+  const borderLight = 5 + realm * 5 + ti * 6
+  const borderColor = `hsl(${hue}, ${borderSat}%, ${borderLight}%)`
   const glow = lvAdj >= 1 ? `text-shadow:0 0 ${2+realm+ti}px ${color}` : ''
   const box  = lvAdj >= 2 ? `box-shadow:0 0 ${4+realm+ti}px ${color}44` : ''
   const bg   = lvAdj >= 3 ? `background:linear-gradient(135deg,${color}22,transparent)` : ''
   const anim = lvAdj >= 4 ? `animation:equip-shimmer ${3-(realm-8)*0.5}s ease-in-out infinite` : ''
   const style = [glow, box, bg, anim].filter(Boolean).join(';')
-  return { color, glow, box, bg, anim, level: lvAdj, style }
+  return { color, borderColor, glow, box, bg, anim, level: lvAdj, style }
 }

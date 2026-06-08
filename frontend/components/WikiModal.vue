@@ -52,7 +52,7 @@
             <table class="wiki-table"><thead><tr><th>部位</th><th>名称</th><th>主属性</th><th>品阶倍率</th><th>词缀</th></tr></thead><tbody>
               <tr v-for="s in equipSlotNames" :key="s">
                 <td class="tc">{{ slotInfo[s].icon }} {{ slotInfo[s].name }}</td>
-                <td :style="({...getSlotVisual(s, equipRealm, equipTier),fontWeight:'700',padding:'6px 10px',borderRadius:'4px'})" v-html="(colorizeName(equipNames[equipRealm]?.[equipTier]?.[s]||'—', equipTier)) + (getSlotVisual(s,equipRealm,equipTier).level>=3 ? '<span style=font-size:10px;display:block>✦</span>' : '')"></td>
+                <td :style="{border:'2px solid '+getSlotVisual(s,equipRealm,equipTier).borderColor,padding:'6px 10px',borderRadius:'6px',fontWeight:'700'}" v-html="colorizeName(equipNames[equipRealm]?.[equipTier]?.[s]||'—', equipTier)"></td>
                 <td style="font-size:11px;color:#6bcb77">{{ getSlotStats(s, equipRealm, tierInfo.find(t=>t.key===equipTier)?.mult||0.5) }}</td>
                 <td :style="{color:(tierInfo.find(t=>t.key===equipTier)?.color||'#888')}">×{{ tierInfo.find(t=>t.key===equipTier)?.mult||0.5 }}</td>
                 <td>{{ tierInfo.find(t=>t.key===equipTier)?.subStats||0 }}条</td>
