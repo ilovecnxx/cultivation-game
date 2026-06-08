@@ -33,9 +33,8 @@ export const mapRegions: MapRegion[] = [
 ]
 
 export const menus: Array<{key:string;label:string;children?:Array<{key:string;label:string}>}> = [
-  {key:'profession',label:'职业',children:[{key:'alchemy',label:'丹师'},
-  {key:'craft',label:'器师'},{key:'array',label:'阵师'},{key:'tamer',label:'驯兽师'}]},
-  {key:'cultivation',label:'修炼',children:[{key:'meditate',label:'打坐修炼'},{key:'breakthrough',label:'突破'},{key:'technique',label:'功法'},{key:'pill',label:'丹药'},{key:'tribulation',label:'渡劫'}]},
+  {key:'profession',label:'职业',children:[{key:'alchemy',label:'🔥 丹师'},
+  {key:'craft',label:'⚒️ 器师'},{key:'array',label:'🌀 阵师'},{key:'tamer',label:'🐾 驯兽师'}]},
   {key:'combat',label:'战斗',children:[{key:'pve',label:'野外战斗'},{key:'dungeon',label:'副本'},{key:'arena',label:'竞技场'},{key:'tower',label:'爬塔'},{key:'world-boss',label:'世界Boss'}]},
   {key:'sect',label:'宗门',children:[{key:'my-sect',label:'我的宗门'},{key:'sect-list',label:'宗门列表'},{key:'sect-war',label:'宗门大战'}]},
   {key:'world',label:'世界',children:[{key:'world-map',label:'世界地图'},{key:'encounter',label:'奇遇'},{key:'fishing',label:'钓鱼'},{key:'ascend',label:'飞升'}]},
