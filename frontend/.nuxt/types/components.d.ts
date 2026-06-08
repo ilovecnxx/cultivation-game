@@ -92,9 +92,9 @@ interface _GlobalComponents {
   VanPicker: typeof import("../../node_modules/vant/es/picker/Picker")['default']
   VanPickerGroup: typeof import("../../node_modules/vant/es/picker-group/PickerGroup")['default']
   VanPopover: typeof import("../../node_modules/vant/es/popover/Popover")['default']
-  VanPopup: typeof import("../../node_modules/vant/es/popup/Popup")['default']
   VanProgress: typeof import("../../node_modules/vant/es/progress/Progress")['default']
   VanPullRefresh: typeof import("../../node_modules/vant/es/pull-refresh/PullRefresh")['default']
+  VanPopup: typeof import("../../node_modules/vant/es/popup/Popup")['default']
   VanRadio: typeof import("../../node_modules/vant/es/radio/Radio")['default']
   VanRadioGroup: typeof import("../../node_modules/vant/es/radio-group/RadioGroup")['default']
   VanRate: typeof import("../../node_modules/vant/es/rate/Rate")['default']
@@ -221,9 +221,9 @@ interface _GlobalComponents {
   LazyVanPicker: LazyComponent<typeof import("../../node_modules/vant/es/picker/Picker")['default']>
   LazyVanPickerGroup: LazyComponent<typeof import("../../node_modules/vant/es/picker-group/PickerGroup")['default']>
   LazyVanPopover: LazyComponent<typeof import("../../node_modules/vant/es/popover/Popover")['default']>
-  LazyVanPopup: LazyComponent<typeof import("../../node_modules/vant/es/popup/Popup")['default']>
   LazyVanProgress: LazyComponent<typeof import("../../node_modules/vant/es/progress/Progress")['default']>
   LazyVanPullRefresh: LazyComponent<typeof import("../../node_modules/vant/es/pull-refresh/PullRefresh")['default']>
+  LazyVanPopup: LazyComponent<typeof import("../../node_modules/vant/es/popup/Popup")['default']>
   LazyVanRadio: LazyComponent<typeof import("../../node_modules/vant/es/radio/Radio")['default']>
   LazyVanRadioGroup: LazyComponent<typeof import("../../node_modules/vant/es/radio-group/RadioGroup")['default']>
   LazyVanRate: LazyComponent<typeof import("../../node_modules/vant/es/rate/Rate")['default']>

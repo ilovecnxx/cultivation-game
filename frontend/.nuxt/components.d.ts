@@ -92,9 +92,9 @@ export const VanPasswordInput: typeof import("../node_modules/vant/es/password-i
 export const VanPicker: typeof import("../node_modules/vant/es/picker/Picker")['default']
 export const VanPickerGroup: typeof import("../node_modules/vant/es/picker-group/PickerGroup")['default']
 export const VanPopover: typeof import("../node_modules/vant/es/popover/Popover")['default']
-export const VanPopup: typeof import("../node_modules/vant/es/popup/Popup")['default']
 export const VanProgress: typeof import("../node_modules/vant/es/progress/Progress")['default']
 export const VanPullRefresh: typeof import("../node_modules/vant/es/pull-refresh/PullRefresh")['default']
+export const VanPopup: typeof import("../node_modules/vant/es/popup/Popup")['default']
 export const VanRadio: typeof import("../node_modules/vant/es/radio/Radio")['default']
 export const VanRadioGroup: typeof import("../node_modules/vant/es/radio-group/RadioGroup")['default']
 export const VanRate: typeof import("../node_modules/vant/es/rate/Rate")['default']
@@ -221,9 +221,9 @@ export const LazyVanPasswordInput: LazyComponent<typeof import("../node_modules/
 export const LazyVanPicker: LazyComponent<typeof import("../node_modules/vant/es/picker/Picker")['default']>
 export const LazyVanPickerGroup: LazyComponent<typeof import("../node_modules/vant/es/picker-group/PickerGroup")['default']>
 export const LazyVanPopover: LazyComponent<typeof import("../node_modules/vant/es/popover/Popover")['default']>
-export const LazyVanPopup: LazyComponent<typeof import("../node_modules/vant/es/popup/Popup")['default']>
 export const LazyVanProgress: LazyComponent<typeof import("../node_modules/vant/es/progress/Progress")['default']>
 export const LazyVanPullRefresh: LazyComponent<typeof import("../node_modules/vant/es/pull-refresh/PullRefresh")['default']>
+export const LazyVanPopup: LazyComponent<typeof import("../node_modules/vant/es/popup/Popup")['default']>
 export const LazyVanRadio: LazyComponent<typeof import("../node_modules/vant/es/radio/Radio")['default']>
 export const LazyVanRadioGroup: LazyComponent<typeof import("../node_modules/vant/es/radio-group/RadioGroup")['default']>
 export const LazyVanRate: LazyComponent<typeof import("../node_modules/vant/es/rate/Rate")['default']>
