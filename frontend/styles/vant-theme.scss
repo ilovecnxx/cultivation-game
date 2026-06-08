@@ -1,137 +1,89 @@
 // ============================================================
-// Vant 4 CSS 变量覆盖 — 修仙暗黑金色主题
+// 修仙世界 — 主题系统
+// 暗黑 (:root) + 浅色 (html.light-mode)
 // ============================================================
 
+// ============================================================
+// 暗黑主题（默认）
+// ============================================================
 :root {
-  // -- 主色调：修仙金色 --
-  --van-primary-color: #d4a843;
-  --van-primary-color-light: #e8c96a;
-  --van-primary-color-dark: #8B6914;
+  --bg-main: #0d0d1a;
+  --bg-panel: #1a1a2e;
+  --bg-sidebar: rgba(0,0,0,.15);
+  --bg-card: transparent;
+  --bg-notice: rgba(0,0,0,.2);
+  --bg-input: rgba(255,255,255,.04);
+  --text-main: #e8e0d0;
+  --text-dim: rgba(255,255,255,.5);
+  --text-muted: rgba(255,255,255,.2);
+  --border-subtle: rgba(212,168,67,.1);
 
-  // -- 背景色 --
+  --van-primary-color: #d4a843;
   --van-background: #0f0f1a;
   --van-background-2: #1a1a2e;
-  --van-background-3: #252540;
-
-  // -- 文字色 --
   --van-text-color: #e0d5c0;
   --van-text-color-2: #8a8578;
-  --van-text-color-3: #5a5550;
-
-  // -- 边框 / 分隔 --
-  --van-border-color: rgba(212, 168, 67, 0.2);
-  --van-active-color: rgba(212, 168, 67, 0.1);
-
-  // -- Tab 组件 --
-  --van-tab-text-color: #8a8578;
+  --van-border-color: rgba(212,168,67,0.2);
+  --van-popup-background: #1a1a2e;
+  --van-overlay-background: rgba(0,0,0,0.7);
   --van-tab-active-text-color: #d4a843;
   --van-tabs-bottom-bar-color: #d4a843;
-  --van-tabs-bottom-bar-width: 30px;
-  --van-tabs-bottom-bar-height: 3px;
-  --van-tabs-line-height: 48px;
-
-  // -- 按钮 --
-  --van-button-primary-background: linear-gradient(135deg, #8B6914, #d4a843);
-  --van-button-primary-border-color: #d4a843;
+  --van-button-primary-background: linear-gradient(135deg,#8B6914,#d4a843);
   --van-button-primary-color: #1a1a2e;
-  --van-button-default-background: rgba(212, 168, 67, 0.08);
-  --van-button-default-border-color: rgba(212, 168, 67, 0.3);
   --van-button-default-color: #d4a843;
-
-  // -- 弹出层 --
-  --van-popup-background: #1a1a2e;
-  --van-popup-round-radius: 16px;
-  --van-overlay-background: rgba(0, 0, 0, 0.7);
-
-  // -- 对话框 --
-  --van-dialog-background: #1a1a2e;
-  --van-dialog-header-font-weight: 700;
-  --van-dialog-message-color: #e0d5c0;
-  --van-dialog-confirm-button-color: #d4a843;
-
-  // -- 列表 --
-  --van-cell-background: transparent;
-  --van-cell-text-color: #e0d5c0;
-  --van-cell-group-background: #1a1a2e;
-
-  // -- 输入框 --
   --van-field-input-text-color: #e0d5c0;
   --van-field-placeholder-text-color: #5a5550;
-
-  // -- 导航栏 --
-  --van-nav-bar-background: #1a1a2e;
-  --van-nav-bar-text-color: #e0d5c0;
-  --van-nav-bar-icon-color: #d4a843;
-
-  // -- 下拉刷新 --
-  --van-pull-refresh-head-background: #1a1a2e;
-
-  // -- 通知栏安全区（iPhone X+） --
-  --van-safe-area-top: env(safe-area-inset-top);
-  --van-safe-area-bottom: env(safe-area-inset-bottom);
 }
 
-// 暗黑主题全局
 html { background: #0f0f1a; color: #e0d5c0; }
 
 // ============================================================
-// 浅色主题覆盖 ↓ 新增，不碰 game.vue 原有样式
+// 浅色主题（html 上加 .light-mode）
 // ============================================================
-.light-mode {
-  // 主背景翻转
-  .gh-root { background: #f5f5f5; color: #333; }
-  // 面板
-  .gh-sidebar, .gh-panel, .gh-log, .gh-chat { background: #f0f0f0; }
-  // 卡片
-  .side-card { background: #fff; border-color: rgba(0,0,0,.08); }
-  // 通知栏
-  .notice-bar { background: #eee; }
-  .notice-text { color: #666; }
-  // 聊天
-  .chat-input { background: #fff; color: #333; border-color: rgba(0,0,0,.1); }
-  .chat-text { color: #333; }
-  .chat-name { color: #555; }
-  // 按钮
-  .pa-btn { color: #555; border-color: rgba(0,0,0,.1); }
-  // 日志
-  .log-entry { color: #555; }
-}
+html.light-mode {
+  --bg-main: #f5f5f5;
+  --bg-panel: #f0f0f0;
+  --bg-sidebar: #f0f0f0;
+  --bg-card: #fff;
+  --bg-notice: #eee;
+  --bg-input: #fff;
+  --text-main: #333;
+  --text-dim: #666;
+  --text-muted: #999;
+  --border-subtle: rgba(0,0,0,.08);
 
-// ============================================================
-// 浅色主题（白天模式） — 覆盖所有游戏面板
-// ============================================================
-.light-mode {
   --van-background: #f5f5f5;
   --van-background-2: #fff;
-  --van-background-3: #eee;
   --van-text-color: #333;
   --van-text-color-2: #666;
-  --van-text-color-3: #999;
-  --van-border-color: rgba(0,0,0,0.1);
+  --van-border-color: rgba(0,0,0,.1);
   --van-popup-background: #fff;
-  --van-overlay-background: rgba(0,0,0,0.3);
-  --van-dialog-background: #fff;
-  --van-dialog-message-color: #333;
-  --van-cell-text-color: #333;
-  --van-cell-group-background: #fff;
+  --van-overlay-background: rgba(0,0,0,.3);
+  --van-tab-active-text-color: #b8860b;
+  --van-tabs-bottom-bar-color: #b8860b;
+  --van-button-primary-color: #fff;
+  --van-button-default-color: #b8860b;
   --van-field-input-text-color: #333;
   --van-field-placeholder-text-color: #999;
-  --van-nav-bar-background: #fff;
-  --van-nav-bar-text-color: #333;
+
+  background: #f5f5f5;
+  color: #333;
 }
 
-// 游戏面板 — 浅色覆盖
-.light-mode .gh-sidebar,
-.light-mode .gh-panel,
-.light-mode .gh-chat,
-.light-mode .gh-log,
-.light-mode .notice-bar { background: #f0f0f0 !important; }
-
-.light-mode .side-card { background: #fff !important; border-color: rgba(0,0,0,0.08) !important; }
-.light-mode .panel-header { background: #f5f5f5 !important; }
-.light-mode .chat-input { background: #fff !important; color: #333 !important; border-color: rgba(0,0,0,0.1) !important; }
-.light-mode .chat-text { color: #333 !important; }
-.light-mode .chat-name { color: #555 !important; }
-.light-mode .notice-text { color: #666 !important; }
-.light-mode .pa-btn { color: #555 !important; border-color: rgba(0,0,0,0.1) !important; }
-.light-mode .log-entry { color: #555 !important; }
+// 浅色模式游戏面板强制覆盖
+html.light-mode {
+  .gh-sidebar, .gh-panel, .gh-log, .gh-chat { background: #f0f0f0 !important; }
+  .gh-root { background: #f5f5f5 !important; color: #333 !important; }
+  .notice-bar { background: #eee !important; }
+  .notice-text { color: #666 !important; }
+  .side-card { background: #fff !important; border-color: rgba(0,0,0,.08) !important; }
+  .panel-header { background: #f5f5f5 !important; }
+  .chat-input { background: #fff !important; color: #333 !important; border-color: rgba(0,0,0,.1) !important; }
+  .chat-text { color: #333 !important; }
+  .chat-name { color: #555 !important; }
+  .pa-btn { color: #555 !important; border-color: rgba(0,0,0,.1) !important; }
+  .log-entry { color: #555 !important; }
+  .top-bar { background: #fff !important; border-bottom: 1px solid rgba(0,0,0,.06) !important; }
+  .brand-name, .brand-logo { color: #333 !important; }
+  .online-badge, .registered-badge { color: #333 !important; }
+}

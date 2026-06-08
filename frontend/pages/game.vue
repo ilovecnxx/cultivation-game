@@ -15,7 +15,7 @@
           <span class="online-badge"><span class="online-dot" />{{ fmt(onlineCount) }} 在线</span>
           <span class="registered-badge">{{ fmt(registeredCount) }} 修士</span>
         </div>
-        <button class="theme-toggle" onclick="document.querySelector('.gh-root').classList.toggle('light-mode');document.querySelector('html').classList.toggle('light-mode')">{{ isDark ? '☀' : '🌙' }}</button>
+        <button class="theme-toggle" @click="toggleTheme2">{{ isDark2 ? '☀' : '🌙' }}</button>
       </div>
     </header>
     <div class="gold-divider"><div class="gold-divider__light" /></div>
@@ -363,7 +363,9 @@ const {
 } = useGameState()
 
 
-function toggleThemeLocal() { isDark.value = !isDark.value; localStorage.setItem('theme-mode', isDark.value ? 'dark' : 'light'); document.documentElement.classList.toggle('light-mode', !isDark.value) }
+const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
+const isDark2 = inject('isDark', ref(true))
+
 function handleTabClick({ name }: { name: string }) {
   if (name === "wiki") { showWiki.value = true; return }
   const m = menus.find((x: any) => x.key === name)
