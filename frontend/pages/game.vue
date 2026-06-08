@@ -351,10 +351,14 @@ const {
   addLog, loadLogs, saveLogs,
   onlineCount, registeredCount, fetchStats,
   calcOfflineGains,
-  toggleMeditation, smallBreakRate, doBreakthrough, toggleTraining, startManual, showTooltip,
+  toggleMeditation, smallBreakRate, doBreakthrough, toggleTraining, startManual, showTooltip, showCultTooltip, tooltipStyle,
+  fightInProgress, fightResult, pveReport, pveRounds, encounterResult, encounterType, deathLog, reviveCountdown, isDead, handleQuit, startPve,
+  showProfPanel, activeProf,
+  wikiRealms, wikiRootBonuses, wikiSpiritReqs, wikiQuality, realmCoef, rootMult, cultBaseVal,
+  timeDisplay, uptimeDisplay, getTimeDisplay, getUptimeDisplay,
   friends, pendingRequests, searchResults, friendSearch, activePeer, activePeerName, privateInput, privateMessages, loadFriends, loadPending, searchPlayers, removeFriend, openChat, sendPrivate,
   playerEquips, equipCraftSlot, getEquip, loadEquips,
-  connectWS, apiPost,
+  connectWS, apiPost, logFilter, logLocked, logBody, filteredLogs,
 } = useGameState()
 </script>
 

@@ -80,6 +80,10 @@ export function useGameState() {
   async function loadBackpack() { const pid = getPID(); if (!pid) return; try { const r = await fetch('/api/v1/player/' + pid + '/inventory', { headers: { Authorization: 'Bearer ' + getToken() } }); const d = await r.json(); bpItems.value = d.data || [] } catch {} }
 
   // ====== 日志 ======
+  const logFilter = ref('all')
+  const logLocked = ref(false)
+  const logBody = ref<HTMLElement | null>(null)
+  const filteredLogs = computed(() => logFilter.value === 'all' ? logs : logs.filter((l: any) => l.type === logFilter.value))
   function addLog(type: string, text: string) { logs.push({ time: new Date().toLocaleTimeString('zh-CN', { hour12: false }).slice(0, 5), type, text }); if (logs.length > 500) logs.shift() }
   function loadLogs() { try { const d = localStorage.getItem('game_logs'); if (d) logs.push(...JSON.parse(d)) } catch {} }
   function saveLogs() { try { localStorage.setItem('game_logs', JSON.stringify(logs.slice(-200))) } catch {} }
@@ -99,6 +103,40 @@ export function useGameState() {
   function toggleTraining() { training.value = !training.value; addLog('combat', training.value ? '⚔️ 开始历练' : '🛑 停止历练') }
   function startManual() { addLog('combat', '⚡ 手动历练: 获得 ' + fmt(trainMult.value * 10) + ' 经验'); saveLogs() }
   function showTooltip() {}
+  const showCultTooltip = ref(false)
+  const tooltipStyle = reactive({ top: '0px', left: '0px' })
+
+  // ====== 战斗 / PVE ======
+  const fightInProgress = ref(false)
+  const fightResult = ref<any>(null)
+  const pveReport = ref<any>(null)
+  const pveRounds = ref(0)
+  const encounterResult = ref<any>(null)
+  const encounterType = ref('')
+  const deathLog = ref<any[]>([])
+  const reviveCountdown = ref(0)
+  const isDead = computed(() => player.hp <= 0)
+  const handleQuit = () => { player.hp = 1; reviveCountdown.value = 0 }
+  function startPve() { fightInProgress.value = true; pveReport.value = null; pveRounds.value = 0 }
+
+  // ====== 职业 ======
+  const showProfPanel = ref(false)
+  const activeProf = ref(false)
+
+  // ====== 百科数据 ======
+  const wikiRealms = realmNames
+  const wikiRootBonuses = rootMults
+  const wikiSpiritReqs: Record<string,number> = {}
+  const wikiQuality = qualityNames
+  const realmCoef = computed(() => realmCoefs[player.realmId] || 1)
+  const rootMult = computed(() => rootMults[player.rootQuality] || 1)
+  const cultBaseVal = computed(() => (10 + realmCoef.value * (player.realmStage - 1)) * rootMult.value)
+
+  // ====== 时间显示 ======
+  const timeDisplay = ref('')
+  const uptimeDisplay = ref('')
+  function getTimeDisplay() { const n = new Date(); return n.toLocaleTimeString('zh-CN', { hour12: false }) }
+  function getUptimeDisplay() { const diff = Math.floor((Date.now() - Date.now()) / 1000); const h = Math.floor(diff / 3600); const m = Math.floor((diff % 3600) / 60); return h + 'h' + m + 'm' }
 
   // ====== 好友 ======
   const friends = ref<any[]>([])
@@ -145,10 +183,14 @@ export function useGameState() {
     activeLoc, currentLoc, currentLocInfo, enterLocation,
     showWiki, wikiTab, wikiTabs,
     bpItems, loadBackpack,
-    addLog, loadLogs, saveLogs,
+    addLog, loadLogs, saveLogs, logFilter, logLocked, logBody, filteredLogs,
     onlineCount, registeredCount, fetchStats,
     calcOfflineGains,
-    toggleMeditation, smallBreakRate, doBreakthrough, toggleTraining, startManual, showTooltip,
+    toggleMeditation, smallBreakRate, doBreakthrough, toggleTraining, startManual, showTooltip, showCultTooltip, tooltipStyle,
+    fightInProgress, fightResult, pveReport, pveRounds, encounterResult, encounterType, deathLog, reviveCountdown, isDead, handleQuit, startPve,
+    showProfPanel, activeProf,
+    wikiRealms, wikiRootBonuses, wikiSpiritReqs, wikiQuality, realmCoef, rootMult, cultBaseVal,
+    timeDisplay, uptimeDisplay, getTimeDisplay, getUptimeDisplay,
     friends, pendingRequests, searchResults, friendSearch, activePeer, activePeerName, privateInput, privateMessages, loadFriends, loadPending, searchPlayers, removeFriend, openChat, sendPrivate,
     playerEquips, equipCraftSlot, getEquip, loadEquips,
     connectWS, apiPost,
