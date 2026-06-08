@@ -402,3 +402,11 @@ html.light-mode .map-modal{background:#fafafa}html.light-mode .map-region{backgr
 .van-button--danger { --van-button-danger-background: linear-gradient(135deg,#8B2020,#ff4d4d) !important; }
 .cult-btn-area { display:flex; gap:6px; flex-wrap:wrap; }
 </style>
+
+<style>
+.light-mode .gh-sidebar { background: #f0f0f0 !important; }
+.light-mode .gh-panel { background: #f5f5f5 !important; }
+.light-mode .notice-bar { background: #f0f0f0 !important; color: #333 !important; }
+.light-mode .panel-header { background: #f5f5f5 !important; }
+.light-mode .side-card { background: #fff !important; }
+</style>
