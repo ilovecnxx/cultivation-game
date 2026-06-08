@@ -5,11 +5,10 @@
       <div class="top-bar-inner">
         <span class="brand-logo">☯</span>
         <span class="brand-name">修仙世界</span>
-        <van-tabs v-model:active="activeNav" class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false">
-          <van-tab title="百科" name="wiki" />
-          
-          <van-tab v-for="m in menus" :key="m.key" :title="m.label" :name="m.key"  />
-        </van-tabs>
+        <nav class="main-nav">
+          <div class="nav-item" @click="showWiki=true"><span class="nav-label">📖 百科</span></div>
+          <div v-for="m in menus" :key="m.key" class="nav-item" @click="handleMenu(m.key)"><span class="nav-label">{{ m.label }}</span></div>
+        </nav>
         <div class="top-bar-spacer"></div>
         <div class="player-stats">
           <span class="online-badge"><span class="online-dot" />{{ fmt(onlineCount) }} 在线</span>
@@ -139,19 +138,14 @@ const showPigeon = ref(false)
 const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
 
-let _init = false
-let _lastNav = ''
-onMounted(() => { setTimeout(() => _init = true, 800) })
-watch(activeNav, (name) => {
-  if (!_init || !name || name === _lastNav) return
-  _lastNav = name
-  if (name === 'wiki') { showWiki.value = true }
-  else if (name === 'inventory' || name === 'items') { inventoryRef.value?.open(true) }
-  else if (name === 'ranking') { rankingRef.value?.open(true) }
-  else if (name === 'social') { showPigeon.value = true }
-  else if (name === 'friend-list') { socialRef.value?.open(true) }
-  else { const m = menus.find((x: any) => x.key === name); if (m) openMenu(m) }
-})
+function handleMenu(key: string) {
+  if (key === 'inventory' || key === 'items') { inventoryRef.value?.open(true); return }
+  if (key === 'ranking') { rankingRef.value?.open(true); return }
+  if (key === 'social') { showPigeon.value = true; return }
+  if (key === 'friend-list') { socialRef.value?.open(true); return }
+  const m = menus.find((x: any) => x.key === key)
+  if (m) openMenu(m)
+}
 </script>
 
 <style lang="scss">
