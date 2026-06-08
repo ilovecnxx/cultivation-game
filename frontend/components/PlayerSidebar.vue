@@ -111,7 +111,6 @@ const equipSlots = [
   {key:'robe',icon:'👘',name:'法袍'},{key:'bracer',icon:'🛡️',name:'护腕'},
   {key:'belt',icon:'🎗️',name:'腰带'},{key:'boots',icon:'👢',name:'云靴'},
   {key:'necklace',icon:'📿',name:'项链'},{key:'ring',icon:'💍',name:'戒指'},
-  {key:'artifact',icon:'🔮',name:'法宝'},{key:'mount',icon:'🐉',name:'坐骑'},
 ]
 
 function getEquipName(slot: string): string { const eq = equips.value.find((e:any)=>e.slot===slot); return eq ? eq.name?.slice(0,2) : equipSlots.find(s=>s.key===slot)?.name?.slice(0,2)||slot }
