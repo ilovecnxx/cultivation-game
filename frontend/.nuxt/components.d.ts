@@ -18,7 +18,10 @@ export const ChatPanel: typeof import("../components/ChatPanel.vue")['default']
 export const ErrorBoundary: typeof import("../components/ErrorBoundary.vue")['default']
 export const EventLog: typeof import("../components/EventLog.vue")['default']
 export const FriendPanel: typeof import("../components/FriendPanel.vue")['default']
+export const GameModals: typeof import("../components/GameModals.vue")['default']
+export const MapModal: typeof import("../components/MapModal.vue")['default']
 export const PlayerSidebar: typeof import("../components/PlayerSidebar.vue")['default']
+export const WikiModal: typeof import("../components/WikiModal.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -147,7 +150,10 @@ export const LazyChatPanel: LazyComponent<typeof import("../components/ChatPanel
 export const LazyErrorBoundary: LazyComponent<typeof import("../components/ErrorBoundary.vue")['default']>
 export const LazyEventLog: LazyComponent<typeof import("../components/EventLog.vue")['default']>
 export const LazyFriendPanel: LazyComponent<typeof import("../components/FriendPanel.vue")['default']>
+export const LazyGameModals: LazyComponent<typeof import("../components/GameModals.vue")['default']>
+export const LazyMapModal: LazyComponent<typeof import("../components/MapModal.vue")['default']>
 export const LazyPlayerSidebar: LazyComponent<typeof import("../components/PlayerSidebar.vue")['default']>
+export const LazyWikiModal: LazyComponent<typeof import("../components/WikiModal.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
 export const LazyNuxtErrorBoundary: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>

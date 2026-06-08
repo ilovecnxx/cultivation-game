@@ -18,7 +18,10 @@ interface _GlobalComponents {
   ErrorBoundary: typeof import("../../components/ErrorBoundary.vue")['default']
   EventLog: typeof import("../../components/EventLog.vue")['default']
   FriendPanel: typeof import("../../components/FriendPanel.vue")['default']
+  GameModals: typeof import("../../components/GameModals.vue")['default']
+  MapModal: typeof import("../../components/MapModal.vue")['default']
   PlayerSidebar: typeof import("../../components/PlayerSidebar.vue")['default']
+  WikiModal: typeof import("../../components/WikiModal.vue")['default']
   NuxtWelcome: typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
   NuxtLayout: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
   NuxtErrorBoundary: typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -147,7 +150,10 @@ interface _GlobalComponents {
   LazyErrorBoundary: LazyComponent<typeof import("../../components/ErrorBoundary.vue")['default']>
   LazyEventLog: LazyComponent<typeof import("../../components/EventLog.vue")['default']>
   LazyFriendPanel: LazyComponent<typeof import("../../components/FriendPanel.vue")['default']>
+  LazyGameModals: LazyComponent<typeof import("../../components/GameModals.vue")['default']>
+  LazyMapModal: LazyComponent<typeof import("../../components/MapModal.vue")['default']>
   LazyPlayerSidebar: LazyComponent<typeof import("../../components/PlayerSidebar.vue")['default']>
+  LazyWikiModal: LazyComponent<typeof import("../../components/WikiModal.vue")['default']>
   LazyNuxtWelcome: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
   LazyNuxtLayout: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
   LazyNuxtErrorBoundary: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>
