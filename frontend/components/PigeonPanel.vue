@@ -23,9 +23,12 @@
             <div class="pig-group"><div class="pig-group-head" @click="showDaolv=!showDaolv">💑 道侣 <span class="pig-group-arrow" :class="{open:showDaolv}">▾</span></div>
               <div v-if="showDaolv"><div v-if="daolvPartner" class="pig-contact-list"><div class="pig-contact" :class="{active:activeChat==='daolv'}" @click="openDaolvChat"><span class="pig-contact-avatar">💑</span><span class="pig-contact-name">道侣</span></div></div><div v-else class="pig-empty-tip">修仙路漫漫，寻一道侣</div></div>
             </div>
-            <!-- 师徒分组 -->
-            <div class="pig-group"><div class="pig-group-head" @click="showMaster=!showMaster">🎓 师徒 <span class="pig-group-arrow" :class="{open:showMaster}">▾</span></div>
-              <div v-if="showMaster"><div v-if="masterName" class="pig-contact-list"><div class="pig-contact" :class="{active:activeChat==='master'}" @click="openMasterChat"><span class="pig-contact-avatar">🎓</span><span class="pig-contact-name">{{ masterName }}</span></div></div><div v-else class="pig-empty-tip">未拜师也未收徒</div></div>
+            <!-- 师父分组 -->
+            <div class="pig-group"><div class="pig-group-head" @click="showMaster=!showMaster">👴 师父 <span class="pig-group-arrow" :class="{open:showMaster}">▾</span></div>
+              <div v-if="showMaster"><div v-if="masterName" class="pig-contact-list"><div class="pig-contact" :class="{active:activeChat==='master'}" @click="openMasterChat"><span class="pig-contact-avatar">👴</span><span class="pig-contact-name">{{ masterName }}</span></div></div><div v-else class="pig-empty-tip">尚未拜师</div></div>
+            <!-- 徒儿分组 -->
+            <div class="pig-group"><div class="pig-group-head" @click="showDisciple=!showDisciple">🧒 徒儿 <span class="pig-group-arrow" :class="{open:showDisciple}">▾</span></div>
+              <div v-if="showDisciple"><div v-if="discipleList.length" class="pig-contact-list"><div v-for="d in discipleList" :key="d.id" class="pig-contact" :class="{active:activeChat==='d_'+d.id}" @click="openDiscipleChat(d)"><span class="pig-contact-avatar">{{ d.nickname[0] }}</span><span class="pig-contact-name">{{ d.nickname }}</span></div></div><div v-else class="pig-empty-tip">尚未收徒</div></div>
             </div>
             <!-- 世界频道 -->
             <div class="pig-group"><div class="pig-group-head" @click="activeChat='world';loadWorldHistory()">🌍 世界频道</div></div>
@@ -50,27 +53,29 @@ const props = defineProps<{ show: boolean; playerName: string }>()
 defineEmits(['close'])
 const {token,playerId}=useAuth()
 const searchQuery=ref(''),searchResults=ref<any[]>([])
-const showSect=ref(true),showFriends=ref(true),showDaolv=ref(true),showMaster=ref(true)
+const showSect=ref(true),showFriends=ref(true),showDaolv=ref(true),showMaster=ref(true),showDisciple=ref(true)
 const friends=ref<any[]>([]),sectList=ref<any[]>([])
-const daolvPartner=ref<any>(null),masterName=ref('')
+const daolvPartner=ref<any>(null),masterName=ref(''),discipleList=ref<any[]>([])
 const activeChat=ref(''),chatInput=ref(''),currentMessages=ref<any[]>([])
 const chatMsgs=ref<HTMLElement|null>(null)
 const myId=computed(()=>playerId.value)
 const myName=computed(()=>props.playerName)
-const chatTitle=computed(()=>{if(activeChat.value==='world')return'🌍 世界频道';if(activeChat.value==='daolv')return'💑 道侣';if(activeChat.value==='master')return'🎓 师徒';const f=friends.value.find((x:any)=>'f_'+x.id===activeChat.value);if(f)return f.nickname;const s=sectList.value.find((x:any)=>x.id===activeChat.value);if(s)return s.name;return'聊天'})
+const chatTitle=computed(()=>{if(activeChat.value==='world')return'🌍 世界频道';if(activeChat.value==='daolv')return'💑 道侣';if(activeChat.value==='master')return'👴 师父';if(activeChat.value?.startsWith('d_')){const d=discipleList.value.find((x:any)=>'d_'+x.id===activeChat.value);return'🧒 徒儿·'+d?.nickname};const f=friends.value.find((x:any)=>'f_'+x.id===activeChat.value);if(f)return f.nickname;const s=sectList.value.find((x:any)=>x.id===activeChat.value);if(s)return s.name;return'聊天'})
 
 async function api(url:string,opts:any={}){const r=await fetch(url,{headers:{'Content-Type':'application/json',Authorization:'Bearer '+token.value},...opts});return r.json()}
 async function loadFriends(){try{const d=await api('/api/v1/player/'+playerId.value+'/friends');friends.value=d.data||[]}catch{}}
 async function loadSect(){try{const d=await api('/api/v1/sect/my');sectList.value=d.data?[d.data]:[]}catch{}}
 async function loadDaolv(){try{const d=await api('/api/v1/daolv/status/'+playerId.value);daolvPartner.value=d.data}catch{}}
 async function loadMaster(){try{const d=await api('/api/v1/master/my-master');masterName.value=d.data?.master_name||''}catch{}}
+async function loadDisciples(){try{const d=await api('/api/v1/master/my-students');discipleList.value=d.data||[]}catch{}}
 async function doSearch(){if(!searchQuery.value.trim())return;const d=await api('/api/v1/player/'+playerId.value+'/friends/search?q='+encodeURIComponent(searchQuery.value));searchResults.value=d.data||[]}
 async function addFriend(fid:number){await api('/api/v1/player/'+playerId.value+'/friends/add',{method:'POST',body:JSON.stringify({friend_id:fid})});searchQuery.value='';searchResults.value=[];loadFriends()}
 async function loadWorldHistory(){try{const d=await api('/api/v1/chat/history?channel=world&limit=30');currentMessages.value=(d.data||[]).map((m:any)=>({...m,time:new Date(m.created_at).toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5)}))}catch{}}
 function openFriendChat(f:any){activeChat.value='f_'+f.id;currentMessages.value=[{text:'开始聊天吧~',sender_name:f.nickname,time:'',sender_id:f.id}]}
 function openSectChat(s:any){activeChat.value=s.id;currentMessages.value=[{text:'宗门频道',sender_name:'系统',time:'',sender_id:'system'}]}
 function openDaolvChat(){activeChat.value='daolv';currentMessages.value=[{text:'道侣悄悄话',sender_name:'系统',time:'',sender_id:'system'}]}
-function openMasterChat(){activeChat.value='master';currentMessages.value=[{text:'师徒传音',sender_name:'系统',time:'',sender_id:'system'}]}
+function openMasterChat(){activeChat.value='master';currentMessages.value=[{text:'师父传音',sender_name:'系统',time:'',sender_id:'system'}]}
+function openDiscipleChat(d:any){activeChat.value='d_'+d.id;currentMessages.value=[{text:'与徒儿 '+d.nickname+' 的传音',sender_name:'系统',time:'',sender_id:'system'}]}
 function sendMsg(){const v=chatInput.value.trim();if(!v)return;currentMessages.value.push({text:v,sender_name:myName.value,time:new Date().toLocaleTimeString('zh-CN',{hour12:false}).slice(0,5),sender_id:playerId.value});chatInput.value='';nextTick(()=>{if(chatMsgs.value)chatMsgs.value.scrollTop=chatMsgs.value.scrollHeight})}
 
 watch(()=>props.show,v=>{if(v){loadFriends();loadSect();loadDaolv();loadMaster()}})
