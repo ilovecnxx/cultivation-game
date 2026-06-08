@@ -2087,7 +2087,7 @@ if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
 window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 `;
 
-const _z59HthLGAJxhHH39YWK4sIF026cCPU9feFNnlVt2Pc = (function(nitro) {
+const _oCXhN1aOwsaaig4AO70p3PhOsjPiUDFSTne2aMrW5IY = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
@@ -2199,7 +2199,7 @@ function onConsoleLog(callback) {
 }
 
 const plugins = [
-  _z59HthLGAJxhHH39YWK4sIF026cCPU9feFNnlVt2Pc,
+  _oCXhN1aOwsaaig4AO70p3PhOsjPiUDFSTne2aMrW5IY,
 _Vnw6tiQ9c8sZiImwNU1zmFssrzh3UEJ6xdCrMYWAyg,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
