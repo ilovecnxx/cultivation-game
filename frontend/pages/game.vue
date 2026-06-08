@@ -77,15 +77,15 @@
       </div>
     </footer>
     <Teleport to="body">
-      <van-popup v-model:show="modalVisible" position="center" :style="{ width: 'fit-content', minWidth: '360px', maxWidth: '95vw', borderRadius: '8px', background: '#0d0d1a', border: '1px solid rgba(212,168,67,.2)' }" v-if="activeMenu?.key!=='map'&&activeMenu?.key!=='profession'&&activeMenu?.key!=='pigeon'&&activeMenu?.key!=='backpack'">
-        <div class="modal-card">
+      <van-popup v-model:show="modalVisible" position="center" :style="{ width:'fit-content', minWidth:'360px', maxWidth:'95vw', borderRadius:'8px', background:'#0d0d1a', border:'1px solid rgba(212,168,67,.2)' }" v-if="activeMenu&&activeMenu.key!=='map'&&activeMenu.key!=='profession'&&activeMenu.key!=='backpack'">
+        <div class="wiki-modal">
           <div class="gold-divider"/><header class="top-bar" style="border-radius:8px 8px 0 0"><div class="top-bar-inner"><div class="top-bar-spacer"/><span class="brand-name" style="font-size:16px">{{ activeMenu?.label }}</span><div class="top-bar-spacer"/><button class="modal-close" @click="modalVisible=false">✕</button></div></header><div class="gold-divider"/>
-          <div v-if="activeMenu?.children" class="modal-tabs">
+          <div v-if="activeMenu?.children" class="wiki-tabs">
             <van-tabs v-model:active="activeSub" color="#d4a843">
               <van-tab v-for="sub in activeMenu.children" :key="sub.key" :title="sub.label" :name="sub.key" />
             </van-tabs>
           </div>
-          <div class="modal-body">
+          <div class="wiki-body">
             <p class="wiki-note">※ {{ activeSubLabel }} 功能即将上线，敬请期待！</p>
             <p class="modal-desc">{{ modalDesc }}</p>
           </div>
