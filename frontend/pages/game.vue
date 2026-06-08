@@ -102,6 +102,7 @@
     <TradeView ref="tradeRef" />
     <CombatView ref="combatRef" />
     <WeaponPanel ref="weaponRef" :player-realm="player.realmId" @equip-result="(r:any)=>addLog(r.type,r.text)" />
+  </div>
 </template>
 
 <script setup lang="ts">
