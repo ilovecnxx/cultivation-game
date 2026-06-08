@@ -77,7 +77,7 @@
       </div>
     </footer>
     <Teleport to="body">
-      <van-popup v-model:show="modalVisible" position="center" :style="{ width:'fit-content', minWidth:'360px', maxWidth:'95vw', borderRadius:'8px', background:'#0d0d1a', border:'1px solid rgba(212,168,67,.2)' }" v-if="activeMenu&&activeMenu.key!=='map'&&activeMenu.key!=='profession'&&activeMenu.key!=='backpack'">
+      <div v-if="modalVisible&&activeMenu&&activeMenu.key!=='map'&&activeMenu.key!=='profession'&&activeMenu.key!=='backpack'" class="modal-overlay" @click.self="modalVisible=false">
         <div class="wiki-modal">
           <div class="gold-divider"/><header class="top-bar" style="border-radius:8px 8px 0 0"><div class="top-bar-inner"><div class="top-bar-spacer"/><span class="brand-name" style="font-size:16px">{{ activeMenu?.label }}</span><div class="top-bar-spacer"/><button class="modal-close" @click="modalVisible=false">✕</button></div></header><div class="gold-divider"/>
           <div v-if="activeMenu?.children" class="wiki-tabs">
@@ -90,7 +90,7 @@
             <p class="modal-desc">{{ modalDesc }}</p>
           </div>
         </div>
-      </van-popup>
+      </div>
     </Teleport>
     
     <MapModal :show="activeMenu?.key==='map'" :player-realm-id="player.realmId" :player-hp="player.hp" :current-loc="currentLoc" @close="activeMenu=null" @enter="enterLocation" @fight="startPve" />
