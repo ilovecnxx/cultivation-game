@@ -18,7 +18,6 @@ interface _GlobalComponents {
   ErrorBoundary: typeof import("../../components/ErrorBoundary.vue")['default']
   GameModals: typeof import("../../components/GameModals.vue")['default']
   MapModal: typeof import("../../components/MapModal.vue")['default']
-  MobileNav: typeof import("../../components/MobileNav.vue")['default']
   PlayerSidebar: typeof import("../../components/PlayerSidebar.vue")['default']
   WikiModal: typeof import("../../components/WikiModal.vue")['default']
   NuxtWelcome: typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
@@ -149,7 +148,6 @@ interface _GlobalComponents {
   LazyErrorBoundary: LazyComponent<typeof import("../../components/ErrorBoundary.vue")['default']>
   LazyGameModals: LazyComponent<typeof import("../../components/GameModals.vue")['default']>
   LazyMapModal: LazyComponent<typeof import("../../components/MapModal.vue")['default']>
-  LazyMobileNav: LazyComponent<typeof import("../../components/MobileNav.vue")['default']>
   LazyPlayerSidebar: LazyComponent<typeof import("../../components/PlayerSidebar.vue")['default']>
   LazyWikiModal: LazyComponent<typeof import("../../components/WikiModal.vue")['default']>
   LazyNuxtWelcome: LazyComponent<typeof import("../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
