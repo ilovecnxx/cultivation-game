@@ -12,8 +12,8 @@ fi
 echo "[Hook] Running pre-commit checks..." >&2
 
 # Go vet check
-if [ -d "/root/cultivation-game/backend" ]; then
-  cd /root/cultivation-game/backend
+if [ -d "/root/projects/cultivation-game/backend" ]; then
+  cd /root/projects/cultivation-game/backend
   if ! go vet ./... 2>&1; then
     echo "[Hook] ❌ go vet found issues. Please fix before committing." >&2
     exit 2  # Block commit

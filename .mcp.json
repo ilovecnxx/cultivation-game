@@ -1,22 +1,15 @@
 {
   "mcpServers": {
-    "redis-mcp": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-redis"
-      ],
-      "env": {}
-    },
     "mongodb-mcp": {
       "type": "stdio",
       "command": "npx",
       "args": [
         "-y",
-        "@executeautomation/mongodb-mcp-server"
+        "@krazor/mongodb-mcp"
       ],
-      "env": {}
+      "env": {
+        "MONGODB_URI": "mongodb://localhost:27017/cultivation"
+      }
     },
     "docker-mcp": {
       "type": "stdio",
@@ -35,11 +28,11 @@
         "@berthojoris/mcp-mysql-server"
       ],
       "env": {
-        "MYSQL_HOST": "localhost",
-        "MYSQL_PORT": "3306",
-        "MYSQL_USER": "root",
-        "MYSQL_DATABASE": "cultivation",
-        "MYSQL_PASSWORD": "root"
+        "DB_HOST": "localhost",
+        "DB_PORT": "3306",
+        "DB_USER": "root",
+        "DB_PASSWORD": "root",
+        "DB_NAME": "cultivation"
       }
     },
     "github": {

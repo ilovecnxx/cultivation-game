@@ -1,6 +1,12 @@
 {
+  "permissions": {
+    "allow": [
+      "Read(//root/.claude/**)",
+      "Read(//root/.config/claude/**)",
+      "Read(//root/**)"
+    ]
+  },
   "enabledMcpjsonServers": [
-    "redis-mcp",
     "mongodb-mcp",
     "docker-mcp",
     "mysql-mcp",
@@ -13,7 +19,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "file=\"${CLAUDE_FILE_PATH:-${CLAUDE_TOOL_INPUT_FILE_PATH}}\"; [ -n \"$file\" ] && echo \"$file\" | grep -qE '\\.go$' && (cd /root/cultivation-game/backend 2>/dev/null && gofmt -w \"$file\" 2>/dev/null && echo '[Hook] gofmt' >&2) || true",
+            "command": "file=\"${CLAUDE_FILE_PATH:-${CLAUDE_TOOL_INPUT_FILE_PATH}}\"; [ -n \"$file\" ] && echo \"$file\" | grep -qE '\\.go$' && (cd /root/projects/cultivation-game/backend 2>/dev/null && gofmt -w \"$file\" 2>/dev/null && echo '[Hook] gofmt' >&2) || true",
             "timeout": 10000
           }
         ]
@@ -23,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "file=\"${CLAUDE_FILE_PATH:-${CLAUDE_TOOL_INPUT_FILE_PATH}}\"; [ -n \"$file\" ] && echo \"$file\" | grep -qE '\\.(vue|ts)$' && echo \"$file\" | grep -qE 'frontend/' && cd /root/cultivation-game/frontend 2>/dev/null && (npx vue-tsc --noEmit 2>&1 | head -15 >&2; echo '[Hook] vue-tsc' >&2) || true",
+            "command": "file=\"${CLAUDE_FILE_PATH:-${CLAUDE_TOOL_INPUT_FILE_PATH}}\"; [ -n \"$file\" ] && echo \"$file\" | grep -qE '\\.(vue|ts)$' && echo \"$file\" | grep -qE 'frontend/' && cd /root/projects/cultivation-game/frontend 2>/dev/null && (npx vue-tsc --noEmit 2>&1 | head -15 >&2; echo '[Hook] vue-tsc' >&2) || true",
             "timeout": 30000
           }
         ]
@@ -33,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/root/cultivation-game/.claude/hooks/pre-commit-check.sh",
+            "command": "/root/projects/cultivation-game/.claude/hooks/pre-commit-check.sh",
             "timeout": 120000
           }
         ]
@@ -45,7 +51,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/root/cultivation-game/.claude/hooks/session-start-check.sh",
+            "command": "/root/projects/cultivation-game/.claude/hooks/session-start-check.sh",
             "timeout": 15000
           }
         ]
@@ -55,7 +61,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/root/cultivation-game/.claude/hooks/auto-push.sh",
+            "command": "/root/projects/cultivation-game/.claude/hooks/auto-push.sh",
             "timeout": 30000
           }
         ]
@@ -67,7 +73,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat /root/cultivation-game/primer.md 2>/dev/null && echo \"\" && /root/cultivation-game/.claude/hooks/session-start-check.sh",
+            "command": "cat /root/projects/cultivation-game/primer.md 2>/dev/null && echo \"\" && /root/projects/cultivation-game/.claude/hooks/session-start-check.sh",
             "timeout": 15000
           }
         ]

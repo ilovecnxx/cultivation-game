@@ -10,7 +10,7 @@ fi
 
 # Only format Go files
 if [ -n "$file" ] && echo "$file" | grep -qE '\.go$'; then
-  cd /root/cultivation-game/backend 2>/dev/null || cd /root/cultivation-game 2>/dev/null || true
+  cd /root/projects/cultivation-game/backend 2>/dev/null || cd /root/projects/cultivation-game 2>/dev/null || true
   gofmt -w "$file" 2>/dev/null && echo "[Hook] gofmt formatted: $file" >&2 || true
 fi
 exit 0

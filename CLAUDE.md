@@ -1,4 +1,4 @@
-# CLAUDE.md — 九转修仙 (Cultivation Game)
+# CLAUDE.md — 修仙世界 (Cultivation Game)
 
 <!--
   HUMAN NOTES (token-free — stripped from Claude's context at runtime):
@@ -12,7 +12,7 @@
 
 ## Project (3 sentences)
 
-九转修仙 is an MMORPG cultivation-themed web game. Players progress from mortal through 9 realms via meditation, combat (PVE/PVP), exploration, and social systems. Backend is Go microservices (Gateway → 8 domain services), frontend is Vue 3 + TypeScript + Pinia.
+修仙世界 is an MMORPG cultivation-themed web game. Players progress from mortal through 9 realms via meditation, combat (PVE/PVP), exploration, and social systems. Backend is Go microservices (Gateway → 8 domain services), frontend is Vue 3 + TypeScript + Pinia.
 
 ## Quick Commands
 
