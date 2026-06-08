@@ -17,7 +17,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script setup lang="ts">
 const visible=ref(false),tab=ref('combat'),list=ref<any[]>([]),loading=ref(false)
