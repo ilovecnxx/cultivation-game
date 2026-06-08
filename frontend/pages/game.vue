@@ -97,12 +97,14 @@
       <GameModals :pve-report="pveReport" :pve-rounds="pveRounds" :encounter-result="encounterResult" :is-dead="isDead" :revive-countdown="reviveCountdown" :death-log="deathLog" :gender="player.gender" :hp="player.maxHp>0?Math.round(player.hp/player.maxHp*100):0" :mp="player.maxMp>0?Math.round(player.mp/player.maxMp*100):0" :spirit-sense="player.spiritSense" @update:pve-report="(v:any)=>pveReport=v" @update:pve-rounds="(v:any)=>pveRounds=v" @update:encounter-result="(v:any)=>encounterResult=v" />
     <InventoryView ref="inventoryRef" />
     <RankingView ref="rankingRef" />
+    <SocialView ref="socialRef" />
   </div>
 </template>
 
 <script setup lang="ts">
 import InventoryView from '@/modules/inventory/InventoryView.vue'
 import RankingView from '@/modules/ranking/RankingView.vue'
+import SocialView from '@/modules/social/SocialView.vue'
 // useGameState auto-imported by Nuxt
 const {
   isDark, toggleTheme, getToken, getPID, refreshToken, activeNav,
@@ -129,6 +131,7 @@ const {
 
 const inventoryRef = ref()
 const rankingRef = ref()
+const socialRef = ref()
 
 
 const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
@@ -141,6 +144,7 @@ watch(activeNav, (name) => {
   if (name === 'wiki') { showWiki.value = true; return }
   if (name === 'inventory' || name === 'items') { inventoryRef.value?.open(true); return }
   if (name === 'ranking') { rankingRef.value?.open(true); return }
+  if (name === 'friend-list' || name === 'social') { socialRef.value?.open(true); return }
   const m = menus.find((x: any) => x.key === name)
   if (m) openMenu(m)
 })
