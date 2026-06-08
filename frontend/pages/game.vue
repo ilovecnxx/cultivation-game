@@ -5,7 +5,7 @@
       <div class="top-bar-inner">
         <span class="brand-logo">☯</span>
         <span class="brand-name">修仙世界</span>
-        <van-tabs v-model:active="activeNav" class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false" @change="onNavChange">
+        <van-tabs v-model:active="activeNav" class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false">
           <van-tab title="百科" name="wiki" />
           <van-tab v-for="m in menus" :key="m.key" :title="m.label" :name="m.key"  />
         </van-tabs>
@@ -337,6 +337,7 @@
 </template>
 
 <script setup lang="ts">
+import { watch, onMounted } from "vue"
 // useGameState auto-imported by Nuxt
 const {
   isDark, toggleTheme, getToken, getPID, refreshToken,
@@ -361,7 +362,9 @@ const {
   connectWS, apiPost, logFilter, logLocked, logBody, filteredLogs,
 } = useGameState()
 
-function onNavChange(name: string) { if (!name) return; if (name === "wiki") { showWiki.value = true; return } const m = menus.find((x: any) => x.key === name); if (m) openMenu(m) }
+let _mounted = false
+onMounted(() => { setTimeout(() => _mounted = true, 500) })
+watch(activeNav, (name) => { if (!_mounted || !name) return; if (name === "wiki") { showWiki.value = true; return } const m = menus.find((x: any) => x.key === name); if (m) openMenu(m) })
 </script>
 
 <style lang="scss" scoped>
