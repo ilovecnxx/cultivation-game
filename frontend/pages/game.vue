@@ -5,7 +5,7 @@
       <div class="top-bar-inner">
         <span class="brand-logo">☯</span>
         <span class="brand-name">修仙世界</span>
-        <van-tabs v-model:active="activeNav" class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false">
+        <van-tabs v-model:active="activeNav" class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false" @click-tab="({name}:any)=>onNavClick(name)">
           <van-tab title="百科" name="wiki" />
           
           <van-tab v-for="m in menus" :key="m.key" :title="m.label" :name="m.key"  />
@@ -141,16 +141,19 @@ const isDark2 = inject('isDark', ref(true))
 
 let _init = false
 onMounted(() => { setTimeout(() => _init = true, 300) })
-watch(activeNav, (name) => {
-  if (!_init || !name) return
-  if (name === 'wiki') { showWiki.value = true }
-  else if (name === 'inventory' || name === 'items') { inventoryRef.value?.open(true) }
-  else if (name === 'ranking') { rankingRef.value?.open(true) }
-  else if (name === 'social') { showPigeon.value = true }
-  else if (name === 'friend-list') { socialRef.value?.open(true) }
-  else { const m = menus.find((x: any) => x.key === name); if (m) openMenu(m) }
-  nextTick(() => { activeNav.value = '' })
-})
+function onNavClick(name: string) {
+  if (!name) return
+  if (name === 'wiki') { showWiki.value = true; return }
+  if (name === 'inventory' || name === 'items') { inventoryRef.value?.open(true); return }
+  if (name === 'ranking') { rankingRef.value?.open(true); return }
+  if (name === 'social') { showPigeon.value = true; return }
+  if (name === 'friend-list') { socialRef.value?.open(true); return }
+  const m = menus.find((x: any) => x.key === name)
+  if (m) openMenu(m)
+}
+let _init = false
+onMounted(() => { setTimeout(() => _init = true, 300) })
+watch(activeNav, (name) => { if (_init && name) onNavClick(name) })
 </script>
 
 <style lang="scss">
