@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['vant/lib/index.css', '~/src/styles/vant-theme.scss', '~/src/styles/main.scss'],
+  css: ['vant/lib/index.css', '~/styles/vant-theme.scss', '~/styles/main.scss'],
 
   vite: {
     server: {
@@ -34,16 +34,13 @@ export default defineNuxtConfig({
         '/ws': { target: 'ws://localhost:8080', ws: true },
       },
     },
-    resolve: {
-      alias: { '@': '/root/projects/cultivation-game/frontend/src' },
-    },
     css: {
       preprocessorOptions: {
         scss: {
           additionalData: `
             @use "sass:color";
-            @use "@/styles/variables.scss" as *;
-            @use "@/styles/mixins.scss" as *;
+            @use "./styles/variables.scss" as *;
+            @use "./styles/mixins.scss" as *;
           `,
         },
       },
