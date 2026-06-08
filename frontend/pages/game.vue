@@ -96,7 +96,7 @@
     <WikiModal :show="showWiki" :realm-id="player.realmId" :player-spirit-name="player.spiritName" @close="showWiki=false" />
       <GameModals :pve-report="pveReport" :pve-rounds="pveRounds" :encounter-result="encounterResult" :is-dead="isDead" :revive-countdown="reviveCountdown" :death-log="deathLog" :gender="player.gender" :hp="player.maxHp>0?Math.round(player.hp/player.maxHp*100):0" :mp="player.maxMp>0?Math.round(player.mp/player.maxMp*100):0" :spirit-sense="player.spiritSense" @update:pve-report="(v:any)=>pveReport=v" @update:pve-rounds="(v:any)=>pveRounds=v" @update:encounter-result="(v:any)=>encounterResult=v" />
   </div>
-    <MobileNav class="mobile-only" @open-sidebar="showMobileSidebar=true" @open-chat="focusChat" @open-menu="activeNav=""" @open-map="activeMenu={key:"world-map"}" @open-wiki="showWiki=true" />
+    <MobileNav class="mobile-only" @open-sidebar="showMobileSidebar=true" @open-chat="focusChat" @open-menu="showMobileMenu=true" @open-map="showMobileMap=true" @open-wiki="showWiki=true" />
 </template>
 
 <script setup lang="ts">
@@ -126,6 +126,10 @@ const {
 
 
 const showMobileSidebar = ref(false)
+const showMobileMenu = ref(false)
+const showMobileMap = ref(false)
+watch(showMobileMenu, v => { if (v) { modalVisible.value = true; showMobileMenu.value = false } })
+watch(showMobileMap, v => { if (v) { activeMenu.value = { key: 'world-map', label: '世界地图' }; showMobileMap.value = false } })
 const toggleTheme2 = inject<() => void>('toggleTheme', () => {})
 const isDark2 = inject('isDark', ref(true))
 function focusChat() { document.querySelector('.chat-input-vant input')?.focus() }
