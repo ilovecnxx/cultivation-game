@@ -5,7 +5,7 @@
 <div class="gold-divider"/><header class="top-bar" style="border-radius:8px 8px 0 0"><div class="top-bar-inner"><div class="top-bar-spacer"/><span class="brand-name" style="font-size:16px">⚔️ 武器库</span><div class="top-bar-spacer"/><button class="modal-close" @click="visible=false">✕</button></div></header><div class="gold-divider"/>
 <div class="wiki-body">
   <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px">
-    <WeaponCard v-for="eq in weapons" :key="eq.id" :equip="eq" :show-actions="true" @equip="doEquip(eq)" />
+    <WeaponCard v-for="eq in weapons" :key="eq.id" :equip="eq" @equip="doEquip(eq)" />
   </div>
 </div>
 </div>

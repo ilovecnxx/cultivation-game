@@ -101,8 +101,7 @@
     <AlchemyView ref="alchemyRef" />
     <TradeView ref="tradeRef" />
     <CombatView ref="combatRef" />
-  </div>
-    <WeaponPanel ref="weaponRef" />
+    <WeaponPanel ref="weaponRef" :player-realm="player.realmId" @equip-result="(r:any)=>addLog(r.type,r.text)" />
 </template>
 
 <script setup lang="ts">

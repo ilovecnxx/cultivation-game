@@ -4,6 +4,7 @@
     :class="{ selected, [`tier-${tierKey}`]: true, [`lv-${visual.level}`]: true }"
     :style="cardStyle"
     @click="$emit('select')"
+    @dblclick="$emit('equip')"
   >
     <!-- 土豪金外框 -->
     <div class="wc-border"></div>
@@ -32,10 +33,6 @@
       <div v-if="visual.level >= 3" class="wc-shine"></div>
     </div>
     <!-- 操作按钮 -->
-    <div v-if="showActions" class="wc-actions">
-      <van-button size="small" type="primary" round @click.stop="$emit('equip')">装备</van-button>
-      <van-button size="small" plain round @click.stop="$emit('detail')">详情</van-button>
-    </div>
   </div>
 </template>
 
