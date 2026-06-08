@@ -34,13 +34,16 @@ export default defineNuxtConfig({
         '/ws': { target: 'ws://localhost:8080', ws: true },
       },
     },
+    resolve: {
+      alias: { '@styles': '/root/projects/cultivation-game/frontend/styles' },
+    },
     css: {
       preprocessorOptions: {
         scss: {
           additionalData: `
             @use "sass:color";
-            @use "./styles/variables.scss" as *;
-            @use "./styles/mixins.scss" as *;
+            @use "@styles/variables.scss" as *;
+            @use "@styles/mixins.scss" as *;
           `,
         },
       },
