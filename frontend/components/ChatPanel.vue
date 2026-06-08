@@ -58,17 +58,29 @@ const filteredChat = computed(() => chatTab.value === 'all' ? chatMessages : cha
 // WebSocket 连接
 function connectWS() {
   const t = getToken(); if (!t) return
+  // token 通过 Authorization 子协议传递（比 URL 参数更安全，不会出现在服务器日志中）
   try {
-    ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/ws?token=' + t)
+    ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/ws', ['authorization.' + t])
+    ws.onopen = () => { ws?.send(JSON.stringify({ type: 'auth', token: t })) }
     ws.onmessage = (e) => { try { const m = JSON.parse(e.data); if (m.type === 'chat') handleServerChat(m) } catch {} }
     ws.onclose = () => { setTimeout(connectWS, 5000) }
     ws.onerror = () => { ws?.close() }
-  } catch {}
+  } catch {
+    // 降级：某些浏览器不支持子协议，回退到 URL 参数
+    try {
+      ws = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/ws?token=' + t)
+      ws.onmessage = (e) => { try { const m = JSON.parse(e.data); if (m.type === 'chat') handleServerChat(m) } catch {} }
+      ws.onclose = () => { setTimeout(connectWS, 5000) }
+      ws.onerror = () => { ws?.close() }
+    } catch {}
+  }
   connectChatWS()
 }
 function connectChatWS() {
+  const t = getToken(); if (!t) return
+  // token 代替 user_id 作为身份凭证（后端 Handler 需从 JWT 中解析 player_id）
   try {
-    chatWs = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/api/v1/chat/ws?user_id=' + (getPID() || ''))
+    chatWs = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/api/v1/chat/ws?token=' + t)
     chatWs.onmessage = (e) => { try { const m = JSON.parse(e.data); handleServerChat(m) } catch {} }
     chatWs.onclose = () => { setTimeout(connectChatWS, 5000) }
     chatWs.onerror = () => { chatWs?.close() }
