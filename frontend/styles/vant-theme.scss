@@ -72,7 +72,66 @@
 }
 
 // 暗黑主题全局
-html {
-  background: #0f0f1a;
-  color: #e0d5c0;
+html { background: #0f0f1a; color: #e0d5c0; }
+
+// ============================================================
+// 浅色主题覆盖 ↓ 新增，不碰 game.vue 原有样式
+// ============================================================
+.light-mode {
+  // 主背景翻转
+  .gh-root { background: #f5f5f5; color: #333; }
+  // 面板
+  .gh-sidebar, .gh-panel, .gh-log, .gh-chat { background: #f0f0f0; }
+  // 卡片
+  .side-card { background: #fff; border-color: rgba(0,0,0,.08); }
+  // 通知栏
+  .notice-bar { background: #eee; }
+  .notice-text { color: #666; }
+  // 聊天
+  .chat-input { background: #fff; color: #333; border-color: rgba(0,0,0,.1); }
+  .chat-text { color: #333; }
+  .chat-name { color: #555; }
+  // 按钮
+  .pa-btn { color: #555; border-color: rgba(0,0,0,.1); }
+  // 日志
+  .log-entry { color: #555; }
 }
+
+// ============================================================
+// 浅色主题（白天模式） — 覆盖所有游戏面板
+// ============================================================
+.light-mode {
+  --van-background: #f5f5f5;
+  --van-background-2: #fff;
+  --van-background-3: #eee;
+  --van-text-color: #333;
+  --van-text-color-2: #666;
+  --van-text-color-3: #999;
+  --van-border-color: rgba(0,0,0,0.1);
+  --van-popup-background: #fff;
+  --van-overlay-background: rgba(0,0,0,0.3);
+  --van-dialog-background: #fff;
+  --van-dialog-message-color: #333;
+  --van-cell-text-color: #333;
+  --van-cell-group-background: #fff;
+  --van-field-input-text-color: #333;
+  --van-field-placeholder-text-color: #999;
+  --van-nav-bar-background: #fff;
+  --van-nav-bar-text-color: #333;
+}
+
+// 游戏面板 — 浅色覆盖
+.light-mode .gh-sidebar,
+.light-mode .gh-panel,
+.light-mode .gh-chat,
+.light-mode .gh-log,
+.light-mode .notice-bar { background: #f0f0f0 !important; }
+
+.light-mode .side-card { background: #fff !important; border-color: rgba(0,0,0,0.08) !important; }
+.light-mode .panel-header { background: #f5f5f5 !important; }
+.light-mode .chat-input { background: #fff !important; color: #333 !important; border-color: rgba(0,0,0,0.1) !important; }
+.light-mode .chat-text { color: #333 !important; }
+.light-mode .chat-name { color: #555 !important; }
+.light-mode .notice-text { color: #666 !important; }
+.light-mode .pa-btn { color: #555 !important; border-color: rgba(0,0,0,0.1) !important; }
+.light-mode .log-entry { color: #555 !important; }
