@@ -12,13 +12,11 @@ export function useGameState() {
 
   // ====== UI 状态 ======
   const activeMenu = ref<any>(null)
-  const showPigeon = ref(false)
   const modalVisible = ref(false)
   const activeSub = ref('')
   const modalDesc = ref('')
   const activeSubLabel = computed(() => activeMenu.value?.children?.find((s: any) => s.key === activeSub.value)?.label || '')
-  function openMenu(m: any) { activeMenu.value = m; activeSub.value = m.children?.[0]?.key || m.key; modalDesc.value = descs[activeSub.value] || ''; if (m.key === 'pigeon') { showPigeon.value = true; return }
-    if (!['map', 'profession', 'backpack'].includes(m.key)) modalVisible.value = true }
+  function openMenu(m: any) { activeMenu.value = m; activeSub.value = m.children?.[0]?.key || m.key; modalDesc.value = descs[activeSub.value] || ''; if (!['map', 'profession', 'backpack'].includes(m.key)) modalVisible.value = true }
 
   // ====== 玩家状态 ======
   const player = reactive({
@@ -173,7 +171,7 @@ export function useGameState() {
   return {
     isDark, activeNav, toggleTheme, getToken, getPID, refreshToken,
     menus, descs, realmNames, realmCoefs, rootMults, qualityNames, qualityColors, pillQualityColors, rootNames, mapRegions, fmt,
-    activeMenu, modalVisible, activeSub, modalDesc, activeSubLabel, openMenu, showPigeon,
+    activeMenu, modalVisible, activeSub, modalDesc, activeSubLabel, openMenu,
     player, isDead, hpPct, mpPct, yySpeed, ageBracket, ageDays, loadPlayer,
     training, trainMult, logs,
     showPillPanel, showPillCraft, myPills, pillRecipes, pillCount, pillCat, pillQtys, craftResult, pillStats, pillCats, filteredRecipes, loadPills, loadRecipes, craftAgain, craftPill, usePill,
