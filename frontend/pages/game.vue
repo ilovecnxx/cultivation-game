@@ -5,16 +5,16 @@
       <div class="top-bar-inner">
         <span class="brand-logo">☯</span>
         <span class="brand-name">修仙世界</span>
-        <nav class="main-nav">
-          <div class="nav-item" @click="showWiki=true"><span class="nav-label">📖 百科</span></div>
-          <div v-for="m in menus" :key="m.key" class="nav-item" @click="openMenu(m)"><span class="nav-label">{{ m.label }}</span></div>
-        </nav>
+        <van-tabs v-model:active="activeNav" class="main-nav-tabs" color="#d4a843" title-active-color="#d4a843" title-inactive-color="#8a8578" background="transparent" :border="false">
+          <van-tab title="📖 百科" name="wiki" @click="showWiki=true" />
+          <van-tab v-for="m in menus" :key="m.key" :title="m.label" :name="m.key" @click="openMenu(m)" />
+        </van-tabs>
         <div class="top-bar-spacer"></div>
         <div class="player-stats">
-          <span class="online-badge"><span class="online-dot" />{{ fmt(onlineCount) }} 在线修士</span>
-          <span class="registered-badge">{{ fmt(registeredCount) }} 注册修士</span>
+          <span class="online-badge"><span class="online-dot" />{{ fmt(onlineCount) }} 在线</span>
+          <span class="registered-badge">{{ fmt(registeredCount) }} 修士</span>
         </div>
-        <button class="theme-toggle" @click="toggleTheme">{{ isDark ? '☀' : '🌙' }}</button>
+        <van-button icon="exchange" size="small" round plain type="default" @click="toggleTheme" />
       </div>
     </header>
     <div class="gold-divider"><div class="gold-divider__light" /></div>
@@ -164,135 +164,20 @@
       </div>
     </footer>
     <Teleport to="body">
-      <div v-if="modalVisible&&activeMenu?.key==='profession'" class="modal-overlay" @click.self="modalVisible=false">
-        <div class="wiki-modal">
-          <div class="wiki-header"><h2>{{ activeProf ? '🔥 丹师·炼丹' : '🎯 职业系统' }}</h2><button class="modal-close" @click="modalVisible=false;activeProf=false">✕</button></div>
-          <div class="wiki-body" v-if="!activeProf">
-            <p class="wiki-note" style="text-align:center;margin-bottom:16px">练气期可选择一门职业。神识越高，副职成功率越高。</p>
-            <div class="prof-grid">
-              <div v-for="p in profList" :key="p.key" class="prof-card" :class="{locked:player.realmId<2}" @click="openProfession(p)">
-                <div class="pc-icon">{{ p.icon }}</div>
-                <div class="pc-name">{{ p.name }}</div>
-                <div class="pc-desc">{{ p.desc }}</div>
-                <div class="pc-bonus">{{ p.bonus }}</div>
-                <div class="pc-status">{{ player.realmId<2?'🔒 需练气期' : player.profession===p.key?('Lv.'+player.professionLevel) : '未选择' }}</div>
-              </div>
-            </div>
-          </div>
-          <div class="wiki-body" v-if="activeProf">
-            <button class="pa-btn" @click="activeProf=false" style="margin-bottom:12px">← 返回职业列表</button>
-            <div class="alchemy-hero">
-              <div class="ah-furnace">🔥</div>
-              <div class="ah-info">
-                <div class="ah-title">{{ activeProf.icon }} {{ activeProf.name }} <span class="ah-lv">Lv.{{ player.professionLevel||1 }}</span></div>
-                <div class="ah-exp-bar"><div class="ah-exp-fill" :style="{width:Math.min(100,((player.professionExp||0)%100))+'%'}" /></div>
-                <div class="ah-exp-text">EXP {{ (player.professionExp||0)%100 }}/100</div>
-                <div class="ah-stats">👁️ 神识 {{ player.spiritSense }} | 已炼 {{ pillStats.crafted }} | 失败 {{ pillStats.failed }}</div>
-              </div>
-            </div>
-            <div class="pill-filter">
-              <button v-for="c in pillCats" :key="c.key" class="pa-btn" :class="{active:pillCat===c.key}" @click="pillCat=c.key">{{ c.label }}</button>
-            </div>
-            <div class="pill-card-grid">
-              <div v-for="r in filteredRecipes" :key="r.pill_key" class="pill-card" :class="{locked:player.realmId<r.req_realm}">
-                <div class="pc-quality-strip" :style="{height:4+'px'}"></div>
-                <div class="pc-top">
-                  <span class="pc-icon-lg">{{ r.icon }}</span>
-                  <div class="pc-badges">
-                    <span class="pc-tier-badge">{{ '★'.repeat(r.tier) }}</span>
-                    <span class="pc-cat-badge">{{ r.category }}</span>
-                  </div>
-                </div>
-                <div class="pc-name-lg">{{ r.name }}</div>
-                <div class="pc-desc-lg">{{ r.description }}</div>
-                <div class="pc-stats-row">
-                  <div class="pc-stat"><span class="pc-stat-label">成功率</span><span class="pc-stat-val green">{{ Math.min(95,r.base_success+Math.floor(player.spiritSense/50)+(player.profession=='dan'?player.professionLevel*2:0)) }}%</span></div>
-                  <div class="pc-stat"><span class="pc-stat-label">神识消耗</span><span class="pc-stat-val">{{ r.ss_cost }}</span></div>
-                </div>
-                <div class="pc-quality-bar">
-                  <div class="pc-qb-seg" v-for="(q,i) in [{c:'#888',v:Math.max(0,85-Math.floor(player.spiritSense/50)-(player.profession=='dan'?player.professionLevel*2:0))},{c:'#aaa',v:20},{c:'#6bcb77',v:Math.min(50,25+Math.floor(player.spiritSense/100))},{c:'#4d96ff',v:Math.min(30,15+Math.floor(player.spiritSense/150))},{c:'#ff6b9e',v:Math.min(25,10+Math.floor(player.spiritSense/100)+(player.profession=='dan'?player.professionLevel*2:0))}]" :key="i" :style="{flex:q.v,background:q.c}" :title="['劣质','普通','优良','精良','完美'][i]+' '+Math.round(q.v)+'%'" />
-                </div>
-                <div class="pc-actions-lg">
-                  <button class="pc-btn-minus" @click="pillQtys[r.pill_key]=Math.max(1,(pillQtys[r.pill_key]||1)-1)">−</button>
-                  <span class="pc-qty-display">{{ pillQtys[r.pill_key]||1 }}</span>
-                  <button class="pc-btn-plus" @click="pillQtys[r.pill_key]=Math.min(99,(pillQtys[r.pill_key]||1)+1)">+</button>
-                  <button class="pc-btn-craft" @click="craftPill(r,pillQtys[r.pill_key]||1)" :disabled="player.spiritSense<r.ss_cost*r.tier||player.realmId<r.req_realm">{{ player.realmId<r.req_realm?'🔒'+pillRecipes.find(x=>x.pill_key===r.pill_key)?.req_realm+'级解锁':'开炉炼制' }}</button>
-                </div>
-              </div>
-            </div>
-            <!-- 炼丹结果弹窗 -->
-            <Teleport to="body">
-              <div v-if="craftResult" class="modal-overlay" @click.self="craftResult=null">
-                <div class="craft-modal-lg" :class="craftResult.success?'craft-ok':'craft-no'">
-                  <div class="cml-top">{{ craftResult.success?'🔥 丹成！':'💥 炸炉！' }}</div>
-                  <div v-if="craftResult.success" class="cml-pill-show">
-                    <span class="cml-pill-icon-lg" :style="{animation:'em-bounce .3s ease-in-out infinite alternate'}">{{ filteredRecipes.find(r=>r.pill_key===craftResult.key)?.icon||'💊' }}</span>
-                    <span class="cml-pill-name-lg" :style="{color:pillQualityColors[craftResult.quality]||'#ffd700',textShadow:'0 0 '+((craftResult.quality||0)*6+4)+'px '+pillQualityColors[craftResult.quality]||'#ffd700'}">{{ craftResult.name }} · {{ craftResult.quality_name }}</span>
-                  </div>
-                  <div class="cml-stats-grid">
-                    <div class="cml-stat-box"><span class="cml-stat-v">{{ craftResult.effect||0 }}</span><span class="cml-stat-l">{{ craftResult.effect_type==='heal_hp'?'恢复HP%':'效果' }}</span></div>
-                    <div class="cml-stat-box"><span class="cml-stat-v">+{{ craftResult.exp||0 }}</span><span class="cml-stat-l">经验</span></div>
-                    <div class="cml-stat-box"><span class="cml-stat-v">−{{ craftResult.cost||0 }}</span><span class="cml-stat-l">神识</span></div>
-                  </div>
-                  <div v-if="!craftResult.success" class="cml-fail-reason">材料尽毁，神识消散...</div>
-                  <div class="cml-btns">
-                    <button class="cml-btn-retry" @click="craftResult=null;if(craftResult.success)craftAgain()">再炼一颗</button>
-                    <button class="cml-btn-close" @click="craftResult=null">收下</button>
-                  </div>
-                </div>
-              </div>
-            </Teleport>
-          </div>
-        </div>
-      </div>
-      <div v-if="activeMenu?.key==='pigeon'" class="modal-overlay" @click.self="activeMenu=null">
-        <div class="wiki-modal pigeon-modal">
-          <div class="wiki-header"><h2>🕊️ 飞鸽传书</h2><button class="modal-close" @click="activeMenu=null">✕</button></div>
-          <div class="pigeon-body">
-            <div class="pig-left">
-              <div class="pig-search-box"><input v-model="friendSearch" @keyup.enter="searchPlayers" placeholder="搜索道友..." class="pig-search-inp" /></div>
-              <div class="pig-search-results" v-if="searchResults.length>0">
-                <div v-for="r in searchResults" :key="r.id" class="pig-sr-row"><span class="pig-sr-name">{{ r.nickname }}</span><span class="pig-sr-tag">锻体{{ r.realm_stage }}期</span><button @click="addFriend(r.id)">添加</button></div>
-              </div>
-              <div class="pig-group"><div class="pig-group-head" @click="pigGroups.friends=!pigGroups.friends">👤 好友 <span class="pig-group-arrow" :class="{open:pigGroups.friends}">▾</span><span style="font-size:10px;color:rgba(255,255,255,.2);margin-left:auto">{{ friends.length }}/50</span></div>
-                <div v-if="pigGroups.friends" class="pig-group-body">
-                  <div v-for="f in friends" :key="f.id" class="pig-friend" :class="{active:activePeer===f.id}" @click="openChat(f)" @contextmenu.prevent="removeFriend(f.id)"><div class="pig-f-avatar">{{ f.nickname[0] }}</div><div class="pig-f-info"><div class="pig-f-name">{{ f.nickname }}<span class="pig-f-online" :class="{online:f.online}"></span></div><div class="pig-f-realm">锻体{{ f.realm_stage }}期</div></div></div>
-                  <div v-if="friends.length===0" class="pig-empty-tip">暂无好友</div>
-                </div></div>
-              <div class="pig-group"><div class="pig-group-head" @click="pigGroups.requests=!pigGroups.requests">📋 好友申请 <span v-if="pendingRequests.length" class="pig-badge">{{ pendingRequests.length }}</span><span class="pig-group-arrow" :class="{open:pigGroups.requests}">▾</span></div>
-                <div v-if="pigGroups.requests" class="pig-group-body">
-                  <div v-for="r in pendingRequests" :key="r.id" class="pig-request-row"><span class="pig-r-name">{{ r.nickname }}</span><div class="pig-r-btns"><button @click="acceptFriend(r.id)">接受</button><button @click="removeFriend(r.id)" class="pig-r-reject">拒绝</button></div></div>
-                  <div v-if="pendingRequests.length===0" class="pig-empty-tip">暂无申请</div>
-                </div></div>
-              <div class="pig-group"><div class="pig-group-head" @click="pigGroups.daolv=!pigGroups.daolv">💑 道侣 <span class="pig-group-arrow" :class="{open:pigGroups.daolv}">▾</span></div><div v-if="pigGroups.daolv" class="pig-group-body"><div class="pig-empty-tip">修仙路漫漫，寻一道侣</div></div></div>
-              <div class="pig-group"><div class="pig-group-head" @click="pigGroups.master=!pigGroups.master">🎓 师徒 <span class="pig-group-arrow" :class="{open:pigGroups.master}">▾</span></div><div v-if="pigGroups.master" class="pig-group-body"><div class="pig-empty-tip">拜师或收徒，传承衣钵</div></div></div>
-            </div>
-            <div class="pig-right">
-              <div v-if="activePeer" class="pig-chat">
-                <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.1)"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#4d96ff,#6bcb77);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff">{{ activePeerName[0] }}</div><div style="font-size:14px;font-weight:700;color:#fff">{{ activePeerName }}</div></div>
-                <div class="pig-chat-msgs"><div v-for="m in privateMessages" :key="m.id" class="pig-msg-bubble" :class="{self:m.from_id===playerId}"><div class="pig-msg-avatar">{{ m.from_id===playerId ? player.name[0] : activePeerName[0] }}</div><div class="pig-msg-content"><div class="pig-msg-bub-text">{{ m.text }}</div></div></div></div>
-                <div class="pig-chat-send"><input v-model="privateInput" @keyup.enter="sendPrivate" placeholder="按回车发送" class="pig-send-inp" /><button @click="sendPrivate" class="pig-send-btn">发送</button></div>
-              </div>
-              <div v-else style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:radial-gradient(ellipse at center,rgba(212,168,67,.03) 0%,transparent 70%)"><div style="font-size:80px;opacity:.15">🕊️</div><div style="font-size:22px;color:rgba(255,255,255,.3);font-weight:600;letter-spacing:4px">飞鸽传书</div><div style="font-size:13px;color:rgba(255,255,255,.15)">选择一个好友开始聊天</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-if="modalVisible&&activeMenu?.key!=='map'&&activeMenu?.key!=='profession'&&activeMenu?.key!=='pigeon'&&activeMenu?.key!=='backpack'" class="modal-overlay" @click.self="modalVisible=false">
+      <div <van-popup v-model:show="modalVisible" position="bottom" round :style="{ height:'60%', background:'#1a1a2e' }" v-if="activeMenu?.key!=='map'&&activeMenu?.key!=='profession'&&activeMenu?.key!=='pigeon'&&activeMenu?.key!=='backpack'">
         <div class="modal-card">
-          <div class="modal-header"><h2>{{ activeMenu?.label }}</h2><button class="modal-close" @click="modalVisible=false">✕</button></div>
+          <div class="modal-header"><h2>{{ activeMenu?.label }}</h2><van-icon name="cross" size="24" @click="modalVisible=false" /></div>
           <div v-if="activeMenu?.children" class="modal-tabs">
-            <button v-for="sub in activeMenu.children" :key="sub.key" class="modal-tab" :class="{active:activeSub===sub.key}" @click="activeSub=sub.key;modalDesc=descs[sub.key]||''">{{ sub.label }}</button>
+            <van-tabs v-model:active="activeSub" color="#d4a843">
+              <van-tab v-for="sub in activeMenu.children" :key="sub.key" :title="sub.label" :name="sub.key" />
+            </van-tabs>
           </div>
           <div class="modal-body">
-            <template v-if="activeMenu?.key==='backpack'">
-              <div v-if="bpItems.length===0" style="text-align:center;padding:40px;color:#888">背包空空如也</div>
-              <div v-for="i in bpItems" :key="i.id" style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px"><span style="font-size:22px;margin-right:8px">{{ i.icon }}</span><span style="color:#fff;flex:1">{{ i.name }}</span><span style="color:#888">×{{ i.quantity }}</span><button v-if="i.item_type==='pill'" style="padding:4px 14px;border:1px solid #d4a843;border-radius:14px;background:transparent;color:#d4a843;font-size:11px;cursor:pointer;font-family:inherit" @click="useBpPill(i)">使用</button></div>
-            </template>
-            <template v-else><p class="modal-placeholder">🏗️ {{ activeSubLabel }} 系统开发中...</p><p class="modal-desc">{{ modalDesc }}</p></template>
+            <p class="wiki-note">※ {{ activeSubLabel }} 功能即将上线，敬请期待！</p>
+            <p class="modal-desc">{{ modalDesc }}</p>
           </div>
         </div>
-      </div>
+      </van-popup>
     </Teleport>
     <!-- 地图弹窗 -->
     <Teleport to="body">

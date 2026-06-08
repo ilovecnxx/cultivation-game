@@ -7,3 +7,36 @@
 @use 'pc';
 @use 'mobile';
 @use 'breakpoints';
+
+// ============================================================
+// 移动端响应式覆盖（手机 < 768px）
+// ============================================================
+@media (max-width: 767px) {
+  .gh-main {
+    flex-direction: column !important;
+  }
+  .gh-sidebar {
+    width: 100% !important;
+    min-width: unset !important;
+    max-height: 120px;
+    flex-direction: row !important;
+    flex-shrink: 0;
+    overflow-x: auto;
+    padding: 4px;
+    gap: 4px;
+  }
+  .side-card {
+    min-width: 180px;
+    flex-shrink: 0;
+  }
+  .gh-log { width: 100% !important; flex-shrink: 0; max-height: 40vh; }
+  .gh-chat { width: 100% !important; flex-shrink: 0; max-height: 40vh; }
+  .profile-attrs { columns: 2; }
+  .top-bar-inner { flex-wrap: wrap; padding: 4px 8px; }
+  .main-nav-tabs { width: 100%; order: 3; }
+  .player-stats { font-size: 11px; }
+  .notice-bar { font-size: 11px; padding: 4px 10px; }
+  .modal-card { width: 100vw !important; max-width: 100vw !important; }
+  .chat-input-bar { padding: 6px; }
+  .gold-divider { display: none; }
+}
