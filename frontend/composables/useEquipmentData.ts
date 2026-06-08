@@ -220,14 +220,12 @@ const realmHue: Record<number, number> = {
 export function equipVisual(realm: number, tier: string): EquipVisual {
   const hue = realmHue[realm] || 0
   const ti = tierIdx[tier] || 0
-  // 锻体=黑(无彩), 其余境界饱和度随品阶从30→100
   const sat = realm === 1 ? 0 : Math.min(100, 25 + ti * 18)
-  // 亮度: 品阶越高越亮
   const light = Math.min(90, 30 + ti * 12 + realm * 2)
+  // 文字色：境界色系
   const color = `hsl(${hue}, ${sat}%, ${light}%)`
-  // 边框色: 比字体稍暗
-  const borderColor = `hsl(${hue}, ${sat-5 > 0 ? sat-5 : 0}%, ${light-10 > 0 ? light-10 : 5}%)`
-  // 特效等级: realm主驱动
+  // 边框色：跟品阶字颜色一致（天=赤/地=蓝/玄=翠/黄=金/人=灰）
+  const borderColor = tierColors[tier] || '#888'
   const lv = realm <= 2 ? 0 : realm <= 4 ? 1 : realm <= 6 ? 2 : realm <= 8 ? 3 : 4
   const glow = lv >= 1 ? `text-shadow:0 0 ${2+realm+ti}px ${color}` : ''
   const box  = lv >= 2 ? `box-shadow:0 0 ${4+realm+ti}px ${color}44` : ''
