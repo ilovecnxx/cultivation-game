@@ -76,7 +76,7 @@
       </div>
     </footer>
     <Teleport to="body">
-      <div v-if="modalVisible&&activeMenu&&activeMenu.key!=='world-map'&&activeMenu.key!=='profession'&&activeMenu.key!=='backpack'" class="modal-overlay" @click.self="modalVisible=false">
+      <div v-if="modalVisible&&activeMenu&&activeMenu.key!=='world-map'&&activeMenu.key!=='backpack'" class="modal-overlay" @click.self="modalVisible=false">
         <div class="wiki-modal">
           <div class="gold-divider"/><header class="top-bar" style="border-radius:8px 8px 0 0"><div class="top-bar-inner"><div class="top-bar-spacer"/><span class="brand-name" style="font-size:16px">{{ activeMenu?.label }}</span><div class="top-bar-spacer"/><button class="modal-close" @click="modalVisible=false">✕</button></div></header><div class="gold-divider"/>
           <div v-if="activeMenu?.children" class="wiki-tabs">
