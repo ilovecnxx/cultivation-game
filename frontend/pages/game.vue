@@ -143,13 +143,13 @@ let _init = false
 onMounted(() => { setTimeout(() => _init = true, 300) })
 watch(activeNav, (name) => {
   if (!_init || !name) return
-  if (name === 'wiki') { showWiki.value = true; return }
-  if (name === 'inventory' || name === 'items') { inventoryRef.value?.open(true); return }
-  if (name === 'ranking') { rankingRef.value?.open(true); return }
-  if (name === 'social') { showPigeon.value = true; return }
-  if (name === 'friend-list') { socialRef.value?.open(true); return }
-  const m = menus.find((x: any) => x.key === name)
-  if (m) openMenu(m)
+  if (name === 'wiki') { showWiki.value = true }
+  else if (name === 'inventory' || name === 'items') { inventoryRef.value?.open(true) }
+  else if (name === 'ranking') { rankingRef.value?.open(true) }
+  else if (name === 'social') { showPigeon.value = true }
+  else if (name === 'friend-list') { socialRef.value?.open(true) }
+  else { const m = menus.find((x: any) => x.key === name); if (m) openMenu(m) }
+  nextTick(() => { activeNav.value = '' })
 })
 </script>
 
