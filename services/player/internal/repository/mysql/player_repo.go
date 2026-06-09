@@ -25,15 +25,19 @@ func NewPlayerRepo(db *sql.DB, log *zap.Logger) *PlayerRepo {
 func (r *PlayerRepo) Create(p *model.Player) error {
 	query := `INSERT INTO players (uid, nickname, gender, profession, profession_level, profession_exp, realm_id, realm_level, realm_stage, spirit_root, root_quality,
 		hp, max_hp, mp, max_mp, attack, defense, speed, crit_rate, crit_dmg, dodge, hit, cult_bonus, break_bonus, mp_regen, lifespan, comprehension, luck, spirit_sense, last_luck_date, money, immortal_jade, exp, max_spirit, created_at, updated_at)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
 	now := time.Now()
 	p.CreatedAt = now
 	p.UpdatedAt = now
 
+	lastLuckDate := interface{}(nil)
+	if p.LastLuckDate != "" {
+		lastLuckDate = p.LastLuckDate
+	}
 	result, err := r.db.Exec(query,
 		p.UserID, p.Name, p.Gender, p.Profession, p.ProfessionLevel, p.ProfessionExp, p.Realm, p.Level, p.RealmStage, p.SpiritRoot, p.RootQuality,
-		p.HP, p.MaxHP, p.MP, p.MaxMP, p.Attack, p.Defense, p.Speed, p.CritRate, p.CritDmg, p.Dodge, p.Hit, p.CultBonus, p.BreakBonus, p.MPRegen, p.Lifespan, p.Comprehension, p.Luck, p.SpiritSense, p.LastLuckDate,
+		p.HP, p.MaxHP, p.MP, p.MaxMP, p.Attack, p.Defense, p.Speed, p.CritRate, p.CritDmg, p.Dodge, p.Hit, p.CultBonus, p.BreakBonus, p.MPRegen, p.Lifespan, p.Comprehension, p.Luck, p.SpiritSense, lastLuckDate,
 		p.Gold, p.Jade, p.SpiritPower, p.MaxSpirit,
 		p.CreatedAt, p.UpdatedAt,
 	)
