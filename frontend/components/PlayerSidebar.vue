@@ -1,11 +1,5 @@
 <template>
   <aside class="gh-sidebar">
-    <!-- 位置 -->
-    <div class="side-loc" v-if="currentLocInfo">
-      <span class="sl-icon">{{ currentLocInfo.icon }}</span>
-      <span class="sl-name">{{ currentLocInfo.name }}</span>
-    </div>
-
     <!-- 玩家信息 -->
     <div class="side-card side-profile">
       <div class="profile-top">
