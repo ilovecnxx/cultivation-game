@@ -32,7 +32,7 @@ export function useGameState() {
   const ageBracket = computed(() => player.level < 10 ? '幼年' : player.level < 30 ? '少年' : player.level < 60 ? '青年' : player.level < 80 ? '中年' : '老年')
   const ageDays = computed(() => player.level * 30)
 
-  async function loadPlayer() { const pid = getPID(); if (!pid) return; try { const t = getToken(); const r = await fetch('/api/v1/player/' + pid, { headers: { Authorization: 'Bearer ' + t } }); const d = await r.json(); if (d.data) { Object.assign(player, d.data); if (d.data.spiritName) player.spiritName = d.data.spiritName; if (d.data.name) player.name = d.data.name; if (d.data.gender) player.gender = d.data.gender } } catch {} }
+  async function loadPlayer() { const pid = getPID(); if (!pid) return; try { const t = getToken(); const r = await fetch('/api/v1/player/' + pid, { headers: { Authorization: 'Bearer ' + t } }); const d = await r.json(); if (d.data) { const p = d.data.player || d.data; Object.assign(player, p); if (d.data.spirit_name||d.data.spiritName) player.spiritName = d.data.spirit_name||d.data.spiritName; if (d.data.realm_name) player.realmName = d.data.realm_name; if (d.data.realm_stage) player.realmStage = d.data.realm_stage; if (d.data.quality_name) player.qualityName = d.data.quality_name } } catch {} }
 
   // ====== 修炼状态 ======
   const training = ref(false)

@@ -6,7 +6,10 @@
       "Read(//root/**)",
       "Bash(go vet *)",
       "Bash(go work *)",
-      "Bash(gofmt *)"
+      "Bash(gofmt *)",
+      "Bash(docker compose *)",
+      "Bash(curl -s http://localhost:8080/api/v1/player/6)",
+      "Bash(python3 -c ' *)"
     ]
   },
   "enabledMcpjsonServers": [

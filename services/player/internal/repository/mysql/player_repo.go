@@ -63,12 +63,16 @@ func (r *PlayerRepo) GetByID(id int64) (*model.Player, error) {
 
 	p := &model.Player{}
 	var exp int64
+	var lastLuckDate sql.NullString
 	err := r.db.QueryRow(query, id).Scan(
 		&p.ID, &p.UserID, &p.Name, &p.Gender, &p.Profession, &p.ProfessionLevel, &p.ProfessionExp, &p.Realm, &p.Level, &p.RealmStage, &p.SpiritRoot, &p.RootQuality,
-		&p.HP, &p.MaxHP, &p.MP, &p.MaxMP, &p.Attack, &p.Defense, &p.Speed, &p.CritRate, &p.CritDmg, &p.Dodge, &p.Hit, &p.CultBonus, &p.BreakBonus, &p.MPRegen, &p.Lifespan, &p.Comprehension, &p.Luck, &p.SpiritSense, &p.LastLuckDate,
+		&p.HP, &p.MaxHP, &p.MP, &p.MaxMP, &p.Attack, &p.Defense, &p.Speed, &p.CritRate, &p.CritDmg, &p.Dodge, &p.Hit, &p.CultBonus, &p.BreakBonus, &p.MPRegen, &p.Lifespan, &p.Comprehension, &p.Luck, &p.SpiritSense, &lastLuckDate,
 		&p.Gold, &p.Jade, &exp, &p.MaxSpirit,
 		&p.CreatedAt, &p.UpdatedAt,
 	)
+	if lastLuckDate.Valid {
+		p.LastLuckDate = lastLuckDate.String
+	}
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
@@ -89,12 +93,14 @@ func (r *PlayerRepo) GetByUserID(userID string) (*model.Player, error) {
 
 	p := &model.Player{}
 	var exp int64
+	var lastLuckDate2 sql.NullString
 	err := r.db.QueryRow(query, userID).Scan(
 		&p.ID, &p.UserID, &p.Name, &p.Gender, &p.Profession, &p.ProfessionLevel, &p.ProfessionExp, &p.Realm, &p.Level, &p.RealmStage, &p.SpiritRoot, &p.RootQuality,
-		&p.HP, &p.MaxHP, &p.MP, &p.MaxMP, &p.Attack, &p.Defense, &p.Speed, &p.CritRate, &p.CritDmg, &p.Dodge, &p.Hit, &p.CultBonus, &p.BreakBonus, &p.MPRegen, &p.Lifespan, &p.Comprehension, &p.Luck, &p.SpiritSense, &p.LastLuckDate,
+		&p.HP, &p.MP, &p.Attack, &p.Defense, &p.Speed,
 		&p.Gold, &p.Jade, &exp, &p.MaxSpirit,
 		&p.CreatedAt, &p.UpdatedAt,
 	)
+	_ = lastLuckDate2
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
