@@ -4,7 +4,6 @@
     <div class="side-loc" v-if="currentLocInfo">
       <span class="sl-icon">{{ currentLocInfo.icon }}</span>
       <span class="sl-name">{{ currentLocInfo.name }}</span>
-      <span class="sl-monsters">🐾 {{ currentLocInfo.monsters }}</span>
     </div>
 
     <!-- 玩家信息 -->
