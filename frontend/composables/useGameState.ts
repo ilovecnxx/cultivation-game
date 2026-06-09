@@ -32,22 +32,7 @@ export function useGameState() {
   const ageBracket = computed(() => player.level < 10 ? '幼年' : player.level < 30 ? '少年' : player.level < 60 ? '青年' : player.level < 80 ? '中年' : '老年')
   const ageDays = computed(() => player.level * 30)
 
-  // 战力计算(与百科战斗公式一致)
-  const computedPower = computed(() => {
-    const atk = Number(player.attack) || 0
-    const def = Number(player.defense) || 0
-    const hp = Number(player.hp) || 0
-    const mp = Number(player.mp) || 0
-    const spd = Number(player.speed) || 0
-    const cr = Number(player.critRate) || 0
-    const cd = Number(player.critDmg) || 0
-    const dg = Number(player.dodge) || 0
-    const hit = Number(player.hit) || 0
-    const mr = Number(player.mpRegen) || 0
-    return Math.floor(atk * 1.5 + def * 1.2 + hp * 0.15 + mp * 0.1 + spd * 0.5 + cr * 3 + cd * 0.15 + dg * 3 + hit * 0.5 + mr * 2)
-  })
-
-  async function loadPlayer() { const pid = getPID(); if (!pid) return; try { const t = getToken(); const r = await fetch('/api/v1/player/' + pid, { headers: { Authorization: 'Bearer ' + t } }); const d = await r.json(); if (d.data) { Object.assign(player, d.data); if (d.data.spiritName) player.spiritName = d.data.spiritName; if (d.data.name) player.name = d.data.name; if (d.data.gender) player.gender = d.data.gender } } catch {} }
+  async function loadPlayer() { const pid = getPID(); if (!pid) return; try { const t = getToken(); const r = await fetch('/api/v1/player/' + pid, { headers: { Authorization: 'Bearer ' + t } }); const d = await r.json(); if (d.data) { Object.assign(player, d.data); if (d.data.spiritName) player.spiritName = d.data.spiritName; if (d.data.name) player.name = d.data.name; if (d.data.gender) player.gender = d.data.gender } } catch {} } const pid = getPID(); if (!pid) return; try { const t = getToken(); const r = await fetch('/api/v1/player/' + pid, { headers: { Authorization: 'Bearer ' + t } }); const d = await r.json(); if (d.data) { Object.assign(player, d.data); if (d.data.spiritName) player.spiritName = d.data.spiritName; if (d.data.name) player.name = d.data.name; if (d.data.gender) player.gender = d.data.gender } } catch {} }
 
   // ====== 修炼状态 ======
   const training = ref(false)
