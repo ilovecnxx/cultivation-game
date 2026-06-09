@@ -69,29 +69,19 @@ func (s *SectService) CreateSect(ctx context.Context, name, description, notice,
 		CreatedAt:   now,
 	}
 
-	// 创建宗门和宗主成员(事务)
-	session, err := s.db.Client().StartSession()
-	if err != nil {
-		return nil, err
+	// 创建宗门和宗主成员
+	if _, err := s.sectColl().InsertOne(ctx, sect); err != nil {
+		return nil, fmt.Errorf("创建宗门失败: %w", err)
 	}
-	defer session.EndSession(ctx)
-
-	_, err = session.WithTransaction(ctx, func(sc mongo.SessionContext) (interface{}, error) {
-		if _, err := s.sectColl().InsertOne(sc, sect); err != nil {
-			return nil, err
-		}
-		member := &model.SectMember{
-			SectID:  sect.ID,
-			UserID:  leaderID,
-			Rank:    model.SectLeader,
-			JoinedAt: now,
-		}
-		if _, err := s.memberColl().InsertOne(sc, member); err != nil {
-			return nil, err
-		}
-		return nil, nil
-	})
-	if err != nil {
+	member := &model.SectMember{
+		SectID:   sect.ID,
+		UserID:   leaderID,
+		Rank:     model.SectLeader,
+		JoinedAt: now,
+	}
+	if _, err := s.memberColl().InsertOne(ctx, member); err != nil {
+		// rollback: remove the sect
+		s.sectColl().DeleteOne(ctx, bson.M{"_id": sect.ID})
 		return nil, fmt.Errorf("创建宗门失败: %w", err)
 	}
 
