@@ -44,7 +44,7 @@ services:
       - MYSQL_DSN=${SERVER_MYSQL_DSN:-root:root@tcp(mysql:3306)/${MYSQL_DATABASE:-cultivation_game}?charset=utf8mb4&parseTime=True&loc=Local}
       - JWT_ACCESS_SECRET=${JWT_ACCESS_SECRET:-cultivation-game-access-secret-dev-only}
       - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET:-cultivation-game-refresh-secret-dev-only}
-      - MONGO_URI=${MONGO_URI:-mongodb://mongo:27017/cultivation_game}
+      - MONGO_URI=${MONGO_URI:-mongodb://mongo:27017/cultivation_game?replicaSet=rs0}
       - REDIS_ADDR=${REDIS_ADDR:-host.docker.internal:6379}
     depends_on:
       mysql:
@@ -69,7 +69,7 @@ services:
     ports:
       - "127.0.0.1:${MYSQL_PORT:-3306}:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
       MYSQL_DATABASE: ${MYSQL_DATABASE:-cultivation_game}
       MYSQL_USER: ${MYSQL_USER:-game}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
@@ -108,6 +108,7 @@ services:
   mongo:
     <<: *service-common
     image: mongo:7.0
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all"]
     ports:
       - "127.0.0.1:27017:27017"
     volumes:
