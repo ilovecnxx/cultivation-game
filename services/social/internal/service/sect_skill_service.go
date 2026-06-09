@@ -164,34 +164,22 @@ func (s *SectSkillService) UpgradeSectSkill(ctx context.Context, sectID, userID,
 	}
 
 	// --- 事务: 扣费 + 升级 ---
-	session, err := s.db.Client().StartSession()
-	if err != nil {
-		return nil, err
-	}
-	defer session.EndSession(ctx)
-
-	_, err = session.WithTransaction(ctx, func(sc mongo.SessionContext) (interface{}, error) {
 		// 扣宗门资金
-		if _, err := s.sectColl().UpdateOne(sc, bson.M{"_id": sectID},
+		if _, err := s.sectColl().UpdateOne(ctx, bson.M{"_id": sectID},
 			bson.M{"$inc": bson.M{"funds": -costFunds}}); err != nil {
 			return nil, err
 		}
 		// 扣操作者贡献
-		if _, err := s.memberColl().UpdateOne(sc,
+		if _, err := s.memberColl().UpdateOne(ctx,
 			bson.M{"sect_id": sectID, "user_id": userID},
 			bson.M{"$inc": bson.M{"contribution": -costContribution}}); err != nil {
 			return nil, err
 		}
 		// 技能升级
-		if _, err := s.skillColl().UpdateOne(sc, bson.M{"_id": skillID},
+		if _, err := s.skillColl().UpdateOne(ctx, bson.M{"_id": skillID},
 			bson.M{"$set": bson.M{"level": newLevel}}); err != nil {
 			return nil, err
 		}
-		return nil, nil
-	})
-	if err != nil {
-		return nil, fmt.Errorf("升级技能失败: %w", err)
-	}
 
 	skill.Level = newLevel
 	return &skill, nil

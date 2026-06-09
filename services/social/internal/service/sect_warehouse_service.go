@@ -74,29 +74,17 @@ func (s *SectWarehouseService) DonateItem(ctx context.Context, sectID, userID, u
 	}
 
 	// 事务: 插入物品 + 增加捐献者贡献
-	session, err := s.db.Client().StartSession()
-	if err != nil {
-		return nil, err
-	}
-	defer session.EndSession(ctx)
-
-	_, err = session.WithTransaction(ctx, func(sc mongo.SessionContext) (interface{}, error) {
-		if _, err := s.whColl().InsertOne(sc, item); err != nil {
+		if _, err := s.whColl().InsertOne(ctx, item); err != nil {
 			return nil, err
 		}
 		// 捐献者获得等值贡献
 		contributionGain := marketValue * int64(quantity)
-		if _, err := s.memberColl().UpdateOne(sc,
+		if _, err := s.memberColl().UpdateOne(ctx,
 			bson.M{"sect_id": sectID, "user_id": userID},
 			bson.M{"$inc": bson.M{"contribution": contributionGain}},
 		); err != nil {
 			return nil, err
 		}
-		return nil, nil
-	})
-	if err != nil {
-		return nil, fmt.Errorf("捐献失败: %w", err)
-	}
 
 	// 增加宗门经验(捐献额的10%)
 	_ = member // member already validated above
@@ -151,62 +139,50 @@ func (s *SectWarehouseService) BuyItem(ctx context.Context, itemID, sectID, user
 		return err
 	}
 
-	session, err := s.db.Client().StartSession()
-	if err != nil {
-		return err
-	}
-	defer session.EndSession(ctx)
-
-	_, err = session.WithTransaction(ctx, func(sc mongo.SessionContext) (interface{}, error) {
 		switch currency {
 		case "spirit":
 			// 灵石购买: 灵石进入宗门资金
 			cost := item.PriceSpirit * int64(item.Quantity)
 			// 这里应该调用player服务扣灵石，简化处理：增加宗门资金
-			if _, err := s.sectColl().UpdateOne(sc,
+			if _, err := s.sectColl().UpdateOne(ctx,
 				bson.M{"_id": sectID},
 				bson.M{"$inc": bson.M{"funds": cost}},
 			); err != nil {
-				return nil, err
+				return err
 			}
 			// 扣除购买者的灵石(由调用方通过player服务处理)
 		case "contribution":
 			// 贡献购买: 扣除买家贡献
 			cost := item.PriceContribution * int64(item.Quantity)
 			if buyer.Contribution < cost {
-				return nil, fmt.Errorf("贡献不足，需要 %d 贡献，当前 %d", cost, buyer.Contribution)
+				return fmt.Errorf("贡献不足，需要 %d 贡献，当前 %d", cost, buyer.Contribution)
 			}
-			if _, err := s.memberColl().UpdateOne(sc,
+			if _, err := s.memberColl().UpdateOne(ctx,
 				bson.M{"sect_id": sectID, "user_id": userID},
 				bson.M{"$inc": bson.M{"contribution": -cost}},
 			); err != nil {
-				return nil, err
+				return err
 			}
 		default:
-			return nil, fmt.Errorf("不支持的货币类型: %s", currency)
+			return fmt.Errorf("不支持的货币类型: %s", currency)
 		}
 
 		// 标记物品为已售出(或减少数量)
 		if item.Quantity <= 1 {
-			if _, err := s.whColl().UpdateOne(sc,
+			if _, err := s.whColl().UpdateOne(ctx,
 				bson.M{"_id": itemID},
 				bson.M{"$set": bson.M{"status": "sold"}},
 			); err != nil {
-				return nil, err
+				return err
 			}
 		} else {
-			if _, err := s.whColl().UpdateOne(sc,
+			if _, err := s.whColl().UpdateOne(ctx,
 				bson.M{"_id": itemID},
 				bson.M{"$inc": bson.M{"quantity": -1}},
 			); err != nil {
-				return nil, err
+				return err
 			}
 		}
-		return nil, nil
-	})
-	if err != nil {
-		return fmt.Errorf("购买失败: %w", err)
-	}
 
 	return nil
 }
@@ -224,33 +200,21 @@ func (s *SectWarehouseService) DonateFunds(ctx context.Context, sectID, userID s
 		return 0, err
 	}
 
-	session, err := s.db.Client().StartSession()
-	if err != nil {
-		return 0, err
-	}
-	defer session.EndSession(ctx)
-
-	_, err = session.WithTransaction(ctx, func(sc mongo.SessionContext) (interface{}, error) {
 		// 增加宗门资金
-		if _, err := s.sectColl().UpdateOne(sc,
+		if _, err := s.sectColl().UpdateOne(ctx,
 			bson.M{"_id": sectID},
 			bson.M{"$inc": bson.M{"funds": amount}},
 		); err != nil {
-			return nil, err
+			return 0, err
 		}
 		// 捐献者获得贡献(10%的灵石价值)
 		contribution := amount / 10
-		if _, err := s.memberColl().UpdateOne(sc,
+		if _, err := s.memberColl().UpdateOne(ctx,
 			bson.M{"sect_id": sectID, "user_id": userID},
 			bson.M{"$inc": bson.M{"contribution": contribution}},
 		); err != nil {
-			return nil, err
+			return 0, err
 		}
-		return nil, nil
-	})
-	if err != nil {
-		return 0, fmt.Errorf("捐献失败: %w", err)
-	}
 
 	s.addSectExp(ctx, sectID, amount/10)
 	return amount, nil

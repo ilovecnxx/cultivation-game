@@ -221,36 +221,24 @@ func (s *SectMissionService) ClaimMissionReward(ctx context.Context, memberMissi
 	}
 
 	// 事务：发放奖励
-	session, err := s.db.Client().StartSession()
-	if err != nil {
-		return err
-	}
-	defer session.EndSession(ctx)
-
-	_, err = session.WithTransaction(ctx, func(sc mongo.SessionContext) (interface{}, error) {
 		// 标记已领取
-		if _, err := s.memberMissionColl().UpdateOne(sc, bson.M{"_id": memberMissionID},
+		if _, err := s.memberMissionColl().UpdateOne(ctx, bson.M{"_id": memberMissionID},
 			bson.M{"$set": bson.M{"claimed": true}}); err != nil {
-			return nil, err
+			return err
 		}
 		// 加宗门贡献
-		if _, err := s.memberColl().UpdateOne(sc,
+		if _, err := s.memberColl().UpdateOne(ctx,
 			bson.M{"sect_id": sectID, "user_id": userID},
 			bson.M{"$inc": bson.M{"contribution": sm.RewardContribution}}); err != nil {
-			return nil, err
+			return err
 		}
 		// 加宗门资金
 		if sm.RewardFunds > 0 {
-			if _, err := s.sectColl().UpdateOne(sc, bson.M{"_id": sectID},
+			if _, err := s.sectColl().UpdateOne(ctx, bson.M{"_id": sectID},
 				bson.M{"$inc": bson.M{"funds": sm.RewardFunds}}); err != nil {
-				return nil, err
+				return err
 			}
 		}
-		return nil, nil
-	})
-	if err != nil {
-		return fmt.Errorf("领取奖励失败: %w", err)
-	}
 
 	return nil
 }

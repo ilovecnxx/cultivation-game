@@ -230,17 +230,10 @@ func (s *SectService) HandleApply(ctx context.Context, applyID string, accept bo
 	}
 
 	// 同意: 更新申请状态并添加成员(事务)
-	session, err := s.db.Client().StartSession()
-	if err != nil {
-		return err
-	}
-	defer session.EndSession(ctx)
-
-	_, err = session.WithTransaction(ctx, func(sc mongo.SessionContext) (interface{}, error) {
 		// 更新申请
-		if _, err := s.applyColl().UpdateOne(sc, bson.M{"_id": applyID},
+		if _, err := s.applyColl().UpdateOne(ctx, bson.M{"_id": applyID},
 			bson.M{"$set": bson.M{"status": "accepted"}}); err != nil {
-			return nil, err
+			return err
 		}
 
 		// 添加成员
@@ -250,17 +243,15 @@ func (s *SectService) HandleApply(ctx context.Context, applyID string, accept bo
 			Rank:    model.SectRankMember,
 			JoinedAt: time.Now(),
 		}
-		if _, err := s.memberColl().InsertOne(sc, member); err != nil {
-			return nil, err
+		if _, err := s.memberColl().InsertOne(ctx, member); err != nil {
+			return err
 		}
 
 		// 更新成员计数
-		if _, err := s.sectColl().UpdateOne(sc, bson.M{"_id": apply.SectID},
+		if _, err := s.sectColl().UpdateOne(ctx, bson.M{"_id": apply.SectID},
 			bson.M{"$inc": bson.M{"member_count": 1}}); err != nil {
-			return nil, err
+			return err
 		}
-		return nil, nil
-	})
 	return err
 }
 
@@ -334,23 +325,14 @@ func (s *SectService) TransferLeader(ctx context.Context, sectID, currentLeaderI
 
 	now := time.Now()
 	// 转让: 原宗主降为长老, 新宗主升为宗主
-	session, err := s.db.Client().StartSession()
-	if err != nil {
-		return err
-	}
-	defer session.EndSession(ctx)
-
-	_, err = session.WithTransaction(ctx, func(sc mongo.SessionContext) (interface{}, error) {
-		_, _ = s.memberColl().UpdateOne(sc,
+		_, _ = s.memberColl().UpdateOne(ctx,
 			bson.M{"sect_id": sectID, "user_id": currentLeaderID},
 			bson.M{"$set": bson.M{"rank": model.SectElder, "updated_at": now}})
-		_, _ = s.memberColl().UpdateOne(sc,
+		_, _ = s.memberColl().UpdateOne(ctx,
 			bson.M{"sect_id": sectID, "user_id": newLeaderID},
 			bson.M{"$set": bson.M{"rank": model.SectLeader, "updated_at": now}})
-		_, _ = s.sectColl().UpdateOne(sc, bson.M{"_id": sectID},
+		_, _ = s.sectColl().UpdateOne(ctx, bson.M{"_id": sectID},
 			bson.M{"$set": bson.M{"leader_id": newLeaderID, "leader_name": newMember.UserID}})
-		return nil, nil
-	})
 	return err
 }
 

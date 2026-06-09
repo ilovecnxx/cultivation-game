@@ -218,13 +218,13 @@ func (s *SectTechniqueService) ExchangeTechnique(ctx context.Context, sectID, us
 		return nil, fmt.Errorf("贡献不足，需要 %d 贡献，当前 %d", tech.CostContribute, member.Contribution)
 	}
 
-	// 事务: 扣贡献 + 获得功法
-	session, err := s.db.Client().StartSession()
-	if err != nil {
+	// 扣贡献 + 获得功法
+	if _, err := s.memberColl().UpdateOne(ctx,
+		bson.M{"sect_id": sectID, "user_id": userID},
+		bson.M{"$inc": bson.M{"contribution": -tech.CostContribute}},
+	); err != nil {
 		return nil, err
 	}
-	defer session.EndSession(ctx)
-
 	mt := &MemberTechnique{
 		ID:          uuid.New().String(),
 		MemberID:    userID,
@@ -232,21 +232,8 @@ func (s *SectTechniqueService) ExchangeTechnique(ctx context.Context, sectID, us
 		Level:       1,
 		ObtainedAt:  time.Now(),
 	}
-
-	_, err = session.WithTransaction(ctx, func(sc mongo.SessionContext) (interface{}, error) {
-		if _, err := s.memberColl().UpdateOne(sc,
-			bson.M{"sect_id": sectID, "user_id": userID},
-			bson.M{"$inc": bson.M{"contribution": -tech.CostContribute}},
-		); err != nil {
-			return nil, err
-		}
-		if _, err := s.memberTechColl().InsertOne(sc, mt); err != nil {
-			return nil, err
-		}
-		return nil, nil
-	})
-	if err != nil {
-		return nil, fmt.Errorf("兑换失败: %w", err)
+	if _, err := s.memberTechColl().InsertOne(ctx, mt); err != nil {
+		return nil, err
 	}
 
 	return mt, nil
